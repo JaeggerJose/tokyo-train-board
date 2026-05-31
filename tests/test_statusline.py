@@ -81,6 +81,45 @@ def test_no_departures_degrades_gracefully() -> None:
     assert "--:--" in text
 
 
+@dataclass(frozen=True)
+class _ColorLine:
+    symbol: str
+    key: str
+    name_jp: str
+    ansi_fg: str
+    ansi_bg: str
+
+
+COLOR_LINE = _ColorLine(
+    symbol="JY", key="yamanote", name_jp="山手線",
+    ansi_fg="\033[38;5;148m", ansi_bg="\033[48;5;148m\033[38;5;232m",
+)
+
+
+def _strip_ansi(text: str) -> str:
+    import re
+    return re.sub(r"\033\[[0-9;]*m", "", text)
+
+
+def test_color_wraps_badge_and_body() -> None:
+    text = statusline_text(COLOR_LINE, STATION, DEPS, NOW, columns=0, color=True)
+    assert "\033[48;5;148m" in text  # badge background colour present
+    assert "\033[38;5;148m" in text  # foreground colour present
+    # Stripping ANSI must recover the plain content unchanged.
+    assert "都庁前" in _strip_ansi(text)
+
+
+def test_color_false_is_plain() -> None:
+    text = statusline_text(COLOR_LINE, STATION, DEPS, NOW, columns=0, color=False)
+    assert "\033[" not in text
+
+
+def test_color_does_not_change_visual_width_budget() -> None:
+    # Colour codes are zero-width: a coloured marquee still respects columns.
+    text = statusline_text(COLOR_LINE, STATION, DEPS, NOW, columns=40, color=True)
+    assert get_visual_width(text) <= 40
+
+
 def test_never_raises_on_garbage_input() -> None:
     # Defensive: malformed objects must not crash the host shell.
     text = statusline_text(object(), object(), None, NOW, columns=20)

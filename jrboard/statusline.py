@@ -42,6 +42,9 @@ except Exception:  # pragma: no cover - fallback only used in isolation.
 
 __all__ = ["statusline_text"]
 
+# ANSI reset; colours themselves come from the line's own palette at runtime.
+_RESET = "\033[0m"
+
 # Separator placed between consecutive departure entries.
 _DEPARTURE_SEP = "  "
 # Marquee gap appended when wrapping the scroll so the loop reads cleanly.
@@ -132,14 +135,23 @@ def _format_departure(dep: Any) -> Optional[str]:
     return time
 
 
-def _compose_label_and_body(line: Any, station: Any, departures: Any) -> tuple[str, str]:
-    """Return the pinned ``label`` segment and the scrollable ``body``.
+def _compose_parts(line: Any, station: Any, departures: Any) -> tuple[str, str, str]:
+    """Return ``(badge, label_rest, body)`` as PLAIN text (no colour).
 
-    ``label`` is the station identity (e.g. ``[E] 28 都庁前 ▸``) that should
-    stay visible; ``body`` is the upcoming-departures list that may be scrolled
-    as a marquee when the column budget is tight.
+    - ``badge`` is the line code block, e.g. ``[E]`` (gets the line's bg colour).
+    - ``label_rest`` is `` 28 都庁前 ▸`` (number, name, arrow; gets the fg colour).
+    - ``body`` is the scrollable upcoming-departures list.
+
+    Everything is plain so width maths and marquee slicing stay correct; colour
+    is applied afterwards (ANSI is zero-width and would otherwise break slicing).
     """
-    label = f"{_station_label(line, station)}{_STATION_ARROW}"
+    badge = _line_badge(line)
+
+    number = _safe_attr(station, "number").strip()
+    name = _safe_attr(station, "name_jp").strip() or _safe_attr(station, "name_en").strip()
+    if not name:
+        name = _safe_attr(station, "id").strip()
+    rest = "".join(f" {p}" for p in (number, name) if p) + _STATION_ARROW
 
     entries: list[str] = []
     if isinstance(departures, Iterable) and not isinstance(departures, (str, bytes)):
@@ -151,17 +163,28 @@ def _compose_label_and_body(line: Any, station: Any, departures: Any) -> tuple[s
                 entries.append(formatted)
 
     if not entries:
-        return label, "--:--"
+        return badge, rest, "--:--"
 
     # Prefer 2-3 departures; entries already capped at _MAX_DEPARTURES.
     visible = entries[: max(_MIN_DEPARTURES, min(len(entries), _MAX_DEPARTURES))]
-    return label, _DEPARTURE_SEP.join(visible)
+    return badge, rest, _DEPARTURE_SEP.join(visible)
+
+
+def _compose_label_and_body(line: Any, station: Any, departures: Any) -> tuple[str, str]:
+    """Return the plain pinned ``label`` and the plain scrollable ``body``."""
+    badge, rest, body = _compose_parts(line, station, departures)
+    return f"{badge}{rest}", body
 
 
 def _compose_content(line: Any, station: Any, departures: Any) -> str:
-    """Assemble the full (un-scrolled) statusline content string."""
+    """Assemble the full (un-scrolled) plain statusline content string."""
     label, body = _compose_label_and_body(line, station, departures)
     return f"{label}{body}"
+
+
+def _paint(text: str, ansi: str) -> str:
+    """Wrap ``text`` in an ANSI sequence + reset, or return it unchanged."""
+    return f"{ansi}{text}{_RESET}" if (ansi and text) else text
 
 
 def _slice_to_width(text: str, start_col: int, target_w: int) -> str:
@@ -243,6 +266,7 @@ def statusline_text(
     now: Any,
     columns: int = 0,
     pin_label: bool = True,
+    color: bool = True,
 ) -> str:
     """Render the one-line statusline string.
 
@@ -261,38 +285,48 @@ def statusline_text(
         pin_label: When ``True`` (default) the station-identity segment
             (``[E] 28 都庁前 ▸``) stays fixed and only the departures list
             scrolls as a marquee. When ``False`` the entire line scrolls.
+        color: When ``True`` (default) the badge uses the line's background
+            colour and the rest of the line its foreground colour. Set ``False``
+            for plain text (e.g. statuslines that strip or dislike ANSI).
 
     Returns:
         A single line with no trailing newline. Always returns a valid string;
         on internal error it degrades to a minimal label rather than raising.
     """
     try:
-        label, body = _compose_label_and_body(line, station, departures)
+        badge, rest, body = _compose_parts(line, station, departures)
+        label = f"{badge}{rest}"          # plain, for width maths + slicing
         content = f"{label}{body}"
     except Exception as exc:  # never let the statusline crash the host shell
         print(f"jrboard.statusline: failed to compose content: {exc!r}",
               file=sys.stderr)
         return "[??] --:--"
 
+    # Line palette (read defensively; absent => no colour applied).
+    fg = _safe_attr(line, "ansi_fg") if color else ""
+    bg = _safe_attr(line, "ansi_bg") if color else ""
+
+    def paint_label() -> str:
+        return f"{_paint(badge, bg)}{_paint(rest, fg)}"
+
     try:
-        if not (columns and columns > 0):
-            return content
-        if get_visual_width(content) <= columns:
-            return content
+        # No marquee: whole content fits (or columns disabled).
+        if not (columns and columns > 0) or get_visual_width(content) <= columns:
+            return f"{paint_label()}{_paint(body, fg)}"
 
         offset = _seconds_of_day(now)
         if pin_label:
-            label_w = get_visual_width(label)
-            body_budget = columns - label_w
+            body_budget = columns - get_visual_width(label)
             # Only pin when the label leaves a usable scrolling window.
             if body_budget >= _MIN_PIN_BODY:
-                return label + _marquee(body, body_budget, offset)
-        # Fallback / pin_label=False: scroll the whole line.
-        return _marquee(content, columns, offset)
+                scrolled = _marquee(body, body_budget, offset)
+                return f"{paint_label()}{_paint(scrolled, fg)}"
+        # Fallback / pin_label=False: scroll the whole line, paint uniformly.
+        return _paint(_marquee(content, columns, offset), fg)
     except Exception as exc:
         print(f"jrboard.statusline: marquee failed: {exc!r}", file=sys.stderr)
-        # Best-effort: return the un-scrolled content so the user still sees data.
-        return content
+        # Best-effort: un-scrolled, still coloured where possible.
+        return f"{paint_label()}{_paint(body, fg)}"
 
 
 if __name__ == "__main__":  # pragma: no cover - manual smoke test

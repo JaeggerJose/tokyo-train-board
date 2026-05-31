@@ -132,6 +132,12 @@ def _build_parser() -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument(
+        "--no-color",
+        dest="no_color",
+        action="store_true",
+        help="Statusline mode: emit plain text (no line-colour ANSI).",
+    )
+    parser.add_argument(
         "--scroll-all",
         dest="scroll_all",
         action="store_true",
@@ -237,7 +243,11 @@ def _run_board(args: argparse.Namespace, line: Line, station: Station) -> int:
 
 
 def _run_statusline(
-    line: Line, station: Station, pin_label: bool = True, columns: int = 0
+    line: Line,
+    station: Station,
+    pin_label: bool = True,
+    columns: int = 0,
+    color: bool = True,
 ) -> int:
     # Imported lazily so a missing statusline module never breaks board mode.
     from .statusline import statusline_text
@@ -247,7 +257,8 @@ def _run_statusline(
     # An explicit --columns wins; otherwise fall back to TTY auto-detection.
     columns = columns if columns and columns > 0 else _terminal_columns()
     text = statusline_text(
-        line, station, departures, now, columns=columns, pin_label=pin_label
+        line, station, departures, now,
+        columns=columns, pin_label=pin_label, color=color,
     )
     # Exactly one line, no trailing newline.
     sys.stdout.write(text)
@@ -292,7 +303,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     if args.mode == "statusline":
         return _run_statusline(
-            line, station, pin_label=not args.scroll_all, columns=args.columns
+            line, station,
+            pin_label=not args.scroll_all,
+            columns=args.columns,
+            color=not args.no_color,
         )
     return _run_board(args, line, station)
 
