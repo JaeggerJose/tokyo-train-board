@@ -1,5 +1,7 @@
 # 🚉 JR / Tokyo Metro Split-Flap Board
 
+[English](README.en.md) · **繁體中文** · [日本語](README.ja.md)
+
 終端機裡的 JR／東京地鐵 **翻牌式（split-flap / Solari board）時刻表站牌**模擬器。
 
 每次刷新會先像老火車站、航站樓的機械翻牌那樣亂數翻滾，再逐格鎖定成真實的到站資訊。
