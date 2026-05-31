@@ -1,0 +1,459 @@
+{
+  "key": "keihintohoku",
+  "name_jp": "京浜東北・根岸線",
+  "name_en": "Keihin-Tohoku-Negishi Line",
+  "symbol": "JK",
+  "color": {
+    "name": "青22号 / sky blue",
+    "hex": "#00B2E5",
+    "ansi_fg": "\u001b[38;2;0;178;229m",
+    "ansi_bg": "\u001b[48;2;0;178;229m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-East",
+  "odpt_railway": "odpt.Railway:JR-East.KeihinTohokuNegishi",
+  "loop": false,
+  "stations": [
+    {
+      "id": "JK47",
+      "number": "47",
+      "name_jp": "大宮",
+      "kana": "おおみや",
+      "name_en": "Omiya",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Omiya"
+    },
+    {
+      "id": "JK46",
+      "number": "46",
+      "name_jp": "さいたま新都心",
+      "kana": "さいたましんとしん",
+      "name_en": "Saitama-Shintoshin",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.SaitamaShintoshin"
+    },
+    {
+      "id": "JK45",
+      "number": "45",
+      "name_jp": "与野",
+      "kana": "よの",
+      "name_en": "Yono",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Yono"
+    },
+    {
+      "id": "JK44",
+      "number": "44",
+      "name_jp": "北浦和",
+      "kana": "きたうらわ",
+      "name_en": "Kita-Urawa",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.KitaUrawa"
+    },
+    {
+      "id": "JK43",
+      "number": "43",
+      "name_jp": "浦和",
+      "kana": "うらわ",
+      "name_en": "Urawa",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Urawa"
+    },
+    {
+      "id": "JK42",
+      "number": "42",
+      "name_jp": "南浦和",
+      "kana": "みなみうらわ",
+      "name_en": "Minami-Urawa",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.MinamiUrawa"
+    },
+    {
+      "id": "JK41",
+      "number": "41",
+      "name_jp": "蕨",
+      "kana": "わらび",
+      "name_en": "Warabi",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Warabi"
+    },
+    {
+      "id": "JK40",
+      "number": "40",
+      "name_jp": "西川口",
+      "kana": "にしかわぐち",
+      "name_en": "Nishi-Kawaguchi",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.NishiKawaguchi"
+    },
+    {
+      "id": "JK39",
+      "number": "39",
+      "name_jp": "川口",
+      "kana": "かわぐち",
+      "name_en": "Kawaguchi",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Kawaguchi"
+    },
+    {
+      "id": "JK38",
+      "number": "38",
+      "name_jp": "赤羽",
+      "kana": "あかばね",
+      "name_en": "Akabane",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Akabane"
+    },
+    {
+      "id": "JK37",
+      "number": "37",
+      "name_jp": "東十条",
+      "kana": "ひがしじゅうじょう",
+      "name_en": "Higashi-Jujo",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.HigashiJujo"
+    },
+    {
+      "id": "JK36",
+      "number": "36",
+      "name_jp": "王子",
+      "kana": "おうじ",
+      "name_en": "Oji",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Oji"
+    },
+    {
+      "id": "JK35",
+      "number": "35",
+      "name_jp": "上中里",
+      "kana": "かみなかざと",
+      "name_en": "Kami-Nakazato",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.KamiNakazato"
+    },
+    {
+      "id": "JK34",
+      "number": "34",
+      "name_jp": "田端",
+      "kana": "たばた",
+      "name_en": "Tabata",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Tabata"
+    },
+    {
+      "id": "JK33",
+      "number": "33",
+      "name_jp": "西日暮里",
+      "kana": "にしにっぽり",
+      "name_en": "Nishi-Nippori",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.NishiNippori"
+    },
+    {
+      "id": "JK32",
+      "number": "32",
+      "name_jp": "日暮里",
+      "kana": "にっぽり",
+      "name_en": "Nippori",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Nippori"
+    },
+    {
+      "id": "JK31",
+      "number": "31",
+      "name_jp": "鶯谷",
+      "kana": "うぐいすだに",
+      "name_en": "Uguisudani",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Uguisudani"
+    },
+    {
+      "id": "JK30",
+      "number": "30",
+      "name_jp": "上野",
+      "kana": "うえの",
+      "name_en": "Ueno",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Ueno"
+    },
+    {
+      "id": "JK29",
+      "number": "29",
+      "name_jp": "御徒町",
+      "kana": "おかちまち",
+      "name_en": "Okachimachi",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Okachimachi"
+    },
+    {
+      "id": "JK28",
+      "number": "28",
+      "name_jp": "秋葉原",
+      "kana": "あきはばら",
+      "name_en": "Akihabara",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Akihabara"
+    },
+    {
+      "id": "JK27",
+      "number": "27",
+      "name_jp": "神田",
+      "kana": "かんだ",
+      "name_en": "Kanda",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Kanda"
+    },
+    {
+      "id": "JK26",
+      "number": "26",
+      "name_jp": "東京",
+      "kana": "とうきょう",
+      "name_en": "Tokyo",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Tokyo"
+    },
+    {
+      "id": "JK25",
+      "number": "25",
+      "name_jp": "有楽町",
+      "kana": "ゆうらくちょう",
+      "name_en": "Yurakucho",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Yurakucho"
+    },
+    {
+      "id": "JK24",
+      "number": "24",
+      "name_jp": "新橋",
+      "kana": "しんばし",
+      "name_en": "Shimbashi",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Shimbashi"
+    },
+    {
+      "id": "JK23",
+      "number": "23",
+      "name_jp": "浜松町",
+      "kana": "はままつちょう",
+      "name_en": "Hamamatsucho",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Hamamatsucho"
+    },
+    {
+      "id": "JK22",
+      "number": "22",
+      "name_jp": "田町",
+      "kana": "たまち",
+      "name_en": "Tamachi",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Tamachi"
+    },
+    {
+      "id": "JK21",
+      "number": "21",
+      "name_jp": "高輪ゲートウェイ",
+      "kana": "たかなわゲートウェイ",
+      "name_en": "Takanawa Gateway",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.TakanawaGateway"
+    },
+    {
+      "id": "JK20",
+      "number": "20",
+      "name_jp": "品川",
+      "kana": "しながわ",
+      "name_en": "Shinagawa",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Shinagawa"
+    },
+    {
+      "id": "JK19",
+      "number": "19",
+      "name_jp": "大井町",
+      "kana": "おおいまち",
+      "name_en": "Oimachi",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Oimachi"
+    },
+    {
+      "id": "JK18",
+      "number": "18",
+      "name_jp": "大森",
+      "kana": "おおもり",
+      "name_en": "Omori",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Omori"
+    },
+    {
+      "id": "JK17",
+      "number": "17",
+      "name_jp": "蒲田",
+      "kana": "かまた",
+      "name_en": "Kamata",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Kamata"
+    },
+    {
+      "id": "JK16",
+      "number": "16",
+      "name_jp": "川崎",
+      "kana": "かわさき",
+      "name_en": "Kawasaki",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Kawasaki"
+    },
+    {
+      "id": "JK15",
+      "number": "15",
+      "name_jp": "鶴見",
+      "kana": "つるみ",
+      "name_en": "Tsurumi",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Tsurumi"
+    },
+    {
+      "id": "JK14",
+      "number": "14",
+      "name_jp": "新子安",
+      "kana": "しんこやす",
+      "name_en": "Shin-Koyasu",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.ShinKoyasu"
+    },
+    {
+      "id": "JK13",
+      "number": "13",
+      "name_jp": "東神奈川",
+      "kana": "ひがしかながわ",
+      "name_en": "Higashi-Kanagawa",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.HigashiKanagawa"
+    },
+    {
+      "id": "JK12",
+      "number": "12",
+      "name_jp": "横浜",
+      "kana": "よこはま",
+      "name_en": "Yokohama",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Yokohama"
+    },
+    {
+      "id": "JK11",
+      "number": "11",
+      "name_jp": "桜木町",
+      "kana": "さくらぎちょう",
+      "name_en": "Sakuragicho",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Sakuragicho"
+    },
+    {
+      "id": "JK10",
+      "number": "10",
+      "name_jp": "関内",
+      "kana": "かんない",
+      "name_en": "Kannai",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Kannai"
+    },
+    {
+      "id": "JK09",
+      "number": "09",
+      "name_jp": "石川町",
+      "kana": "いしかわちょう",
+      "name_en": "Ishikawacho",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Ishikawacho"
+    },
+    {
+      "id": "JK08",
+      "number": "08",
+      "name_jp": "山手",
+      "kana": "やまて",
+      "name_en": "Yamate",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Yamate"
+    },
+    {
+      "id": "JK07",
+      "number": "07",
+      "name_jp": "根岸",
+      "kana": "ねぎし",
+      "name_en": "Negishi",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Negishi"
+    },
+    {
+      "id": "JK06",
+      "number": "06",
+      "name_jp": "磯子",
+      "kana": "いそご",
+      "name_en": "Isogo",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Isogo"
+    },
+    {
+      "id": "JK05",
+      "number": "05",
+      "name_jp": "新杉田",
+      "kana": "しんすぎた",
+      "name_en": "Shin-Sugita",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.ShinSugita"
+    },
+    {
+      "id": "JK04",
+      "number": "04",
+      "name_jp": "洋光台",
+      "kana": "ようこうだい",
+      "name_en": "Yokodai",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Yokodai"
+    },
+    {
+      "id": "JK03",
+      "number": "03",
+      "name_jp": "港南台",
+      "kana": "こうなんだい",
+      "name_en": "Konandai",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Konandai"
+    },
+    {
+      "id": "JK02",
+      "number": "02",
+      "name_jp": "本郷台",
+      "kana": "ほんごうだい",
+      "name_en": "Hongodai",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Hongodai"
+    },
+    {
+      "id": "JK01",
+      "number": "01",
+      "name_jp": "大船",
+      "kana": "おおふな",
+      "name_en": "Ofuna",
+      "odpt_station": "odpt.Station:JR-East.KeihinTohokuNegishi.Ofuna"
+    }
+  ],
+  "timetable": {
+    "first_train": "04:23",
+    "last_train": "00:30",
+    "headway_min": {
+      "weekday": {
+        "5": 6,
+        "6": 4,
+        "7": 3,
+        "8": 2,
+        "9": 3,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 4,
+        "17": 3,
+        "18": 3,
+        "19": 3,
+        "20": 4,
+        "21": 4,
+        "22": 5,
+        "23": 6,
+        "0": 8,
+        "1": 12
+      },
+      "holiday": {
+        "5": 7,
+        "6": 5,
+        "7": 5,
+        "8": 4,
+        "9": 4,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 4,
+        "18": 4,
+        "19": 4,
+        "20": 5,
+        "21": 5,
+        "22": 6,
+        "23": 7,
+        "0": 9,
+        "1": 12
+      }
+    },
+    "directions": [
+      {
+        "id": "omiya",
+        "name_jp": "大宮方面",
+        "via_jp": "上野方面",
+        "track": "1"
+      },
+      {
+        "id": "ofuna",
+        "name_jp": "大船方面",
+        "via_jp": "横浜方面",
+        "track": "2"
+      }
+    ]
+  }
+}

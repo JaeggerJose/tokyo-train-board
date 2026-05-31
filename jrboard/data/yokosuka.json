@@ -1,0 +1,235 @@
+{
+  "key": "yokosuka",
+  "name_jp": "横須賀線",
+  "name_en": "Yokosuka Line",
+  "symbol": "JO",
+  "color": {
+    "name": "スカ色系 / navy blue",
+    "hex": "#0067C0",
+    "ansi_fg": "\u001b[38;2;0;103;192m",
+    "ansi_bg": "\u001b[48;2;0;103;192m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-East",
+  "odpt_railway": "odpt.Railway:JR-East.Yokosuka",
+  "loop": false,
+  "stations": [
+    {
+      "id": "JO19",
+      "number": "19",
+      "name_jp": "東京",
+      "kana": "とうきょう",
+      "name_en": "Tokyo",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Tokyo"
+    },
+    {
+      "id": "JO18",
+      "number": "18",
+      "name_jp": "新橋",
+      "kana": "しんばし",
+      "name_en": "Shimbashi",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Shimbashi"
+    },
+    {
+      "id": "JO17",
+      "number": "17",
+      "name_jp": "品川",
+      "kana": "しながわ",
+      "name_en": "Shinagawa",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Shinagawa"
+    },
+    {
+      "id": "JO16",
+      "number": "16",
+      "name_jp": "西大井",
+      "kana": "にしおおい",
+      "name_en": "Nishi-Oi",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.NishiOi"
+    },
+    {
+      "id": "JO15",
+      "number": "15",
+      "name_jp": "武蔵小杉",
+      "kana": "むさしこすぎ",
+      "name_en": "Musashi-Kosugi",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.MusashiKosugi"
+    },
+    {
+      "id": "JO14",
+      "number": "14",
+      "name_jp": "新川崎",
+      "kana": "しんかわさき",
+      "name_en": "Shin-Kawasaki",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.ShinKawasaki"
+    },
+    {
+      "id": "JO13",
+      "number": "13",
+      "name_jp": "横浜",
+      "kana": "よこはま",
+      "name_en": "Yokohama",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Yokohama"
+    },
+    {
+      "id": "JO12",
+      "number": "12",
+      "name_jp": "保土ケ谷",
+      "kana": "ほどがや",
+      "name_en": "Hodogaya",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Hodogaya"
+    },
+    {
+      "id": "JO11",
+      "number": "11",
+      "name_jp": "東戸塚",
+      "kana": "ひがしとつか",
+      "name_en": "Higashi-Totsuka",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.HigashiTotsuka"
+    },
+    {
+      "id": "JO10",
+      "number": "10",
+      "name_jp": "戸塚",
+      "kana": "とつか",
+      "name_en": "Totsuka",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Totsuka"
+    },
+    {
+      "id": "JO09",
+      "number": "09",
+      "name_jp": "大船",
+      "kana": "おおふな",
+      "name_en": "Ofuna",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Ofuna"
+    },
+    {
+      "id": "JO08",
+      "number": "08",
+      "name_jp": "北鎌倉",
+      "kana": "きたかまくら",
+      "name_en": "Kita-Kamakura",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.KitaKamakura"
+    },
+    {
+      "id": "JO07",
+      "number": "07",
+      "name_jp": "鎌倉",
+      "kana": "かまくら",
+      "name_en": "Kamakura",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Kamakura"
+    },
+    {
+      "id": "JO06",
+      "number": "06",
+      "name_jp": "逗子",
+      "kana": "ずし",
+      "name_en": "Zushi",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Zushi"
+    },
+    {
+      "id": "JO05",
+      "number": "05",
+      "name_jp": "東逗子",
+      "kana": "ひがしずし",
+      "name_en": "Higashi-Zushi",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.HigashiZushi"
+    },
+    {
+      "id": "JO04",
+      "number": "04",
+      "name_jp": "田浦",
+      "kana": "たうら",
+      "name_en": "Taura",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Taura"
+    },
+    {
+      "id": "JO03",
+      "number": "03",
+      "name_jp": "横須賀",
+      "kana": "よこすか",
+      "name_en": "Yokosuka",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Yokosuka"
+    },
+    {
+      "id": "JO02",
+      "number": "02",
+      "name_jp": "衣笠",
+      "kana": "きぬがさ",
+      "name_en": "Kinugasa",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Kinugasa"
+    },
+    {
+      "id": "JO01",
+      "number": "01",
+      "name_jp": "久里浜",
+      "kana": "くりはま",
+      "name_en": "Kurihama",
+      "odpt_station": "odpt.Station:JR-East.Yokosuka.Kurihama"
+    }
+  ],
+  "timetable": {
+    "first_train": "04:43",
+    "last_train": "00:18",
+    "headway_min": {
+      "weekday": {
+        "5": 12,
+        "6": 8,
+        "7": 5,
+        "8": 4,
+        "9": 6,
+        "10": 10,
+        "11": 12,
+        "12": 12,
+        "13": 12,
+        "14": 12,
+        "15": 12,
+        "16": 10,
+        "17": 6,
+        "18": 5,
+        "19": 6,
+        "20": 8,
+        "21": 8,
+        "22": 10,
+        "23": 12,
+        "0": 20,
+        "1": 30
+      },
+      "holiday": {
+        "5": 15,
+        "6": 12,
+        "7": 10,
+        "8": 8,
+        "9": 8,
+        "10": 10,
+        "11": 12,
+        "12": 12,
+        "13": 12,
+        "14": 12,
+        "15": 12,
+        "16": 12,
+        "17": 10,
+        "18": 10,
+        "19": 10,
+        "20": 12,
+        "21": 12,
+        "22": 15,
+        "23": 15,
+        "0": 20,
+        "1": 30
+      }
+    },
+    "directions": [
+      {
+        "id": "tokyo",
+        "name_jp": "東京方面",
+        "via_jp": "横浜方面",
+        "track": "1"
+      },
+      {
+        "id": "kurihama",
+        "name_jp": "久里浜方面",
+        "via_jp": "鎌倉方面",
+        "track": "2"
+      }
+    ]
+  }
+}

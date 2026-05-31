@@ -1,0 +1,195 @@
+{
+  "key": "hanzomon",
+  "name_jp": "東京メトロ半蔵門線",
+  "name_en": "Tokyo Metro Hanzomon Line",
+  "symbol": "Z",
+  "color": {
+    "name": "パープル / purple",
+    "hex": "#8F76D6",
+    "ansi_fg": "\u001b[38;2;143;118;214m",
+    "ansi_bg": "\u001b[48;2;143;118;214m\u001b[38;2;255;255;255m"
+  },
+  "operator": "TokyoMetro",
+  "odpt_railway": "odpt.Railway:TokyoMetro.Hanzomon",
+  "loop": false,
+  "stations": [
+    {
+      "id": "Z01",
+      "number": "01",
+      "name_jp": "渋谷",
+      "kana": "しぶや",
+      "name_en": "Shibuya",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Shibuya"
+    },
+    {
+      "id": "Z02",
+      "number": "02",
+      "name_jp": "表参道",
+      "kana": "おもてさんどう",
+      "name_en": "Omote-sando",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Omotesando"
+    },
+    {
+      "id": "Z03",
+      "number": "03",
+      "name_jp": "青山一丁目",
+      "kana": "あおやまいっちょうめ",
+      "name_en": "Aoyama-itchome",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.AoyamaItchome"
+    },
+    {
+      "id": "Z04",
+      "number": "04",
+      "name_jp": "永田町",
+      "kana": "ながたちょう",
+      "name_en": "Nagatacho",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Nagatacho"
+    },
+    {
+      "id": "Z05",
+      "number": "05",
+      "name_jp": "半蔵門",
+      "kana": "はんぞうもん",
+      "name_en": "Hanzomon",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Hanzomon"
+    },
+    {
+      "id": "Z06",
+      "number": "06",
+      "name_jp": "九段下",
+      "kana": "くだんした",
+      "name_en": "Kudanshita",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Kudanshita"
+    },
+    {
+      "id": "Z07",
+      "number": "07",
+      "name_jp": "神保町",
+      "kana": "じんぼうちょう",
+      "name_en": "Jimbocho",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Jimbocho"
+    },
+    {
+      "id": "Z08",
+      "number": "08",
+      "name_jp": "大手町",
+      "kana": "おおてまち",
+      "name_en": "Otemachi",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Otemachi"
+    },
+    {
+      "id": "Z09",
+      "number": "09",
+      "name_jp": "三越前",
+      "kana": "みつこしまえ",
+      "name_en": "Mitsukoshimae",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Mitsukoshimae"
+    },
+    {
+      "id": "Z10",
+      "number": "10",
+      "name_jp": "水天宮前",
+      "kana": "すいてんぐうまえ",
+      "name_en": "Suitengumae",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Suitengumae"
+    },
+    {
+      "id": "Z11",
+      "number": "11",
+      "name_jp": "清澄白河",
+      "kana": "きよすみしらかわ",
+      "name_en": "Kiyosumi-shirakawa",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Kiyosumishirakawa"
+    },
+    {
+      "id": "Z12",
+      "number": "12",
+      "name_jp": "住吉",
+      "kana": "すみよし",
+      "name_en": "Sumiyoshi",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Sumiyoshi"
+    },
+    {
+      "id": "Z13",
+      "number": "13",
+      "name_jp": "錦糸町",
+      "kana": "きんしちょう",
+      "name_en": "Kinshicho",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Kinshicho"
+    },
+    {
+      "id": "Z14",
+      "number": "14",
+      "name_jp": "押上",
+      "kana": "おしあげ",
+      "name_en": "Oshiage",
+      "odpt_station": "odpt.Station:TokyoMetro.Hanzomon.Oshiage"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:00",
+    "last_train": "00:25",
+    "headway_min": {
+      "weekday": {
+        "5": 8,
+        "6": 5,
+        "7": 3,
+        "8": 3,
+        "9": 4,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 5,
+        "17": 4,
+        "18": 3,
+        "19": 4,
+        "20": 5,
+        "21": 5,
+        "22": 6,
+        "23": 7,
+        "0": 10,
+        "1": 12
+      },
+      "holiday": {
+        "5": 9,
+        "6": 7,
+        "7": 6,
+        "8": 5,
+        "9": 5,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 6,
+        "20": 7,
+        "21": 7,
+        "22": 8,
+        "23": 9,
+        "0": 12,
+        "1": 12
+      }
+    },
+    "directions": [
+      {
+        "id": "shibuya",
+        "name_jp": "渋谷方面",
+        "via_jp": "表参道方面",
+        "track": "1"
+      },
+      {
+        "id": "oshiage",
+        "name_jp": "押上方面",
+        "via_jp": "錦糸町方面",
+        "track": "2"
+      }
+    ]
+  }
+}

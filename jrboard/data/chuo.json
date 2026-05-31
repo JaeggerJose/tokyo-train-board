@@ -1,0 +1,275 @@
+{
+  "key": "chuo",
+  "name_jp": "中央線快速",
+  "name_en": "Chuo Line (Rapid)",
+  "symbol": "JC",
+  "color": {
+    "name": "朱色1号 / vermilion-orange",
+    "hex": "#F15A22",
+    "ansi_fg": "\u001b[38;2;241;90;34m",
+    "ansi_bg": "\u001b[48;2;241;90;34m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-East",
+  "odpt_railway": "odpt.Railway:JR-East.ChuoRapid",
+  "loop": false,
+  "stations": [
+    {
+      "id": "JC01",
+      "number": "01",
+      "name_jp": "東京",
+      "kana": "とうきょう",
+      "name_en": "Tokyo",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Tokyo"
+    },
+    {
+      "id": "JC02",
+      "number": "02",
+      "name_jp": "神田",
+      "kana": "かんだ",
+      "name_en": "Kanda",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Kanda"
+    },
+    {
+      "id": "JC03",
+      "number": "03",
+      "name_jp": "御茶ノ水",
+      "kana": "おちゃのみず",
+      "name_en": "Ochanomizu",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Ochanomizu"
+    },
+    {
+      "id": "JC04",
+      "number": "04",
+      "name_jp": "四ツ谷",
+      "kana": "よつや",
+      "name_en": "Yotsuya",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Yotsuya"
+    },
+    {
+      "id": "JC05",
+      "number": "05",
+      "name_jp": "新宿",
+      "kana": "しんじゅく",
+      "name_en": "Shinjuku",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Shinjuku"
+    },
+    {
+      "id": "JC06",
+      "number": "06",
+      "name_jp": "中野",
+      "kana": "なかの",
+      "name_en": "Nakano",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Nakano"
+    },
+    {
+      "id": "JC07",
+      "number": "07",
+      "name_jp": "高円寺",
+      "kana": "こうえんじ",
+      "name_en": "Koenji",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Koenji"
+    },
+    {
+      "id": "JC08",
+      "number": "08",
+      "name_jp": "阿佐ケ谷",
+      "kana": "あさがや",
+      "name_en": "Asagaya",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Asagaya"
+    },
+    {
+      "id": "JC09",
+      "number": "09",
+      "name_jp": "荻窪",
+      "kana": "おぎくぼ",
+      "name_en": "Ogikubo",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Ogikubo"
+    },
+    {
+      "id": "JC10",
+      "number": "10",
+      "name_jp": "西荻窪",
+      "kana": "にしおぎくぼ",
+      "name_en": "Nishi-Ogikubo",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.NishiOgikubo"
+    },
+    {
+      "id": "JC11",
+      "number": "11",
+      "name_jp": "吉祥寺",
+      "kana": "きちじょうじ",
+      "name_en": "Kichijoji",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Kichijoji"
+    },
+    {
+      "id": "JC12",
+      "number": "12",
+      "name_jp": "三鷹",
+      "kana": "みたか",
+      "name_en": "Mitaka",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Mitaka"
+    },
+    {
+      "id": "JC13",
+      "number": "13",
+      "name_jp": "武蔵境",
+      "kana": "むさしさかい",
+      "name_en": "Musashi-Sakai",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.MusashiSakai"
+    },
+    {
+      "id": "JC14",
+      "number": "14",
+      "name_jp": "東小金井",
+      "kana": "ひがしこがねい",
+      "name_en": "Higashi-Koganei",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.HigashiKoganei"
+    },
+    {
+      "id": "JC15",
+      "number": "15",
+      "name_jp": "武蔵小金井",
+      "kana": "むさしこがねい",
+      "name_en": "Musashi-Koganei",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.MusashiKoganei"
+    },
+    {
+      "id": "JC16",
+      "number": "16",
+      "name_jp": "国分寺",
+      "kana": "こくぶんじ",
+      "name_en": "Kokubunji",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Kokubunji"
+    },
+    {
+      "id": "JC17",
+      "number": "17",
+      "name_jp": "西国分寺",
+      "kana": "にしこくぶんじ",
+      "name_en": "Nishi-Kokubunji",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.NishiKokubunji"
+    },
+    {
+      "id": "JC18",
+      "number": "18",
+      "name_jp": "国立",
+      "kana": "くにたち",
+      "name_en": "Kunitachi",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Kunitachi"
+    },
+    {
+      "id": "JC19",
+      "number": "19",
+      "name_jp": "立川",
+      "kana": "たちかわ",
+      "name_en": "Tachikawa",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Tachikawa"
+    },
+    {
+      "id": "JC20",
+      "number": "20",
+      "name_jp": "日野",
+      "kana": "ひの",
+      "name_en": "Hino",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Hino"
+    },
+    {
+      "id": "JC21",
+      "number": "21",
+      "name_jp": "豊田",
+      "kana": "とよだ",
+      "name_en": "Toyoda",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Toyoda"
+    },
+    {
+      "id": "JC22",
+      "number": "22",
+      "name_jp": "八王子",
+      "kana": "はちおうじ",
+      "name_en": "Hachioji",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Hachioji"
+    },
+    {
+      "id": "JC23",
+      "number": "23",
+      "name_jp": "西八王子",
+      "kana": "にしはちおうじ",
+      "name_en": "Nishi-Hachioji",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.NishiHachioji"
+    },
+    {
+      "id": "JC24",
+      "number": "24",
+      "name_jp": "高尾",
+      "kana": "たかお",
+      "name_en": "Takao",
+      "odpt_station": "odpt.Station:JR-East.ChuoRapid.Takao"
+    }
+  ],
+  "timetable": {
+    "first_train": "04:36",
+    "last_train": "00:32",
+    "headway_min": {
+      "weekday": {
+        "5": 8,
+        "6": 4,
+        "7": 3,
+        "8": 2,
+        "9": 3,
+        "10": 5,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 5,
+        "17": 4,
+        "18": 3,
+        "19": 3,
+        "20": 4,
+        "21": 5,
+        "22": 5,
+        "23": 6,
+        "0": 10,
+        "1": 0
+      },
+      "holiday": {
+        "5": 10,
+        "6": 6,
+        "7": 5,
+        "8": 5,
+        "9": 5,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 5,
+        "18": 5,
+        "19": 5,
+        "20": 6,
+        "21": 6,
+        "22": 7,
+        "23": 8,
+        "0": 12,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "tokyo",
+        "name_jp": "東京方面",
+        "via_jp": "新宿・東京方面",
+        "track": "1"
+      },
+      {
+        "id": "takao",
+        "name_jp": "高尾方面",
+        "via_jp": "立川・八王子方面",
+        "track": "2"
+      }
+    ]
+  }
+}

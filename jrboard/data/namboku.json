@@ -1,0 +1,235 @@
+{
+  "key": "namboku",
+  "name_jp": "東京メトロ南北線",
+  "name_en": "Tokyo Metro Namboku Line",
+  "symbol": "N",
+  "color": {
+    "name": "エメラルド / emerald",
+    "hex": "#00AC9B",
+    "ansi_fg": "\u001b[38;2;0;172;155m",
+    "ansi_bg": "\u001b[48;2;0;172;155m\u001b[38;2;255;255;255m"
+  },
+  "operator": "TokyoMetro",
+  "odpt_railway": "odpt.Railway:TokyoMetro.Namboku",
+  "loop": false,
+  "stations": [
+    {
+      "id": "N01",
+      "number": "01",
+      "name_jp": "目黒",
+      "kana": "めぐろ",
+      "name_en": "Meguro",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.Meguro"
+    },
+    {
+      "id": "N02",
+      "number": "02",
+      "name_jp": "白金台",
+      "kana": "しろかねだい",
+      "name_en": "Shirokanedai",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.Shirokanedai"
+    },
+    {
+      "id": "N03",
+      "number": "03",
+      "name_jp": "白金高輪",
+      "kana": "しろかねたかなわ",
+      "name_en": "Shirokane-takanawa",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.ShirokaneTakanawa"
+    },
+    {
+      "id": "N04",
+      "number": "04",
+      "name_jp": "麻布十番",
+      "kana": "あざぶじゅうばん",
+      "name_en": "Azabu-juban",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.AzabuJuban"
+    },
+    {
+      "id": "N05",
+      "number": "05",
+      "name_jp": "六本木一丁目",
+      "kana": "ろっぽんぎいっちょうめ",
+      "name_en": "Roppongi-itchome",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.RoppongiItchome"
+    },
+    {
+      "id": "N06",
+      "number": "06",
+      "name_jp": "溜池山王",
+      "kana": "ためいけさんのう",
+      "name_en": "Tameike-sanno",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.TameikeSanno"
+    },
+    {
+      "id": "N07",
+      "number": "07",
+      "name_jp": "永田町",
+      "kana": "ながたちょう",
+      "name_en": "Nagatacho",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.Nagatacho"
+    },
+    {
+      "id": "N08",
+      "number": "08",
+      "name_jp": "四ツ谷",
+      "kana": "よつや",
+      "name_en": "Yotsuya",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.Yotsuya"
+    },
+    {
+      "id": "N09",
+      "number": "09",
+      "name_jp": "市ケ谷",
+      "kana": "いちがや",
+      "name_en": "Ichigaya",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.Ichigaya"
+    },
+    {
+      "id": "N10",
+      "number": "10",
+      "name_jp": "飯田橋",
+      "kana": "いいだばし",
+      "name_en": "Iidabashi",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.Iidabashi"
+    },
+    {
+      "id": "N11",
+      "number": "11",
+      "name_jp": "後楽園",
+      "kana": "こうらくえん",
+      "name_en": "Korakuen",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.Korakuen"
+    },
+    {
+      "id": "N12",
+      "number": "12",
+      "name_jp": "東大前",
+      "kana": "とうだいまえ",
+      "name_en": "Todaimae",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.Todaimae"
+    },
+    {
+      "id": "N13",
+      "number": "13",
+      "name_jp": "本駒込",
+      "kana": "ほんこまごめ",
+      "name_en": "Hon-komagome",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.HonKomagome"
+    },
+    {
+      "id": "N14",
+      "number": "14",
+      "name_jp": "駒込",
+      "kana": "こまごめ",
+      "name_en": "Komagome",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.Komagome"
+    },
+    {
+      "id": "N15",
+      "number": "15",
+      "name_jp": "西ケ原",
+      "kana": "にしがはら",
+      "name_en": "Nishigahara",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.Nishigahara"
+    },
+    {
+      "id": "N16",
+      "number": "16",
+      "name_jp": "王子",
+      "kana": "おうじ",
+      "name_en": "Oji",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.Oji"
+    },
+    {
+      "id": "N17",
+      "number": "17",
+      "name_jp": "王子神谷",
+      "kana": "おうじかみや",
+      "name_en": "Oji-kamiya",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.OjiKamiya"
+    },
+    {
+      "id": "N18",
+      "number": "18",
+      "name_jp": "志茂",
+      "kana": "しも",
+      "name_en": "Shimo",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.Shimo"
+    },
+    {
+      "id": "N19",
+      "number": "19",
+      "name_jp": "赤羽岩淵",
+      "kana": "あかばねいわぶち",
+      "name_en": "Akabane-iwabuchi",
+      "odpt_station": "odpt.Station:TokyoMetro.Namboku.AkabaneIwabuchi"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:01",
+    "last_train": "00:20",
+    "headway_min": {
+      "weekday": {
+        "5": 8,
+        "6": 5,
+        "7": 4,
+        "8": 3,
+        "9": 4,
+        "10": 5,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 5,
+        "17": 4,
+        "18": 4,
+        "19": 4,
+        "20": 5,
+        "21": 5,
+        "22": 6,
+        "23": 7,
+        "0": 10,
+        "1": 12
+      },
+      "holiday": {
+        "5": 9,
+        "6": 7,
+        "7": 6,
+        "8": 5,
+        "9": 5,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 6,
+        "20": 7,
+        "21": 7,
+        "22": 8,
+        "23": 9,
+        "0": 11,
+        "1": 12
+      }
+    },
+    "directions": [
+      {
+        "id": "meguro",
+        "name_jp": "目黒方面",
+        "via_jp": "溜池山王方面",
+        "track": "1"
+      },
+      {
+        "id": "akabane-iwabuchi",
+        "name_jp": "赤羽岩淵方面",
+        "via_jp": "王子方面",
+        "track": "2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "key": "hibiya",
+  "name_jp": "東京メトロ日比谷線",
+  "name_en": "Tokyo Metro Hibiya Line",
+  "symbol": "H",
+  "color": {
+    "name": "シルバー / silver-grey",
+    "hex": "#B5B5AC",
+    "ansi_fg": "\u001b[38;2;181;181;172m",
+    "ansi_bg": "\u001b[48;2;181;181;172m\u001b[38;2;26;26;26m"
+  },
+  "operator": "TokyoMetro",
+  "odpt_railway": "odpt.Railway:TokyoMetro.Hibiya",
+  "loop": false,
+  "stations": [
+    {
+      "id": "H01",
+      "number": "01",
+      "name_jp": "中目黒",
+      "kana": "なかめぐろ",
+      "name_en": "Naka-meguro",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Nakameguro"
+    },
+    {
+      "id": "H02",
+      "number": "02",
+      "name_jp": "恵比寿",
+      "kana": "えびす",
+      "name_en": "Ebisu",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Ebisu"
+    },
+    {
+      "id": "H03",
+      "number": "03",
+      "name_jp": "広尾",
+      "kana": "ひろお",
+      "name_en": "Hiro-o",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Hiroo"
+    },
+    {
+      "id": "H04",
+      "number": "04",
+      "name_jp": "六本木",
+      "kana": "ろっぽんぎ",
+      "name_en": "Roppongi",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Roppongi"
+    },
+    {
+      "id": "H05",
+      "number": "05",
+      "name_jp": "神谷町",
+      "kana": "かみやちょう",
+      "name_en": "Kamiyacho",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Kamiyacho"
+    },
+    {
+      "id": "H06",
+      "number": "06",
+      "name_jp": "虎ノ門ヒルズ",
+      "kana": "とらのもんひるず",
+      "name_en": "Toranomon Hills",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.ToranomonHills"
+    },
+    {
+      "id": "H07",
+      "number": "07",
+      "name_jp": "霞ケ関",
+      "kana": "かすみがせき",
+      "name_en": "Kasumigaseki",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Kasumigaseki"
+    },
+    {
+      "id": "H08",
+      "number": "08",
+      "name_jp": "日比谷",
+      "kana": "ひびや",
+      "name_en": "Hibiya",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Hibiya"
+    },
+    {
+      "id": "H09",
+      "number": "09",
+      "name_jp": "銀座",
+      "kana": "ぎんざ",
+      "name_en": "Ginza",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Ginza"
+    },
+    {
+      "id": "H10",
+      "number": "10",
+      "name_jp": "東銀座",
+      "kana": "ひがしぎんざ",
+      "name_en": "Higashi-ginza",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Higashiginza"
+    },
+    {
+      "id": "H11",
+      "number": "11",
+      "name_jp": "築地",
+      "kana": "つきじ",
+      "name_en": "Tsukiji",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Tsukiji"
+    },
+    {
+      "id": "H12",
+      "number": "12",
+      "name_jp": "八丁堀",
+      "kana": "はっちょうぼり",
+      "name_en": "Hatchobori",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Hatchobori"
+    },
+    {
+      "id": "H13",
+      "number": "13",
+      "name_jp": "茅場町",
+      "kana": "かやばちょう",
+      "name_en": "Kayabacho",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Kayabacho"
+    },
+    {
+      "id": "H14",
+      "number": "14",
+      "name_jp": "人形町",
+      "kana": "にんぎょうちょう",
+      "name_en": "Ningyocho",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Ningyocho"
+    },
+    {
+      "id": "H15",
+      "number": "15",
+      "name_jp": "小伝馬町",
+      "kana": "こでんまちょう",
+      "name_en": "Kodemmacho",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Kodemmacho"
+    },
+    {
+      "id": "H16",
+      "number": "16",
+      "name_jp": "秋葉原",
+      "kana": "あきはばら",
+      "name_en": "Akihabara",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Akihabara"
+    },
+    {
+      "id": "H17",
+      "number": "17",
+      "name_jp": "仲御徒町",
+      "kana": "なかおかちまち",
+      "name_en": "Naka-okachimachi",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Nakaokachimachi"
+    },
+    {
+      "id": "H18",
+      "number": "18",
+      "name_jp": "上野",
+      "kana": "うえの",
+      "name_en": "Ueno",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Ueno"
+    },
+    {
+      "id": "H19",
+      "number": "19",
+      "name_jp": "入谷",
+      "kana": "いりや",
+      "name_en": "Iriya",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Iriya"
+    },
+    {
+      "id": "H20",
+      "number": "20",
+      "name_jp": "三ノ輪",
+      "kana": "みのわ",
+      "name_en": "Minowa",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Minowa"
+    },
+    {
+      "id": "H21",
+      "number": "21",
+      "name_jp": "南千住",
+      "kana": "みなみせんじゅ",
+      "name_en": "Minami-senju",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Minamisenju"
+    },
+    {
+      "id": "H22",
+      "number": "22",
+      "name_jp": "北千住",
+      "kana": "きたせんじゅ",
+      "name_en": "Kita-senju",
+      "odpt_station": "odpt.Station:TokyoMetro.Hibiya.Kitasenju"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:00",
+    "last_train": "00:25",
+    "headway_min": {
+      "weekday": {
+        "5": 10,
+        "6": 6,
+        "7": 4,
+        "8": 3,
+        "9": 4,
+        "10": 5,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 5,
+        "17": 4,
+        "18": 3,
+        "19": 4,
+        "20": 5,
+        "21": 5,
+        "22": 6,
+        "23": 7,
+        "0": 10,
+        "1": 12
+      },
+      "holiday": {
+        "5": 12,
+        "6": 8,
+        "7": 6,
+        "8": 5,
+        "9": 5,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 6,
+        "20": 6,
+        "21": 7,
+        "22": 8,
+        "23": 9,
+        "0": 12,
+        "1": 14
+      }
+    },
+    "directions": [
+      {
+        "id": "kitasenju",
+        "name_jp": "北千住方面",
+        "via_jp": "上野方面",
+        "track": "1"
+      },
+      {
+        "id": "nakameguro",
+        "name_jp": "中目黒方面",
+        "via_jp": "六本木方面",
+        "track": "2"
+      }
+    ]
+  }
+}

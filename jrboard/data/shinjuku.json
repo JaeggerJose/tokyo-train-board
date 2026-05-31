@@ -1,0 +1,251 @@
+{
+  "key": "shinjuku",
+  "name_jp": "都営新宿線",
+  "name_en": "Toei Shinjuku Line",
+  "symbol": "S",
+  "color": {
+    "name": "リーフ / leaf-green",
+    "hex": "#B0BF1E",
+    "ansi_fg": "\u001b[38;2;176;191;30m",
+    "ansi_bg": "\u001b[48;2;176;191;30m\u001b[38;2;26;26;26m"
+  },
+  "operator": "Toei",
+  "odpt_railway": "odpt.Railway:Toei.Shinjuku",
+  "loop": false,
+  "stations": [
+    {
+      "id": "S01",
+      "number": "01",
+      "name_jp": "新宿",
+      "kana": "しんじゅく",
+      "name_en": "Shinjuku",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Shinjuku"
+    },
+    {
+      "id": "S02",
+      "number": "02",
+      "name_jp": "新宿三丁目",
+      "kana": "しんじゅくさんちょうめ",
+      "name_en": "Shinjuku-sanchome",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Shinjukusanchome"
+    },
+    {
+      "id": "S03",
+      "number": "03",
+      "name_jp": "曙橋",
+      "kana": "あけぼのばし",
+      "name_en": "Akebonobashi",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Akebonobashi"
+    },
+    {
+      "id": "S04",
+      "number": "04",
+      "name_jp": "市ヶ谷",
+      "kana": "いちがや",
+      "name_en": "Ichigaya",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Ichigaya"
+    },
+    {
+      "id": "S05",
+      "number": "05",
+      "name_jp": "九段下",
+      "kana": "くだんした",
+      "name_en": "Kudanshita",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Kudanshita"
+    },
+    {
+      "id": "S06",
+      "number": "06",
+      "name_jp": "神保町",
+      "kana": "じんぼうちょう",
+      "name_en": "Jimbocho",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Jimbocho"
+    },
+    {
+      "id": "S07",
+      "number": "07",
+      "name_jp": "小川町",
+      "kana": "おがわまち",
+      "name_en": "Ogawamachi",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Ogawamachi"
+    },
+    {
+      "id": "S08",
+      "number": "08",
+      "name_jp": "岩本町",
+      "kana": "いわもとちょう",
+      "name_en": "Iwamotocho",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Iwamotocho"
+    },
+    {
+      "id": "S09",
+      "number": "09",
+      "name_jp": "馬喰横山",
+      "kana": "ばくろよこやま",
+      "name_en": "Bakuro-yokoyama",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Bakuroyokoyama"
+    },
+    {
+      "id": "S10",
+      "number": "10",
+      "name_jp": "浜町",
+      "kana": "はまちょう",
+      "name_en": "Hamacho",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Hamacho"
+    },
+    {
+      "id": "S11",
+      "number": "11",
+      "name_jp": "森下",
+      "kana": "もりした",
+      "name_en": "Morishita",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Morishita"
+    },
+    {
+      "id": "S12",
+      "number": "12",
+      "name_jp": "菊川",
+      "kana": "きくかわ",
+      "name_en": "Kikukawa",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Kikukawa"
+    },
+    {
+      "id": "S13",
+      "number": "13",
+      "name_jp": "住吉",
+      "kana": "すみよし",
+      "name_en": "Sumiyoshi",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Sumiyoshi"
+    },
+    {
+      "id": "S14",
+      "number": "14",
+      "name_jp": "西大島",
+      "kana": "にしおおじま",
+      "name_en": "Nishi-ojima",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Nishiojima"
+    },
+    {
+      "id": "S15",
+      "number": "15",
+      "name_jp": "大島",
+      "kana": "おおじま",
+      "name_en": "Ojima",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Ojima"
+    },
+    {
+      "id": "S16",
+      "number": "16",
+      "name_jp": "東大島",
+      "kana": "ひがしおおじま",
+      "name_en": "Higashi-ojima",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Higashiojima"
+    },
+    {
+      "id": "S17",
+      "number": "17",
+      "name_jp": "船堀",
+      "kana": "ふなぼり",
+      "name_en": "Funabori",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Funabori"
+    },
+    {
+      "id": "S18",
+      "number": "18",
+      "name_jp": "一之江",
+      "kana": "いちのえ",
+      "name_en": "Ichinoe",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Ichinoe"
+    },
+    {
+      "id": "S19",
+      "number": "19",
+      "name_jp": "瑞江",
+      "kana": "みずえ",
+      "name_en": "Mizue",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Mizue"
+    },
+    {
+      "id": "S20",
+      "number": "20",
+      "name_jp": "篠崎",
+      "kana": "しのざき",
+      "name_en": "Shinozaki",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Shinozaki"
+    },
+    {
+      "id": "S21",
+      "number": "21",
+      "name_jp": "本八幡",
+      "kana": "もとやわた",
+      "name_en": "Motoyawata",
+      "odpt_station": "odpt.Station:Toei.Shinjuku.Motoyawata"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:00",
+    "last_train": "00:20",
+    "headway_min": {
+      "weekday": {
+        "5": 8,
+        "6": 5,
+        "7": 3,
+        "8": 3,
+        "9": 4,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 5,
+        "17": 4,
+        "18": 3,
+        "19": 4,
+        "20": 5,
+        "21": 6,
+        "22": 7,
+        "23": 8,
+        "0": 10,
+        "1": 12
+      },
+      "holiday": {
+        "5": 10,
+        "6": 7,
+        "7": 6,
+        "8": 5,
+        "9": 5,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 6,
+        "20": 7,
+        "21": 8,
+        "22": 8,
+        "23": 10,
+        "0": 12,
+        "1": 12
+      }
+    },
+    "directions": [
+      {
+        "id": "shinjuku",
+        "name_jp": "新宿方面",
+        "via_jp": "市ヶ谷方面",
+        "track": "1"
+      },
+      {
+        "id": "motoyawata",
+        "name_jp": "本八幡方面",
+        "via_jp": "大島方面",
+        "track": "2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "jr-board",
+  "version": "1.0.0",
+  "description": "JR / Tokyo Metro split-flap departure marquee (station pinned, departures scroll)",
+  "author": "minghsuan",
+  "license": "MIT",
+  "render": { "mode": "none", "cells_h": 0 },
+  "requires": {
+    "bin": ["python3"],
+    "paths": ["/Users/minghsuan/Downloads/JR-timetable/main.py"]
+  }
+}

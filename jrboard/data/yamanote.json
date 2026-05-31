@@ -1,0 +1,323 @@
+{
+  "key": "yamanote",
+  "name_jp": "山手線",
+  "name_en": "Yamanote Line",
+  "symbol": "JY",
+  "color": {
+    "name": "黄緑6号 / yellow-green",
+    "hex": "#9ACD32",
+    "ansi_fg": "\u001b[38;2;154;205;50m",
+    "ansi_bg": "\u001b[48;2;154;205;50m\u001b[38;2;26;26;26m"
+  },
+  "operator": "JR-East",
+  "odpt_railway": "odpt.Railway:JR-East.Yamanote",
+  "loop": true,
+  "stations": [
+    {
+      "id": "JY01",
+      "number": "01",
+      "name_jp": "東京",
+      "kana": "とうきょう",
+      "name_en": "Tokyo",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Tokyo"
+    },
+    {
+      "id": "JY02",
+      "number": "02",
+      "name_jp": "神田",
+      "kana": "かんだ",
+      "name_en": "Kanda",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Kanda"
+    },
+    {
+      "id": "JY03",
+      "number": "03",
+      "name_jp": "秋葉原",
+      "kana": "あきはばら",
+      "name_en": "Akihabara",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Akihabara"
+    },
+    {
+      "id": "JY04",
+      "number": "04",
+      "name_jp": "御徒町",
+      "kana": "おかちまち",
+      "name_en": "Okachimachi",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Okachimachi"
+    },
+    {
+      "id": "JY05",
+      "number": "05",
+      "name_jp": "上野",
+      "kana": "うえの",
+      "name_en": "Ueno",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Ueno"
+    },
+    {
+      "id": "JY06",
+      "number": "06",
+      "name_jp": "鶯谷",
+      "kana": "うぐいすだに",
+      "name_en": "Uguisudani",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Uguisudani"
+    },
+    {
+      "id": "JY07",
+      "number": "07",
+      "name_jp": "日暮里",
+      "kana": "にっぽり",
+      "name_en": "Nippori",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Nippori"
+    },
+    {
+      "id": "JY08",
+      "number": "08",
+      "name_jp": "西日暮里",
+      "kana": "にしにっぽり",
+      "name_en": "Nishi-Nippori",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.NishiNippori"
+    },
+    {
+      "id": "JY09",
+      "number": "09",
+      "name_jp": "田端",
+      "kana": "たばた",
+      "name_en": "Tabata",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Tabata"
+    },
+    {
+      "id": "JY10",
+      "number": "10",
+      "name_jp": "駒込",
+      "kana": "こまごめ",
+      "name_en": "Komagome",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Komagome"
+    },
+    {
+      "id": "JY11",
+      "number": "11",
+      "name_jp": "巣鴨",
+      "kana": "すがも",
+      "name_en": "Sugamo",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Sugamo"
+    },
+    {
+      "id": "JY12",
+      "number": "12",
+      "name_jp": "大塚",
+      "kana": "おおつか",
+      "name_en": "Otsuka",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Otsuka"
+    },
+    {
+      "id": "JY13",
+      "number": "13",
+      "name_jp": "池袋",
+      "kana": "いけぶくろ",
+      "name_en": "Ikebukuro",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Ikebukuro"
+    },
+    {
+      "id": "JY14",
+      "number": "14",
+      "name_jp": "目白",
+      "kana": "めじろ",
+      "name_en": "Mejiro",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Mejiro"
+    },
+    {
+      "id": "JY15",
+      "number": "15",
+      "name_jp": "高田馬場",
+      "kana": "たかだのばば",
+      "name_en": "Takadanobaba",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Takadanobaba"
+    },
+    {
+      "id": "JY16",
+      "number": "16",
+      "name_jp": "新大久保",
+      "kana": "しんおおくぼ",
+      "name_en": "Shin-Okubo",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.ShinOkubo"
+    },
+    {
+      "id": "JY17",
+      "number": "17",
+      "name_jp": "新宿",
+      "kana": "しんじゅく",
+      "name_en": "Shinjuku",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Shinjuku"
+    },
+    {
+      "id": "JY18",
+      "number": "18",
+      "name_jp": "代々木",
+      "kana": "よよぎ",
+      "name_en": "Yoyogi",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Yoyogi"
+    },
+    {
+      "id": "JY19",
+      "number": "19",
+      "name_jp": "原宿",
+      "kana": "はらじゅく",
+      "name_en": "Harajuku",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Harajuku"
+    },
+    {
+      "id": "JY20",
+      "number": "20",
+      "name_jp": "渋谷",
+      "kana": "しぶや",
+      "name_en": "Shibuya",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Shibuya"
+    },
+    {
+      "id": "JY21",
+      "number": "21",
+      "name_jp": "恵比寿",
+      "kana": "えびす",
+      "name_en": "Ebisu",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Ebisu"
+    },
+    {
+      "id": "JY22",
+      "number": "22",
+      "name_jp": "目黒",
+      "kana": "めぐろ",
+      "name_en": "Meguro",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Meguro"
+    },
+    {
+      "id": "JY23",
+      "number": "23",
+      "name_jp": "五反田",
+      "kana": "ごたんだ",
+      "name_en": "Gotanda",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Gotanda"
+    },
+    {
+      "id": "JY24",
+      "number": "24",
+      "name_jp": "大崎",
+      "kana": "おおさき",
+      "name_en": "Osaki",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Osaki"
+    },
+    {
+      "id": "JY25",
+      "number": "25",
+      "name_jp": "品川",
+      "kana": "しながわ",
+      "name_en": "Shinagawa",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Shinagawa"
+    },
+    {
+      "id": "JY26",
+      "number": "26",
+      "name_jp": "高輪ゲートウェイ",
+      "kana": "たかなわゲートウェイ",
+      "name_en": "Takanawa Gateway",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.TakanawaGateway"
+    },
+    {
+      "id": "JY27",
+      "number": "27",
+      "name_jp": "田町",
+      "kana": "たまち",
+      "name_en": "Tamachi",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Tamachi"
+    },
+    {
+      "id": "JY28",
+      "number": "28",
+      "name_jp": "浜松町",
+      "kana": "はままつちょう",
+      "name_en": "Hamamatsucho",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Hamamatsucho"
+    },
+    {
+      "id": "JY29",
+      "number": "29",
+      "name_jp": "新橋",
+      "kana": "しんばし",
+      "name_en": "Shimbashi",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Shimbashi"
+    },
+    {
+      "id": "JY30",
+      "number": "30",
+      "name_jp": "有楽町",
+      "kana": "ゆうらくちょう",
+      "name_en": "Yurakucho",
+      "odpt_station": "odpt.Station:JR-East.Yamanote.Yurakucho"
+    }
+  ],
+  "timetable": {
+    "first_train": "04:26",
+    "last_train": "01:18",
+    "headway_min": {
+      "weekday": {
+        "5": 10,
+        "6": 6,
+        "7": 4,
+        "8": 3,
+        "9": 4,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 4,
+        "18": 3,
+        "19": 4,
+        "20": 5,
+        "21": 5,
+        "22": 6,
+        "23": 7,
+        "0": 10,
+        "1": 12
+      },
+      "holiday": {
+        "5": 12,
+        "6": 8,
+        "7": 6,
+        "8": 5,
+        "9": 5,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 5,
+        "18": 5,
+        "19": 6,
+        "20": 6,
+        "21": 7,
+        "22": 8,
+        "23": 9,
+        "0": 12,
+        "1": 14
+      }
+    },
+    "directions": [
+      {
+        "id": "outer",
+        "name_jp": "外回り",
+        "via_jp": "品川・渋谷方面",
+        "track": "1"
+      },
+      {
+        "id": "inner",
+        "name_jp": "内回り",
+        "via_jp": "上野・池袋方面",
+        "track": "2"
+      }
+    ]
+  }
+}

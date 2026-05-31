@@ -1,0 +1,235 @@
+{
+  "key": "saikyo",
+  "name_jp": "埼京線",
+  "name_en": "Saikyo Line",
+  "symbol": "JA",
+  "color": {
+    "name": "緑15号 / green",
+    "hex": "#00AC9A",
+    "ansi_fg": "\u001b[38;2;0;172;154m",
+    "ansi_bg": "\u001b[48;2;0;172;154m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-East",
+  "odpt_railway": "odpt.Railway:JR-East.Saikyo",
+  "loop": false,
+  "stations": [
+    {
+      "id": "JA08",
+      "number": "08",
+      "name_jp": "大崎",
+      "kana": "おおさき",
+      "name_en": "Osaki",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.Osaki"
+    },
+    {
+      "id": "JA09",
+      "number": "09",
+      "name_jp": "恵比寿",
+      "kana": "えびす",
+      "name_en": "Ebisu",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.Ebisu"
+    },
+    {
+      "id": "JA10",
+      "number": "10",
+      "name_jp": "渋谷",
+      "kana": "しぶや",
+      "name_en": "Shibuya",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.Shibuya"
+    },
+    {
+      "id": "JA11",
+      "number": "11",
+      "name_jp": "新宿",
+      "kana": "しんじゅく",
+      "name_en": "Shinjuku",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.Shinjuku"
+    },
+    {
+      "id": "JA12",
+      "number": "12",
+      "name_jp": "池袋",
+      "kana": "いけぶくろ",
+      "name_en": "Ikebukuro",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.Ikebukuro"
+    },
+    {
+      "id": "JA13",
+      "number": "13",
+      "name_jp": "板橋",
+      "kana": "いたばし",
+      "name_en": "Itabashi",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.Itabashi"
+    },
+    {
+      "id": "JA14",
+      "number": "14",
+      "name_jp": "十条",
+      "kana": "じゅうじょう",
+      "name_en": "Jujo",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.Jujo"
+    },
+    {
+      "id": "JA15",
+      "number": "15",
+      "name_jp": "赤羽",
+      "kana": "あかばね",
+      "name_en": "Akabane",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.Akabane"
+    },
+    {
+      "id": "JA16",
+      "number": "16",
+      "name_jp": "北赤羽",
+      "kana": "きたあかばね",
+      "name_en": "Kita-Akabane",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.KitaAkabane"
+    },
+    {
+      "id": "JA17",
+      "number": "17",
+      "name_jp": "浮間舟渡",
+      "kana": "うきまふなど",
+      "name_en": "Ukima-Funado",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.UkimaFunado"
+    },
+    {
+      "id": "JA18",
+      "number": "18",
+      "name_jp": "戸田公園",
+      "kana": "とだこうえん",
+      "name_en": "Toda-Koen",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.TodaKoen"
+    },
+    {
+      "id": "JA19",
+      "number": "19",
+      "name_jp": "戸田",
+      "kana": "とだ",
+      "name_en": "Toda",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.Toda"
+    },
+    {
+      "id": "JA20",
+      "number": "20",
+      "name_jp": "北戸田",
+      "kana": "きたとだ",
+      "name_en": "Kita-Toda",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.KitaToda"
+    },
+    {
+      "id": "JA21",
+      "number": "21",
+      "name_jp": "武蔵浦和",
+      "kana": "むさしうらわ",
+      "name_en": "Musashi-Urawa",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.MusashiUrawa"
+    },
+    {
+      "id": "JA22",
+      "number": "22",
+      "name_jp": "中浦和",
+      "kana": "なかうらわ",
+      "name_en": "Naka-Urawa",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.NakaUrawa"
+    },
+    {
+      "id": "JA23",
+      "number": "23",
+      "name_jp": "南与野",
+      "kana": "みなみよの",
+      "name_en": "Minami-Yono",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.MinamiYono"
+    },
+    {
+      "id": "JA24",
+      "number": "24",
+      "name_jp": "与野本町",
+      "kana": "よのほんまち",
+      "name_en": "Yonohommachi",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.Yonohommachi"
+    },
+    {
+      "id": "JA25",
+      "number": "25",
+      "name_jp": "北与野",
+      "kana": "きたよの",
+      "name_en": "Kita-Yono",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.KitaYono"
+    },
+    {
+      "id": "JA26",
+      "number": "26",
+      "name_jp": "大宮",
+      "kana": "おおみや",
+      "name_en": "Omiya",
+      "odpt_station": "odpt.Station:JR-East.Saikyo.Omiya"
+    }
+  ],
+  "timetable": {
+    "first_train": "04:48",
+    "last_train": "00:38",
+    "headway_min": {
+      "weekday": {
+        "5": 12,
+        "6": 8,
+        "7": 4,
+        "8": 3,
+        "9": 5,
+        "10": 6,
+        "11": 7,
+        "12": 7,
+        "13": 7,
+        "14": 7,
+        "15": 7,
+        "16": 6,
+        "17": 5,
+        "18": 4,
+        "19": 5,
+        "20": 6,
+        "21": 7,
+        "22": 7,
+        "23": 9,
+        "0": 12,
+        "1": 15
+      },
+      "holiday": {
+        "5": 14,
+        "6": 10,
+        "7": 7,
+        "8": 6,
+        "9": 6,
+        "10": 7,
+        "11": 7,
+        "12": 7,
+        "13": 7,
+        "14": 7,
+        "15": 7,
+        "16": 7,
+        "17": 7,
+        "18": 7,
+        "19": 7,
+        "20": 8,
+        "21": 9,
+        "22": 10,
+        "23": 11,
+        "0": 14,
+        "1": 16
+      }
+    },
+    "directions": [
+      {
+        "id": "osaki",
+        "name_jp": "大崎方面",
+        "via_jp": "新宿・渋谷方面",
+        "track": "1"
+      },
+      {
+        "id": "omiya",
+        "name_jp": "大宮方面",
+        "via_jp": "赤羽・武蔵浦和方面",
+        "track": "2"
+      }
+    ]
+  }
+}

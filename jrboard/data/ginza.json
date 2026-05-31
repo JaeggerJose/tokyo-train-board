@@ -1,0 +1,235 @@
+{
+  "key": "ginza",
+  "name_jp": "東京メトロ銀座線",
+  "name_en": "Tokyo Metro Ginza Line",
+  "symbol": "G",
+  "color": {
+    "name": "オレンジ / orange",
+    "hex": "#FF9500",
+    "ansi_fg": "\u001b[38;2;255;149;0m",
+    "ansi_bg": "\u001b[48;2;255;149;0m\u001b[38;2;26;26;26m"
+  },
+  "operator": "TokyoMetro",
+  "odpt_railway": "odpt.Railway:TokyoMetro.Ginza",
+  "loop": false,
+  "stations": [
+    {
+      "id": "G01",
+      "number": "01",
+      "name_jp": "渋谷",
+      "kana": "しぶや",
+      "name_en": "Shibuya",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Shibuya"
+    },
+    {
+      "id": "G02",
+      "number": "02",
+      "name_jp": "表参道",
+      "kana": "おもてさんどう",
+      "name_en": "Omote-sandō",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Omotesando"
+    },
+    {
+      "id": "G03",
+      "number": "03",
+      "name_jp": "外苑前",
+      "kana": "がいえんまえ",
+      "name_en": "Gaiemmae",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Gaiemmae"
+    },
+    {
+      "id": "G04",
+      "number": "04",
+      "name_jp": "青山一丁目",
+      "kana": "あおやまいっちょうめ",
+      "name_en": "Aoyama-itchōme",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Aoyamaitchome"
+    },
+    {
+      "id": "G05",
+      "number": "05",
+      "name_jp": "赤坂見附",
+      "kana": "あかさかみつけ",
+      "name_en": "Akasaka-mitsuke",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Akasakamitsuke"
+    },
+    {
+      "id": "G06",
+      "number": "06",
+      "name_jp": "溜池山王",
+      "kana": "ためいけさんのう",
+      "name_en": "Tameike-sannō",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Tameikesanno"
+    },
+    {
+      "id": "G07",
+      "number": "07",
+      "name_jp": "虎ノ門",
+      "kana": "とらのもん",
+      "name_en": "Toranomon",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Toranomon"
+    },
+    {
+      "id": "G08",
+      "number": "08",
+      "name_jp": "新橋",
+      "kana": "しんばし",
+      "name_en": "Shimbashi",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Shimbashi"
+    },
+    {
+      "id": "G09",
+      "number": "09",
+      "name_jp": "銀座",
+      "kana": "ぎんざ",
+      "name_en": "Ginza",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Ginza"
+    },
+    {
+      "id": "G10",
+      "number": "10",
+      "name_jp": "京橋",
+      "kana": "きょうばし",
+      "name_en": "Kyōbashi",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Kyobashi"
+    },
+    {
+      "id": "G11",
+      "number": "11",
+      "name_jp": "日本橋",
+      "kana": "にほんばし",
+      "name_en": "Nihombashi",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Nihombashi"
+    },
+    {
+      "id": "G12",
+      "number": "12",
+      "name_jp": "三越前",
+      "kana": "みつこしまえ",
+      "name_en": "Mitsukoshimae",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Mitsukoshimae"
+    },
+    {
+      "id": "G13",
+      "number": "13",
+      "name_jp": "神田",
+      "kana": "かんだ",
+      "name_en": "Kanda",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Kanda"
+    },
+    {
+      "id": "G14",
+      "number": "14",
+      "name_jp": "末広町",
+      "kana": "すえひろちょう",
+      "name_en": "Suehirochō",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Suehirocho"
+    },
+    {
+      "id": "G15",
+      "number": "15",
+      "name_jp": "上野広小路",
+      "kana": "うえのひろこうじ",
+      "name_en": "Ueno-hirokōji",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Uenohirokoji"
+    },
+    {
+      "id": "G16",
+      "number": "16",
+      "name_jp": "上野",
+      "kana": "うえの",
+      "name_en": "Ueno",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Ueno"
+    },
+    {
+      "id": "G17",
+      "number": "17",
+      "name_jp": "稲荷町",
+      "kana": "いなりちょう",
+      "name_en": "Inarichō",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Inaricho"
+    },
+    {
+      "id": "G18",
+      "number": "18",
+      "name_jp": "田原町",
+      "kana": "たわらまち",
+      "name_en": "Tawaramachi",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Tawaramachi"
+    },
+    {
+      "id": "G19",
+      "number": "19",
+      "name_jp": "浅草",
+      "kana": "あさくさ",
+      "name_en": "Asakusa",
+      "odpt_station": "odpt.Station:TokyoMetro.Ginza.Asakusa"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:01",
+    "last_train": "00:39",
+    "headway_min": {
+      "weekday": {
+        "0": 8,
+        "1": 0,
+        "5": 6,
+        "6": 4,
+        "7": 3,
+        "8": 2,
+        "9": 3,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 4,
+        "17": 3,
+        "18": 2,
+        "19": 3,
+        "20": 4,
+        "21": 4,
+        "22": 5,
+        "23": 6
+      },
+      "holiday": {
+        "0": 8,
+        "1": 0,
+        "5": 6,
+        "6": 5,
+        "7": 5,
+        "8": 4,
+        "9": 4,
+        "10": 4,
+        "11": 4,
+        "12": 4,
+        "13": 4,
+        "14": 4,
+        "15": 4,
+        "16": 4,
+        "17": 4,
+        "18": 4,
+        "19": 5,
+        "20": 5,
+        "21": 5,
+        "22": 6,
+        "23": 7
+      }
+    },
+    "directions": [
+      {
+        "id": "asakusa",
+        "name_jp": "浅草方面",
+        "via_jp": "上野方面",
+        "track": "1"
+      },
+      {
+        "id": "shibuya",
+        "name_jp": "渋谷方面",
+        "via_jp": "銀座方面",
+        "track": "2"
+      }
+    ]
+  }
+}

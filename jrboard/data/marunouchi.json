@@ -1,0 +1,283 @@
+{
+  "key": "marunouchi",
+  "name_jp": "東京メトロ丸ノ内線",
+  "name_en": "Tokyo Metro Marunouchi Line",
+  "symbol": "M",
+  "color": {
+    "name": "赤 / red",
+    "hex": "#F62E36",
+    "ansi_fg": "\u001b[38;2;246;46;54m",
+    "ansi_bg": "\u001b[48;2;246;46;54m\u001b[38;2;255;255;255m"
+  },
+  "operator": "TokyoMetro",
+  "odpt_railway": "odpt.Railway:TokyoMetro.Marunouchi",
+  "loop": false,
+  "stations": [
+    {
+      "id": "M01",
+      "number": "01",
+      "name_jp": "荻窪",
+      "kana": "おぎくぼ",
+      "name_en": "Ogikubo",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Ogikubo"
+    },
+    {
+      "id": "M02",
+      "number": "02",
+      "name_jp": "南阿佐ケ谷",
+      "kana": "みなみあさがや",
+      "name_en": "Minami-asagaya",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Minamiasagaya"
+    },
+    {
+      "id": "M03",
+      "number": "03",
+      "name_jp": "新高円寺",
+      "kana": "しんこうえんじ",
+      "name_en": "Shin-koenji",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Shinkoenji"
+    },
+    {
+      "id": "M04",
+      "number": "04",
+      "name_jp": "東高円寺",
+      "kana": "ひがしこうえんじ",
+      "name_en": "Higashi-koenji",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Higashikoenji"
+    },
+    {
+      "id": "M05",
+      "number": "05",
+      "name_jp": "新中野",
+      "kana": "しんなかの",
+      "name_en": "Shin-nakano",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Shinnakano"
+    },
+    {
+      "id": "M06",
+      "number": "06",
+      "name_jp": "中野坂上",
+      "kana": "なかのさかうえ",
+      "name_en": "Nakano-sakaue",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Nakanosakaue"
+    },
+    {
+      "id": "M07",
+      "number": "07",
+      "name_jp": "西新宿",
+      "kana": "にししんじゅく",
+      "name_en": "Nishi-shinjuku",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Nishishinjuku"
+    },
+    {
+      "id": "M08",
+      "number": "08",
+      "name_jp": "新宿",
+      "kana": "しんじゅく",
+      "name_en": "Shinjuku",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Shinjuku"
+    },
+    {
+      "id": "M09",
+      "number": "09",
+      "name_jp": "新宿三丁目",
+      "kana": "しんじゅくさんちょうめ",
+      "name_en": "Shinjuku-sanchome",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Shinjukusanchome"
+    },
+    {
+      "id": "M10",
+      "number": "10",
+      "name_jp": "新宿御苑前",
+      "kana": "しんじゅくぎょえんまえ",
+      "name_en": "Shinjuku-gyoemmae",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Shinjukugyoemmae"
+    },
+    {
+      "id": "M11",
+      "number": "11",
+      "name_jp": "四谷三丁目",
+      "kana": "よつやさんちょうめ",
+      "name_en": "Yotsuya-sanchome",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Yotsuyasanchome"
+    },
+    {
+      "id": "M12",
+      "number": "12",
+      "name_jp": "四ツ谷",
+      "kana": "よつや",
+      "name_en": "Yotsuya",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Yotsuya"
+    },
+    {
+      "id": "M13",
+      "number": "13",
+      "name_jp": "赤坂見附",
+      "kana": "あかさかみつけ",
+      "name_en": "Akasaka-mitsuke",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Akasakamitsuke"
+    },
+    {
+      "id": "M14",
+      "number": "14",
+      "name_jp": "国会議事堂前",
+      "kana": "こっかいぎじどうまえ",
+      "name_en": "Kokkai-gijidomae",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Kokkaigijidomae"
+    },
+    {
+      "id": "M15",
+      "number": "15",
+      "name_jp": "霞ケ関",
+      "kana": "かすみがせき",
+      "name_en": "Kasumigaseki",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Kasumigaseki"
+    },
+    {
+      "id": "M16",
+      "number": "16",
+      "name_jp": "銀座",
+      "kana": "ぎんざ",
+      "name_en": "Ginza",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Ginza"
+    },
+    {
+      "id": "M17",
+      "number": "17",
+      "name_jp": "東京",
+      "kana": "とうきょう",
+      "name_en": "Tokyo",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Tokyo"
+    },
+    {
+      "id": "M18",
+      "number": "18",
+      "name_jp": "大手町",
+      "kana": "おおてまち",
+      "name_en": "Otemachi",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Otemachi"
+    },
+    {
+      "id": "M19",
+      "number": "19",
+      "name_jp": "淡路町",
+      "kana": "あわじちょう",
+      "name_en": "Awajicho",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Awajicho"
+    },
+    {
+      "id": "M20",
+      "number": "20",
+      "name_jp": "御茶ノ水",
+      "kana": "おちゃのみず",
+      "name_en": "Ochanomizu",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Ochanomizu"
+    },
+    {
+      "id": "M21",
+      "number": "21",
+      "name_jp": "本郷三丁目",
+      "kana": "ほんごうさんちょうめ",
+      "name_en": "Hongo-sanchome",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Hongosanchome"
+    },
+    {
+      "id": "M22",
+      "number": "22",
+      "name_jp": "後楽園",
+      "kana": "こうらくえん",
+      "name_en": "Korakuen",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Korakuen"
+    },
+    {
+      "id": "M23",
+      "number": "23",
+      "name_jp": "茗荷谷",
+      "kana": "みょうがだに",
+      "name_en": "Myogadani",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Myogadani"
+    },
+    {
+      "id": "M24",
+      "number": "24",
+      "name_jp": "新大塚",
+      "kana": "しんおおつか",
+      "name_en": "Shin-otsuka",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Shinotsuka"
+    },
+    {
+      "id": "M25",
+      "number": "25",
+      "name_jp": "池袋",
+      "kana": "いけぶくろ",
+      "name_en": "Ikebukuro",
+      "odpt_station": "odpt.Station:TokyoMetro.Marunouchi.Ikebukuro"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:00",
+    "last_train": "00:33",
+    "headway_min": {
+      "weekday": {
+        "5": 8,
+        "6": 5,
+        "7": 3,
+        "8": 2,
+        "9": 3,
+        "10": 4,
+        "11": 4,
+        "12": 4,
+        "13": 4,
+        "14": 4,
+        "15": 4,
+        "16": 4,
+        "17": 3,
+        "18": 2,
+        "19": 3,
+        "20": 4,
+        "21": 4,
+        "22": 5,
+        "23": 6,
+        "0": 8,
+        "1": 10
+      },
+      "holiday": {
+        "5": 10,
+        "6": 6,
+        "7": 5,
+        "8": 4,
+        "9": 4,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 4,
+        "18": 4,
+        "19": 5,
+        "20": 5,
+        "21": 6,
+        "22": 6,
+        "23": 7,
+        "0": 9,
+        "1": 11
+      }
+    },
+    "directions": [
+      {
+        "id": "ikebukuro",
+        "name_jp": "池袋方面",
+        "via_jp": "新宿・東京方面",
+        "track": "1"
+      },
+      {
+        "id": "ogikubo",
+        "name_jp": "荻窪方面",
+        "via_jp": "中野坂上方面",
+        "track": "2"
+      }
+    ]
+  }
+}
