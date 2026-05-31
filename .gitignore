@@ -4,3 +4,6 @@ __pycache__/
 .DS_Store
 venv/
 .venv/
+# local working docs / promo drafts (not for the public repo)
+PROMO.md
+.pr_body.md
