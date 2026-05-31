@@ -105,6 +105,25 @@ def _build_parser() -> argparse.ArgumentParser:
         default=60,
         help="Board width in columns (default: 60).",
     )
+    parser.add_argument(
+        "--columns",
+        type=int,
+        default=0,
+        help=(
+            "Statusline mode: force the marquee width (visual columns). Needed "
+            "for Claude Code statusLine, which runs without a TTY so the width "
+            "cannot be auto-detected. 0 = auto-detect / no marquee."
+        ),
+    )
+    parser.add_argument(
+        "--scroll-all",
+        dest="scroll_all",
+        action="store_true",
+        help=(
+            "Statusline mode: scroll the whole line as a marquee instead of "
+            "pinning the station name and scrolling only the departures."
+        ),
+    )
     return parser
 
 
@@ -194,14 +213,19 @@ def _run_board(args: argparse.Namespace, line: Line, station: Station) -> int:
             sys.stdout.flush()
 
 
-def _run_statusline(line: Line, station: Station) -> int:
+def _run_statusline(
+    line: Line, station: Station, pin_label: bool = True, columns: int = 0
+) -> int:
     # Imported lazily so a missing statusline module never breaks board mode.
     from .statusline import statusline_text
 
     now = datetime.now()
     departures, _label = get_departures(line, station, now, limit=3)
-    columns = _terminal_columns()
-    text = statusline_text(line, station, departures, now, columns=columns)
+    # An explicit --columns wins; otherwise fall back to TTY auto-detection.
+    columns = columns if columns and columns > 0 else _terminal_columns()
+    text = statusline_text(
+        line, station, departures, now, columns=columns, pin_label=pin_label
+    )
     # Exactly one line, no trailing newline.
     sys.stdout.write(text)
     sys.stdout.flush()
@@ -244,7 +268,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         return 2
 
     if args.mode == "statusline":
-        return _run_statusline(line, station)
+        return _run_statusline(
+            line, station, pin_label=not args.scroll_all, columns=args.columns
+        )
     return _run_board(args, line, station)
 
 

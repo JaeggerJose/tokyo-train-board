@@ -132,9 +132,14 @@ def _format_departure(dep: Any) -> Optional[str]:
     return time
 
 
-def _compose_content(line: Any, station: Any, departures: Any) -> str:
-    """Assemble the full (un-scrolled) statusline content string."""
-    label = _station_label(line, station)
+def _compose_label_and_body(line: Any, station: Any, departures: Any) -> tuple[str, str]:
+    """Return the pinned ``label`` segment and the scrollable ``body``.
+
+    ``label`` is the station identity (e.g. ``[E] 28 都庁前 ▸``) that should
+    stay visible; ``body`` is the upcoming-departures list that may be scrolled
+    as a marquee when the column budget is tight.
+    """
+    label = f"{_station_label(line, station)}{_STATION_ARROW}"
 
     entries: list[str] = []
     if isinstance(departures, Iterable) and not isinstance(departures, (str, bytes)):
@@ -146,12 +151,17 @@ def _compose_content(line: Any, station: Any, departures: Any) -> str:
                 entries.append(formatted)
 
     if not entries:
-        return f"{label}{_STATION_ARROW}--:--"
+        return label, "--:--"
 
     # Prefer 2-3 departures; entries already capped at _MAX_DEPARTURES.
     visible = entries[: max(_MIN_DEPARTURES, min(len(entries), _MAX_DEPARTURES))]
-    deps = _DEPARTURE_SEP.join(visible)
-    return f"{label}{_STATION_ARROW}{deps}"
+    return label, _DEPARTURE_SEP.join(visible)
+
+
+def _compose_content(line: Any, station: Any, departures: Any) -> str:
+    """Assemble the full (un-scrolled) statusline content string."""
+    label, body = _compose_label_and_body(line, station, departures)
+    return f"{label}{body}"
 
 
 def _slice_to_width(text: str, start_col: int, target_w: int) -> str:
@@ -221,12 +231,18 @@ def _marquee(content: str, columns: int, offset_seconds: int) -> str:
     return _slice_to_width(doubled, start, columns)
 
 
+# Minimum columns of scrolling room before pinning is worthwhile; below this
+# the pinned label leaves too little space and we fall back to scrolling all.
+_MIN_PIN_BODY = 8
+
+
 def statusline_text(
     line: Any,
     station: Any,
     departures: Sequence[Any],
     now: Any,
     columns: int = 0,
+    pin_label: bool = True,
 ) -> str:
     """Render the one-line statusline string.
 
@@ -242,26 +258,37 @@ def statusline_text(
             second/epoch counter.
         columns: Available terminal width. When ``<= 0`` no marquee is applied
             and the full content is returned untruncated.
+        pin_label: When ``True`` (default) the station-identity segment
+            (``[E] 28 都庁前 ▸``) stays fixed and only the departures list
+            scrolls as a marquee. When ``False`` the entire line scrolls.
 
     Returns:
         A single line with no trailing newline. Always returns a valid string;
         on internal error it degrades to a minimal label rather than raising.
     """
     try:
-        content = _compose_content(line, station, departures)
+        label, body = _compose_label_and_body(line, station, departures)
+        content = f"{label}{body}"
     except Exception as exc:  # never let the statusline crash the host shell
         print(f"jrboard.statusline: failed to compose content: {exc!r}",
               file=sys.stderr)
         return "[??] --:--"
 
     try:
-        if columns and columns > 0:
-            content_w = get_visual_width(content)
-            if content_w > columns:
-                offset = _seconds_of_day(now)
-                return _marquee(content, columns, offset)
+        if not (columns and columns > 0):
             return content
-        return content
+        if get_visual_width(content) <= columns:
+            return content
+
+        offset = _seconds_of_day(now)
+        if pin_label:
+            label_w = get_visual_width(label)
+            body_budget = columns - label_w
+            # Only pin when the label leaves a usable scrolling window.
+            if body_budget >= _MIN_PIN_BODY:
+                return label + _marquee(body, body_budget, offset)
+        # Fallback / pin_label=False: scroll the whole line.
+        return _marquee(content, columns, offset)
     except Exception as exc:
         print(f"jrboard.statusline: marquee failed: {exc!r}", file=sys.stderr)
         # Best-effort: return the un-scrolled content so the user still sees data.
