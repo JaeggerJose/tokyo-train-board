@@ -73,6 +73,64 @@ python3 main.py --mode statusline --line marunouchi --station tokyo --columns 70
 
 ---
 
+## 🧩 更多模式：TUI、番茄鐘、通勤守門員、行事曆
+
+除了站牌與跑馬燈，同一支 CLI 還提供四種附加模式（所有舊旗標行為不變，這些都是選用）。
+
+```bash
+# 互動式 curses 瀏覽器：左邊是可模糊搜尋的路線清單（j/k 移動、/ 篩選、
+# h/l 切換站點、f 收藏、q 離開），右邊是即時站牌
+python3 main.py --tui
+
+# 番茄鐘＝一趟電車旅程：把專注計時畫成從起點到終點的乘車。會在路線上
+# 自動挑兩站（或用 --from/--to 指定），先播翻牌動畫，之後每秒重繪，
+# 直到「とうちゃく」（抵達）。
+python3 main.py --pomodoro 25 --line yamanote
+python3 main.py --pomodoro 25 --line yamanote --from shinjuku --to tokyo
+python3 main.py --pomodoro 1 --line yamanote --once   # 只畫一格就結束
+
+# 通勤守門員：「我幾點要出門才趕得上下一班車？」需要在設定檔填
+# [commute] home/work（見下）。早上 → 家→公司，下午／晚上 → 公司→家。
+python3 main.py --commute                       # 完整站牌
+python3 main.py --commute --mode statusline     # 精簡單行
+
+# 行事曆來源：用本機 .ics 檔當作發車來源（標籤 AGENDA），把接下來的
+# 會議當成電車顯示，而非時刻表。
+python3 main.py --feed-ics ~/cal.ics --once
+python3 main.py --feed-ics ~/cal.ics --mode statusline --columns 70
+```
+
+### 設定檔
+
+設定讀自 `~/.config/jrboard/config.toml`（會尊重 `XDG_CONFIG_HOME`）。檔案缺失或格式錯誤會直接忽略——一律套用預設值，而 CLI 旗標永遠覆寫設定檔。
+
+```toml
+[board]
+line = "oedo"
+station = "tochomae"
+columns = 50
+width = 60
+flap_steps = 22
+flap_delay = 0.08
+
+[commute]
+home = ["yamanote", "shinjuku"]
+work = ["yamanote", "tokyo"]
+leave_buffer_min = 7      # 走到車站的緩衝分鐘數
+```
+
+在 TUI 中切換的收藏會存到 `~/.config/jrboard/favorites.txt`（每行一組 `line_key,station_key`）。
+
+### 安裝／進入點
+
+```bash
+pip install -e .        # 安裝 `jrboard` 命令列腳本
+jrboard --list          # 與 `python3 main.py` 相同的 CLI
+jrboard --tui
+```
+
+---
+
 ## 🚇 路線一覽（20 條）
 
 | 代碼 | `--line` key | 路線 | 站數 | 範例站 |

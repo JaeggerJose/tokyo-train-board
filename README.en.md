@@ -72,6 +72,69 @@ python3 main.py --mode statusline --line marunouchi --station tokyo --columns 70
 
 ---
 
+## 🧩 More modes: TUI, Pomodoro, Commute, Agenda
+
+Beyond the board and statusline, the same CLI exposes four additive modes
+(every flag keeps its old behaviour; these are opt-in).
+
+```bash
+# interactive curses browser: two panes — a fuzzy-filterable line list (j/k,
+# / to filter, h/l to step stations, f to favourite, q to quit) and a live board
+python3 main.py --tui
+
+# Pomodoro as a train journey: a focus timer drawn as a ride from origin to
+# destination. Auto-picks two stations on the line (or use --from/--to), plays
+# the flap intro, then redraws every second until "とうちゃく" (arrival).
+python3 main.py --pomodoro 25 --line yamanote
+python3 main.py --pomodoro 25 --line yamanote --from shinjuku --to tokyo
+python3 main.py --pomodoro 1 --line yamanote --once   # render a single frame
+
+# Commute guardian: "when do I leave to catch the next train?" Needs
+# [commute] home/work in the config (see below). Morning → Home→Work,
+# afternoon/evening → Work→Home.
+python3 main.py --commute                       # full board
+python3 main.py --commute --mode statusline     # compact one-liner
+
+# Agenda feed: use a local .ics file as the departure source (label AGENDA)
+# instead of the timetable — your next meetings shown like trains.
+python3 main.py --feed-ics ~/cal.ics --once
+python3 main.py --feed-ics ~/cal.ics --mode statusline --columns 70
+```
+
+### Config file
+
+Settings are read from `~/.config/jrboard/config.toml` (respecting
+`XDG_CONFIG_HOME`). A missing or malformed file is ignored — defaults always
+apply, and CLI flags always override the file.
+
+```toml
+[board]
+line = "oedo"
+station = "tochomae"
+columns = 50
+width = 60
+flap_steps = 22
+flap_delay = 0.08
+
+[commute]
+home = ["yamanote", "shinjuku"]
+work = ["yamanote", "tokyo"]
+leave_buffer_min = 7      # walk-to-station buffer in minutes
+```
+
+Favourites toggled inside the TUI persist to
+`~/.config/jrboard/favorites.txt` (one `line_key,station_key` per line).
+
+### Install / entry point
+
+```bash
+pip install -e .        # installs the `jrboard` console script
+jrboard --list          # same CLI as `python3 main.py`
+jrboard --tui
+```
+
+---
+
 ## 🚇 Line roster (20)
 
 | Code | `--line` key | Line | Stations | Example station |

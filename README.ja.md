@@ -72,6 +72,69 @@ python3 main.py --mode statusline --line marunouchi --station tokyo --columns 70
 
 ---
 
+## 🧩 その他のモード：TUI・ポモドーロ・通勤ガーディアン・アジェンダ
+
+案内板とステータスラインに加え、同じ CLI が 4 つの追加モードを提供します
+（既存フラグの挙動は不変。これらはすべてオプトインです）。
+
+```bash
+# インタラクティブな curses ブラウザ：左に曖昧検索できる路線リスト
+#（j/k で移動、/ で絞り込み、h/l で駅送り、f でお気に入り、q で終了）、
+# 右にライブ案内板
+python3 main.py --tui
+
+# ポモドーロ＝電車の旅：集中タイマーを始発から終点への乗車として描画。
+# 路線上から駅を 2 つ自動選択（または --from/--to で指定）し、フラップ
+# アニメの後、毎秒再描画して「とうちゃく」（到着）まで進みます。
+python3 main.py --pomodoro 25 --line yamanote
+python3 main.py --pomodoro 25 --line yamanote --from shinjuku --to tokyo
+python3 main.py --pomodoro 1 --line yamanote --once   # 1 フレームだけ描画
+
+# 通勤ガーディアン：「次の電車に乗るには何時に出ればいい？」設定ファイルの
+# [commute] home/work が必要（下記参照）。午前 → 家→職場、午後／夜 → 職場→家。
+python3 main.py --commute                       # フル案内板
+python3 main.py --commute --mode statusline     # コンパクトな一行
+
+# アジェンダフィード：ローカルの .ics ファイルを発車元（ラベル AGENDA）として
+# 使用し、時刻表の代わりに次の予定を電車のように表示します。
+python3 main.py --feed-ics ~/cal.ics --once
+python3 main.py --feed-ics ~/cal.ics --mode statusline --columns 70
+```
+
+### 設定ファイル
+
+設定は `~/.config/jrboard/config.toml` から読み込みます（`XDG_CONFIG_HOME` を尊重）。
+ファイルが無い・壊れている場合は無視され、常に既定値が適用されます。CLI フラグは
+常に設定ファイルを上書きします。
+
+```toml
+[board]
+line = "oedo"
+station = "tochomae"
+columns = 50
+width = 60
+flap_steps = 22
+flap_delay = 0.08
+
+[commute]
+home = ["yamanote", "shinjuku"]
+work = ["yamanote", "tokyo"]
+leave_buffer_min = 7      # 駅までの徒歩バッファ（分）
+```
+
+TUI 内で切り替えたお気に入りは `~/.config/jrboard/favorites.txt` に保存されます
+（1 行につき `line_key,station_key` を 1 組）。
+
+### インストール／エントリポイント
+
+```bash
+pip install -e .        # `jrboard` コンソールスクリプトをインストール
+jrboard --list          # `python3 main.py` と同じ CLI
+jrboard --tui
+```
+
+---
+
 ## 🚇 路線一覧（20 路線）
 
 | 記号 | `--line` キー | 路線 | 駅数 | 駅の例 |
