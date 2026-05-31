@@ -45,8 +45,10 @@ _CLEAR_SCREEN = "\033[2J\033[H"  # clear + home cursor
 _HIDE_CURSOR = "\033[?25l"
 _SHOW_CURSOR = "\033[?25h"
 
-_FLAP_STEPS = 14
-_FRAME_DELAY_S = 0.045
+# Slower, more mechanical settle by default (~22 * 0.08s ≈ 1.8s). Override at
+# runtime with --flap-steps / --flap-delay to tune the feel.
+_FLAP_STEPS = 22
+_FRAME_DELAY_S = 0.08
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -81,6 +83,20 @@ def _build_parser() -> argparse.ArgumentParser:
         "--no-flap",
         action="store_true",
         help="Skip the split-flap animation; paint the resolved board.",
+    )
+    parser.add_argument(
+        "--flap-steps",
+        dest="flap_steps",
+        type=int,
+        default=_FLAP_STEPS,
+        help=f"Split-flap frames from scramble to resolved (default: {_FLAP_STEPS}). Higher = more gradual.",
+    )
+    parser.add_argument(
+        "--flap-delay",
+        dest="flap_delay",
+        type=float,
+        default=_FRAME_DELAY_S,
+        help=f"Seconds held per flap frame (default: {_FRAME_DELAY_S}). Higher = slower.",
     )
     parser.add_argument(
         "--once",
@@ -168,13 +184,20 @@ def _render_resolved_board(
     return render.render_board(line, station, departures, width, source_label)
 
 
-def _animate_board(board_lines: Sequence[str], seed: int) -> None:
+def _animate_board(
+    board_lines: Sequence[str],
+    seed: int,
+    steps: int = _FLAP_STEPS,
+    delay: float = _FRAME_DELAY_S,
+) -> None:
     """Play the split-flap animation that resolves into ``board_lines``."""
     targets = list(board_lines)
-    for frame in flap.flap_frames(targets, steps=_FLAP_STEPS, seed=seed):
+    steps = max(1, steps)
+    delay = max(0.0, delay)
+    for frame in flap.flap_frames(targets, steps=steps, seed=seed):
         sys.stdout.write(_CLEAR_SCREEN)
         _print_lines(frame)
-        time.sleep(_FRAME_DELAY_S)
+        time.sleep(delay)
 
 
 def _run_board(args: argparse.Namespace, line: Line, station: Station) -> int:
@@ -197,7 +220,7 @@ def _run_board(args: argparse.Namespace, line: Line, station: Station) -> int:
 
             sys.stdout.write(_CLEAR_SCREEN)
             if use_flap:
-                _animate_board(board, seed)
+                _animate_board(board, seed, args.flap_steps, args.flap_delay)
                 seed += 1
             sys.stdout.write(_CLEAR_SCREEN)
             _print_lines(board)
