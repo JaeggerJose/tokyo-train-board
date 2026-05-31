@@ -142,6 +142,20 @@ python3 main.py --line yamanote --station shinjuku   # 站牌右下角會顯示 
 
 `--scroll-all` 可改成整行一起捲動（連站名一起跑）。
 
+### 用 csl 主題（推薦，會動的跑馬燈）
+
+若你用 [`csl`](https://) 狀態列主題管理器，本專案附了一個現成主題 `integrations/csl/jr-board.sh`（＋ manifest）。它覆寫 `render()` 呼叫上面的跑馬燈，並靠 `settings.json` 的 `refreshInterval: 1` 達成**每秒前進一格的真實捲動**：
+
+```bash
+# 安裝主題到 user-tier 後啟用
+cp integrations/csl/jr-board.* ~/.config/csl/themes/
+csl preview jr-board     # 先試跑一次
+csl set jr-board         # 啟用（自動改寫 settings.json 並備份）
+csl set bastille-day     # 隨時切回原本的主題
+```
+
+在 `jr-board.sh` 頂部可調 `JR_LINE` / `JR_STATION` / `JR_COLUMNS`（越窄越會捲）/ `JR_SCROLL_ALL`。
+
 ---
 
 ## 🎞️ 翻牌動畫調校
