@@ -4,45 +4,232 @@
   "name_en": "Tokyo Metro Chiyoda Line",
   "symbol": "C",
   "color": {
-    "name": "Green",
-    "ansi_fg": "\u001b[38;5;36m",
-    "ansi_bg": "\u001b[48;5;36m\u001b[38;5;231m",
-    "hex": "#00BB85"
+    "name": "グリーン / green",
+    "hex": "#00BB85",
+    "ansi_fg": "\u001b[38;2;0;187;133m",
+    "ansi_bg": "\u001b[48;2;0;187;133m\u001b[38;2;255;255;255m"
   },
   "operator": "TokyoMetro",
   "odpt_railway": "odpt.Railway:TokyoMetro.Chiyoda",
   "loop": false,
   "stations": [
-    { "id": "C01", "number": "01", "name_jp": "代々木上原", "kana": "よよぎうえはら", "name_en": "Yoyogi-uehara", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.YoyogiUehara" },
-    { "id": "C02", "number": "02", "name_jp": "代々木公園", "kana": "よよぎこうえん", "name_en": "Yoyogi-koen", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.YoyogiKoen" },
-    { "id": "C03", "number": "03", "name_jp": "明治神宮前〈原宿〉", "kana": "めいじじんぐうまえ", "name_en": "Meiji-jingumae 'Harajuku'", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.MeijiJingumae" },
-    { "id": "C04", "number": "04", "name_jp": "表参道", "kana": "おもてさんどう", "name_en": "Omote-sando", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Omotesando" },
-    { "id": "C05", "number": "05", "name_jp": "乃木坂", "kana": "のぎざか", "name_en": "Nogizaka", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Nogizaka" },
-    { "id": "C06", "number": "06", "name_jp": "赤坂", "kana": "あかさか", "name_en": "Akasaka", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Akasaka" },
-    { "id": "C07", "number": "07", "name_jp": "国会議事堂前", "kana": "こっかいぎじどうまえ", "name_en": "Kokkai-gijidomae", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.KokkaiGijidomae" },
-    { "id": "C08", "number": "08", "name_jp": "霞ケ関", "kana": "かすみがせき", "name_en": "Kasumigaseki", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Kasumigaseki" },
-    { "id": "C09", "number": "09", "name_jp": "日比谷", "kana": "ひびや", "name_en": "Hibiya", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Hibiya" },
-    { "id": "C10", "number": "10", "name_jp": "二重橋前〈丸の内〉", "kana": "にじゅうばしまえ", "name_en": "Nijubashimae 'Marunouchi'", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Nijubashimae" },
-    { "id": "C11", "number": "11", "name_jp": "大手町", "kana": "おおてまち", "name_en": "Otemachi", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Otemachi" },
-    { "id": "C12", "number": "12", "name_jp": "新御茶ノ水", "kana": "しんおちゃのみず", "name_en": "Shin-ochanomizu", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.ShinOchanomizu" },
-    { "id": "C13", "number": "13", "name_jp": "湯島", "kana": "ゆしま", "name_en": "Yushima", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Yushima" },
-    { "id": "C14", "number": "14", "name_jp": "根津", "kana": "ねづ", "name_en": "Nezu", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Nezu" },
-    { "id": "C15", "number": "15", "name_jp": "千駄木", "kana": "せんだぎ", "name_en": "Sendagi", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Sendagi" },
-    { "id": "C16", "number": "16", "name_jp": "西日暮里", "kana": "にしにっぽり", "name_en": "Nishi-nippori", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.NishiNippori" },
-    { "id": "C17", "number": "17", "name_jp": "町屋", "kana": "まちや", "name_en": "Machiya", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Machiya" },
-    { "id": "C18", "number": "18", "name_jp": "北千住", "kana": "きたせんじゅ", "name_en": "Kita-senju", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.KitaSenju" },
-    { "id": "C19", "number": "19", "name_jp": "綾瀬", "kana": "あやせ", "name_en": "Ayase", "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Ayase" }
+    {
+      "id": "C01",
+      "number": "01",
+      "name_jp": "代々木上原",
+      "kana": "よよぎうえはら",
+      "name_en": "Yoyogi-uehara",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.YoyogiUehara"
+    },
+    {
+      "id": "C02",
+      "number": "02",
+      "name_jp": "代々木公園",
+      "kana": "よよぎこうえん",
+      "name_en": "Yoyogi-koen",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.YoyogiKoen"
+    },
+    {
+      "id": "C03",
+      "number": "03",
+      "name_jp": "明治神宮前〈原宿〉",
+      "kana": "めいじじんぐうまえ",
+      "name_en": "Meiji-jingumae 'Harajuku'",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.MeijiJingumae"
+    },
+    {
+      "id": "C04",
+      "number": "04",
+      "name_jp": "表参道",
+      "kana": "おもてさんどう",
+      "name_en": "Omote-sando",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Omotesando"
+    },
+    {
+      "id": "C05",
+      "number": "05",
+      "name_jp": "乃木坂",
+      "kana": "のぎざか",
+      "name_en": "Nogizaka",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Nogizaka"
+    },
+    {
+      "id": "C06",
+      "number": "06",
+      "name_jp": "赤坂",
+      "kana": "あかさか",
+      "name_en": "Akasaka",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Akasaka"
+    },
+    {
+      "id": "C07",
+      "number": "07",
+      "name_jp": "国会議事堂前",
+      "kana": "こっかいぎじどうまえ",
+      "name_en": "Kokkai-gijidomae",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.KokkaiGijidomae"
+    },
+    {
+      "id": "C08",
+      "number": "08",
+      "name_jp": "霞ケ関",
+      "kana": "かすみがせき",
+      "name_en": "Kasumigaseki",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Kasumigaseki"
+    },
+    {
+      "id": "C09",
+      "number": "09",
+      "name_jp": "日比谷",
+      "kana": "ひびや",
+      "name_en": "Hibiya",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Hibiya"
+    },
+    {
+      "id": "C10",
+      "number": "10",
+      "name_jp": "二重橋前〈丸の内〉",
+      "kana": "にじゅうばしまえ",
+      "name_en": "Nijubashimae 'Marunouchi'",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Nijubashimae"
+    },
+    {
+      "id": "C11",
+      "number": "11",
+      "name_jp": "大手町",
+      "kana": "おおてまち",
+      "name_en": "Otemachi",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Otemachi"
+    },
+    {
+      "id": "C12",
+      "number": "12",
+      "name_jp": "新御茶ノ水",
+      "kana": "しんおちゃのみず",
+      "name_en": "Shin-ochanomizu",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.ShinOchanomizu"
+    },
+    {
+      "id": "C13",
+      "number": "13",
+      "name_jp": "湯島",
+      "kana": "ゆしま",
+      "name_en": "Yushima",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Yushima"
+    },
+    {
+      "id": "C14",
+      "number": "14",
+      "name_jp": "根津",
+      "kana": "ねづ",
+      "name_en": "Nezu",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Nezu"
+    },
+    {
+      "id": "C15",
+      "number": "15",
+      "name_jp": "千駄木",
+      "kana": "せんだぎ",
+      "name_en": "Sendagi",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Sendagi"
+    },
+    {
+      "id": "C16",
+      "number": "16",
+      "name_jp": "西日暮里",
+      "kana": "にしにっぽり",
+      "name_en": "Nishi-nippori",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.NishiNippori"
+    },
+    {
+      "id": "C17",
+      "number": "17",
+      "name_jp": "町屋",
+      "kana": "まちや",
+      "name_en": "Machiya",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Machiya"
+    },
+    {
+      "id": "C18",
+      "number": "18",
+      "name_jp": "北千住",
+      "kana": "きたせんじゅ",
+      "name_en": "Kita-senju",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.KitaSenju"
+    },
+    {
+      "id": "C19",
+      "number": "19",
+      "name_jp": "綾瀬",
+      "kana": "あやせ",
+      "name_en": "Ayase",
+      "odpt_station": "odpt.Station:TokyoMetro.Chiyoda.Ayase"
+    }
   ],
   "timetable": {
     "first_train": "05:00",
     "last_train": "00:25",
     "headway_min": {
-      "weekday": { "5": 8, "6": 5, "7": 3, "8": 3, "9": 4, "10": 5, "11": 6, "12": 6, "13": 6, "14": 6, "15": 6, "16": 5, "17": 4, "18": 3, "19": 4, "20": 5, "21": 5, "22": 6, "23": 7, "0": 10, "1": 12 },
-      "holiday": { "5": 9, "6": 7, "7": 6, "8": 5, "9": 5, "10": 6, "11": 6, "12": 6, "13": 6, "14": 6, "15": 6, "16": 6, "17": 6, "18": 6, "19": 6, "20": 7, "21": 7, "22": 8, "23": 9, "0": 12, "1": 12 }
+      "weekday": {
+        "5": 8,
+        "6": 5,
+        "7": 3,
+        "8": 3,
+        "9": 4,
+        "10": 5,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 5,
+        "17": 4,
+        "18": 3,
+        "19": 4,
+        "20": 5,
+        "21": 5,
+        "22": 6,
+        "23": 7,
+        "0": 10,
+        "1": 12
+      },
+      "holiday": {
+        "5": 9,
+        "6": 7,
+        "7": 6,
+        "8": 5,
+        "9": 5,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 6,
+        "20": 7,
+        "21": 7,
+        "22": 8,
+        "23": 9,
+        "0": 12,
+        "1": 12
+      }
     },
     "directions": [
-      { "id": "yoyogi-uehara", "name_jp": "代々木上原方面", "via_jp": "表参道方面", "track": "1" },
-      { "id": "ayase", "name_jp": "綾瀬方面", "via_jp": "北千住方面", "track": "2" }
+      {
+        "id": "yoyogi-uehara",
+        "name_jp": "代々木上原方面",
+        "via_jp": "表参道方面",
+        "track": "1"
+      },
+      {
+        "id": "ayase",
+        "name_jp": "綾瀬方面",
+        "via_jp": "北千住方面",
+        "track": "2"
+      }
     ]
   }
 }

@@ -4,10 +4,10 @@
   "name_en": "Yokosuka Line",
   "symbol": "JO",
   "color": {
-    "name": "navy blue",
-    "ansi_fg": "\u001b[38;5;25m",
-    "ansi_bg": "\u001b[48;5;25m\u001b[38;5;231m",
-    "hex": "#0067C0"
+    "name": "スカ色系 / navy blue",
+    "hex": "#0067C0",
+    "ansi_fg": "\u001b[38;2;0;103;192m",
+    "ansi_bg": "\u001b[48;2;0;103;192m\u001b[38;2;255;255;255m"
   },
   "operator": "JR-East",
   "odpt_railway": "odpt.Railway:JR-East.Yokosuka",

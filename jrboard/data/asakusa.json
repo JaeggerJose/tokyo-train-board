@@ -4,10 +4,10 @@
   "name_en": "Toei Asakusa Line",
   "symbol": "A",
   "color": {
-    "name": "rose",
-    "ansi_fg": "\u001b[38;5;168m",
-    "ansi_bg": "\u001b[48;5;168m\u001b[38;5;232m",
-    "hex": "#EC6E8E"
+    "name": "ローズ / rose-red",
+    "hex": "#EC6E65",
+    "ansi_fg": "\u001b[38;2;236;110;101m",
+    "ansi_bg": "\u001b[48;2;236;110;101m\u001b[38;2;26;26;26m"
   },
   "operator": "Toei",
   "odpt_railway": "odpt.Railway:Toei.Asakusa",

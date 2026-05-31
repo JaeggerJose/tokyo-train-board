@@ -4,10 +4,10 @@
   "name_en": "Chuo-Sobu Line (Local)",
   "symbol": "JB",
   "color": {
-    "name": "Canary Yellow",
-    "ansi_fg": "\u001b[38;5;220m",
-    "ansi_bg": "\u001b[48;5;220m\u001b[38;5;232m",
-    "hex": "#FFD400"
+    "name": "黄色5号 / canary yellow",
+    "hex": "#FFD400",
+    "ansi_fg": "\u001b[38;2;255;212;0m",
+    "ansi_bg": "\u001b[48;2;255;212;0m\u001b[38;2;26;26;26m"
   },
   "operator": "JR-East",
   "odpt_railway": "odpt.Railway:JR-East.ChuoSobuLocal",

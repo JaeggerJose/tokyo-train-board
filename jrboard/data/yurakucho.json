@@ -4,10 +4,10 @@
   "name_en": "Tokyo Metro Yurakucho Line",
   "symbol": "Y",
   "color": {
-    "name": "gold",
-    "ansi_fg": "\u001b[38;5;137m",
-    "ansi_bg": "\u001b[48;5;137m\u001b[38;5;232m",
-    "hex": "#C1A470"
+    "name": "ゴールド / gold",
+    "hex": "#C1A470",
+    "ansi_fg": "\u001b[38;2;193;164;112m",
+    "ansi_bg": "\u001b[48;2;193;164;112m\u001b[38;2;26;26;26m"
   },
   "operator": "TokyoMetro",
   "odpt_railway": "odpt.Railway:TokyoMetro.Yurakucho",

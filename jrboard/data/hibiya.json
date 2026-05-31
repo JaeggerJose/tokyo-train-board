@@ -4,10 +4,10 @@
   "name_en": "Tokyo Metro Hibiya Line",
   "symbol": "H",
   "color": {
-    "name": "silver",
-    "ansi_fg": "\u001b[38;5;145m",
-    "ansi_bg": "\u001b[48;5;145m\u001b[38;5;232m",
-    "hex": "#B5B5AC"
+    "name": "シルバー / silver-grey",
+    "hex": "#B5B5AC",
+    "ansi_fg": "\u001b[38;2;181;181;172m",
+    "ansi_bg": "\u001b[48;2;181;181;172m\u001b[38;2;26;26;26m"
   },
   "operator": "TokyoMetro",
   "odpt_railway": "odpt.Railway:TokyoMetro.Hibiya",

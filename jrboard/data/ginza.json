@@ -4,10 +4,10 @@
   "name_en": "Tokyo Metro Ginza Line",
   "symbol": "G",
   "color": {
-    "name": "Ginza Orange",
-    "ansi_fg": "\u001b[38;5;208m",
-    "ansi_bg": "\u001b[48;5;208m\u001b[38;5;232m",
-    "hex": "#FF9500"
+    "name": "オレンジ / orange",
+    "hex": "#FF9500",
+    "ansi_fg": "\u001b[38;2;255;149;0m",
+    "ansi_bg": "\u001b[48;2;255;149;0m\u001b[38;2;26;26;26m"
   },
   "operator": "TokyoMetro",
   "odpt_railway": "odpt.Railway:TokyoMetro.Ginza",

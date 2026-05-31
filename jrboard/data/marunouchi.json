@@ -4,10 +4,10 @@
   "name_en": "Tokyo Metro Marunouchi Line",
   "symbol": "M",
   "color": {
-    "name": "red",
-    "ansi_fg": "\u001b[38;5;196m",
-    "ansi_bg": "\u001b[48;5;196m\u001b[38;5;231m",
-    "hex": "#F62E36"
+    "name": "赤 / red",
+    "hex": "#F62E36",
+    "ansi_fg": "\u001b[38;2;246;46;54m",
+    "ansi_bg": "\u001b[48;2;246;46;54m\u001b[38;2;255;255;255m"
   },
   "operator": "TokyoMetro",
   "odpt_railway": "odpt.Railway:TokyoMetro.Marunouchi",

@@ -4,10 +4,10 @@
   "name_en": "Toei Oedo Line",
   "symbol": "E",
   "color": {
-    "name": "Magenta",
-    "ansi_fg": "\u001b[38;5;161m",
-    "ansi_bg": "\u001b[48;5;161m\u001b[38;5;231m",
-    "hex": "#B6007A"
+    "name": "マゼンタ / magenta",
+    "hex": "#B6007A",
+    "ansi_fg": "\u001b[38;2;182;0;122m",
+    "ansi_bg": "\u001b[48;2;182;0;122m\u001b[38;2;255;255;255m"
   },
   "operator": "Toei",
   "odpt_railway": "odpt.Railway:Toei.Oedo",
