@@ -1,0 +1,243 @@
+{
+  "key": "asakusa",
+  "name_jp": "都営浅草線",
+  "name_en": "Toei Asakusa Line",
+  "symbol": "A",
+  "color": {
+    "name": "rose",
+    "ansi_fg": "\u001b[38;5;168m",
+    "ansi_bg": "\u001b[48;5;168m\u001b[38;5;232m",
+    "hex": "#EC6E8E"
+  },
+  "operator": "Toei",
+  "odpt_railway": "odpt.Railway:Toei.Asakusa",
+  "loop": false,
+  "stations": [
+    {
+      "id": "A01",
+      "number": "01",
+      "name_jp": "西馬込",
+      "kana": "にしまごめ",
+      "name_en": "Nishi-magome",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Nishimagome"
+    },
+    {
+      "id": "A02",
+      "number": "02",
+      "name_jp": "馬込",
+      "kana": "まごめ",
+      "name_en": "Magome",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Magome"
+    },
+    {
+      "id": "A03",
+      "number": "03",
+      "name_jp": "中延",
+      "kana": "なかのぶ",
+      "name_en": "Nakanobu",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Nakanobu"
+    },
+    {
+      "id": "A04",
+      "number": "04",
+      "name_jp": "戸越",
+      "kana": "とごし",
+      "name_en": "Togoshi",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Togoshi"
+    },
+    {
+      "id": "A05",
+      "number": "05",
+      "name_jp": "五反田",
+      "kana": "ごたんだ",
+      "name_en": "Gotanda",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Gotanda"
+    },
+    {
+      "id": "A06",
+      "number": "06",
+      "name_jp": "高輪台",
+      "kana": "たかなわだい",
+      "name_en": "Takanawadai",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Takanawadai"
+    },
+    {
+      "id": "A07",
+      "number": "07",
+      "name_jp": "泉岳寺",
+      "kana": "せんがくじ",
+      "name_en": "Sengakuji",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Sengakuji"
+    },
+    {
+      "id": "A08",
+      "number": "08",
+      "name_jp": "三田",
+      "kana": "みた",
+      "name_en": "Mita",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Mita"
+    },
+    {
+      "id": "A09",
+      "number": "09",
+      "name_jp": "大門",
+      "kana": "だいもん",
+      "name_en": "Daimon",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Daimon"
+    },
+    {
+      "id": "A10",
+      "number": "10",
+      "name_jp": "新橋",
+      "kana": "しんばし",
+      "name_en": "Shimbashi",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Shimbashi"
+    },
+    {
+      "id": "A11",
+      "number": "11",
+      "name_jp": "東銀座",
+      "kana": "ひがしぎんざ",
+      "name_en": "Higashi-ginza",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Higashiginza"
+    },
+    {
+      "id": "A12",
+      "number": "12",
+      "name_jp": "宝町",
+      "kana": "たからちょう",
+      "name_en": "Takaracho",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Takaracho"
+    },
+    {
+      "id": "A13",
+      "number": "13",
+      "name_jp": "日本橋",
+      "kana": "にほんばし",
+      "name_en": "Nihombashi",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Nihombashi"
+    },
+    {
+      "id": "A14",
+      "number": "14",
+      "name_jp": "人形町",
+      "kana": "にんぎょうちょう",
+      "name_en": "Ningyocho",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Ningyocho"
+    },
+    {
+      "id": "A15",
+      "number": "15",
+      "name_jp": "東日本橋",
+      "kana": "ひがしにほんばし",
+      "name_en": "Higashi-nihombashi",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Higashinihombashi"
+    },
+    {
+      "id": "A16",
+      "number": "16",
+      "name_jp": "浅草橋",
+      "kana": "あさくさばし",
+      "name_en": "Asakusabashi",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Asakusabashi"
+    },
+    {
+      "id": "A17",
+      "number": "17",
+      "name_jp": "蔵前",
+      "kana": "くらまえ",
+      "name_en": "Kuramae",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Kuramae"
+    },
+    {
+      "id": "A18",
+      "number": "18",
+      "name_jp": "浅草",
+      "kana": "あさくさ",
+      "name_en": "Asakusa",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Asakusa"
+    },
+    {
+      "id": "A19",
+      "number": "19",
+      "name_jp": "本所吾妻橋",
+      "kana": "ほんじょあづまばし",
+      "name_en": "Honjo-azumabashi",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Honjoazumabashi"
+    },
+    {
+      "id": "A20",
+      "number": "20",
+      "name_jp": "押上",
+      "kana": "おしあげ",
+      "name_en": "Oshiage",
+      "odpt_station": "odpt.Station:Toei.Asakusa.Oshiage"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:00",
+    "last_train": "00:32",
+    "headway_min": {
+      "weekday": {
+        "5": 12,
+        "6": 8,
+        "7": 5,
+        "8": 4,
+        "9": 5,
+        "10": 7,
+        "11": 7,
+        "12": 7,
+        "13": 7,
+        "14": 7,
+        "15": 7,
+        "16": 6,
+        "17": 5,
+        "18": 4,
+        "19": 5,
+        "20": 6,
+        "21": 7,
+        "22": 8,
+        "23": 9,
+        "0": 12,
+        "1": 15
+      },
+      "holiday": {
+        "5": 15,
+        "6": 10,
+        "7": 8,
+        "8": 7,
+        "9": 7,
+        "10": 8,
+        "11": 8,
+        "12": 8,
+        "13": 8,
+        "14": 8,
+        "15": 8,
+        "16": 8,
+        "17": 7,
+        "18": 7,
+        "19": 8,
+        "20": 8,
+        "21": 9,
+        "22": 10,
+        "23": 11,
+        "0": 14,
+        "1": 16
+      }
+    },
+    "directions": [
+      {
+        "id": "nishimagome",
+        "name_jp": "西馬込方面",
+        "via_jp": "京急線直通",
+        "track": "1"
+      },
+      {
+        "id": "oshiage",
+        "name_jp": "押上方面",
+        "via_jp": "京成線直通",
+        "track": "2"
+      }
+    ]
+  }
+}
