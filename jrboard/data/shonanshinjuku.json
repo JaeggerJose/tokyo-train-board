@@ -1,0 +1,43 @@
+{
+  "key": "shonanshinjuku",
+  "name_jp": "湘南新宿ライン",
+  "name_en": "Shonan-Shinjuku Line",
+  "symbol": "JS",
+  "color": { "name": "red", "ansi_fg": "\u001b[38;5;160m", "ansi_bg": "\u001b[48;5;160m\u001b[38;5;231m", "hex": "#E31F26" },
+  "operator": "JR-East",
+  "odpt_railway": "odpt.Railway:JR-East.ShonanShinjuku",
+  "loop": false,
+  "stations": [
+    { "id": "JS24", "number": "24", "name_jp": "大宮", "kana": "おおみや", "name_en": "Omiya", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Omiya" },
+    { "id": "JS23", "number": "23", "name_jp": "浦和", "kana": "うらわ", "name_en": "Urawa", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Urawa" },
+    { "id": "JS22", "number": "22", "name_jp": "赤羽", "kana": "あかばね", "name_en": "Akabane", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Akabane" },
+    { "id": "JS21", "number": "21", "name_jp": "池袋", "kana": "いけぶくろ", "name_en": "Ikebukuro", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Ikebukuro" },
+    { "id": "JS20", "number": "20", "name_jp": "新宿", "kana": "しんじゅく", "name_en": "Shinjuku", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Shinjuku" },
+    { "id": "JS19", "number": "19", "name_jp": "渋谷", "kana": "しぶや", "name_en": "Shibuya", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Shibuya" },
+    { "id": "JS18", "number": "18", "name_jp": "恵比寿", "kana": "えびす", "name_en": "Ebisu", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Ebisu" },
+    { "id": "JS17", "number": "17", "name_jp": "大崎", "kana": "おおさき", "name_en": "Osaki", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Osaki" },
+    { "id": "JS16", "number": "16", "name_jp": "西大井", "kana": "にしおおい", "name_en": "Nishi-Oi", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.NishiOi" },
+    { "id": "JS15", "number": "15", "name_jp": "武蔵小杉", "kana": "むさしこすぎ", "name_en": "Musashi-Kosugi", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.MusashiKosugi" },
+    { "id": "JS14", "number": "14", "name_jp": "新川崎", "kana": "しんかわさき", "name_en": "Shin-Kawasaki", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.ShinKawasaki" },
+    { "id": "JS13", "number": "13", "name_jp": "横浜", "kana": "よこはま", "name_en": "Yokohama", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Yokohama" },
+    { "id": "JS12", "number": "12", "name_jp": "保土ケ谷", "kana": "ほどがや", "name_en": "Hodogaya", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Hodogaya" },
+    { "id": "JS11", "number": "11", "name_jp": "東戸塚", "kana": "ひがしとつか", "name_en": "Higashi-Totsuka", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.HigashiTotsuka" },
+    { "id": "JS10", "number": "10", "name_jp": "戸塚", "kana": "とつか", "name_en": "Totsuka", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Totsuka" },
+    { "id": "JS09", "number": "09", "name_jp": "大船", "kana": "おおふな", "name_en": "Ofuna", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Ofuna" },
+    { "id": "JS08", "number": "08", "name_jp": "北鎌倉", "kana": "きたかまくら", "name_en": "Kita-Kamakura", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.KitaKamakura" },
+    { "id": "JS07", "number": "07", "name_jp": "鎌倉", "kana": "かまくら", "name_en": "Kamakura", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Kamakura" },
+    { "id": "JS06", "number": "06", "name_jp": "逗子", "kana": "ずし", "name_en": "Zushi", "odpt_station": "odpt.Station:JR-East.ShonanShinjuku.Zushi" }
+  ],
+  "timetable": {
+    "first_train": "04:48",
+    "last_train": "23:46",
+    "headway_min": {
+      "weekday": { "5": 20, "6": 12, "7": 8, "8": 7, "9": 10, "10": 15, "11": 15, "12": 15, "13": 15, "14": 15, "15": 15, "16": 12, "17": 10, "18": 8, "19": 10, "20": 12, "21": 15, "22": 15, "23": 20, "0": 30, "1": 30 },
+      "holiday": { "5": 20, "6": 15, "7": 12, "8": 10, "9": 12, "10": 15, "11": 15, "12": 15, "13": 15, "14": 15, "15": 15, "16": 15, "17": 12, "18": 12, "19": 15, "20": 15, "21": 15, "22": 20, "23": 20, "0": 30, "1": 30 }
+    },
+    "directions": [
+      { "id": "north", "name_jp": "宇都宮・高崎方面", "via_jp": "新宿・池袋方面", "track": "1" },
+      { "id": "south", "name_jp": "小田原・逗子方面", "via_jp": "横浜・大船方面", "track": "2" }
+    ]
+  }
+}

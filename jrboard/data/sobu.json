@@ -1,0 +1,395 @@
+{
+  "key": "sobu",
+  "name_jp": "中央・総武線各駅停車",
+  "name_en": "Chuo-Sobu Line (Local)",
+  "symbol": "JB",
+  "color": {
+    "name": "Canary Yellow",
+    "ansi_fg": "\u001b[38;5;220m",
+    "ansi_bg": "\u001b[48;5;220m\u001b[38;5;232m",
+    "hex": "#FFD400"
+  },
+  "operator": "JR-East",
+  "odpt_railway": "odpt.Railway:JR-East.ChuoSobuLocal",
+  "loop": false,
+  "stations": [
+    {
+      "id": "JB01",
+      "number": "01",
+      "name_jp": "三鷹",
+      "kana": "みたか",
+      "name_en": "Mitaka",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Mitaka"
+    },
+    {
+      "id": "JB02",
+      "number": "02",
+      "name_jp": "吉祥寺",
+      "kana": "きちじょうじ",
+      "name_en": "Kichijōji",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Kichijoji"
+    },
+    {
+      "id": "JB03",
+      "number": "03",
+      "name_jp": "西荻窪",
+      "kana": "にしおぎくぼ",
+      "name_en": "Nishi-Ogikubo",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.NishiOgikubo"
+    },
+    {
+      "id": "JB04",
+      "number": "04",
+      "name_jp": "荻窪",
+      "kana": "おぎくぼ",
+      "name_en": "Ogikubo",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Ogikubo"
+    },
+    {
+      "id": "JB05",
+      "number": "05",
+      "name_jp": "阿佐ケ谷",
+      "kana": "あさがや",
+      "name_en": "Asagaya",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Asagaya"
+    },
+    {
+      "id": "JB06",
+      "number": "06",
+      "name_jp": "高円寺",
+      "kana": "こうえんじ",
+      "name_en": "Kōenji",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Koenji"
+    },
+    {
+      "id": "JB07",
+      "number": "07",
+      "name_jp": "中野",
+      "kana": "なかの",
+      "name_en": "Nakano",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Nakano"
+    },
+    {
+      "id": "JB08",
+      "number": "08",
+      "name_jp": "東中野",
+      "kana": "ひがしなかの",
+      "name_en": "Higashi-Nakano",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.HigashiNakano"
+    },
+    {
+      "id": "JB09",
+      "number": "09",
+      "name_jp": "大久保",
+      "kana": "おおくぼ",
+      "name_en": "Ōkubo",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Okubo"
+    },
+    {
+      "id": "JB10",
+      "number": "10",
+      "name_jp": "新宿",
+      "kana": "しんじゅく",
+      "name_en": "Shinjuku",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Shinjuku"
+    },
+    {
+      "id": "JB11",
+      "number": "11",
+      "name_jp": "代々木",
+      "kana": "よよぎ",
+      "name_en": "Yoyogi",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Yoyogi"
+    },
+    {
+      "id": "JB12",
+      "number": "12",
+      "name_jp": "千駄ケ谷",
+      "kana": "せんだがや",
+      "name_en": "Sendagaya",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Sendagaya"
+    },
+    {
+      "id": "JB13",
+      "number": "13",
+      "name_jp": "信濃町",
+      "kana": "しなのまち",
+      "name_en": "Shinanomachi",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Shinanomachi"
+    },
+    {
+      "id": "JB14",
+      "number": "14",
+      "name_jp": "四ツ谷",
+      "kana": "よつや",
+      "name_en": "Yotsuya",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Yotsuya"
+    },
+    {
+      "id": "JB15",
+      "number": "15",
+      "name_jp": "市ケ谷",
+      "kana": "いちがや",
+      "name_en": "Ichigaya",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Ichigaya"
+    },
+    {
+      "id": "JB16",
+      "number": "16",
+      "name_jp": "飯田橋",
+      "kana": "いいだばし",
+      "name_en": "Iidabashi",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Iidabashi"
+    },
+    {
+      "id": "JB17",
+      "number": "17",
+      "name_jp": "水道橋",
+      "kana": "すいどうばし",
+      "name_en": "Suidōbashi",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Suidobashi"
+    },
+    {
+      "id": "JB18",
+      "number": "18",
+      "name_jp": "御茶ノ水",
+      "kana": "おちゃのみず",
+      "name_en": "Ochanomizu",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Ochanomizu"
+    },
+    {
+      "id": "JB19",
+      "number": "19",
+      "name_jp": "秋葉原",
+      "kana": "あきはばら",
+      "name_en": "Akihabara",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Akihabara"
+    },
+    {
+      "id": "JB20",
+      "number": "20",
+      "name_jp": "浅草橋",
+      "kana": "あさくさばし",
+      "name_en": "Asakusabashi",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Asakusabashi"
+    },
+    {
+      "id": "JB21",
+      "number": "21",
+      "name_jp": "両国",
+      "kana": "りょうごく",
+      "name_en": "Ryōgoku",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Ryogoku"
+    },
+    {
+      "id": "JB22",
+      "number": "22",
+      "name_jp": "錦糸町",
+      "kana": "きんしちょう",
+      "name_en": "Kinshichō",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Kinshicho"
+    },
+    {
+      "id": "JB23",
+      "number": "23",
+      "name_jp": "亀戸",
+      "kana": "かめいど",
+      "name_en": "Kameido",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Kameido"
+    },
+    {
+      "id": "JB24",
+      "number": "24",
+      "name_jp": "平井",
+      "kana": "ひらい",
+      "name_en": "Hirai",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Hirai"
+    },
+    {
+      "id": "JB25",
+      "number": "25",
+      "name_jp": "新小岩",
+      "kana": "しんこいわ",
+      "name_en": "Shin-Koiwa",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.ShinKoiwa"
+    },
+    {
+      "id": "JB26",
+      "number": "26",
+      "name_jp": "小岩",
+      "kana": "こいわ",
+      "name_en": "Koiwa",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Koiwa"
+    },
+    {
+      "id": "JB27",
+      "number": "27",
+      "name_jp": "市川",
+      "kana": "いちかわ",
+      "name_en": "Ichikawa",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Ichikawa"
+    },
+    {
+      "id": "JB28",
+      "number": "28",
+      "name_jp": "本八幡",
+      "kana": "もとやわた",
+      "name_en": "Motoyawata",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Motoyawata"
+    },
+    {
+      "id": "JB29",
+      "number": "29",
+      "name_jp": "下総中山",
+      "kana": "しもうさなかやま",
+      "name_en": "Shimōsa-Nakayama",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.ShimosaNakayama"
+    },
+    {
+      "id": "JB30",
+      "number": "30",
+      "name_jp": "西船橋",
+      "kana": "にしふなばし",
+      "name_en": "Nishi-Funabashi",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.NishiFunabashi"
+    },
+    {
+      "id": "JB31",
+      "number": "31",
+      "name_jp": "船橋",
+      "kana": "ふなばし",
+      "name_en": "Funabashi",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Funabashi"
+    },
+    {
+      "id": "JB32",
+      "number": "32",
+      "name_jp": "東船橋",
+      "kana": "ひがしふなばし",
+      "name_en": "Higashi-Funabashi",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.HigashiFunabashi"
+    },
+    {
+      "id": "JB33",
+      "number": "33",
+      "name_jp": "津田沼",
+      "kana": "つだぬま",
+      "name_en": "Tsudanuma",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Tsudanuma"
+    },
+    {
+      "id": "JB34",
+      "number": "34",
+      "name_jp": "幕張本郷",
+      "kana": "まくはりほんごう",
+      "name_en": "Makuhari-Hongō",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.MakuhariHongo"
+    },
+    {
+      "id": "JB35",
+      "number": "35",
+      "name_jp": "幕張",
+      "kana": "まくはり",
+      "name_en": "Makuhari",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Makuhari"
+    },
+    {
+      "id": "JB36",
+      "number": "36",
+      "name_jp": "新検見川",
+      "kana": "しんけみがわ",
+      "name_en": "Shin-Kemigawa",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.ShinKemigawa"
+    },
+    {
+      "id": "JB37",
+      "number": "37",
+      "name_jp": "稲毛",
+      "kana": "いなげ",
+      "name_en": "Inage",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Inage"
+    },
+    {
+      "id": "JB38",
+      "number": "38",
+      "name_jp": "西千葉",
+      "kana": "にしちば",
+      "name_en": "Nishi-Chiba",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.NishiChiba"
+    },
+    {
+      "id": "JB39",
+      "number": "39",
+      "name_jp": "千葉",
+      "kana": "ちば",
+      "name_en": "Chiba",
+      "odpt_station": "odpt.Station:JR-East.ChuoSobuLocal.Chiba"
+    }
+  ],
+  "timetable": {
+    "first_train": "04:38",
+    "last_train": "00:31",
+    "headway_min": {
+      "weekday": {
+        "0": 8,
+        "1": 12,
+        "5": 6,
+        "6": 5,
+        "7": 3,
+        "8": 3,
+        "9": 4,
+        "10": 5,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 5,
+        "17": 4,
+        "18": 4,
+        "19": 4,
+        "20": 5,
+        "21": 5,
+        "22": 5,
+        "23": 6
+      },
+      "holiday": {
+        "0": 9,
+        "1": 12,
+        "5": 7,
+        "6": 6,
+        "7": 5,
+        "8": 5,
+        "9": 5,
+        "10": 5,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 5,
+        "19": 5,
+        "20": 5,
+        "21": 6,
+        "22": 6,
+        "23": 7
+      }
+    },
+    "directions": [
+      {
+        "id": "mitaka",
+        "name_jp": "三鷹方面",
+        "via_jp": "新宿方面",
+        "track": "1"
+      },
+      {
+        "id": "chiba",
+        "name_jp": "千葉方面",
+        "via_jp": "錦糸町方面",
+        "track": "2"
+      }
+    ]
+  }
+}
