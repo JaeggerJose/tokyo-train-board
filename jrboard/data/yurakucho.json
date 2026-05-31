@@ -1,0 +1,275 @@
+{
+  "key": "yurakucho",
+  "name_jp": "東京メトロ有楽町線",
+  "name_en": "Tokyo Metro Yurakucho Line",
+  "symbol": "Y",
+  "color": {
+    "name": "gold",
+    "ansi_fg": "\u001b[38;5;137m",
+    "ansi_bg": "\u001b[48;5;137m\u001b[38;5;232m",
+    "hex": "#C1A470"
+  },
+  "operator": "TokyoMetro",
+  "odpt_railway": "odpt.Railway:TokyoMetro.Yurakucho",
+  "loop": false,
+  "stations": [
+    {
+      "id": "Y01",
+      "number": "01",
+      "name_jp": "和光市",
+      "kana": "わこうし",
+      "name_en": "Wakoshi",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Wakoshi"
+    },
+    {
+      "id": "Y02",
+      "number": "02",
+      "name_jp": "地下鉄成増",
+      "kana": "ちかてつなります",
+      "name_en": "Chikatetsu-narimasu",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Chikatetsunarimasu"
+    },
+    {
+      "id": "Y03",
+      "number": "03",
+      "name_jp": "地下鉄赤塚",
+      "kana": "ちかてつあかつか",
+      "name_en": "Chikatetsu-akatsuka",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Chikatetsuakatsuka"
+    },
+    {
+      "id": "Y04",
+      "number": "04",
+      "name_jp": "平和台",
+      "kana": "へいわだい",
+      "name_en": "Heiwadai",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Heiwadai"
+    },
+    {
+      "id": "Y05",
+      "number": "05",
+      "name_jp": "氷川台",
+      "kana": "ひかわだい",
+      "name_en": "Hikawadai",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Hikawadai"
+    },
+    {
+      "id": "Y06",
+      "number": "06",
+      "name_jp": "小竹向原",
+      "kana": "こたけむかいはら",
+      "name_en": "Kotake-mukaihara",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Kotakemukaihara"
+    },
+    {
+      "id": "Y07",
+      "number": "07",
+      "name_jp": "千川",
+      "kana": "せんかわ",
+      "name_en": "Senkawa",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Senkawa"
+    },
+    {
+      "id": "Y08",
+      "number": "08",
+      "name_jp": "要町",
+      "kana": "かなめちょう",
+      "name_en": "Kanamecho",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Kanamecho"
+    },
+    {
+      "id": "Y09",
+      "number": "09",
+      "name_jp": "池袋",
+      "kana": "いけぶくろ",
+      "name_en": "Ikebukuro",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Ikebukuro"
+    },
+    {
+      "id": "Y10",
+      "number": "10",
+      "name_jp": "東池袋",
+      "kana": "ひがしいけぶくろ",
+      "name_en": "Higashi-ikebukuro",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Higashiikebukuro"
+    },
+    {
+      "id": "Y11",
+      "number": "11",
+      "name_jp": "護国寺",
+      "kana": "ごこくじ",
+      "name_en": "Gokokuji",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Gokokuji"
+    },
+    {
+      "id": "Y12",
+      "number": "12",
+      "name_jp": "江戸川橋",
+      "kana": "えどがわばし",
+      "name_en": "Edogawabashi",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Edogawabashi"
+    },
+    {
+      "id": "Y13",
+      "number": "13",
+      "name_jp": "飯田橋",
+      "kana": "いいだばし",
+      "name_en": "Iidabashi",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Iidabashi"
+    },
+    {
+      "id": "Y14",
+      "number": "14",
+      "name_jp": "市ケ谷",
+      "kana": "いちがや",
+      "name_en": "Ichigaya",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Ichigaya"
+    },
+    {
+      "id": "Y15",
+      "number": "15",
+      "name_jp": "麹町",
+      "kana": "こうじまち",
+      "name_en": "Kojimachi",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Kojimachi"
+    },
+    {
+      "id": "Y16",
+      "number": "16",
+      "name_jp": "永田町",
+      "kana": "ながたちょう",
+      "name_en": "Nagatacho",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Nagatacho"
+    },
+    {
+      "id": "Y17",
+      "number": "17",
+      "name_jp": "桜田門",
+      "kana": "さくらだもん",
+      "name_en": "Sakuradamon",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Sakuradamon"
+    },
+    {
+      "id": "Y18",
+      "number": "18",
+      "name_jp": "有楽町",
+      "kana": "ゆうらくちょう",
+      "name_en": "Yurakucho",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Yurakucho"
+    },
+    {
+      "id": "Y19",
+      "number": "19",
+      "name_jp": "銀座一丁目",
+      "kana": "ぎんざいっちょうめ",
+      "name_en": "Ginza-itchome",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Ginzaitchome"
+    },
+    {
+      "id": "Y20",
+      "number": "20",
+      "name_jp": "新富町",
+      "kana": "しんとみちょう",
+      "name_en": "Shintomicho",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Shintomicho"
+    },
+    {
+      "id": "Y21",
+      "number": "21",
+      "name_jp": "月島",
+      "kana": "つきしま",
+      "name_en": "Tsukishima",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Tsukishima"
+    },
+    {
+      "id": "Y22",
+      "number": "22",
+      "name_jp": "豊洲",
+      "kana": "とよす",
+      "name_en": "Toyosu",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Toyosu"
+    },
+    {
+      "id": "Y23",
+      "number": "23",
+      "name_jp": "辰巳",
+      "kana": "たつみ",
+      "name_en": "Tatsumi",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Tatsumi"
+    },
+    {
+      "id": "Y24",
+      "number": "24",
+      "name_jp": "新木場",
+      "kana": "しんきば",
+      "name_en": "Shin-kiba",
+      "odpt_station": "odpt.Station:TokyoMetro.Yurakucho.Shinkiba"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:01",
+    "last_train": "00:25",
+    "headway_min": {
+      "weekday": {
+        "5": 8,
+        "6": 5,
+        "7": 3,
+        "8": 3,
+        "9": 4,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 5,
+        "17": 4,
+        "18": 3,
+        "19": 4,
+        "20": 5,
+        "21": 5,
+        "22": 6,
+        "23": 7,
+        "0": 9,
+        "1": 12
+      },
+      "holiday": {
+        "5": 10,
+        "6": 7,
+        "7": 6,
+        "8": 5,
+        "9": 5,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 6,
+        "20": 6,
+        "21": 7,
+        "22": 8,
+        "23": 9,
+        "0": 11,
+        "1": 13
+      }
+    },
+    "directions": [
+      {
+        "id": "wakoshi",
+        "name_jp": "和光市方面",
+        "via_jp": "池袋方面",
+        "track": "1"
+      },
+      {
+        "id": "shinkiba",
+        "name_jp": "新木場方面",
+        "via_jp": "豊洲方面",
+        "track": "2"
+      }
+    ]
+  }
+}

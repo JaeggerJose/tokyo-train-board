@@ -59,7 +59,7 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--line",
-        choices=("yamanote", "asakusa"),
+        choices=tuple(available_lines()) or ("yamanote",),
         default="yamanote",
         help="Which line to display (default: yamanote).",
     )

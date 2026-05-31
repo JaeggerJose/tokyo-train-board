@@ -43,9 +43,9 @@ def test_load_line_is_case_insensitive() -> None:
 
 def test_load_line_unknown_lists_available() -> None:
     with pytest.raises(ValueError) as exc:
-        load_line("marunouchi")
+        load_line("nonexistent-line")
     message = str(exc.value)
-    assert "marunouchi" in message
+    assert "nonexistent-line" in message
     assert "yamanote" in message  # helpful list of available keys
 
 

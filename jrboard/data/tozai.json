@@ -1,0 +1,56 @@
+{
+  "key": "tozai",
+  "name_jp": "東京メトロ東西線",
+  "name_en": "Tokyo Metro Tozai Line",
+  "symbol": "T",
+  "color": {
+    "name": "sky blue",
+    "ansi_fg": "\u001b[38;5;38m",
+    "ansi_bg": "\u001b[48;5;38m\u001b[38;5;15m",
+    "hex": "#009BBF"
+  },
+  "operator": "TokyoMetro",
+  "odpt_railway": "odpt.Railway:TokyoMetro.Tozai",
+  "loop": false,
+  "stations": [
+    { "id": "T01", "number": "01", "name_jp": "中野", "kana": "なかの", "name_en": "Nakano", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Nakano" },
+    { "id": "T02", "number": "02", "name_jp": "落合", "kana": "おちあい", "name_en": "Ochiai", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Ochiai" },
+    { "id": "T03", "number": "03", "name_jp": "高田馬場", "kana": "たかだのばば", "name_en": "Takadanobaba", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Takadanobaba" },
+    { "id": "T04", "number": "04", "name_jp": "早稲田", "kana": "わせだ", "name_en": "Waseda", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Waseda" },
+    { "id": "T05", "number": "05", "name_jp": "神楽坂", "kana": "かぐらざか", "name_en": "Kagurazaka", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Kagurazaka" },
+    { "id": "T06", "number": "06", "name_jp": "飯田橋", "kana": "いいだばし", "name_en": "Iidabashi", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Iidabashi" },
+    { "id": "T07", "number": "07", "name_jp": "九段下", "kana": "くだんした", "name_en": "Kudanshita", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Kudanshita" },
+    { "id": "T08", "number": "08", "name_jp": "竹橋", "kana": "たけばし", "name_en": "Takebashi", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Takebashi" },
+    { "id": "T09", "number": "09", "name_jp": "大手町", "kana": "おおてまち", "name_en": "Otemachi", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Otemachi" },
+    { "id": "T10", "number": "10", "name_jp": "日本橋", "kana": "にほんばし", "name_en": "Nihombashi", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Nihombashi" },
+    { "id": "T11", "number": "11", "name_jp": "茅場町", "kana": "かやばちょう", "name_en": "Kayabacho", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Kayabacho" },
+    { "id": "T12", "number": "12", "name_jp": "門前仲町", "kana": "もんぜんなかちょう", "name_en": "Monzen-nakacho", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Monzennakacho" },
+    { "id": "T13", "number": "13", "name_jp": "木場", "kana": "きば", "name_en": "Kiba", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Kiba" },
+    { "id": "T14", "number": "14", "name_jp": "東陽町", "kana": "とうようちょう", "name_en": "Toyocho", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Toyocho" },
+    { "id": "T15", "number": "15", "name_jp": "南砂町", "kana": "みなみすなまち", "name_en": "Minami-sunamachi", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Minamisunamachi" },
+    { "id": "T16", "number": "16", "name_jp": "西葛西", "kana": "にしかさい", "name_en": "Nishi-kasai", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Nishikasai" },
+    { "id": "T17", "number": "17", "name_jp": "葛西", "kana": "かさい", "name_en": "Kasai", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Kasai" },
+    { "id": "T18", "number": "18", "name_jp": "浦安", "kana": "うらやす", "name_en": "Urayasu", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Urayasu" },
+    { "id": "T19", "number": "19", "name_jp": "南行徳", "kana": "みなみぎょうとく", "name_en": "Minami-gyotoku", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Minamigyotoku" },
+    { "id": "T20", "number": "20", "name_jp": "行徳", "kana": "ぎょうとく", "name_en": "Gyotoku", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Gyotoku" },
+    { "id": "T21", "number": "21", "name_jp": "妙典", "kana": "みょうでん", "name_en": "Myoden", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Myoden" },
+    { "id": "T22", "number": "22", "name_jp": "原木中山", "kana": "ばらきなかやま", "name_en": "Baraki-nakayama", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Barakinakayama" },
+    { "id": "T23", "number": "23", "name_jp": "西船橋", "kana": "にしふなばし", "name_en": "Nishi-funabashi", "odpt_station": "odpt.Station:TokyoMetro.Tozai.Nishifunabashi" }
+  ],
+  "timetable": {
+    "first_train": "05:00",
+    "last_train": "00:30",
+    "headway_min": {
+      "weekday": {
+        "5": 6, "6": 4, "7": 3, "8": 2, "9": 3, "10": 5, "11": 6, "12": 6, "13": 6, "14": 6, "15": 6, "16": 5, "17": 3, "18": 3, "19": 3, "20": 4, "21": 5, "22": 6, "23": 7, "0": 9, "1": 0
+      },
+      "holiday": {
+        "5": 7, "6": 6, "7": 5, "8": 5, "9": 5, "10": 6, "11": 6, "12": 6, "13": 6, "14": 6, "15": 6, "16": 6, "17": 5, "18": 5, "19": 5, "20": 6, "21": 6, "22": 7, "23": 8, "0": 10, "1": 0
+      }
+    },
+    "directions": [
+      { "id": "nakano", "name_jp": "中野方面", "via_jp": "大手町方面", "track": "1" },
+      { "id": "nishifunabashi", "name_jp": "西船橋方面", "via_jp": "葛西方面", "track": "2" }
+    ]
+  }
+}

@@ -143,7 +143,8 @@ def render_station_sign(line: Line, station: Station, width: int = 60) -> list[s
         ),
         iw,
     )
-    lines.append("|" + GREEN_BG + _w.safe_pad(nav_jp, iw) + RESET + "|")
+    nav_bg = line.ansi_bg or GREEN_BG
+    lines.append("|" + nav_bg + _w.safe_pad(nav_jp, iw) + RESET + "|")
 
     # Row 5: English navigation row.
     lines.append(_row(

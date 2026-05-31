@@ -1,0 +1,395 @@
+{
+  "key": "oedo",
+  "name_jp": "都営大江戸線",
+  "name_en": "Toei Oedo Line",
+  "symbol": "E",
+  "color": {
+    "name": "Magenta",
+    "ansi_fg": "\u001b[38;5;161m",
+    "ansi_bg": "\u001b[48;5;161m\u001b[38;5;231m",
+    "hex": "#B6007A"
+  },
+  "operator": "Toei",
+  "odpt_railway": "odpt.Railway:Toei.Oedo",
+  "loop": false,
+  "stations": [
+    {
+      "id": "E38",
+      "number": "38",
+      "name_jp": "光が丘",
+      "kana": "ひかりがおか",
+      "name_en": "Hikarigaoka",
+      "odpt_station": "odpt.Station:Toei.Oedo.Hikarigaoka"
+    },
+    {
+      "id": "E37",
+      "number": "37",
+      "name_jp": "練馬春日町",
+      "kana": "ねりまかすがちょう",
+      "name_en": "Nerima-kasugacho",
+      "odpt_station": "odpt.Station:Toei.Oedo.NerimaKasugacho"
+    },
+    {
+      "id": "E36",
+      "number": "36",
+      "name_jp": "豊島園",
+      "kana": "としまえん",
+      "name_en": "Toshimaen",
+      "odpt_station": "odpt.Station:Toei.Oedo.Toshimaen"
+    },
+    {
+      "id": "E35",
+      "number": "35",
+      "name_jp": "練馬",
+      "kana": "ねりま",
+      "name_en": "Nerima",
+      "odpt_station": "odpt.Station:Toei.Oedo.Nerima"
+    },
+    {
+      "id": "E34",
+      "number": "34",
+      "name_jp": "新江古田",
+      "kana": "しんえごた",
+      "name_en": "Shin-egota",
+      "odpt_station": "odpt.Station:Toei.Oedo.ShinEgota"
+    },
+    {
+      "id": "E33",
+      "number": "33",
+      "name_jp": "落合南長崎",
+      "kana": "おちあいみなみながさき",
+      "name_en": "Ochiai-minami-nagasaki",
+      "odpt_station": "odpt.Station:Toei.Oedo.OchiaiMinamiNagasaki"
+    },
+    {
+      "id": "E32",
+      "number": "32",
+      "name_jp": "中井",
+      "kana": "なかい",
+      "name_en": "Nakai",
+      "odpt_station": "odpt.Station:Toei.Oedo.Nakai"
+    },
+    {
+      "id": "E31",
+      "number": "31",
+      "name_jp": "東中野",
+      "kana": "ひがしなかの",
+      "name_en": "Higashi-nakano",
+      "odpt_station": "odpt.Station:Toei.Oedo.HigashiNakano"
+    },
+    {
+      "id": "E30",
+      "number": "30",
+      "name_jp": "中野坂上",
+      "kana": "なかのさかうえ",
+      "name_en": "Nakano-sakaue",
+      "odpt_station": "odpt.Station:Toei.Oedo.NakanoSakaue"
+    },
+    {
+      "id": "E29",
+      "number": "29",
+      "name_jp": "西新宿五丁目",
+      "kana": "にししんじゅくごちょうめ",
+      "name_en": "Nishi-shinjuku-gochome",
+      "odpt_station": "odpt.Station:Toei.Oedo.NishiShinjukuGochome"
+    },
+    {
+      "id": "E28",
+      "number": "28",
+      "name_jp": "都庁前",
+      "kana": "とちょうまえ",
+      "name_en": "Tochomae",
+      "odpt_station": "odpt.Station:Toei.Oedo.Tochomae"
+    },
+    {
+      "id": "E01",
+      "number": "01",
+      "name_jp": "新宿西口",
+      "kana": "しんじゅくにしぐち",
+      "name_en": "Shinjuku-nishiguchi",
+      "odpt_station": "odpt.Station:Toei.Oedo.ShinjukuNishiguchi"
+    },
+    {
+      "id": "E02",
+      "number": "02",
+      "name_jp": "東新宿",
+      "kana": "ひがししんじゅく",
+      "name_en": "Higashi-shinjuku",
+      "odpt_station": "odpt.Station:Toei.Oedo.HigashiShinjuku"
+    },
+    {
+      "id": "E03",
+      "number": "03",
+      "name_jp": "若松河田",
+      "kana": "わかまつかわだ",
+      "name_en": "Wakamatsu-kawada",
+      "odpt_station": "odpt.Station:Toei.Oedo.WakamatsuKawada"
+    },
+    {
+      "id": "E04",
+      "number": "04",
+      "name_jp": "牛込柳町",
+      "kana": "うしごめやなぎちょう",
+      "name_en": "Ushigome-yanagicho",
+      "odpt_station": "odpt.Station:Toei.Oedo.UshigomeYanagicho"
+    },
+    {
+      "id": "E05",
+      "number": "05",
+      "name_jp": "牛込神楽坂",
+      "kana": "うしごめかぐらざか",
+      "name_en": "Ushigome-kagurazaka",
+      "odpt_station": "odpt.Station:Toei.Oedo.UshigomeKagurazaka"
+    },
+    {
+      "id": "E06",
+      "number": "06",
+      "name_jp": "飯田橋",
+      "kana": "いいだばし",
+      "name_en": "Iidabashi",
+      "odpt_station": "odpt.Station:Toei.Oedo.Iidabashi"
+    },
+    {
+      "id": "E07",
+      "number": "07",
+      "name_jp": "春日",
+      "kana": "かすが",
+      "name_en": "Kasuga",
+      "odpt_station": "odpt.Station:Toei.Oedo.Kasuga"
+    },
+    {
+      "id": "E08",
+      "number": "08",
+      "name_jp": "本郷三丁目",
+      "kana": "ほんごうさんちょうめ",
+      "name_en": "Hongo-sanchome",
+      "odpt_station": "odpt.Station:Toei.Oedo.HongoSanchome"
+    },
+    {
+      "id": "E09",
+      "number": "09",
+      "name_jp": "上野御徒町",
+      "kana": "うえのおかちまち",
+      "name_en": "Ueno-okachimachi",
+      "odpt_station": "odpt.Station:Toei.Oedo.UenoOkachimachi"
+    },
+    {
+      "id": "E10",
+      "number": "10",
+      "name_jp": "新御徒町",
+      "kana": "しんおかちまち",
+      "name_en": "Shin-okachimachi",
+      "odpt_station": "odpt.Station:Toei.Oedo.ShinOkachimachi"
+    },
+    {
+      "id": "E11",
+      "number": "11",
+      "name_jp": "蔵前",
+      "kana": "くらまえ",
+      "name_en": "Kuramae",
+      "odpt_station": "odpt.Station:Toei.Oedo.Kuramae"
+    },
+    {
+      "id": "E12",
+      "number": "12",
+      "name_jp": "両国",
+      "kana": "りょうごく",
+      "name_en": "Ryogoku",
+      "odpt_station": "odpt.Station:Toei.Oedo.Ryogoku"
+    },
+    {
+      "id": "E13",
+      "number": "13",
+      "name_jp": "森下",
+      "kana": "もりした",
+      "name_en": "Morishita",
+      "odpt_station": "odpt.Station:Toei.Oedo.Morishita"
+    },
+    {
+      "id": "E14",
+      "number": "14",
+      "name_jp": "清澄白河",
+      "kana": "きよすみしらかわ",
+      "name_en": "Kiyosumi-shirakawa",
+      "odpt_station": "odpt.Station:Toei.Oedo.KiyosumiShirakawa"
+    },
+    {
+      "id": "E15",
+      "number": "15",
+      "name_jp": "門前仲町",
+      "kana": "もんぜんなかちょう",
+      "name_en": "Monzen-nakacho",
+      "odpt_station": "odpt.Station:Toei.Oedo.MonzenNakacho"
+    },
+    {
+      "id": "E16",
+      "number": "16",
+      "name_jp": "月島",
+      "kana": "つきしま",
+      "name_en": "Tsukishima",
+      "odpt_station": "odpt.Station:Toei.Oedo.Tsukishima"
+    },
+    {
+      "id": "E17",
+      "number": "17",
+      "name_jp": "勝どき",
+      "kana": "かちどき",
+      "name_en": "Kachidoki",
+      "odpt_station": "odpt.Station:Toei.Oedo.Kachidoki"
+    },
+    {
+      "id": "E18",
+      "number": "18",
+      "name_jp": "築地市場",
+      "kana": "つきじしじょう",
+      "name_en": "Tsukijishijo",
+      "odpt_station": "odpt.Station:Toei.Oedo.Tsukijishijo"
+    },
+    {
+      "id": "E19",
+      "number": "19",
+      "name_jp": "汐留",
+      "kana": "しおどめ",
+      "name_en": "Shiodome",
+      "odpt_station": "odpt.Station:Toei.Oedo.Shiodome"
+    },
+    {
+      "id": "E20",
+      "number": "20",
+      "name_jp": "大門",
+      "kana": "だいもん",
+      "name_en": "Daimon",
+      "odpt_station": "odpt.Station:Toei.Oedo.Daimon"
+    },
+    {
+      "id": "E21",
+      "number": "21",
+      "name_jp": "赤羽橋",
+      "kana": "あかばねばし",
+      "name_en": "Akabanebashi",
+      "odpt_station": "odpt.Station:Toei.Oedo.Akabanebashi"
+    },
+    {
+      "id": "E22",
+      "number": "22",
+      "name_jp": "麻布十番",
+      "kana": "あざぶじゅうばん",
+      "name_en": "Azabu-juban",
+      "odpt_station": "odpt.Station:Toei.Oedo.AzabuJuban"
+    },
+    {
+      "id": "E23",
+      "number": "23",
+      "name_jp": "六本木",
+      "kana": "ろっぽんぎ",
+      "name_en": "Roppongi",
+      "odpt_station": "odpt.Station:Toei.Oedo.Roppongi"
+    },
+    {
+      "id": "E24",
+      "number": "24",
+      "name_jp": "青山一丁目",
+      "kana": "あおやまいっちょうめ",
+      "name_en": "Aoyama-itchome",
+      "odpt_station": "odpt.Station:Toei.Oedo.AoyamaItchome"
+    },
+    {
+      "id": "E25",
+      "number": "25",
+      "name_jp": "国立競技場",
+      "kana": "こくりつきょうぎじょう",
+      "name_en": "Kokuritsu-kyogijo",
+      "odpt_station": "odpt.Station:Toei.Oedo.KokuritsuKyogijo"
+    },
+    {
+      "id": "E26",
+      "number": "26",
+      "name_jp": "代々木",
+      "kana": "よよぎ",
+      "name_en": "Yoyogi",
+      "odpt_station": "odpt.Station:Toei.Oedo.Yoyogi"
+    },
+    {
+      "id": "E27",
+      "number": "27",
+      "name_jp": "新宿",
+      "kana": "しんじゅく",
+      "name_en": "Shinjuku",
+      "odpt_station": "odpt.Station:Toei.Oedo.Shinjuku"
+    },
+    {
+      "id": "E28L",
+      "number": "28",
+      "name_jp": "都庁前",
+      "kana": "とちょうまえ",
+      "name_en": "Tochomae",
+      "odpt_station": "odpt.Station:Toei.Oedo.Tochomae"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:00",
+    "last_train": "00:14",
+    "headway_min": {
+      "weekday": {
+        "0": 10,
+        "1": 10,
+        "5": 8,
+        "6": 5,
+        "7": 4,
+        "8": 3,
+        "9": 4,
+        "10": 5,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 5,
+        "17": 4,
+        "18": 4,
+        "19": 5,
+        "20": 5,
+        "21": 6,
+        "22": 6,
+        "23": 7
+      },
+      "holiday": {
+        "0": 10,
+        "1": 10,
+        "5": 8,
+        "6": 6,
+        "7": 6,
+        "8": 5,
+        "9": 5,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 6,
+        "20": 6,
+        "21": 7,
+        "22": 7,
+        "23": 8
+      }
+    },
+    "directions": [
+      {
+        "id": "hikarigaoka",
+        "name_jp": "光が丘方面",
+        "via_jp": "六本木方面",
+        "track": "1"
+      },
+      {
+        "id": "tochomae",
+        "name_jp": "都庁前方面",
+        "via_jp": "両国方面",
+        "track": "2"
+      }
+    ]
+  }
+}
