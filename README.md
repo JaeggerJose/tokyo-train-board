@@ -78,8 +78,9 @@ python3 main.py --mode statusline --line marunouchi --station tokyo --columns 70
 除了站牌與跑馬燈，同一支 CLI 還提供四種附加模式（所有舊旗標行為不變，這些都是選用）。
 
 ```bash
-# 互動式 curses 瀏覽器：左邊是可模糊搜尋的路線清單（j/k 移動、/ 篩選、
-# h/l 切換站點、f 收藏、q 離開），右邊是即時站牌
+# 互動式 curses 瀏覽器：左邊是「依城市分組」的路線清單（各線官方色，
+# j/k 移動、/ 模糊搜尋、h/l 切換站點、f 收藏、q 離開），右邊是即時彩色站牌
+# （切換線/站時會播翻牌動畫）
 python3 main.py --tui
 
 # 番茄鐘＝一趟電車旅程：把專注計時畫成從起點到終點的乘車。會在路線上
@@ -167,8 +168,11 @@ jrboard --tui
 | `osaka-loop` | 大阪 | JR 大阪環狀線（環狀）| 19 |
 | `osaka-midosuji` | 大阪 | 御堂筋線 | 20 |
 | `osaka-tanimachi` | 大阪 | 谷町線 | 26 |
-| `kyoto-karasuma` | 京都 | 烏丸線 | 15 |
-| `kyoto-tozai` | 京都 | 東西線 | 17 |
+| `kyoto-karasuma` | 京都 | 地下鐵烏丸線 | 15 |
+| `kyoto-tozai` | 京都 | 地下鐵東西線 | 17 |
+| `kyoto-randen` | 京都 | 嵐電 嵐山本線（路面電車）| 13 |
+| `kyoto-sagano` | 京都 | JR 嵯峨野線（山陰本線）| 15 |
+| `kyoto-keihan` | 京都 | 京阪本線 | 42 |
 | `sapporo-namboku` | 札幌 | 南北線 | 16 |
 | `sapporo-tozai` | 札幌 | 東西線 | 19 |
 | `sapporo-toho` | 札幌 | 東豊線 | 14 |

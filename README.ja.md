@@ -78,9 +78,9 @@ python3 main.py --mode statusline --line marunouchi --station tokyo --columns 70
 （既存フラグの挙動は不変。これらはすべてオプトインです）。
 
 ```bash
-# インタラクティブな curses ブラウザ：左に曖昧検索できる路線リスト
-#（j/k で移動、/ で絞り込み、h/l で駅送り、f でお気に入り、q で終了）、
-# 右にライブ案内板
+# インタラクティブな curses ブラウザ：左に「都市ごとに分類」した路線リスト
+#（各路線の公式カラー。j/k で移動、/ で絞り込み、h/l で駅送り、f でお気に入り、
+# q で終了）、右にライブのカラー案内板（路線・駅の切替時にフラップ演出）
 python3 main.py --tui
 
 # ポモドーロ＝電車の旅：集中タイマーを始発から終点への乗車として描画。
@@ -171,8 +171,11 @@ jrboard --tui
 | `osaka-loop` | 大阪 | JR 大阪環状線（環状）| 19 |
 | `osaka-midosuji` | 大阪 | 御堂筋線 | 20 |
 | `osaka-tanimachi` | 大阪 | 谷町線 | 26 |
-| `kyoto-karasuma` | 京都 | 烏丸線 | 15 |
-| `kyoto-tozai` | 京都 | 東西線 | 17 |
+| `kyoto-karasuma` | 京都 | 地下鉄烏丸線 | 15 |
+| `kyoto-tozai` | 京都 | 地下鉄東西線 | 17 |
+| `kyoto-randen` | 京都 | 嵐電 嵐山本線（路面電車）| 13 |
+| `kyoto-sagano` | 京都 | JR嵯峨野線（山陰本線）| 15 |
+| `kyoto-keihan` | 京都 | 京阪本線 | 42 |
 | `sapporo-namboku` | 札幌 | 南北線 | 16 |
 | `sapporo-tozai` | 札幌 | 東西線 | 19 |
 | `sapporo-toho` | 札幌 | 東豊線 | 14 |

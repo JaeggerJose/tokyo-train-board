@@ -78,8 +78,9 @@ Beyond the board and statusline, the same CLI exposes four additive modes
 (every flag keeps its old behaviour; these are opt-in).
 
 ```bash
-# interactive curses browser: two panes — a fuzzy-filterable line list (j/k,
-# / to filter, h/l to step stations, f to favourite, q to quit) and a live board
+# interactive curses browser: two panes — a city-grouped, line-coloured line
+# list (j/k, / to filter, h/l to step stations, f to favourite, q to quit) and
+# a live colour board (split-flap intro when the line/station changes)
 python3 main.py --tui
 
 # Pomodoro as a train journey: a focus timer drawn as a ride from origin to
@@ -171,8 +172,11 @@ Filter by city with `--city`: `python3 main.py --list --city Osaka`; `--rotate -
 | `osaka-loop` | Osaka | JR Osaka Loop Line (loop) | 19 |
 | `osaka-midosuji` | Osaka | Midosuji Line | 20 |
 | `osaka-tanimachi` | Osaka | Tanimachi Line | 26 |
-| `kyoto-karasuma` | Kyoto | Karasuma Line | 15 |
-| `kyoto-tozai` | Kyoto | Tozai Line | 17 |
+| `kyoto-karasuma` | Kyoto | Subway Karasuma Line | 15 |
+| `kyoto-tozai` | Kyoto | Subway Tozai Line | 17 |
+| `kyoto-randen` | Kyoto | Randen Arashiyama tram | 13 |
+| `kyoto-sagano` | Kyoto | JR Sagano Line (San'in) | 15 |
+| `kyoto-keihan` | Kyoto | Keihan Main Line | 42 |
 | `sapporo-namboku` | Sapporo | Namboku Line | 16 |
 | `sapporo-tozai` | Sapporo | Tozai Line | 19 |
 | `sapporo-toho` | Sapporo | Toho Line | 14 |

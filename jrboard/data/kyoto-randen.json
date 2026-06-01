@@ -1,0 +1,188 @@
+{
+  "key": "kyoto-randen",
+  "name_jp": "嵐電 嵐山本線",
+  "name_en": "Randen Arashiyama Main Line",
+  "city": "Kyoto",
+  "symbol": "A",
+  "color": {
+    "name": "嵐電 嵐山本線 / green",
+    "hex": "#4C9A2A",
+    "ansi_fg": "\u001b[38;2;76;154;42m",
+    "ansi_bg": "\u001b[48;2;76;154;42m\u001b[38;2;255;255;255m"
+  },
+  "operator": "Keifuku",
+  "odpt_railway": "odpt.Railway:Keifuku.ArashiyamaMain",
+  "loop": false,
+  "stations": [
+    {
+      "id": "A1",
+      "number": "1",
+      "name_jp": "四条大宮",
+      "kana": "しじょうおおみや",
+      "name_en": "Shijo-Omiya",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.ShijoOmiya"
+    },
+    {
+      "id": "A2",
+      "number": "2",
+      "name_jp": "西院",
+      "kana": "さい",
+      "name_en": "Sai",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.Sai"
+    },
+    {
+      "id": "A3",
+      "number": "3",
+      "name_jp": "西大路三条",
+      "kana": "にしおおじさんじょう",
+      "name_en": "Nishioji-Sanjo",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.NishiojiSanjo"
+    },
+    {
+      "id": "A4",
+      "number": "4",
+      "name_jp": "山ノ内",
+      "kana": "やまのうち",
+      "name_en": "Yamanouchi",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.Yamanouchi"
+    },
+    {
+      "id": "A5",
+      "number": "5",
+      "name_jp": "嵐電天神川",
+      "kana": "らんでんてんじんがわ",
+      "name_en": "Randen-Tenjingawa",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.RandenTenjingawa"
+    },
+    {
+      "id": "A6",
+      "number": "6",
+      "name_jp": "蚕ノ社",
+      "kana": "かいこのやしろ",
+      "name_en": "Kaikonoyashiro",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.Kaikonoyashiro"
+    },
+    {
+      "id": "A7",
+      "number": "7",
+      "name_jp": "太秦広隆寺",
+      "kana": "うずまさこうりゅうじ",
+      "name_en": "Uzumasa-Koryuji",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.UzumasaKoryuji"
+    },
+    {
+      "id": "A8",
+      "number": "8",
+      "name_jp": "帷子ノ辻",
+      "kana": "かたびらのつじ",
+      "name_en": "Katabiranotsuji",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.Katabiranotsuji"
+    },
+    {
+      "id": "A9",
+      "number": "9",
+      "name_jp": "有栖川",
+      "kana": "ありすがわ",
+      "name_en": "Arisugawa",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.Arisugawa"
+    },
+    {
+      "id": "A10",
+      "number": "10",
+      "name_jp": "車折神社",
+      "kana": "くるまざきじんじゃ",
+      "name_en": "Kurumazaki-jinja",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.KurumazakiJinja"
+    },
+    {
+      "id": "A11",
+      "number": "11",
+      "name_jp": "鹿王院",
+      "kana": "ろくおういん",
+      "name_en": "Rokuoin",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.Rokuoin"
+    },
+    {
+      "id": "A12",
+      "number": "12",
+      "name_jp": "嵐電嵯峨",
+      "kana": "らんでんさが",
+      "name_en": "Randen-Saga",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.RandenSaga"
+    },
+    {
+      "id": "A13",
+      "number": "13",
+      "name_jp": "嵐山",
+      "kana": "あらしやま",
+      "name_en": "Arashiyama",
+      "odpt_station": "odpt.Station:Keifuku.ArashiyamaMain.Arashiyama"
+    }
+  ],
+  "timetable": {
+    "first_train": "06:01",
+    "last_train": "23:01",
+    "headway_min": {
+      "weekday": {
+        "5": 0,
+        "6": 10,
+        "7": 8,
+        "8": 8,
+        "9": 10,
+        "10": 10,
+        "11": 10,
+        "12": 10,
+        "13": 10,
+        "14": 10,
+        "15": 10,
+        "16": 10,
+        "17": 8,
+        "18": 8,
+        "19": 10,
+        "20": 10,
+        "21": 10,
+        "22": 10,
+        "23": 10,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 0,
+        "6": 10,
+        "7": 8,
+        "8": 8,
+        "9": 10,
+        "10": 10,
+        "11": 10,
+        "12": 10,
+        "13": 10,
+        "14": 10,
+        "15": 10,
+        "16": 10,
+        "17": 10,
+        "18": 8,
+        "19": 10,
+        "20": 10,
+        "21": 10,
+        "22": 10,
+        "23": 10,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "omiya",
+        "name_jp": "四条大宮方面",
+        "via_jp": "四条大宮方面",
+        "track": "1"
+      },
+      {
+        "id": "arashiyama",
+        "name_jp": "嵐山方面",
+        "via_jp": "嵐山方面",
+        "track": "2"
+      }
+    ]
+  }
+}

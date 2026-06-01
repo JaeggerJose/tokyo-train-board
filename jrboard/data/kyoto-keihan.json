@@ -1,0 +1,420 @@
+{
+  "key": "kyoto-keihan",
+  "name_jp": "京阪本線",
+  "name_en": "Keihan Main Line",
+  "city": "Kyoto",
+  "symbol": "KH",
+  "color": {
+    "name": "京阪本線 / teal-green",
+    "hex": "#009E96",
+    "ansi_fg": "\u001b[38;2;0;158;150m",
+    "ansi_bg": "\u001b[48;2;0;158;150m\u001b[38;2;255;255;255m"
+  },
+  "operator": "Keihan",
+  "odpt_railway": "odpt.Railway:Keihan.Keihan",
+  "loop": false,
+  "stations": [
+    {
+      "id": "KH42",
+      "number": "42",
+      "name_jp": "出町柳",
+      "kana": "でまちやなぎ",
+      "name_en": "Demachiyanagi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Demachiyanagi"
+    },
+    {
+      "id": "KH41",
+      "number": "41",
+      "name_jp": "神宮丸太町",
+      "kana": "じんぐうまるたまち",
+      "name_en": "Jingu-marutamachi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.JinguMarutamachi"
+    },
+    {
+      "id": "KH40",
+      "number": "40",
+      "name_jp": "三条",
+      "kana": "さんじょう",
+      "name_en": "Sanjo",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Sanjo"
+    },
+    {
+      "id": "KH39",
+      "number": "39",
+      "name_jp": "祇園四条",
+      "kana": "ぎおんしじょう",
+      "name_en": "Gion-shijo",
+      "odpt_station": "odpt.Station:Keihan.Keihan.GionShijo"
+    },
+    {
+      "id": "KH38",
+      "number": "38",
+      "name_jp": "清水五条",
+      "kana": "きよみずごじょう",
+      "name_en": "Kiyomizu-gojo",
+      "odpt_station": "odpt.Station:Keihan.Keihan.KiyomizuGojo"
+    },
+    {
+      "id": "KH37",
+      "number": "37",
+      "name_jp": "七条",
+      "kana": "しちじょう",
+      "name_en": "Shichijo",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Shichijo"
+    },
+    {
+      "id": "KH36",
+      "number": "36",
+      "name_jp": "東福寺",
+      "kana": "とうふくじ",
+      "name_en": "Tofukuji",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Tofukuji"
+    },
+    {
+      "id": "KH35",
+      "number": "35",
+      "name_jp": "鳥羽街道",
+      "kana": "とばかいどう",
+      "name_en": "Toba-kaido",
+      "odpt_station": "odpt.Station:Keihan.Keihan.TobaKaido"
+    },
+    {
+      "id": "KH34",
+      "number": "34",
+      "name_jp": "伏見稲荷",
+      "kana": "ふしみいなり",
+      "name_en": "Fushimi-inari",
+      "odpt_station": "odpt.Station:Keihan.Keihan.FushimiInari"
+    },
+    {
+      "id": "KH33",
+      "number": "33",
+      "name_jp": "龍谷大前深草",
+      "kana": "りゅうこくだいまえふかくさ",
+      "name_en": "Ryukokudai-mae-fukakusa",
+      "odpt_station": "odpt.Station:Keihan.Keihan.RyukokudaimaeFukakusa"
+    },
+    {
+      "id": "KH32",
+      "number": "32",
+      "name_jp": "藤森",
+      "kana": "ふじのもり",
+      "name_en": "Fujinomori",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Fujinomori"
+    },
+    {
+      "id": "KH31",
+      "number": "31",
+      "name_jp": "墨染",
+      "kana": "すみぞめ",
+      "name_en": "Sumizome",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Sumizome"
+    },
+    {
+      "id": "KH30",
+      "number": "30",
+      "name_jp": "丹波橋",
+      "kana": "たんばばし",
+      "name_en": "Tambabashi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Tambabashi"
+    },
+    {
+      "id": "KH29",
+      "number": "29",
+      "name_jp": "伏見桃山",
+      "kana": "ふしみももやま",
+      "name_en": "Fushimi-momoyama",
+      "odpt_station": "odpt.Station:Keihan.Keihan.FushimiMomoyama"
+    },
+    {
+      "id": "KH28",
+      "number": "28",
+      "name_jp": "中書島",
+      "kana": "ちゅうしょじま",
+      "name_en": "Chushojima",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Chushojima"
+    },
+    {
+      "id": "KH27",
+      "number": "27",
+      "name_jp": "淀",
+      "kana": "よど",
+      "name_en": "Yodo",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Yodo"
+    },
+    {
+      "id": "KH26",
+      "number": "26",
+      "name_jp": "石清水八幡宮",
+      "kana": "いわしみずはちまんぐう",
+      "name_en": "Iwashimizu-hachimangu",
+      "odpt_station": "odpt.Station:Keihan.Keihan.IwashimizuHachimangu"
+    },
+    {
+      "id": "KH25",
+      "number": "25",
+      "name_jp": "橋本",
+      "kana": "はしもと",
+      "name_en": "Hashimoto",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Hashimoto"
+    },
+    {
+      "id": "KH24",
+      "number": "24",
+      "name_jp": "樟葉",
+      "kana": "くずは",
+      "name_en": "Kuzuha",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Kuzuha"
+    },
+    {
+      "id": "KH23",
+      "number": "23",
+      "name_jp": "牧野",
+      "kana": "まきの",
+      "name_en": "Makino",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Makino"
+    },
+    {
+      "id": "KH22",
+      "number": "22",
+      "name_jp": "御殿山",
+      "kana": "ごてんやま",
+      "name_en": "Gotenyama",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Gotenyama"
+    },
+    {
+      "id": "KH21",
+      "number": "21",
+      "name_jp": "枚方市",
+      "kana": "ひらかたし",
+      "name_en": "Hirakatashi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Hirakatashi"
+    },
+    {
+      "id": "KH20",
+      "number": "20",
+      "name_jp": "枚方公園",
+      "kana": "ひらかたこうえん",
+      "name_en": "Hirakata-koen",
+      "odpt_station": "odpt.Station:Keihan.Keihan.HirakataKoen"
+    },
+    {
+      "id": "KH19",
+      "number": "19",
+      "name_jp": "光善寺",
+      "kana": "こうぜんじ",
+      "name_en": "Kozenji",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Kozenji"
+    },
+    {
+      "id": "KH18",
+      "number": "18",
+      "name_jp": "香里園",
+      "kana": "こうりえん",
+      "name_en": "Korien",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Korien"
+    },
+    {
+      "id": "KH17",
+      "number": "17",
+      "name_jp": "寝屋川市",
+      "kana": "ねやがわし",
+      "name_en": "Neyagawashi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Neyagawashi"
+    },
+    {
+      "id": "KH16",
+      "number": "16",
+      "name_jp": "萱島",
+      "kana": "かやしま",
+      "name_en": "Kayashima",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Kayashima"
+    },
+    {
+      "id": "KH15",
+      "number": "15",
+      "name_jp": "大和田",
+      "kana": "おおわだ",
+      "name_en": "Owada",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Owada"
+    },
+    {
+      "id": "KH14",
+      "number": "14",
+      "name_jp": "古川橋",
+      "kana": "ふるかわばし",
+      "name_en": "Furukawabashi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Furukawabashi"
+    },
+    {
+      "id": "KH13",
+      "number": "13",
+      "name_jp": "門真市",
+      "kana": "かどまし",
+      "name_en": "Kadomashi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Kadomashi"
+    },
+    {
+      "id": "KH12",
+      "number": "12",
+      "name_jp": "西三荘",
+      "kana": "にしさんそう",
+      "name_en": "Nishisanso",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Nishisanso"
+    },
+    {
+      "id": "KH11",
+      "number": "11",
+      "name_jp": "守口市",
+      "kana": "もりぐちし",
+      "name_en": "Moriguchishi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Moriguchishi"
+    },
+    {
+      "id": "KH10",
+      "number": "10",
+      "name_jp": "土居",
+      "kana": "どい",
+      "name_en": "Doi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Doi"
+    },
+    {
+      "id": "KH09",
+      "number": "09",
+      "name_jp": "滝井",
+      "kana": "たきい",
+      "name_en": "Takii",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Takii"
+    },
+    {
+      "id": "KH08",
+      "number": "08",
+      "name_jp": "千林",
+      "kana": "せんばやし",
+      "name_en": "Senbayashi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Senbayashi"
+    },
+    {
+      "id": "KH07",
+      "number": "07",
+      "name_jp": "森小路",
+      "kana": "もりしょうじ",
+      "name_en": "Morishoji",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Morishoji"
+    },
+    {
+      "id": "KH06",
+      "number": "06",
+      "name_jp": "関目",
+      "kana": "せきめ",
+      "name_en": "Sekime",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Sekime"
+    },
+    {
+      "id": "KH05",
+      "number": "05",
+      "name_jp": "野江",
+      "kana": "のえ",
+      "name_en": "Noe",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Noe"
+    },
+    {
+      "id": "KH04",
+      "number": "04",
+      "name_jp": "京橋",
+      "kana": "きょうばし",
+      "name_en": "Kyobashi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Kyobashi"
+    },
+    {
+      "id": "KH03",
+      "number": "03",
+      "name_jp": "天満橋",
+      "kana": "てんまばし",
+      "name_en": "Temmabashi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Temmabashi"
+    },
+    {
+      "id": "KH02",
+      "number": "02",
+      "name_jp": "北浜",
+      "kana": "きたはま",
+      "name_en": "Kitahama",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Kitahama"
+    },
+    {
+      "id": "KH01",
+      "number": "01",
+      "name_jp": "淀屋橋",
+      "kana": "よどやばし",
+      "name_en": "Yodoyabashi",
+      "odpt_station": "odpt.Station:Keihan.Keihan.Yodoyabashi"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:00",
+    "last_train": "00:20",
+    "headway_min": {
+      "weekday": {
+        "5": 10,
+        "6": 7,
+        "7": 5,
+        "8": 5,
+        "9": 6,
+        "10": 8,
+        "11": 8,
+        "12": 8,
+        "13": 8,
+        "14": 8,
+        "15": 8,
+        "16": 7,
+        "17": 5,
+        "18": 5,
+        "19": 6,
+        "20": 7,
+        "21": 8,
+        "22": 9,
+        "23": 10,
+        "0": 10,
+        "1": 0
+      },
+      "holiday": {
+        "5": 10,
+        "6": 8,
+        "7": 7,
+        "8": 6,
+        "9": 8,
+        "10": 8,
+        "11": 8,
+        "12": 8,
+        "13": 8,
+        "14": 8,
+        "15": 8,
+        "16": 8,
+        "17": 8,
+        "18": 8,
+        "19": 8,
+        "20": 8,
+        "21": 9,
+        "22": 10,
+        "23": 10,
+        "0": 10,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "demachiyanagi",
+        "name_jp": "出町柳方面",
+        "via_jp": "三条・出町柳方面",
+        "track": "1"
+      },
+      {
+        "id": "yodoyabashi",
+        "name_jp": "淀屋橋方面",
+        "via_jp": "京橋・淀屋橋方面",
+        "track": "2"
+      }
+    ]
+  }
+}

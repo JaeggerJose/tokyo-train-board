@@ -46,6 +46,9 @@ OFFICIAL: dict[str, tuple[str, str]] = {
     # --- Kyoto ---
     "kyoto-karasuma":  ("#009A41", "烏丸線 / green"),
     "kyoto-tozai":     ("#C9171E", "東西線 / vermilion"),
+    "kyoto-randen":    ("#4C9A2A", "嵐電 嵐山本線 / green"),
+    "kyoto-sagano":    ("#800080", "JR嵯峨野線(山陰本線) / purple"),
+    "kyoto-keihan":    ("#009E96", "京阪本線 / teal-green"),
     # --- Sapporo ---
     "sapporo-namboku": ("#00984B", "南北線 / green"),
     "sapporo-tozai":   ("#F39700", "東西線 / orange"),
