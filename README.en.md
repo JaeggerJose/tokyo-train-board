@@ -162,6 +162,22 @@ jrboard --tui
 
 > `--line shinjuku` is the **Toei Shinjuku subway line**; the JR lines have their own keys (`chuo`/`sobu`/…).
 
+### 🌏 Other cities (Kyoto / Osaka / Sapporo / Otaru)
+
+Filter by city with `--city`: `python3 main.py --list --city Osaka`; `--rotate --city Osaka` tours only Osaka.
+
+| key | City | Line | Stations |
+|------|:----:|------|:----:|
+| `osaka-loop` | Osaka | JR Osaka Loop Line (loop) | 19 |
+| `osaka-midosuji` | Osaka | Midosuji Line | 20 |
+| `osaka-tanimachi` | Osaka | Tanimachi Line | 26 |
+| `kyoto-karasuma` | Kyoto | Karasuma Line | 15 |
+| `kyoto-tozai` | Kyoto | Tozai Line | 17 |
+| `sapporo-namboku` | Sapporo | Namboku Line | 16 |
+| `sapporo-tozai` | Sapporo | Tozai Line | 19 |
+| `sapporo-toho` | Sapporo | Toho Line | 14 |
+| `otaru-hakodate` | Otaru | JR Hakodate Main Line (Otaru–Sapporo) | 15 |
+
 ---
 
 ## 🛰️ Live ODPT data

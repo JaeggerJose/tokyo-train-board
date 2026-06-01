@@ -1,0 +1,204 @@
+{
+  "key": "kyoto-karasuma",
+  "name_jp": "京都市営地下鉄烏丸線",
+  "name_en": "Kyoto Municipal Subway Karasuma Line",
+  "city": "Kyoto",
+  "symbol": "K",
+  "color": {
+    "name": "烏丸線 / green",
+    "hex": "#009A41",
+    "ansi_fg": "\u001b[38;2;0;154;65m",
+    "ansi_bg": "\u001b[48;2;0;154;65m\u001b[38;2;255;255;255m"
+  },
+  "operator": "Kyoto",
+  "odpt_railway": "odpt.Railway:Kyoto.Karasuma",
+  "loop": false,
+  "stations": [
+    {
+      "id": "K01",
+      "number": "01",
+      "name_jp": "国際会館",
+      "kana": "こくさいかいかん",
+      "name_en": "Kokusaikaikan",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Kokusaikaikan"
+    },
+    {
+      "id": "K02",
+      "number": "02",
+      "name_jp": "松ヶ崎",
+      "kana": "まつがさき",
+      "name_en": "Matsugasaki",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Matsugasaki"
+    },
+    {
+      "id": "K03",
+      "number": "03",
+      "name_jp": "北山",
+      "kana": "きたやま",
+      "name_en": "Kitayama",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Kitayama"
+    },
+    {
+      "id": "K04",
+      "number": "04",
+      "name_jp": "北大路",
+      "kana": "きたおおじ",
+      "name_en": "Kitaoji",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Kitaoji"
+    },
+    {
+      "id": "K05",
+      "number": "05",
+      "name_jp": "鞍馬口",
+      "kana": "くらまぐち",
+      "name_en": "Kuramaguchi",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Kuramaguchi"
+    },
+    {
+      "id": "K06",
+      "number": "06",
+      "name_jp": "今出川",
+      "kana": "いまでがわ",
+      "name_en": "Imadegawa",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Imadegawa"
+    },
+    {
+      "id": "K07",
+      "number": "07",
+      "name_jp": "丸太町",
+      "kana": "まるたまち",
+      "name_en": "Marutamachi",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Marutamachi"
+    },
+    {
+      "id": "K08",
+      "number": "08",
+      "name_jp": "烏丸御池",
+      "kana": "からすまおいけ",
+      "name_en": "Karasuma Oike",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.KarasumaOike"
+    },
+    {
+      "id": "K09",
+      "number": "09",
+      "name_jp": "四条",
+      "kana": "しじょう",
+      "name_en": "Shijo",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Shijo"
+    },
+    {
+      "id": "K10",
+      "number": "10",
+      "name_jp": "五条",
+      "kana": "ごじょう",
+      "name_en": "Gojo",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Gojo"
+    },
+    {
+      "id": "K11",
+      "number": "11",
+      "name_jp": "京都",
+      "kana": "きょうと",
+      "name_en": "Kyoto",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Kyoto"
+    },
+    {
+      "id": "K12",
+      "number": "12",
+      "name_jp": "九条",
+      "kana": "くじょう",
+      "name_en": "Kujo",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Kujo"
+    },
+    {
+      "id": "K13",
+      "number": "13",
+      "name_jp": "十条",
+      "kana": "じゅうじょう",
+      "name_en": "Jujo",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Jujo"
+    },
+    {
+      "id": "K14",
+      "number": "14",
+      "name_jp": "くいな橋",
+      "kana": "くいなばし",
+      "name_en": "Kuinabashi",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Kuinabashi"
+    },
+    {
+      "id": "K15",
+      "number": "15",
+      "name_jp": "竹田",
+      "kana": "たけだ",
+      "name_en": "Takeda",
+      "odpt_station": "odpt.Station:Kyoto.Karasuma.Takeda"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:18",
+    "last_train": "23:55",
+    "headway_min": {
+      "weekday": {
+        "5": 10,
+        "6": 7,
+        "7": 5,
+        "8": 4,
+        "9": 6,
+        "10": 8,
+        "11": 8,
+        "12": 8,
+        "13": 8,
+        "14": 8,
+        "15": 8,
+        "16": 7,
+        "17": 5,
+        "18": 5,
+        "19": 6,
+        "20": 7,
+        "21": 8,
+        "22": 9,
+        "23": 10,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 12,
+        "6": 9,
+        "7": 8,
+        "8": 7,
+        "9": 8,
+        "10": 8,
+        "11": 8,
+        "12": 8,
+        "13": 8,
+        "14": 8,
+        "15": 8,
+        "16": 8,
+        "17": 8,
+        "18": 8,
+        "19": 8,
+        "20": 9,
+        "21": 10,
+        "22": 11,
+        "23": 12,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "kokusaikaikan",
+        "name_jp": "国際会館方面",
+        "via_jp": "国際会館方面",
+        "track": "1"
+      },
+      {
+        "id": "takeda",
+        "name_jp": "竹田方面",
+        "via_jp": "竹田方面",
+        "track": "2"
+      }
+    ]
+  }
+}

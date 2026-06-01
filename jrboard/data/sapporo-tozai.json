@@ -1,0 +1,236 @@
+{
+  "key": "sapporo-tozai",
+  "name_jp": "札幌市営地下鉄東西線",
+  "name_en": "Sapporo Municipal Subway Tozai Line",
+  "city": "Sapporo",
+  "symbol": "T",
+  "color": {
+    "name": "東西線 / orange",
+    "hex": "#F39700",
+    "ansi_fg": "\u001b[38;2;243;151;0m",
+    "ansi_bg": "\u001b[48;2;243;151;0m\u001b[38;2;26;26;26m"
+  },
+  "operator": "Sapporo",
+  "odpt_railway": "odpt.Railway:Sapporo.Tozai",
+  "loop": false,
+  "stations": [
+    {
+      "id": "T01",
+      "number": "01",
+      "name_jp": "宮の沢",
+      "kana": "みやのさわ",
+      "name_en": "Miyanosawa",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Miyanosawa"
+    },
+    {
+      "id": "T02",
+      "number": "02",
+      "name_jp": "発寒南",
+      "kana": "はっさむみなみ",
+      "name_en": "Hassamu-minami",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Hassamu-minami"
+    },
+    {
+      "id": "T03",
+      "number": "03",
+      "name_jp": "琴似",
+      "kana": "ことに",
+      "name_en": "Kotoni",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Kotoni"
+    },
+    {
+      "id": "T04",
+      "number": "04",
+      "name_jp": "二十四軒",
+      "kana": "にじゅうよんけん",
+      "name_en": "Nijuyonken",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Nijuyonken"
+    },
+    {
+      "id": "T05",
+      "number": "05",
+      "name_jp": "西28丁目",
+      "kana": "にしにじゅうはっちょうめ",
+      "name_en": "Nishi-nijuhatchome",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Nishi-nijuhatchome"
+    },
+    {
+      "id": "T06",
+      "number": "06",
+      "name_jp": "円山公園",
+      "kana": "まるやまこうえん",
+      "name_en": "Maruyama-koen",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Maruyama-koen"
+    },
+    {
+      "id": "T07",
+      "number": "07",
+      "name_jp": "西18丁目",
+      "kana": "にしじゅうはっちょうめ",
+      "name_en": "Nishi-juhatchome",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Nishi-juhatchome"
+    },
+    {
+      "id": "T08",
+      "number": "08",
+      "name_jp": "西11丁目",
+      "kana": "にしじゅういっちょうめ",
+      "name_en": "Nishi-juitchome",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Nishi-juitchome"
+    },
+    {
+      "id": "T09",
+      "number": "09",
+      "name_jp": "大通",
+      "kana": "おおどおり",
+      "name_en": "Odori",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Odori"
+    },
+    {
+      "id": "T10",
+      "number": "10",
+      "name_jp": "バスセンター前",
+      "kana": "ばすせんたーまえ",
+      "name_en": "Bus Center-mae",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.BusCenter-mae"
+    },
+    {
+      "id": "T11",
+      "number": "11",
+      "name_jp": "菊水",
+      "kana": "きくすい",
+      "name_en": "Kikusui",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Kikusui"
+    },
+    {
+      "id": "T12",
+      "number": "12",
+      "name_jp": "東札幌",
+      "kana": "ひがしさっぽろ",
+      "name_en": "Higashi-sapporo",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Higashi-sapporo"
+    },
+    {
+      "id": "T13",
+      "number": "13",
+      "name_jp": "白石",
+      "kana": "しろいし",
+      "name_en": "Shiroishi",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Shiroishi"
+    },
+    {
+      "id": "T14",
+      "number": "14",
+      "name_jp": "南郷7丁目",
+      "kana": "なんごうななちょうめ",
+      "name_en": "Nango-nanachome",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Nango-nanachome"
+    },
+    {
+      "id": "T15",
+      "number": "15",
+      "name_jp": "南郷13丁目",
+      "kana": "なんごうじゅうさんちょうめ",
+      "name_en": "Nango-jusanchome",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Nango-jusanchome"
+    },
+    {
+      "id": "T16",
+      "number": "16",
+      "name_jp": "南郷18丁目",
+      "kana": "なんごうじゅうはっちょうめ",
+      "name_en": "Nango-juhatchome",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Nango-juhatchome"
+    },
+    {
+      "id": "T17",
+      "number": "17",
+      "name_jp": "大谷地",
+      "kana": "おおやち",
+      "name_en": "Oyachi",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Oyachi"
+    },
+    {
+      "id": "T18",
+      "number": "18",
+      "name_jp": "ひばりが丘",
+      "kana": "ひばりがおか",
+      "name_en": "Hibarigaoka",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Hibarigaoka"
+    },
+    {
+      "id": "T19",
+      "number": "19",
+      "name_jp": "新さっぽろ",
+      "kana": "しんさっぽろ",
+      "name_en": "Shin-sapporo",
+      "odpt_station": "odpt.Station:Sapporo.Tozai.Shin-sapporo"
+    }
+  ],
+  "timetable": {
+    "first_train": "06:00",
+    "last_train": "00:00",
+    "headway_min": {
+      "weekday": {
+        "5": 12,
+        "6": 7,
+        "7": 4,
+        "8": 3,
+        "9": 5,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 5,
+        "17": 4,
+        "18": 4,
+        "19": 5,
+        "20": 6,
+        "21": 7,
+        "22": 8,
+        "23": 10,
+        "0": 12,
+        "1": 12
+      },
+      "holiday": {
+        "5": 12,
+        "6": 8,
+        "7": 6,
+        "8": 5,
+        "9": 6,
+        "10": 7,
+        "11": 7,
+        "12": 7,
+        "13": 7,
+        "14": 7,
+        "15": 7,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 7,
+        "20": 8,
+        "21": 9,
+        "22": 10,
+        "23": 12,
+        "0": 12,
+        "1": 12
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "宮の沢方面",
+        "via_jp": "宮の沢方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "新さっぽろ方面",
+        "via_jp": "新さっぽろ方面",
+        "track": "2"
+      }
+    ]
+  }
+}

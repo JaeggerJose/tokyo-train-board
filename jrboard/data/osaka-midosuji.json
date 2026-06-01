@@ -1,0 +1,244 @@
+{
+  "key": "osaka-midosuji",
+  "name_jp": "御堂筋線",
+  "name_en": "Midosuji Line",
+  "city": "Osaka",
+  "symbol": "M",
+  "color": {
+    "name": "御堂筋線 / red",
+    "hex": "#E5171F",
+    "ansi_fg": "\u001b[38;2;229;23;31m",
+    "ansi_bg": "\u001b[48;2;229;23;31m\u001b[38;2;255;255;255m"
+  },
+  "operator": "OsakaMetro",
+  "odpt_railway": "odpt.Railway:OsakaMetro.Midosuji",
+  "loop": false,
+  "stations": [
+    {
+      "id": "M11",
+      "number": "11",
+      "name_jp": "江坂",
+      "kana": "えさか",
+      "name_en": "Esaka",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Esaka"
+    },
+    {
+      "id": "M12",
+      "number": "12",
+      "name_jp": "東三国",
+      "kana": "ひがしみくに",
+      "name_en": "Higashi-mikuni",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Higashimikuni"
+    },
+    {
+      "id": "M13",
+      "number": "13",
+      "name_jp": "新大阪",
+      "kana": "しんおおさか",
+      "name_en": "Shin-Osaka",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.ShinOsaka"
+    },
+    {
+      "id": "M14",
+      "number": "14",
+      "name_jp": "西中島南方",
+      "kana": "にしなかじまみなみがた",
+      "name_en": "Nishinakajima-minamigata",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.NishinakajimaMinamigata"
+    },
+    {
+      "id": "M15",
+      "number": "15",
+      "name_jp": "中津",
+      "kana": "なかつ",
+      "name_en": "Nakatsu",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Nakatsu"
+    },
+    {
+      "id": "M16",
+      "number": "16",
+      "name_jp": "梅田",
+      "kana": "うめだ",
+      "name_en": "Umeda",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Umeda"
+    },
+    {
+      "id": "M17",
+      "number": "17",
+      "name_jp": "淀屋橋",
+      "kana": "よどやばし",
+      "name_en": "Yodoyabashi",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Yodoyabashi"
+    },
+    {
+      "id": "M18",
+      "number": "18",
+      "name_jp": "本町",
+      "kana": "ほんまち",
+      "name_en": "Hommachi",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Hommachi"
+    },
+    {
+      "id": "M19",
+      "number": "19",
+      "name_jp": "心斎橋",
+      "kana": "しんさいばし",
+      "name_en": "Shinsaibashi",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Shinsaibashi"
+    },
+    {
+      "id": "M20",
+      "number": "20",
+      "name_jp": "難波",
+      "kana": "なんば",
+      "name_en": "Namba",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Namba"
+    },
+    {
+      "id": "M21",
+      "number": "21",
+      "name_jp": "大国町",
+      "kana": "だいこくちょう",
+      "name_en": "Daikokucho",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Daikokucho"
+    },
+    {
+      "id": "M22",
+      "number": "22",
+      "name_jp": "動物園前",
+      "kana": "どうぶつえんまえ",
+      "name_en": "Dobutsuen-mae",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Dobutsuemmae"
+    },
+    {
+      "id": "M23",
+      "number": "23",
+      "name_jp": "天王寺",
+      "kana": "てんのうじ",
+      "name_en": "Tennoji",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Tennoji"
+    },
+    {
+      "id": "M24",
+      "number": "24",
+      "name_jp": "昭和町",
+      "kana": "しょうわちょう",
+      "name_en": "Showacho",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Showacho"
+    },
+    {
+      "id": "M25",
+      "number": "25",
+      "name_jp": "西田辺",
+      "kana": "にしたなべ",
+      "name_en": "Nishitanabe",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Nishitanabe"
+    },
+    {
+      "id": "M26",
+      "number": "26",
+      "name_jp": "長居",
+      "kana": "ながい",
+      "name_en": "Nagai",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Nagai"
+    },
+    {
+      "id": "M27",
+      "number": "27",
+      "name_jp": "あびこ",
+      "kana": "あびこ",
+      "name_en": "Abiko",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Abiko"
+    },
+    {
+      "id": "M28",
+      "number": "28",
+      "name_jp": "北花田",
+      "kana": "きたはなだ",
+      "name_en": "Kita-hanada",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Kitahanada"
+    },
+    {
+      "id": "M29",
+      "number": "29",
+      "name_jp": "新金岡",
+      "kana": "しんかなおか",
+      "name_en": "Shin-kanaoka",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Shinkanaoka"
+    },
+    {
+      "id": "M30",
+      "number": "30",
+      "name_jp": "なかもず",
+      "kana": "なかもず",
+      "name_en": "Nakamozu",
+      "odpt_station": "odpt.Station:OsakaMetro.Midosuji.Nakamozu"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:00",
+    "last_train": "00:20",
+    "headway_min": {
+      "weekday": {
+        "5": 8,
+        "6": 5,
+        "7": 3,
+        "8": 3,
+        "9": 4,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 4,
+        "18": 4,
+        "19": 4,
+        "20": 5,
+        "21": 6,
+        "22": 7,
+        "23": 8,
+        "0": 10,
+        "1": 0
+      },
+      "holiday": {
+        "5": 9,
+        "6": 7,
+        "7": 6,
+        "8": 5,
+        "9": 5,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 5,
+        "18": 5,
+        "19": 6,
+        "20": 6,
+        "21": 7,
+        "22": 8,
+        "23": 9,
+        "0": 10,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "千里中央・江坂方面",
+        "via_jp": "千里中央・江坂方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "なかもず方面",
+        "via_jp": "なかもず方面",
+        "track": "2"
+      }
+    ]
+  }
+}

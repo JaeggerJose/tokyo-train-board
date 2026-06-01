@@ -39,6 +39,19 @@ OFFICIAL: dict[str, tuple[str, str]] = {
     "mita":           ("#0079C2", "ブルー / blue"),
     "shinjuku":       ("#B0BF1E", "リーフ / leaf-green"),
     "oedo":           ("#B6007A", "マゼンタ / magenta"),
+    # --- Osaka ---
+    "osaka-midosuji":  ("#E5171F", "御堂筋線 / red"),
+    "osaka-tanimachi": ("#522886", "谷町線 / purple"),
+    "osaka-loop":      ("#FF3300", "大阪環状線 / red"),
+    # --- Kyoto ---
+    "kyoto-karasuma":  ("#009A41", "烏丸線 / green"),
+    "kyoto-tozai":     ("#C9171E", "東西線 / vermilion"),
+    # --- Sapporo ---
+    "sapporo-namboku": ("#00984B", "南北線 / green"),
+    "sapporo-tozai":   ("#F39700", "東西線 / orange"),
+    "sapporo-toho":    ("#0099CE", "東豊線 / sky blue"),
+    # --- Otaru ---
+    "otaru-hakodate":  ("#8FC31F", "函館本線 / yellow-green"),
 }
 
 # Contrasting foregrounds for the badge background block.

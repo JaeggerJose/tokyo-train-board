@@ -55,6 +55,7 @@ class Line:
     last_train: str
     headway_min: dict
     directions: tuple[Direction, ...]
+    city: str = "Tokyo"
 
 
 def data_dir() -> str:
@@ -149,6 +150,7 @@ def _build_line(data: Mapping[str, Any], source: str) -> Line:
         last_train=str(_require(timetable, "last_train", source)),
         headway_min=dict(headway),
         directions=directions,
+        city=str(data.get("city", "Tokyo")),
     )
 
 

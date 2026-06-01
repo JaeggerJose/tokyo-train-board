@@ -163,6 +163,14 @@ def _build_parser(config: Config) -> argparse.ArgumentParser:
         help="List available lines and their stations, then exit.",
     )
     parser.add_argument(
+        "--city",
+        default=None,
+        help=(
+            "Filter to a city (e.g. Tokyo, Osaka, Kyoto, Sapporo, Otaru): "
+            "scopes --list and the --rotate random tour."
+        ),
+    )
+    parser.add_argument(
         "--width",
         type=int,
         default=config.width,
@@ -264,23 +272,41 @@ def _print_lines(lines: Sequence[str]) -> None:
     sys.stdout.flush()
 
 
-def _list_lines() -> int:
-    """Print available lines and their stations; return an exit code."""
+def _list_lines(city_filter: Optional[str] = None) -> int:
+    """Print available lines grouped by city; return an exit code."""
     keys = available_lines()
     if not keys:
         print("No line data found.", file=sys.stderr)
         return 1
+
+    groups: dict[str, list[Line]] = {}
     for key in keys:
         try:
             line = load_line(key)
         except ValueError as exc:
             print(f"  ({key}: failed to load: {exc})", file=sys.stderr)
             continue
-        loop = "loop" if line.loop else "linear"
-        print(f"{line.symbol}  {line.key}  ({line.name_jp} / {line.name_en}) "
-              f"[{loop}, {len(line.stations)} stations]")
-        for st in line.stations:
-            print(f"    {st.number:>3}  {st.name_en:<20} {st.name_jp}")
+        groups.setdefault(line.city, []).append(line)
+
+    # Tokyo first (the original network), then the rest alphabetically.
+    cities = sorted(groups, key=lambda c: (c != "Tokyo", c))
+    if city_filter:
+        want = city_filter.strip().lower()
+        cities = [c for c in cities if c.lower() == want]
+        if not cities:
+            available = ", ".join(sorted(groups))
+            print(f"jrboard: no city matching '{city_filter}'. "
+                  f"Available: {available}", file=sys.stderr)
+            return 2
+
+    for city in cities:
+        print(f"\n== {city} ==")
+        for line in groups[city]:
+            loop = "loop" if line.loop else "linear"
+            print(f"{line.symbol}  {line.key}  ({line.name_jp} / {line.name_en}) "
+                  f"[{loop}, {len(line.stations)} stations]")
+            for st in line.stations:
+                print(f"    {st.number:>3}  {st.name_en:<20} {st.name_jp}")
     return 0
 
 
@@ -331,11 +357,23 @@ def _departures_for(
     return get_departures(line, station, now, limit)
 
 
-def _random_target() -> tuple[Optional[Line], Optional[Station]]:
-    """Pick a random (line, station) across the whole network, or (None, None)."""
+def _random_target(
+    city: Optional[str] = None,
+) -> tuple[Optional[Line], Optional[Station]]:
+    """Pick a random (line, station), optionally scoped to ``city``."""
     keys = available_lines()
     if not keys:
         return None, None
+    if city:
+        want = city.strip().lower()
+        scoped: list[str] = []
+        for key in keys:
+            try:
+                if load_line(key).city.lower() == want:
+                    scoped.append(key)
+            except (ValueError, TypeError):
+                continue
+        keys = scoped or keys
     try:
         line = load_line(random.choice(keys))
     except (ValueError, TypeError):
@@ -363,7 +401,7 @@ def _run_board(args: argparse.Namespace, line: Line, station: Station) -> int:
         while True:
             # Screensaver tour: jump to a random line/station when due.
             if next_rotate is not None and time.monotonic() >= next_rotate:
-                rline, rstation = _random_target()
+                rline, rstation = _random_target(getattr(args, "city", None))
                 if rline is not None and rstation is not None:
                     line, station = rline, rstation
                 next_rotate = time.monotonic() + rotate_secs
@@ -521,7 +559,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     if args.list_lines:
-        return _list_lines()
+        return _list_lines(args.city)
 
     # --tui: hand the whole terminal to curses (never inside a curses session).
     if args.tui:

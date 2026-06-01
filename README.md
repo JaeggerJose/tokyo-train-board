@@ -158,6 +158,22 @@ jrboard --tui
 
 > `--line shinjuku` 指的是**都營新宿線**（地鐵）；JR 線各有獨立 key（`chuo`/`sobu`/…）。
 
+### 🌏 其他城市（京都／大阪／札幌／小樽）
+
+用 `--city` 篩選城市：`python3 main.py --list --city Osaka`；`--rotate --city Osaka` 只在大阪境內隨機巡迴。
+
+| key | 城市 | 路線 | 站數 |
+|------|:----:|------|:----:|
+| `osaka-loop` | 大阪 | JR 大阪環狀線（環狀）| 19 |
+| `osaka-midosuji` | 大阪 | 御堂筋線 | 20 |
+| `osaka-tanimachi` | 大阪 | 谷町線 | 26 |
+| `kyoto-karasuma` | 京都 | 烏丸線 | 15 |
+| `kyoto-tozai` | 京都 | 東西線 | 17 |
+| `sapporo-namboku` | 札幌 | 南北線 | 16 |
+| `sapporo-tozai` | 札幌 | 東西線 | 19 |
+| `sapporo-toho` | 札幌 | 東豊線 | 14 |
+| `otaru-hakodate` | 小樽 | JR 函館本線（小樽—札幌）| 15 |
+
 ---
 
 ## 🛰️ 接 ODPT 即時資料
