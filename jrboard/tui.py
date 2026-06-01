@@ -57,6 +57,8 @@ __all__ = [
     "FilterState",
     "rgb_to_xterm256",
     "parse_ansi_runs",
+    "order_by_city",
+    "grouped_display_rows",
 ]
 
 # Periodic re-render cadence (ms) when idle; faster cadence while animating.
@@ -167,6 +169,59 @@ def line_labels(keys: Sequence[str]) -> dict[str, str]:
         except (ValueError, TypeError):
             continue
     return labels
+
+
+def line_cities(keys: Sequence[str]) -> dict[str, str]:
+    """Build a ``{key: city}`` map (defaults to ``"Tokyo"`` on load failure)."""
+    out: dict[str, str] = {}
+    for key in keys:
+        try:
+            out[key] = load_line(key).city
+        except (ValueError, TypeError):
+            out[key] = "Tokyo"
+    return out
+
+
+def line_symbols(keys: Sequence[str]) -> dict[str, str]:
+    """Build a ``{key: line symbol}`` map (e.g. ``JY``) for compact display."""
+    out: dict[str, str] = {}
+    for key in keys:
+        try:
+            out[key] = load_line(key).symbol
+        except (ValueError, TypeError):
+            out[key] = key[:2].upper()
+    return out
+
+
+def order_by_city(keys: Sequence[str], cities: dict[str, str]) -> tuple[str, ...]:
+    """Order keys so a city's lines are contiguous; Tokyo first, then A-Z.
+
+    Stable sort keeps each city's lines in their original (file) order.
+    """
+    return tuple(
+        sorted(keys, key=lambda k: (cities.get(k, "Tokyo") != "Tokyo", cities.get(k, "Tokyo")))
+    )
+
+
+def grouped_display_rows(
+    view: Sequence[str],
+    cities: dict[str, str],
+) -> list[tuple]:
+    """Interleave city headers into the line ``view`` for display.
+
+    Returns a list of either ``("header", city)`` or ``("line", key, index)``
+    where ``index`` is the position of the line within ``view`` (the value the
+    selection cursor uses). Pure -- unit-tested.
+    """
+    rows: list[tuple] = []
+    last: Optional[str] = None
+    for i, key in enumerate(view):
+        city = cities.get(key, "Tokyo")
+        if city != last:
+            rows.append(("header", city))
+            last = city
+        rows.append(("line", key, i))
+    return rows
 
 
 def rgb_to_xterm256(r: int, g: int, b: int) -> int:
@@ -384,6 +439,8 @@ class _TuiState:
 
     keys: tuple[str, ...]
     labels: dict[str, str]
+    cities: dict[str, str]
+    symbols: dict[str, str]
     selected: int
     filtering: bool
     query: str
@@ -442,15 +499,29 @@ def _draw_list(
     _safe_addstr(win, 0, 0, header[:pal_width].ljust(pal_width), curses.A_BOLD)
 
     body_rows = max(height - 1, 1)
-    top = selected - body_rows + 1 if selected >= body_rows else 0
+    display = grouped_display_rows(view, state.cities)
+
+    # Scroll so the selected line's display row (counting headers) stays visible.
+    sel_disp = next(
+        (di for di, item in enumerate(display)
+         if item[0] == "line" and item[2] == selected),
+        0,
+    )
+    top = sel_disp - body_rows + 1 if sel_disp >= body_rows else 0
 
     fav_keys = {lk for lk, _ in state.favorites}
     for row in range(body_rows):
-        idx = top + row
-        if idx >= len(view):
+        di = top + row
+        if di >= len(display):
             break
-        key = view[idx]
-        symbol = key[:2].upper()
+        item = display[di]
+        y = row + 1
+        if item[0] == "header":
+            text = f"─ {item[1]} "[:pal_width].ljust(pal_width, "─")
+            _safe_addstr(win, y, 0, text, curses.A_BOLD | curses.A_DIM)
+            continue
+        key, idx = item[1], item[2]
+        symbol = state.symbols.get(key, key[:2].upper())
         label = state.labels.get(key, key)
         star = "*" if key in fav_keys else " "
         text = f"{star}{symbol} {label}"[:pal_width].ljust(pal_width)
@@ -458,7 +529,7 @@ def _draw_list(
         attr = colors.attr(_line_color_idx(key), None)
         if idx == selected:
             attr |= curses.A_REVERSE
-        _safe_addstr(win, row + 1, 0, text, attr)
+        _safe_addstr(win, y, 0, text, attr)
 
 
 def _draw_board_rows(
@@ -597,12 +668,17 @@ def _handle_key(state: _TuiState, key: int) -> tuple[_TuiState, bool]:
 
 
 def _initial_state(config: Config, line_key: str, station_key: str) -> _TuiState:
-    keys = tuple(available_lines())
+    raw_keys = tuple(available_lines())
+    cities = line_cities(raw_keys)
+    keys = order_by_city(raw_keys, cities)  # group lines by city in the list
     labels = line_labels(keys)
+    symbols = line_symbols(keys)
     selected = keys.index(line_key) if line_key in keys else 0
     return _TuiState(
         keys=keys,
         labels=labels,
+        cities=cities,
+        symbols=symbols,
         selected=selected,
         filtering=False,
         query="",
