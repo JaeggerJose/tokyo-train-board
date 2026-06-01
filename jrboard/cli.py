@@ -43,6 +43,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import random
 import shutil
 import sys
 import time
@@ -142,6 +143,18 @@ def _build_parser(config: Config) -> argparse.ArgumentParser:
         type=float,
         default=10.0,
         help="Seconds between board refreshes (default: 10).",
+    )
+    parser.add_argument(
+        "--rotate",
+        type=float,
+        nargs="?",
+        const=5.0,
+        default=None,
+        metavar="MIN",
+        help=(
+            "Board mode: every MIN minutes (default 5) jump to a RANDOM line "
+            "and station — a screensaver-style tour of the whole network."
+        ),
     )
     parser.add_argument(
         "--list",
@@ -318,12 +331,29 @@ def _departures_for(
     return get_departures(line, station, now, limit)
 
 
+def _random_target() -> tuple[Optional[Line], Optional[Station]]:
+    """Pick a random (line, station) across the whole network, or (None, None)."""
+    keys = available_lines()
+    if not keys:
+        return None, None
+    try:
+        line = load_line(random.choice(keys))
+    except (ValueError, TypeError):
+        return None, None
+    if not line.stations:
+        return line, None
+    return line, random.choice(line.stations)
+
+
 def _run_board(args: argparse.Namespace, line: Line, station: Station) -> int:
     width = args.width
     interval = max(args.interval, 0.5)
     use_flap = not args.no_flap
     seed = 0
     feed_ics = getattr(args, "feed_ics", None)
+    rotate_min = getattr(args, "rotate", None)
+    rotate_secs = rotate_min * 60 if rotate_min and rotate_min > 0 else None
+    next_rotate = time.monotonic() + rotate_secs if rotate_secs else None
     hide_cursor = sys.stdout.isatty()
 
     if hide_cursor:
@@ -331,6 +361,13 @@ def _run_board(args: argparse.Namespace, line: Line, station: Station) -> int:
         sys.stdout.flush()
     try:
         while True:
+            # Screensaver tour: jump to a random line/station when due.
+            if next_rotate is not None and time.monotonic() >= next_rotate:
+                rline, rstation = _random_target()
+                if rline is not None and rstation is not None:
+                    line, station = rline, rstation
+                next_rotate = time.monotonic() + rotate_secs
+
             now = datetime.now()
             departures, label = _departures_for(
                 line, station, now, 6, feed_ics

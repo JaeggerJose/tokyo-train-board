@@ -112,6 +112,19 @@ def _is_holiday(now: datetime) -> bool:
     return now.weekday() >= 5
 
 
+def _station_phase(line: Line, station: Station) -> int:
+    """Minutes a train lags the line origin by the time it reaches ``station``.
+
+    Approximated as the station's 0-based position along the line (~1 min per
+    hop). Used to shift the generated grid so each station shows DIFFERENT
+    times — without it every station on a line would display an identical board.
+    """
+    for index, stn in enumerate(line.stations):
+        if stn.id == station.id:
+            return index
+    return 0
+
+
 class StaticSource:
     """Builds a believable departure list from ``Line.headway_min``.
 
@@ -138,11 +151,16 @@ class StaticSource:
         now_min = _minutes_since_midnight(now)
         horizon_min = now_min + self._HORIZON_MIN
 
+        # Per-station phase so adjacent stations show different times. A train
+        # reaches station i ``phase`` minutes after the line origin, so the
+        # arrivals visible at station i are the origin grid shifted by +phase.
+        phase = _station_phase(line, station)
+
         candidates: list[Departure] = []
         for direction in directions:
             candidates.extend(
                 self._direction_departures(
-                    table, direction, now_min, horizon_min
+                    table, direction, now_min, horizon_min, phase
                 )
             )
 
@@ -167,17 +185,23 @@ class StaticSource:
         direction: Direction,
         now_min: int,
         horizon_min: int,
+        phase_min: int = 0,
     ) -> list[Departure]:
+        # Generate in the line-origin "reference" window [now-phase, horizon-phase]
+        # and display each slot shifted by +phase. This keeps displayed times in
+        # [now, horizon] (future-only) while differing per station.
         out: list[Departure] = []
-        gap = self._gap_for_hour(table, (now_min // 60) % 24)
-        cursor = self._first_slot(now_min, gap)
+        ref_now = now_min - phase_min
+        gap = self._gap_for_hour(table, (ref_now // 60) % 24)
+        cursor = self._first_slot(ref_now, gap)
 
         for _ in range(self._GUARD_ITERATIONS):
-            if cursor > horizon_min:
+            display = cursor + phase_min
+            if display > horizon_min:
                 break
             out.append(
                 Departure(
-                    time=_format_hhmm(cursor),
+                    time=_format_hhmm(display),
                     kind_jp=DEFAULT_KIND_JP,
                     dest_jp=direction.via_jp or direction.name_jp,
                     track=direction.track,
