@@ -1,0 +1,204 @@
+{
+  "key": "otaru-hakodate",
+  "name_jp": "函館本線 (小樽—札幌)",
+  "name_en": "Hakodate Main Line (Otaru-Sapporo)",
+  "city": "Otaru",
+  "symbol": "H",
+  "color": {
+    "name": "函館本線 / yellow-green",
+    "hex": "#8FC31F",
+    "ansi_fg": "\u001b[38;2;143;195;31m",
+    "ansi_bg": "\u001b[48;2;143;195;31m\u001b[38;2;26;26;26m"
+  },
+  "operator": "JR-Hokkaido",
+  "odpt_railway": "odpt.Railway:JR-Hokkaido.Hakodate",
+  "loop": false,
+  "stations": [
+    {
+      "id": "H01",
+      "number": "01",
+      "name_jp": "小樽",
+      "kana": "おたる",
+      "name_en": "Otaru",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.Otaru"
+    },
+    {
+      "id": "H02",
+      "number": "02",
+      "name_jp": "南小樽",
+      "kana": "みなみおたる",
+      "name_en": "Minami-Otaru",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.MinamiOtaru"
+    },
+    {
+      "id": "H03",
+      "number": "03",
+      "name_jp": "小樽築港",
+      "kana": "おたるちっこう",
+      "name_en": "Otaru-Chikko",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.OtaruChikko"
+    },
+    {
+      "id": "H04",
+      "number": "04",
+      "name_jp": "朝里",
+      "kana": "あさり",
+      "name_en": "Asari",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.Asari"
+    },
+    {
+      "id": "H05",
+      "number": "05",
+      "name_jp": "銭函",
+      "kana": "ぜにばこ",
+      "name_en": "Zenibako",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.Zenibako"
+    },
+    {
+      "id": "H06",
+      "number": "06",
+      "name_jp": "ほしみ",
+      "kana": "ほしみ",
+      "name_en": "Hoshimi",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.Hoshimi"
+    },
+    {
+      "id": "H07",
+      "number": "07",
+      "name_jp": "星置",
+      "kana": "ほしおき",
+      "name_en": "Hoshioki",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.Hoshioki"
+    },
+    {
+      "id": "H08",
+      "number": "08",
+      "name_jp": "稲穂",
+      "kana": "いなほ",
+      "name_en": "Inaho",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.Inaho"
+    },
+    {
+      "id": "H09",
+      "number": "09",
+      "name_jp": "手稲",
+      "kana": "ていね",
+      "name_en": "Teine",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.Teine"
+    },
+    {
+      "id": "H10",
+      "number": "10",
+      "name_jp": "稲積公園",
+      "kana": "いなづみこうえん",
+      "name_en": "Inazumikoen",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.Inazumikoen"
+    },
+    {
+      "id": "H11",
+      "number": "11",
+      "name_jp": "発寒",
+      "kana": "はっさむ",
+      "name_en": "Hassamu",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.Hassamu"
+    },
+    {
+      "id": "H12",
+      "number": "12",
+      "name_jp": "発寒中央",
+      "kana": "はっさむちゅうおう",
+      "name_en": "Hassamu-Chuo",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.HassamuChuo"
+    },
+    {
+      "id": "H13",
+      "number": "13",
+      "name_jp": "琴似",
+      "kana": "ことに",
+      "name_en": "Kotoni",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.Kotoni"
+    },
+    {
+      "id": "H14",
+      "number": "14",
+      "name_jp": "桑園",
+      "kana": "そうえん",
+      "name_en": "Soen",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.Soen"
+    },
+    {
+      "id": "H15",
+      "number": "15",
+      "name_jp": "札幌",
+      "kana": "さっぽろ",
+      "name_en": "Sapporo",
+      "odpt_station": "odpt.Station:JR-Hokkaido.Hakodate.Sapporo"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:14",
+    "last_train": "23:53",
+    "headway_min": {
+      "weekday": {
+        "5": 20,
+        "6": 12,
+        "7": 8,
+        "8": 8,
+        "9": 12,
+        "10": 15,
+        "11": 15,
+        "12": 15,
+        "13": 15,
+        "14": 15,
+        "15": 13,
+        "16": 12,
+        "17": 9,
+        "18": 9,
+        "19": 12,
+        "20": 14,
+        "21": 15,
+        "22": 18,
+        "23": 20,
+        "0": 30,
+        "1": 30
+      },
+      "holiday": {
+        "5": 20,
+        "6": 15,
+        "7": 12,
+        "8": 12,
+        "9": 14,
+        "10": 15,
+        "11": 15,
+        "12": 15,
+        "13": 15,
+        "14": 15,
+        "15": 15,
+        "16": 14,
+        "17": 13,
+        "18": 13,
+        "19": 14,
+        "20": 15,
+        "21": 17,
+        "22": 18,
+        "23": 20,
+        "0": 30,
+        "1": 30
+      }
+    },
+    "directions": [
+      {
+        "id": "otaru",
+        "name_jp": "小樽方面",
+        "via_jp": "小樽方面",
+        "track": "1"
+      },
+      {
+        "id": "sapporo",
+        "name_jp": "札幌方面",
+        "via_jp": "札幌方面",
+        "track": "2"
+      }
+    ]
+  }
+}

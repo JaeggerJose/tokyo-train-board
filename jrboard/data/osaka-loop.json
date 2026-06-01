@@ -1,0 +1,236 @@
+{
+  "key": "osaka-loop",
+  "name_jp": "大阪環状線",
+  "name_en": "Osaka Loop Line",
+  "city": "Osaka",
+  "symbol": "O",
+  "color": {
+    "name": "大阪環状線 / red",
+    "hex": "#FF3300",
+    "ansi_fg": "\u001b[38;2;255;51;0m",
+    "ansi_bg": "\u001b[48;2;255;51;0m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-West",
+  "odpt_railway": "odpt.Railway:JR-West.OsakaLoopLine",
+  "loop": true,
+  "stations": [
+    {
+      "id": "O11",
+      "number": "11",
+      "name_jp": "大阪",
+      "kana": "おおさか",
+      "name_en": "Osaka",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Osaka"
+    },
+    {
+      "id": "O12",
+      "number": "12",
+      "name_jp": "天満",
+      "kana": "てんま",
+      "name_en": "Temma",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Temma"
+    },
+    {
+      "id": "O13",
+      "number": "13",
+      "name_jp": "桜ノ宮",
+      "kana": "さくらのみや",
+      "name_en": "Sakuranomiya",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Sakuranomiya"
+    },
+    {
+      "id": "O14",
+      "number": "14",
+      "name_jp": "京橋",
+      "kana": "きょうばし",
+      "name_en": "Kyobashi",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Kyobashi"
+    },
+    {
+      "id": "O15",
+      "number": "15",
+      "name_jp": "大阪城公園",
+      "kana": "おおさかじょうこうえん",
+      "name_en": "Osakajokoen",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Osakajokoen"
+    },
+    {
+      "id": "O16",
+      "number": "16",
+      "name_jp": "森ノ宮",
+      "kana": "もりのみや",
+      "name_en": "Morinomiya",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Morinomiya"
+    },
+    {
+      "id": "O17",
+      "number": "17",
+      "name_jp": "玉造",
+      "kana": "たまつくり",
+      "name_en": "Tamatsukuri",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Tamatsukuri"
+    },
+    {
+      "id": "O18",
+      "number": "18",
+      "name_jp": "鶴橋",
+      "kana": "つるはし",
+      "name_en": "Tsuruhashi",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Tsuruhashi"
+    },
+    {
+      "id": "O19",
+      "number": "19",
+      "name_jp": "桃谷",
+      "kana": "ももだに",
+      "name_en": "Momodani",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Momodani"
+    },
+    {
+      "id": "O20",
+      "number": "20",
+      "name_jp": "寺田町",
+      "kana": "てらだちょう",
+      "name_en": "Teradacho",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Teradacho"
+    },
+    {
+      "id": "O01",
+      "number": "01",
+      "name_jp": "天王寺",
+      "kana": "てんのうじ",
+      "name_en": "Tennoji",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Tennoji"
+    },
+    {
+      "id": "O02",
+      "number": "02",
+      "name_jp": "新今宮",
+      "kana": "しんいまみや",
+      "name_en": "Shin-Imamiya",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.ShinImamiya"
+    },
+    {
+      "id": "O03",
+      "number": "03",
+      "name_jp": "今宮",
+      "kana": "いまみや",
+      "name_en": "Imamiya",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Imamiya"
+    },
+    {
+      "id": "O04",
+      "number": "04",
+      "name_jp": "芦原橋",
+      "kana": "あしはらばし",
+      "name_en": "Ashiharabashi",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Ashiharabashi"
+    },
+    {
+      "id": "O05",
+      "number": "05",
+      "name_jp": "大正",
+      "kana": "たいしょう",
+      "name_en": "Taisho",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Taisho"
+    },
+    {
+      "id": "O06",
+      "number": "06",
+      "name_jp": "弁天町",
+      "kana": "べんてんちょう",
+      "name_en": "Bentencho",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Bentencho"
+    },
+    {
+      "id": "O07",
+      "number": "07",
+      "name_jp": "西九条",
+      "kana": "にしくじょう",
+      "name_en": "Nishikujo",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Nishikujo"
+    },
+    {
+      "id": "O08",
+      "number": "08",
+      "name_jp": "野田",
+      "kana": "のだ",
+      "name_en": "Noda",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Noda"
+    },
+    {
+      "id": "O09",
+      "number": "09",
+      "name_jp": "福島",
+      "kana": "ふくしま",
+      "name_en": "Fukushima",
+      "odpt_station": "odpt.Station:JR-West.OsakaLoopLine.Fukushima"
+    }
+  ],
+  "timetable": {
+    "first_train": "04:51",
+    "last_train": "00:30",
+    "headway_min": {
+      "weekday": {
+        "5": 8,
+        "6": 5,
+        "7": 4,
+        "8": 3,
+        "9": 4,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 4,
+        "17": 4,
+        "18": 4,
+        "19": 4,
+        "20": 5,
+        "21": 5,
+        "22": 6,
+        "23": 7,
+        "0": 10,
+        "1": 0
+      },
+      "holiday": {
+        "5": 9,
+        "6": 6,
+        "7": 5,
+        "8": 4,
+        "9": 5,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 5,
+        "18": 5,
+        "19": 5,
+        "20": 5,
+        "21": 6,
+        "22": 7,
+        "23": 8,
+        "0": 10,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "外回り",
+        "via_jp": "京橋・鶴橋方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "内回り",
+        "via_jp": "西九条・弁天町方面",
+        "track": "2"
+      }
+    ]
+  }
+}

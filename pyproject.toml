@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tokyo-train-board"
+version = "0.1.0"
+description = "Terminal split-flap (Solari) departure board for JR / Tokyo Metro / Toei lines."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "jrboard contributors" }]
+keywords = ["terminal", "tui", "ansi", "split-flap", "jr", "tokyo-metro", "timetable"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Terminals",
+]
+dependencies = []
+
+[project.optional-dependencies]
+live = ["requests"]
+
+[project.scripts]
+jrboard = "jrboard.cli:main"
+
+[tool.setuptools]
+packages = ["jrboard"]
+
+[tool.setuptools.package-data]
+jrboard = ["data/*.json"]

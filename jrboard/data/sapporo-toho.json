@@ -1,0 +1,196 @@
+{
+  "key": "sapporo-toho",
+  "name_jp": "札幌市営地下鉄東豊線",
+  "name_en": "Sapporo Municipal Subway Toho Line",
+  "city": "Sapporo",
+  "symbol": "H",
+  "color": {
+    "name": "東豊線 / sky blue",
+    "hex": "#0099CE",
+    "ansi_fg": "\u001b[38;2;0;153;206m",
+    "ansi_bg": "\u001b[48;2;0;153;206m\u001b[38;2;255;255;255m"
+  },
+  "operator": "Sapporo",
+  "odpt_railway": "odpt.Railway:Sapporo.Toho",
+  "loop": false,
+  "stations": [
+    {
+      "id": "H01",
+      "number": "01",
+      "name_jp": "栄町",
+      "kana": "さかえまち",
+      "name_en": "Sakaemachi",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Sakaemachi"
+    },
+    {
+      "id": "H02",
+      "number": "02",
+      "name_jp": "新道東",
+      "kana": "しんどうひがし",
+      "name_en": "Shindo-higashi",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Shindo-higashi"
+    },
+    {
+      "id": "H03",
+      "number": "03",
+      "name_jp": "元町",
+      "kana": "もとまち",
+      "name_en": "Motomachi",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Motomachi"
+    },
+    {
+      "id": "H04",
+      "number": "04",
+      "name_jp": "環状通東",
+      "kana": "かんじょうどおりひがし",
+      "name_en": "Kanjodori-higashi",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Kanjodori-higashi"
+    },
+    {
+      "id": "H05",
+      "number": "05",
+      "name_jp": "東区役所前",
+      "kana": "ひがしくやくしょまえ",
+      "name_en": "Higashi-kuyakusho-mae",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Higashi-kuyakusho-mae"
+    },
+    {
+      "id": "H06",
+      "number": "06",
+      "name_jp": "北13条東",
+      "kana": "きたじゅうさんじょうひがし",
+      "name_en": "Kita-jusanjo-higashi",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Kita-jusanjo-higashi"
+    },
+    {
+      "id": "H07",
+      "number": "07",
+      "name_jp": "さっぽろ",
+      "kana": "さっぽろ",
+      "name_en": "Sapporo",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Sapporo"
+    },
+    {
+      "id": "H08",
+      "number": "08",
+      "name_jp": "大通",
+      "kana": "おおどおり",
+      "name_en": "Odori",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Odori"
+    },
+    {
+      "id": "H09",
+      "number": "09",
+      "name_jp": "豊水すすきの",
+      "kana": "ほうすいすすきの",
+      "name_en": "Hosui-susukino",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Hosui-susukino"
+    },
+    {
+      "id": "H10",
+      "number": "10",
+      "name_jp": "学園前",
+      "kana": "がくえんまえ",
+      "name_en": "Gakuen-mae",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Gakuen-mae"
+    },
+    {
+      "id": "H11",
+      "number": "11",
+      "name_jp": "豊平公園",
+      "kana": "とよひらこうえん",
+      "name_en": "Toyohira-koen",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Toyohira-koen"
+    },
+    {
+      "id": "H12",
+      "number": "12",
+      "name_jp": "美園",
+      "kana": "みその",
+      "name_en": "Misono",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Misono"
+    },
+    {
+      "id": "H13",
+      "number": "13",
+      "name_jp": "月寒中央",
+      "kana": "つきさむちゅうおう",
+      "name_en": "Tsukisamu-chuo",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Tsukisamu-chuo"
+    },
+    {
+      "id": "H14",
+      "number": "14",
+      "name_jp": "福住",
+      "kana": "ふくずみ",
+      "name_en": "Fukuzumi",
+      "odpt_station": "odpt.Station:Sapporo.Toho.Fukuzumi"
+    }
+  ],
+  "timetable": {
+    "first_train": "06:00",
+    "last_train": "00:00",
+    "headway_min": {
+      "weekday": {
+        "5": 12,
+        "6": 7,
+        "7": 5,
+        "8": 4,
+        "9": 6,
+        "10": 7,
+        "11": 7,
+        "12": 7,
+        "13": 7,
+        "14": 7,
+        "15": 7,
+        "16": 6,
+        "17": 5,
+        "18": 5,
+        "19": 6,
+        "20": 7,
+        "21": 8,
+        "22": 9,
+        "23": 11,
+        "0": 12,
+        "1": 12
+      },
+      "holiday": {
+        "5": 12,
+        "6": 9,
+        "7": 7,
+        "8": 6,
+        "9": 7,
+        "10": 8,
+        "11": 8,
+        "12": 8,
+        "13": 8,
+        "14": 8,
+        "15": 8,
+        "16": 7,
+        "17": 7,
+        "18": 7,
+        "19": 8,
+        "20": 9,
+        "21": 10,
+        "22": 11,
+        "23": 12,
+        "0": 12,
+        "1": 12
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "栄町方面",
+        "via_jp": "栄町方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "福住方面",
+        "via_jp": "福住方面",
+        "track": "2"
+      }
+    ]
+  }
+}

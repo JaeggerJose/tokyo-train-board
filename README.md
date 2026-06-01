@@ -73,6 +73,65 @@ python3 main.py --mode statusline --line marunouchi --station tokyo --columns 70
 
 ---
 
+## 🧩 更多模式：TUI、番茄鐘、通勤守門員、行事曆
+
+除了站牌與跑馬燈，同一支 CLI 還提供四種附加模式（所有舊旗標行為不變，這些都是選用）。
+
+```bash
+# 互動式 curses 瀏覽器：左邊是「依城市分組」的路線清單（各線官方色，
+# j/k 移動、/ 模糊搜尋、h/l 切換站點、f 收藏、q 離開），右邊是即時彩色站牌
+# （切換線/站時會播翻牌動畫）
+python3 main.py --tui
+
+# 番茄鐘＝一趟電車旅程：把專注計時畫成從起點到終點的乘車。會在路線上
+# 自動挑兩站（或用 --from/--to 指定），先播翻牌動畫，之後每秒重繪，
+# 直到「とうちゃく」（抵達）。
+python3 main.py --pomodoro 25 --line yamanote
+python3 main.py --pomodoro 25 --line yamanote --from shinjuku --to tokyo
+python3 main.py --pomodoro 1 --line yamanote --once   # 只畫一格就結束
+
+# 通勤守門員：「我幾點要出門才趕得上下一班車？」需要在設定檔填
+# [commute] home/work（見下）。早上 → 家→公司，下午／晚上 → 公司→家。
+python3 main.py --commute                       # 完整站牌
+python3 main.py --commute --mode statusline     # 精簡單行
+
+# 行事曆來源：用本機 .ics 檔當作發車來源（標籤 AGENDA），把接下來的
+# 會議當成電車顯示，而非時刻表。
+python3 main.py --feed-ics ~/cal.ics --once
+python3 main.py --feed-ics ~/cal.ics --mode statusline --columns 70
+```
+
+### 設定檔
+
+設定讀自 `~/.config/jrboard/config.toml`（會尊重 `XDG_CONFIG_HOME`）。檔案缺失或格式錯誤會直接忽略——一律套用預設值，而 CLI 旗標永遠覆寫設定檔。
+
+```toml
+[board]
+line = "oedo"
+station = "tochomae"
+columns = 50
+width = 60
+flap_steps = 22
+flap_delay = 0.08
+
+[commute]
+home = ["yamanote", "shinjuku"]
+work = ["yamanote", "tokyo"]
+leave_buffer_min = 7      # 走到車站的緩衝分鐘數
+```
+
+在 TUI 中切換的收藏會存到 `~/.config/jrboard/favorites.txt`（每行一組 `line_key,station_key`）。
+
+### 安裝／進入點
+
+```bash
+pip install -e .        # 安裝 `jrboard` 命令列腳本
+jrboard --list          # 與 `python3 main.py` 相同的 CLI
+jrboard --tui
+```
+
+---
+
 ## 🚇 路線一覽（20 條）
 
 | 代碼 | `--line` key | 路線 | 站數 | 範例站 |
@@ -99,6 +158,25 @@ python3 main.py --mode statusline --line marunouchi --station tokyo --columns 70
 | E | `oedo` | 都営大江戸線 | 39 | `tochomae` |
 
 > `--line shinjuku` 指的是**都營新宿線**（地鐵）；JR 線各有獨立 key（`chuo`/`sobu`/…）。
+
+### 🌏 其他城市（京都／大阪／札幌／小樽）
+
+用 `--city` 篩選城市：`python3 main.py --list --city Osaka`；`--rotate --city Osaka` 只在大阪境內隨機巡迴。
+
+| key | 城市 | 路線 | 站數 |
+|------|:----:|------|:----:|
+| `osaka-loop` | 大阪 | JR 大阪環狀線（環狀）| 19 |
+| `osaka-midosuji` | 大阪 | 御堂筋線 | 20 |
+| `osaka-tanimachi` | 大阪 | 谷町線 | 26 |
+| `kyoto-karasuma` | 京都 | 地下鐵烏丸線 | 15 |
+| `kyoto-tozai` | 京都 | 地下鐵東西線 | 17 |
+| `kyoto-randen` | 京都 | 嵐電 嵐山本線（路面電車）| 13 |
+| `kyoto-sagano` | 京都 | JR 嵯峨野線（山陰本線）| 15 |
+| `kyoto-keihan` | 京都 | 京阪本線 | 42 |
+| `sapporo-namboku` | 札幌 | 南北線 | 16 |
+| `sapporo-tozai` | 札幌 | 東西線 | 19 |
+| `sapporo-toho` | 札幌 | 東豊線 | 14 |
+| `otaru-hakodate` | 小樽 | JR 函館本線（小樽—札幌）| 15 |
 
 ---
 

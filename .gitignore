@@ -6,4 +6,9 @@ venv/
 .venv/
 # local working docs / promo drafts (not for the public repo)
 PROMO.md
+IDEAS.md
 .pr_body.md
+# python build artifacts
+*.egg-info/
+build/
+dist/

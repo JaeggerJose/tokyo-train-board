@@ -1,0 +1,292 @@
+{
+  "key": "osaka-tanimachi",
+  "name_jp": "谷町線",
+  "name_en": "Tanimachi Line",
+  "city": "Osaka",
+  "symbol": "T",
+  "color": {
+    "name": "谷町線 / purple",
+    "hex": "#522886",
+    "ansi_fg": "\u001b[38;2;82;40;134m",
+    "ansi_bg": "\u001b[48;2;82;40;134m\u001b[38;2;255;255;255m"
+  },
+  "operator": "OsakaMetro",
+  "odpt_railway": "odpt.Railway:OsakaMetro.Tanimachi",
+  "loop": false,
+  "stations": [
+    {
+      "id": "T11",
+      "number": "11",
+      "name_jp": "大日",
+      "kana": "だいにち",
+      "name_en": "Dainichi",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Dainichi"
+    },
+    {
+      "id": "T12",
+      "number": "12",
+      "name_jp": "守口",
+      "kana": "もりぐち",
+      "name_en": "Moriguchi",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Moriguchi"
+    },
+    {
+      "id": "T13",
+      "number": "13",
+      "name_jp": "太子橋今市",
+      "kana": "たいしばしいまいち",
+      "name_en": "Taishibashi-imaichi",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Taishibashiimaichi"
+    },
+    {
+      "id": "T14",
+      "number": "14",
+      "name_jp": "千林大宮",
+      "kana": "せんばやしおおみや",
+      "name_en": "Senbayashi-omiya",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Senbayashiomiya"
+    },
+    {
+      "id": "T15",
+      "number": "15",
+      "name_jp": "関目高殿",
+      "kana": "せきめたかどの",
+      "name_en": "Sekime-takadono",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Sekimetakadono"
+    },
+    {
+      "id": "T16",
+      "number": "16",
+      "name_jp": "野江内代",
+      "kana": "のえうちんだい",
+      "name_en": "Noe-uchindai",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Noeuchindai"
+    },
+    {
+      "id": "T17",
+      "number": "17",
+      "name_jp": "都島",
+      "kana": "みやこじま",
+      "name_en": "Miyakojima",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Miyakojima"
+    },
+    {
+      "id": "T18",
+      "number": "18",
+      "name_jp": "天神橋筋六丁目",
+      "kana": "てんじんばしすじろくちょうめ",
+      "name_en": "Tenjimbashisuji-rokuchome",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Tenjimbashisujirokuchome"
+    },
+    {
+      "id": "T19",
+      "number": "19",
+      "name_jp": "中崎町",
+      "kana": "なかざきちょう",
+      "name_en": "Nakazakicho",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Nakazakicho"
+    },
+    {
+      "id": "T20",
+      "number": "20",
+      "name_jp": "東梅田",
+      "kana": "ひがしうめだ",
+      "name_en": "Higashi-umeda",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Higashiumeda"
+    },
+    {
+      "id": "T21",
+      "number": "21",
+      "name_jp": "南森町",
+      "kana": "みなみもりまち",
+      "name_en": "Minami-morimachi",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Minamimorimachi"
+    },
+    {
+      "id": "T22",
+      "number": "22",
+      "name_jp": "天満橋",
+      "kana": "てんまばし",
+      "name_en": "Temmabashi",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Temmabashi"
+    },
+    {
+      "id": "T23",
+      "number": "23",
+      "name_jp": "谷町四丁目",
+      "kana": "たにまちよんちょうめ",
+      "name_en": "Tanimachi 4-chome",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Tanimachi4chome"
+    },
+    {
+      "id": "T24",
+      "number": "24",
+      "name_jp": "谷町六丁目",
+      "kana": "たにまちろくちょうめ",
+      "name_en": "Tanimachi 6-chome",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Tanimachi6chome"
+    },
+    {
+      "id": "T25",
+      "number": "25",
+      "name_jp": "谷町九丁目",
+      "kana": "たにまちきゅうちょうめ",
+      "name_en": "Tanimachi 9-chome",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Tanimachi9chome"
+    },
+    {
+      "id": "T26",
+      "number": "26",
+      "name_jp": "四天王寺前夕陽ヶ丘",
+      "kana": "してんのうじまえゆうひがおか",
+      "name_en": "Shitennoji-mae Yuhigaoka",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.ShitennojimaeYuhigaoka"
+    },
+    {
+      "id": "T27",
+      "number": "27",
+      "name_jp": "天王寺",
+      "kana": "てんのうじ",
+      "name_en": "Tennoji",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Tennoji"
+    },
+    {
+      "id": "T28",
+      "number": "28",
+      "name_jp": "阿倍野",
+      "kana": "あべの",
+      "name_en": "Abeno",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Abeno"
+    },
+    {
+      "id": "T29",
+      "number": "29",
+      "name_jp": "文の里",
+      "kana": "ふみのさと",
+      "name_en": "Fuminosato",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Fuminosato"
+    },
+    {
+      "id": "T30",
+      "number": "30",
+      "name_jp": "田辺",
+      "kana": "たなべ",
+      "name_en": "Tanabe",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Tanabe"
+    },
+    {
+      "id": "T31",
+      "number": "31",
+      "name_jp": "駒川中野",
+      "kana": "こまがわなかの",
+      "name_en": "Komagawa-nakano",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Komagawanakano"
+    },
+    {
+      "id": "T32",
+      "number": "32",
+      "name_jp": "平野",
+      "kana": "ひらの",
+      "name_en": "Hirano",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Hirano"
+    },
+    {
+      "id": "T33",
+      "number": "33",
+      "name_jp": "喜連瓜破",
+      "kana": "きれうりわり",
+      "name_en": "Kire-uriwari",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Kireuriwari"
+    },
+    {
+      "id": "T34",
+      "number": "34",
+      "name_jp": "出戸",
+      "kana": "でと",
+      "name_en": "Deto",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Deto"
+    },
+    {
+      "id": "T35",
+      "number": "35",
+      "name_jp": "長原",
+      "kana": "ながはら",
+      "name_en": "Nagahara",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Nagahara"
+    },
+    {
+      "id": "T36",
+      "number": "36",
+      "name_jp": "八尾南",
+      "kana": "やおみなみ",
+      "name_en": "Yaominami",
+      "odpt_station": "odpt.Station:OsakaMetro.Tanimachi.Yaominami"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:01",
+    "last_train": "00:18",
+    "headway_min": {
+      "weekday": {
+        "5": 9,
+        "6": 6,
+        "7": 4,
+        "8": 4,
+        "9": 5,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 5,
+        "17": 5,
+        "18": 5,
+        "19": 5,
+        "20": 6,
+        "21": 7,
+        "22": 8,
+        "23": 9,
+        "0": 11,
+        "1": 0
+      },
+      "holiday": {
+        "5": 10,
+        "6": 8,
+        "7": 7,
+        "8": 6,
+        "9": 6,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 7,
+        "20": 7,
+        "21": 8,
+        "22": 9,
+        "23": 10,
+        "0": 11,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "大日方面",
+        "via_jp": "大日方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "八尾南方面",
+        "via_jp": "八尾南方面",
+        "track": "2"
+      }
+    ]
+  }
+}

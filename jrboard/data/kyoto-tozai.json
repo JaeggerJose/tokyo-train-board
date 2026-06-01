@@ -1,0 +1,220 @@
+{
+  "key": "kyoto-tozai",
+  "name_jp": "京都市営地下鉄東西線",
+  "name_en": "Kyoto Municipal Subway Tozai Line",
+  "city": "Kyoto",
+  "symbol": "T",
+  "color": {
+    "name": "東西線 / vermilion",
+    "hex": "#C9171E",
+    "ansi_fg": "\u001b[38;2;201;23;30m",
+    "ansi_bg": "\u001b[48;2;201;23;30m\u001b[38;2;255;255;255m"
+  },
+  "operator": "Kyoto",
+  "odpt_railway": "odpt.Railway:Kyoto.Tozai",
+  "loop": false,
+  "stations": [
+    {
+      "id": "T01",
+      "number": "01",
+      "name_jp": "六地蔵",
+      "kana": "ろくじぞう",
+      "name_en": "Rokujizo",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Rokujizo"
+    },
+    {
+      "id": "T02",
+      "number": "02",
+      "name_jp": "石田",
+      "kana": "いしだ",
+      "name_en": "Ishida",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Ishida"
+    },
+    {
+      "id": "T03",
+      "number": "03",
+      "name_jp": "醍醐",
+      "kana": "だいご",
+      "name_en": "Daigo",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Daigo"
+    },
+    {
+      "id": "T04",
+      "number": "04",
+      "name_jp": "小野",
+      "kana": "おの",
+      "name_en": "Ono",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Ono"
+    },
+    {
+      "id": "T05",
+      "number": "05",
+      "name_jp": "椥辻",
+      "kana": "なぎつじ",
+      "name_en": "Nagitsuji",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Nagitsuji"
+    },
+    {
+      "id": "T06",
+      "number": "06",
+      "name_jp": "東野",
+      "kana": "ひがしの",
+      "name_en": "Higashino",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Higashino"
+    },
+    {
+      "id": "T07",
+      "number": "07",
+      "name_jp": "山科",
+      "kana": "やましな",
+      "name_en": "Yamashina",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Yamashina"
+    },
+    {
+      "id": "T08",
+      "number": "08",
+      "name_jp": "御陵",
+      "kana": "みささぎ",
+      "name_en": "Misasagi",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Misasagi"
+    },
+    {
+      "id": "T09",
+      "number": "09",
+      "name_jp": "蹴上",
+      "kana": "けあげ",
+      "name_en": "Keage",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Keage"
+    },
+    {
+      "id": "T10",
+      "number": "10",
+      "name_jp": "東山",
+      "kana": "ひがしやま",
+      "name_en": "Higashiyama",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Higashiyama"
+    },
+    {
+      "id": "T11",
+      "number": "11",
+      "name_jp": "三条京阪",
+      "kana": "さんじょうけいはん",
+      "name_en": "Sanjo Keihan",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.SanjoKeihan"
+    },
+    {
+      "id": "T12",
+      "number": "12",
+      "name_jp": "京都市役所前",
+      "kana": "きょうとしやくしょまえ",
+      "name_en": "Kyotoshiyakushomae",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Kyotoshiyakushomae"
+    },
+    {
+      "id": "T13",
+      "number": "13",
+      "name_jp": "烏丸御池",
+      "kana": "からすまおいけ",
+      "name_en": "Karasuma Oike",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.KarasumaOike"
+    },
+    {
+      "id": "T14",
+      "number": "14",
+      "name_jp": "二条城前",
+      "kana": "にじょうじょうまえ",
+      "name_en": "Nijojomae",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Nijojomae"
+    },
+    {
+      "id": "T15",
+      "number": "15",
+      "name_jp": "二条",
+      "kana": "にじょう",
+      "name_en": "Nijo",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.Nijo"
+    },
+    {
+      "id": "T16",
+      "number": "16",
+      "name_jp": "西大路御池",
+      "kana": "にしおおじおいけ",
+      "name_en": "Nishioji Oike",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.NishiojiOike"
+    },
+    {
+      "id": "T17",
+      "number": "17",
+      "name_jp": "太秦天神川",
+      "kana": "うずまさてんじんがわ",
+      "name_en": "Uzumasa Tenjingawa",
+      "odpt_station": "odpt.Station:Kyoto.Tozai.UzumasaTenjingawa"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:18",
+    "last_train": "23:50",
+    "headway_min": {
+      "weekday": {
+        "5": 10,
+        "6": 7,
+        "7": 5,
+        "8": 4,
+        "9": 6,
+        "10": 8,
+        "11": 8,
+        "12": 8,
+        "13": 8,
+        "14": 8,
+        "15": 8,
+        "16": 7,
+        "17": 5,
+        "18": 5,
+        "19": 6,
+        "20": 7,
+        "21": 8,
+        "22": 9,
+        "23": 10,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 12,
+        "6": 9,
+        "7": 8,
+        "8": 7,
+        "9": 8,
+        "10": 8,
+        "11": 8,
+        "12": 8,
+        "13": 8,
+        "14": 8,
+        "15": 8,
+        "16": 8,
+        "17": 8,
+        "18": 8,
+        "19": 8,
+        "20": 9,
+        "21": 10,
+        "22": 11,
+        "23": 12,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "rokujizo",
+        "name_jp": "六地蔵方面",
+        "via_jp": "六地蔵方面",
+        "track": "1"
+      },
+      {
+        "id": "uzumasatenjingawa",
+        "name_jp": "太秦天神川方面",
+        "via_jp": "太秦天神川方面",
+        "track": "2"
+      }
+    ]
+  }
+}
