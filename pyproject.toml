@@ -24,6 +24,11 @@ classifiers = [
 ]
 dependencies = []
 
+[project.urls]
+Homepage = "https://github.com/JaeggerJose/tokyo-train-board"
+Repository = "https://github.com/JaeggerJose/tokyo-train-board"
+Issues = "https://github.com/JaeggerJose/tokyo-train-board/issues"
+
 [project.optional-dependencies]
 live = ["requests"]
 
