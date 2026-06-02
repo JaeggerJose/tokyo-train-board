@@ -296,6 +296,25 @@ def _build_parser(config: Config) -> argparse.ArgumentParser:
             "AGENDA) instead of the timetable, in board/statusline modes."
         ),
     )
+
+    # --- One-shot setup helpers ------------------------------------------- #
+    parser.add_argument(
+        "--install-statusline",
+        dest="install_statusline",
+        action="store_true",
+        help=(
+            "Wire the board into Claude Code's statusLine (~/.claude/"
+            "settings.json) and exit. Uses 'python -m jrboard' so it works "
+            "without PATH/csl. Respects --columns/--line/--station/--city/"
+            "--mode minitable to shape the installed command."
+        ),
+    )
+    parser.add_argument(
+        "--uninstall-statusline",
+        dest="uninstall_statusline",
+        action="store_true",
+        help="Remove jrboard's statusLine entry from settings.json and exit.",
+    )
     return parser
 
 
@@ -750,6 +769,34 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     if args.list_lines:
         return _list_lines(args.city)
+
+    # One-shot setup helpers: wire/unwire the Claude Code statusLine, then exit.
+    if getattr(args, "uninstall_statusline", False):
+        from .install import uninstall_statusline
+
+        ok, msg = uninstall_statusline()
+        print(f"jrboard: {msg}", file=sys.stderr if not ok else sys.stdout)
+        return 0 if ok else 1
+    if getattr(args, "install_statusline", False):
+        from .install import install_statusline, statusline_command
+
+        cols = args.columns if args.columns and args.columns > 0 else 80
+        pinned = args.line if args.line != cfg.line else None
+        command = statusline_command(
+            columns=cols,
+            minitable=(args.mode == "minitable"),
+            line=pinned,
+            station=(args.station if pinned else None),
+            city=args.city,
+        )
+        ok, msg = install_statusline(command)
+        stream = sys.stdout if ok else sys.stderr
+        print(f"jrboard: {msg}", file=stream)
+        print(f"  statusLine command: {command}", file=stream)
+        if ok:
+            print("  restart Claude Code (or trigger a render) to see it.",
+                  file=stream)
+        return 0 if ok else 1
 
     # --tui: hand the whole terminal to curses (never inside a curses session).
     if args.tui:
