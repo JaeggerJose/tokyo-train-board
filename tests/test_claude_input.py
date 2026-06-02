@@ -246,13 +246,13 @@ def test_token_gauge_all_none_is_empty() -> None:
 
 def test_token_gauge_basic_format() -> None:
     seg = token_gauge(42.0, 18.0, color=False)
-    assert seg == "5h 42% · 7d 18%"
+    assert seg == "5h 42%·7d 18%"
 
 
 def test_token_gauge_includes_ctx() -> None:
     seg = token_gauge(42.0, 18.0, 30.0, color=False)
     assert "ctx 30%" in seg
-    assert seg == "5h 42% · 7d 18% · ctx 30%"
+    assert seg == "5h 42%·7d 18%·ctx 30%"
 
 
 def test_token_gauge_partial() -> None:
@@ -289,12 +289,12 @@ def test_token_gauge_color_false_is_plain() -> None:
 
 # --- responsive max_width: drop ctx -> 7d, keep 5h (session) longest -------- #
 def test_token_gauge_max_width_zero_is_unbounded() -> None:
-    assert token_gauge(42.0, 18.0, 30.0, color=False, max_width=0) == "5h 42% · 7d 18% · ctx 30%"
+    assert token_gauge(42.0, 18.0, 30.0, color=False, max_width=0) == "5h 42%·7d 18%·ctx 30%"
 
 
 def test_token_gauge_max_width_drops_ctx_first() -> None:
-    # Full is 25 cols; 16 fits "5h 42% · 7d 18%" (15) but not ctx.
-    assert token_gauge(42.0, 18.0, 30.0, color=False, max_width=16) == "5h 42% · 7d 18%"
+    # Full is 21 cols; 16 fits "5h 42%·7d 18%" (13) but not ctx.
+    assert token_gauge(42.0, 18.0, 30.0, color=False, max_width=16) == "5h 42%·7d 18%"
 
 
 def test_token_gauge_max_width_keeps_session_last() -> None:

@@ -44,7 +44,7 @@ _WARN_PCT = 70.0
 _CRIT_PCT = 90.0
 
 # Middle dot separating gauge segments; kept short for narrow statuslines.
-_SEG_SEP = " · "
+_SEG_SEP = "·"
 
 
 @dataclass(frozen=True)
