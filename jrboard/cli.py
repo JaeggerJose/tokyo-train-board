@@ -536,13 +536,17 @@ def _run_statusline(
                 spare = max(0, columns - _STATUS_TRAIN_MIN)
                 tok = token_gauge(sess, wk, ctx, color=color, max_width=spare)
         tok_w = get_visual_width(tok) if tok else 0
-        body_cols = columns - tok_w - 1 if (bounded and tok) else columns
+        body_cols = columns - tok_w - 2 if (bounded and tok) else columns
         text = statusline_text(
             line, station, departures, now,
             columns=body_cols, pin_label=pin_label, color=color,
         )
         if tok:
-            text = f"{text} {tok}"
+            # Tokens go on the LEFT: the statusLine has no pane width, and
+            # Claude Code truncates the line from the RIGHT to fit the pane, so
+            # leading with the gauge keeps 5h/7d/ctx visible even in a narrow
+            # split — the (less critical) scrolling departures get clipped first.
+            text = f"{tok}  {text}"
     # No trailing newline (one line for statusline, several for minitable).
     sys.stdout.write(text)
     sys.stdout.flush()
