@@ -104,9 +104,12 @@ def _build_parser(config: Config) -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--mode",
-        choices=("board", "statusline"),
+        choices=("board", "statusline", "minitable"),
         default="board",
-        help="Render a full board or a single statusline (default: board).",
+        help=(
+            "Render a full board, a single-line statusline marquee, or a "
+            "multi-line minitable (default: board)."
+        ),
     )
     parser.add_argument(
         "--no-flap",
@@ -153,7 +156,10 @@ def _build_parser(config: Config) -> argparse.ArgumentParser:
         metavar="MIN",
         help=(
             "Board mode: every MIN minutes (default 5) jump to a RANDOM line "
-            "and station — a screensaver-style tour of the whole network."
+            "and station — a screensaver-style tour of the whole network. "
+            "Statusline/minitable mode: time-bucketed rotation through the "
+            "(city-scoped) pool every MIN minutes (default 0.5 when given "
+            "with no value), so successive renders advance the line."
         ),
     )
     parser.add_argument(
@@ -199,6 +205,36 @@ def _build_parser(config: Config) -> argparse.ArgumentParser:
         help=(
             "Statusline mode: scroll the whole line as a marquee instead of "
             "pinning the station name and scrolling only the departures."
+        ),
+    )
+    parser.add_argument(
+        "--claude-stdin",
+        dest="claude_stdin",
+        action="store_true",
+        help=(
+            "Statusline/minitable: read the Claude Code JSON blob from STDIN "
+            "(when data is piped in) and use it for line selection and the "
+            "--tokens gauge. Safe to pass without a pipe (just ignored)."
+        ),
+    )
+    parser.add_argument(
+        "--by-session",
+        dest="by_session",
+        action="store_true",
+        help=(
+            "Statusline/minitable: pick the line deterministically from the "
+            "Claude session id (needs --claude-stdin). Same session always "
+            "maps to the same line; scoped by --city. Falls back to --rotate "
+            "or the configured default when no session id is present."
+        ),
+    )
+    parser.add_argument(
+        "--tokens",
+        action="store_true",
+        help=(
+            "Statusline/minitable: append a compact token-budget gauge "
+            "(5h session limit, 7d weekly limit, ctx) parsed from the Claude "
+            "STDIN blob. Implies reading STDIN; pair with --claude-stdin."
         ),
     )
 
@@ -265,6 +301,23 @@ def _resolve_station_key(
     if configured:
         return configured
     return _DEFAULT_STATION.get(line_key, _FALLBACK_STATION)
+
+
+def _default_station_for(line: Line) -> Optional[Station]:
+    """Pick a stable, sensible station for an auto-selected line.
+
+    Prefers the configured flagship for the line key, otherwise the middle
+    station (deterministic, so by-session selection stays stable). Returns
+    ``None`` only for a line with no stations.
+    """
+    flagship_key = _DEFAULT_STATION.get(line.key)
+    if flagship_key:
+        flagship = _optional_station(line, flagship_key)
+        if flagship is not None:
+            return flagship
+    if not line.stations:
+        return None
+    return line.stations[len(line.stations) // 2]
 
 
 def _print_lines(lines: Sequence[str]) -> None:
@@ -442,19 +495,29 @@ def _run_statusline(
     columns: int = 0,
     color: bool = True,
     feed_ics: Optional[str] = None,
+    minitable: bool = False,
+    token_seg: str = "",
 ) -> int:
     # Imported lazily so a missing statusline module never breaks board mode.
-    from .statusline import statusline_text
+    from .statusline import minitable_text, statusline_text
 
     now = datetime.now()
     departures, _label = _departures_for(line, station, now, 3, feed_ics)
     # An explicit --columns wins; otherwise fall back to TTY auto-detection.
     columns = columns if columns and columns > 0 else _terminal_columns()
-    text = statusline_text(
-        line, station, departures, now,
-        columns=columns, pin_label=pin_label, color=color,
-    )
-    # Exactly one line, no trailing newline.
+    if minitable:
+        text = minitable_text(
+            line, station, departures, now,
+            columns=columns, color=color, token_seg=token_seg,
+        )
+    else:
+        text = statusline_text(
+            line, station, departures, now,
+            columns=columns, pin_label=pin_label, color=color,
+        )
+        if token_seg:
+            text = f"{text}  {token_seg}"
+    # No trailing newline (one line for statusline, several for minitable).
     sys.stdout.write(text)
     sys.stdout.flush()
     return 0
@@ -555,6 +618,100 @@ def _run_commute(args: argparse.Namespace, cfg: Config) -> int:
     return 0
 
 
+def _read_claude_stdin(enabled: bool) -> "Optional[object]":
+    """Read+parse the Claude STDIN blob when ``enabled`` and data is present.
+
+    Returns a ``ClaudeStatus`` (possibly all-``None``) or ``None`` when reading
+    is disabled or STDIN is an interactive TTY with nothing piped in. Never
+    raises: any read failure degrades to ``None``.
+    """
+    if not enabled:
+        return None
+    from .claude_input import parse_claude_status
+
+    try:
+        # Skip an interactive terminal (no blob is being piped in).
+        if sys.stdin is None or sys.stdin.isatty():
+            return None
+        raw = sys.stdin.read()
+    except Exception:
+        return None
+    return parse_claude_status(raw)
+
+
+def _select_statusline_target(
+    args: argparse.Namespace,
+    cfg: Config,
+    status: "Optional[object]",
+) -> "tuple[Optional[Line], Optional[Station], Optional[str]]":
+    """Resolve the (line, station) for statusline/minitable rendering.
+
+    Precedence: explicit --line/--station > --by-session > --rotate >
+    config/default. --city scopes the by-session/rotate pool. Returns the
+    resolved ``(line, station, error)`` where ``error`` is a user message and
+    the line/station are ``None`` on failure.
+    """
+    from .claude_input import (
+        pick_by_rotation,
+        pick_by_session,
+        scope_keys_by_city,
+    )
+
+    # Treat an explicit --line (differing from config) OR an explicit
+    # --station as a manual override that wins over by-session/rotate.
+    manual = (args.line != cfg.line) or bool(args.station)
+
+    session_id = getattr(status, "session_id", None) if status else None
+    rotate_min = getattr(args, "rotate", None)
+    by_session = getattr(args, "by_session", False)
+
+    # Period for time-bucketed rotation: --rotate value (minutes) * 60, or 30s
+    # (0.5 min) when --rotate is given with no value.
+    period = int(rotate_min * 60) if (rotate_min and rotate_min > 0) else 30
+
+    auto_key: Optional[str] = None
+    if not manual and (by_session or rotate_min is not None):
+        pool = scope_keys_by_city(available_lines(), getattr(args, "city", None))
+        if pool:
+            if by_session and session_id:
+                auto_key = pick_by_session(pool, session_id)
+            elif rotate_min is not None:
+                auto_key = pick_by_rotation(pool, time.time(), period)
+            else:
+                # --by-session requested but no session id available and no
+                # --rotate fallback: deterministic first of the scoped pool.
+                auto_key = pool[0]
+
+    if auto_key is not None:
+        try:
+            line = load_line(auto_key)
+        except ValueError as exc:
+            return None, None, str(exc)
+        station = _default_station_for(line)
+        if getattr(args, "station", None):
+            chosen = _optional_station(line, args.station)
+            if chosen is not None:
+                station = chosen
+        if station is None:
+            return None, None, f"line {auto_key!r} has no stations"
+        return line, station, None
+
+    # Manual / config / default path.
+    try:
+        line = load_line(args.line)
+    except ValueError as exc:
+        return None, None, str(exc)
+    configured_station = cfg.station if args.line == cfg.line else None
+    station_key = _resolve_station_key(
+        args.line, args.station, configured_station
+    )
+    try:
+        station = find_station(line, station_key)
+    except (ValueError, TypeError) as exc:
+        return None, None, str(exc)
+    return line, station, None
+
+
 def main(argv: Optional[Sequence[str]] = None) -> int:
     """Entry point. Returns a process exit code (0 on success)."""
     cfg = config_mod.load_config()
@@ -575,6 +732,40 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     # --commute: independent of a specific board station; uses config home/work.
     if args.commute:
         return _run_commute(args, cfg)
+
+    # Statusline / minitable: support Claude STDIN, by-session/rotate selection
+    # and the token gauge. Reading STDIN is enabled by --claude-stdin or
+    # implied by --tokens (which needs the blob to populate the gauge).
+    if args.mode in ("statusline", "minitable"):
+        want_stdin = args.claude_stdin or args.tokens or args.by_session
+        status = _read_claude_stdin(want_stdin)
+
+        line, station, err = _select_statusline_target(args, cfg, status)
+        if err or line is None or station is None:
+            print(f"jrboard: {err or 'could not resolve a line/station'}",
+                  file=sys.stderr)
+            return 2
+
+        token_seg = ""
+        if args.tokens:
+            from .claude_input import token_gauge
+
+            token_seg = token_gauge(
+                getattr(status, "session_pct", None),
+                getattr(status, "weekly_pct", None),
+                getattr(status, "ctx_pct", None),
+                color=not args.no_color,
+            )
+
+        return _run_statusline(
+            line, station,
+            pin_label=not args.scroll_all,
+            columns=args.columns,
+            color=not args.no_color,
+            feed_ics=getattr(args, "feed_ics", None),
+            minitable=(args.mode == "minitable"),
+            token_seg=token_seg,
+        )
 
     try:
         line = load_line(args.line)
@@ -599,14 +790,6 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         print(f"jrboard: {exc}", file=sys.stderr)
         return 2
 
-    if args.mode == "statusline":
-        return _run_statusline(
-            line, station,
-            pin_label=not args.scroll_all,
-            columns=args.columns,
-            color=not args.no_color,
-            feed_ics=getattr(args, "feed_ics", None),
-        )
     return _run_board(args, line, station)
 
 

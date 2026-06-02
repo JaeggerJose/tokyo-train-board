@@ -40,7 +40,7 @@ except Exception:  # pragma: no cover - fallback only used in isolation.
         return total
 
 
-__all__ = ["statusline_text"]
+__all__ = ["statusline_text", "minitable_text"]
 
 # ANSI reset; colours themselves come from the line's own palette at runtime.
 _RESET = "\033[0m"
@@ -327,6 +327,118 @@ def statusline_text(
         print(f"jrboard.statusline: marquee failed: {exc!r}", file=sys.stderr)
         # Best-effort: un-scrolled, still coloured where possible.
         return f"{paint_label()}{_paint(body, fg)}"
+
+
+# Number of upcoming departures shown in the multi-line minitable body.
+_MINITABLE_MIN_ROWS = 2
+_MINITABLE_MAX_ROWS = 3
+
+
+def _minitable_rows(departures: Any) -> list[tuple[str, str]]:
+    """Return up to ``_MINITABLE_MAX_ROWS`` ``(time, dest)`` plain pairs."""
+    rows: list[tuple[str, str]] = []
+    if isinstance(departures, Iterable) and not isinstance(
+        departures, (str, bytes)
+    ):
+        for dep in departures:
+            if len(rows) >= _MINITABLE_MAX_ROWS:
+                break
+            time = _safe_attr(dep, "time").strip()
+            if not time:
+                continue
+            dest = _safe_attr(dep, "dest_jp").strip()
+            rows.append((time, dest))
+    return rows
+
+
+def _fit_line(text: str, columns: int) -> str:
+    """Clip a single plain line to ``columns`` visual cols (0 = no clip)."""
+    if not (columns and columns > 0):
+        return text
+    if get_visual_width(text) <= columns:
+        return text
+    return _slice_to_width(text, 0, columns)
+
+
+def minitable_text(
+    line: Any,
+    station: Any,
+    departures: Sequence[Any],
+    now: Any,
+    columns: int = 0,
+    color: bool = True,
+    token_seg: str = "",
+) -> str:
+    """Render a compact MULTI-LINE statusline table.
+
+    Line 1 is the station identity ``[SYM] <num> <station_jp>`` (line-coloured)
+    with ``token_seg`` appended when supplied. The following 2-3 lines list the
+    upcoming departures as ``HH:MM  方面`` with line-coloured times.
+
+    Args:
+        line: Line value object exposing ``symbol``/``key``/``ansi_fg``/
+            ``ansi_bg``.
+        station: Station value object exposing ``number``/``name_jp``/
+            ``name_en``/``id``.
+        departures: Iterable of departure objects exposing ``time`` and
+            ``dest_jp``.
+        now: Accepted for signature symmetry with :func:`statusline_text`;
+            the minitable is not scrolled so it is otherwise unused.
+        columns: When ``> 0`` each rendered line is clipped to this many
+            visual columns; ``0`` leaves lines untruncated.
+        color: When ``True`` the badge takes the line background colour and
+            times/labels the line foreground colour.
+        token_seg: Optional pre-rendered token gauge appended to line 1.
+
+    Returns:
+        A newline-joined string with NO trailing newline. Pure; never raises
+        (degrades to a minimal single line on internal error).
+    """
+    del now  # not used: the minitable does not scroll
+    try:
+        badge = _line_badge(line)
+        number = _safe_attr(station, "number").strip()
+        name = (
+            _safe_attr(station, "name_jp").strip()
+            or _safe_attr(station, "name_en").strip()
+            or _safe_attr(station, "id").strip()
+        )
+        rows = _minitable_rows(departures)
+    except Exception as exc:  # never crash the host shell
+        print(f"jrboard.statusline: minitable compose failed: {exc!r}",
+              file=sys.stderr)
+        return "[??] --:--"
+
+    fg = _safe_attr(line, "ansi_fg") if color else ""
+    bg = _safe_attr(line, "ansi_bg") if color else ""
+
+    # Line 1: identity, optionally with the token gauge appended. Build the
+    # plain string first to decide whether clipping is needed, then colour.
+    head_rest = "".join(f" {p}" for p in (number, name) if p)
+    suffix = f"  {token_seg}" if token_seg else ""
+    head_plain = f"{badge}{head_rest}{suffix}"
+
+    if columns and columns > 0 and get_visual_width(head_plain) > columns:
+        # Over budget: emit the clipped plain head (colour would risk slicing
+        # an ANSI sequence, so plain text keeps the width exact).
+        head = _slice_to_width(head_plain, 0, columns)
+    else:
+        head = f"{_paint(badge, bg)}{_paint(head_rest, fg)}{suffix}"
+
+    out_lines: list[str] = [head]
+
+    if not rows:
+        body_line = _fit_line("--:--", columns)
+        out_lines.append(_paint(body_line, fg))
+    else:
+        visible = rows[: max(_MINITABLE_MIN_ROWS, min(len(rows),
+                                                       _MINITABLE_MAX_ROWS))]
+        for time, dest in visible:
+            plain = f"{time}  {dest}" if dest else time
+            plain = _fit_line(plain, columns)
+            out_lines.append(_paint(plain, fg))
+
+    return "\n".join(out_lines)
 
 
 if __name__ == "__main__":  # pragma: no cover - manual smoke test

@@ -1,14 +1,14 @@
-# Theme: jr-board — JR / Tokyo Metro split-flap departure marquee (Claude-aware).
+# Theme: jr-timetable — JR / Tokyo Metro multi-line departure board (Claude-aware).
 #
-# Overrides render() to show the next departures from a station as a single
-# horizontally-scrolling line, with Claude token/context gauges appended on the
-# right (5h session / 7d weekly / context). The Claude statusLine JSON ($1) is
-# piped to jrboard via STDIN (never interpolated into the command line) so it
-# can read session_id + rate limits + context fill. Scrolling advances via
-# settings.json `refreshInterval` (~1 column/sec).
+# Like jr-board, but renders a MULTI-LINE mini-table instead of a single
+# scrolling marquee: a header row (line badge + station + Claude token gauges)
+# followed by the next 2–3 departures, each on its own line — the way a real
+# platform board stacks upcoming trains.
 #
-# Default behaviour: per-session (JR_BY_SESSION=1) so DIFFERENT Claude sessions
-# show DIFFERENT lines, with token gauges on (JR_TOKENS=1).
+# The Claude statusLine JSON ($1) is piped to jrboard via STDIN (never
+# interpolated into the command line) so --tokens can read session_id + rate
+# limits + context fill. Default behaviour: per-session (JR_BY_SESSION=1) so
+# DIFFERENT Claude sessions show DIFFERENT lines, with token gauges on.
 #
 # Customize the vars below:
 #   JR_CITY       scope line selection to a city (Tokyo/Osaka/Kyoto/Sapporo/
@@ -21,9 +21,10 @@
 #   JR_LINE       pin a line key (yamanote, ginza, oedo, …). When set it
 #                 overrides by-session / rotate.
 #   JR_STATION    station name_en / id / number (used with JR_LINE).
-#   JR_COLUMNS    marquee width; narrower => more scrolling (try 50–90).
-#   JR_SCROLL_ALL =1 scroll the whole line incl. station name (default: pinned).
-THEME_DESC="JR / Tokyo Metro split-flap marquee + Claude token gauges (per-session)"
+#   JR_COLUMNS    table width (try 32–60).
+#   JR_SCROLL_ALL =1 scroll the header line incl. station name (default: off).
+#   JR_TOKENS     =1 (default) append 5h/7d/ctx gauges to the header.
+THEME_DESC="JR / Tokyo Metro multi-line mini-table + Claude token gauges (per-session)"
 
 JR_HOME="${JR_HOME:-/Users/minghsuan/Downloads/JR-timetable}"
 
@@ -33,8 +34,8 @@ JR_BY_SESSION="${JR_BY_SESSION:-1}" # 1 = deterministic line per session (defaul
 JR_ROTATE="${JR_ROTATE:-}"          # minutes per rotation; empty = off
 JR_LINE="${JR_LINE:-}"              # pin a line (overrides by-session/rotate)
 JR_STATION="${JR_STATION:-}"        # station on the pinned line
-JR_COLUMNS="${JR_COLUMNS:-72}"      # marquee width
-JR_SCROLL_ALL="${JR_SCROLL_ALL:-0}" # 1 = scroll station name too
+JR_COLUMNS="${JR_COLUMNS:-40}"      # table width
+JR_SCROLL_ALL="${JR_SCROLL_ALL:-0}" # 1 = scroll the header line too
 JR_TOKENS="${JR_TOKENS:-1}"         # 1 = append 5h/7d/ctx gauges (default)
 # ----------------------------------------------------------------------------
 
@@ -50,18 +51,18 @@ render() {
   local session_flag=""
   [ "$JR_BY_SESSION" = "1" ] && session_flag="--by-session"
 
-  local line
-  line=$(printf '%s' "$_input" | python3 "$JR_HOME/main.py" \
-           --mode statusline --claude-stdin $tokens_flag $session_flag \
-           ${JR_CITY:+--city "$JR_CITY"} \
-           ${JR_ROTATE:+--rotate "$JR_ROTATE"} \
-           ${JR_LINE:+--line "$JR_LINE"} \
-           ${JR_STATION:+--station "$JR_STATION"} \
-           --columns "$JR_COLUMNS" $scroll_flag 2>/dev/null)
+  local out
+  out=$(printf '%s' "$_input" | python3 "$JR_HOME/main.py" \
+          --mode minitable --claude-stdin $tokens_flag $session_flag \
+          ${JR_CITY:+--city "$JR_CITY"} \
+          ${JR_ROTATE:+--rotate "$JR_ROTATE"} \
+          ${JR_LINE:+--line "$JR_LINE"} \
+          ${JR_STATION:+--station "$JR_STATION"} \
+          --columns "$JR_COLUMNS" $scroll_flag 2>/dev/null)
 
   # Never let a failed render blank the status line: fall back to a static hint.
-  if [ -z "$line" ]; then
-    line="[JR] ${JR_LINE:-auto} ${JR_STATION} ▸ (board unavailable — check ${JR_HOME})"
+  if [ -z "$out" ]; then
+    out="[JR] ${JR_LINE:-auto} ${JR_STATION} ▸ (board unavailable — check ${JR_HOME})"
   fi
-  printf '%s' "$line"
+  printf '%s' "$out"
 }

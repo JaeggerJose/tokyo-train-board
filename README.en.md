@@ -249,6 +249,44 @@ csl set bastille-day     # switch back to your previous theme anytime
 
 Tune `JR_LINE` / `JR_STATION` / `JR_COLUMNS` (narrower = more scrolling) / `JR_SCROLL_ALL` at the top of `jr-board.sh`.
 
+### Claude-aware flags: token gauge, per-session, rotation, multi-line minitable
+
+The statusLine command receives a Claude Code JSON blob on STDIN (with `session_id`, `rate_limits`, `context_window`, etc. — any field may be missing). Add `--claude-stdin` to read it (safe to pass without a pipe — it is simply ignored).
+
+- **`--tokens`** — append a compact token-budget gauge: `5h 42% · 7d 18% · ctx 30%`.
+  - `5h` = the **session (five-hour) limit** (`rate_limits.five_hour.used_percentage`);
+  - `7d` = the **weekly (seven-day) limit** (`rate_limits.seven_day.used_percentage`);
+  - `ctx` = context-window fill. Each segment is colour-graded: green <70, yellow 70–89, red ≥90. A missing percentage omits that segment.
+- **`--by-session`** — pick the line deterministically from `session_id` via a stable hash: **the same session always maps to the same line; different sessions map to different lines.** Needs `--claude-stdin`; scope with `--city`. Falls back to `--rotate`, then the configured default, when no session id is present.
+- **`--rotate [MIN]`** (statusline / minitable) — time-bucketed rotation through the (`--city`-scoped) line pool, advancing every `MIN` minutes (no value = 0.5 min = 30s). Renders in the same bucket stay on one line; crossing a bucket boundary switches. `--by-session` wins over `--rotate`.
+- **`--mode minitable`** — a multi-line mini-board: line 1 is the station identity + token gauge, followed by 2–3 departure rows (`HH:MM dest`), the way a real platform board stacks upcoming trains.
+
+```bash
+# token gauge + per-session line (scoped to Tokyo), single-line marquee
+cat cc.json | python3 main.py --mode statusline --claude-stdin --tokens --by-session --city Tokyo --columns 72
+# multi-line minitable + token gauge + rotation (scoped to Kyoto)
+cat cc.json | python3 main.py --mode minitable --claude-stdin --tokens --rotate --city Kyoto --columns 60
+```
+
+### How to vary the statusline per session
+
+1. **`JR_BY_SESSION=1` (the default in the `jr-board` / `jr-timetable` themes)**: auto-varies by `session_id`, so different Claude sessions show different lines. Set `0` to disable.
+2. **A per-project `.claude/settings.json` override**: drop a project-specific `statusLine.command` in a repo (e.g. pin `--line oedo --station tochomae`, or use a different `--city`) so that project gets its own statusline.
+
+### The two csl themes: `jr-board` vs `jr-timetable`
+
+| Theme | Mode | Look |
+|-------|------|------|
+| `jr-board` | `statusline` | a **single-line** horizontal marquee (station pinned, departures scroll) with the token gauge on the right |
+| `jr-timetable` | `minitable` | a **multi-line** mini-board: a header row (station + token gauge) plus the next 2–3 trains |
+
+Both default to `JR_BY_SESSION=1` and `JR_TOKENS=1`; tune `JR_CITY` / `JR_ROTATE` / `JR_LINE` / `JR_STATION` / `JR_COLUMNS` at the top of each `.sh`.
+
+```bash
+cp integrations/csl/jr-timetable.* ~/.config/csl/themes/
+csl set jr-timetable     # the multi-line variant
+```
+
 ---
 
 ## 🎞️ Flap animation tuning

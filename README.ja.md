@@ -248,6 +248,44 @@ csl set bastille-day     # いつでも元のテーマに戻せる
 
 `jr-board.sh` 冒頭の `JR_LINE` / `JR_STATION` / `JR_COLUMNS`（狭いほどよくスクロール）/ `JR_SCROLL_ALL` で調整できます。
 
+### Claude 連携フラグ：トークンゲージ・セッション別・ローテーション・複数行 minitable
+
+statusLine コマンドは STDIN で Claude Code の JSON（`session_id`、`rate_limits`、`context_window` など。各フィールドは欠落しうる）を受け取ります。`--claude-stdin` を付けるとそれを読み取ります（パイプが無くても安全に無視されます）。
+
+- **`--tokens`** — 末尾にコンパクトなトークン量ゲージを付加：`5h 42% · 7d 18% · ctx 30%`。
+  - `5h` = **セッション（5 時間）上限**（`rate_limits.five_hour.used_percentage`）；
+  - `7d` = **週次（7 日）上限**（`rate_limits.seven_day.used_percentage`）；
+  - `ctx` = コンテキストウィンドウの使用率。各セグメントは閾値で色分け：<70 緑、70–89 黄、≥90 赤。値が無ければそのセグメントは省略。
+- **`--by-session`** — 安定ハッシュで `session_id` から路線を決定：**同じセッションは常に同じ路線、異なるセッションは異なる路線**になります。`--claude-stdin` が必要で、`--city` で範囲を絞れます。session id が無い場合は `--rotate`、次に設定の既定値にフォールバック。
+- **`--rotate [MIN]`**（statusline / minitable）— （`--city` で絞った）路線プールを時間バケットでローテーション。`MIN` 分ごとに進む（値なし＝0.5 分＝30 秒）。同一バケット内は同じ路線、バケットをまたぐと切り替わります。`--by-session` が `--rotate` より優先。
+- **`--mode minitable`** — 複数行のミニ発車標：1 行目は駅名＋トークンゲージ、続けて 2〜3 件の発車（`HH:MM 方面`）を、実際のホーム発車標のように積み重ねます。
+
+```bash
+# トークンゲージ + セッション別路線（Tokyo に限定）、単一行マーキー
+cat cc.json | python3 main.py --mode statusline --claude-stdin --tokens --by-session --city Tokyo --columns 72
+# 複数行 minitable + トークンゲージ + ローテーション（Kyoto に限定）
+cat cc.json | python3 main.py --mode minitable --claude-stdin --tokens --rotate --city Kyoto --columns 60
+```
+
+### セッションごとにステータスラインを変える方法
+
+1. **`JR_BY_SESSION=1`（`jr-board` / `jr-timetable` テーマの既定）**：`session_id` で自動的に変化し、異なる Claude セッションは異なる路線を表示。`0` で無効化。
+2. **プロジェクト単位の `.claude/settings.json` 上書き**：あるリポジトリにそのプロジェクト専用の `statusLine.command` を置く（例：`--line oedo --station tochomae` で固定、または別の `--city`）と、そのプロジェクト専用のステータスラインになります。
+
+### 2 つの csl テーマ：`jr-board` と `jr-timetable`
+
+| テーマ | モード | 見た目 |
+|--------|--------|--------|
+| `jr-board` | `statusline` | **単一行**の横スクロールマーキー（駅名を左に固定、発車をスクロール）＋右端にトークンゲージ |
+| `jr-timetable` | `minitable` | **複数行**のミニ発車標：ヘッダ行（駅名＋トークンゲージ）＋次の 2〜3 本 |
+
+どちらも既定で `JR_BY_SESSION=1` と `JR_TOKENS=1`。各 `.sh` 冒頭の `JR_CITY` / `JR_ROTATE` / `JR_LINE` / `JR_STATION` / `JR_COLUMNS` で調整できます。
+
+```bash
+cp integrations/csl/jr-timetable.* ~/.config/csl/themes/
+csl set jr-timetable     # 複数行版
+```
+
 ---
 
 ## 🎞️ フラップアニメーションの調整

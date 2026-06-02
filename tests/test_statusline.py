@@ -5,7 +5,7 @@ from __future__ import annotations
 import datetime as dt
 from dataclasses import dataclass
 
-from jrboard.statusline import statusline_text
+from jrboard.statusline import minitable_text, statusline_text
 from jrboard.width import get_visual_width
 
 
@@ -125,3 +125,61 @@ def test_never_raises_on_garbage_input() -> None:
     text = statusline_text(object(), object(), None, NOW, columns=20)
     assert isinstance(text, str)
     assert text  # non-empty
+
+
+# --------------------------------------------------------------------------- #
+# minitable_text
+# --------------------------------------------------------------------------- #
+def test_minitable_is_multiline_with_station_on_line1() -> None:
+    text = minitable_text(LINE, STATION, DEPS, NOW, color=False)
+    lines = text.split("\n")
+    assert len(lines) >= 3  # head + 2-3 departures
+    assert "[E]" in lines[0]
+    assert "都庁前" in lines[0]
+    # Departure rows carry HH:MM times.
+    assert any("15:18" in ln for ln in lines[1:])
+
+
+def test_minitable_no_trailing_newline() -> None:
+    text = minitable_text(LINE, STATION, DEPS, NOW, color=False)
+    assert not text.endswith("\n")
+
+
+def test_minitable_token_seg_appended_to_line1() -> None:
+    seg = "5h 42% · 7d 18%"
+    text = minitable_text(LINE, STATION, DEPS, NOW, color=False, token_seg=seg)
+    first = text.split("\n")[0]
+    assert seg in first
+
+
+def test_minitable_respects_column_width() -> None:
+    text = minitable_text(LINE, STATION, DEPS, NOW, columns=16, color=False)
+    for ln in text.split("\n"):
+        assert get_visual_width(ln) <= 16
+
+
+def test_minitable_width_respected_with_token_seg() -> None:
+    seg = "5h 99% · 7d 99% · ctx 99%"
+    text = minitable_text(LINE, STATION, DEPS, NOW, columns=20, color=False,
+                          token_seg=seg)
+    assert get_visual_width(text.split("\n")[0]) <= 20
+
+
+def test_minitable_no_departures_degrades() -> None:
+    text = minitable_text(LINE, STATION, [], NOW, color=False)
+    lines = text.split("\n")
+    assert "都庁前" in lines[0]
+    assert "--:--" in text
+
+
+def test_minitable_color_paints_times() -> None:
+    text = minitable_text(COLOR_LINE, STATION, DEPS, NOW, color=True)
+    assert "\033[48;5;148m" in text  # badge background
+    assert "\033[38;5;148m" in text  # foreground on times
+    assert "都庁前" in _strip_ansi(text)
+
+
+def test_minitable_never_raises_on_garbage() -> None:
+    text = minitable_text(object(), object(), None, NOW, columns=20)
+    assert isinstance(text, str)
+    assert text
