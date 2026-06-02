@@ -2,7 +2,16 @@
 
 **English** · [繁體中文](README.md) · [日本語](README.ja.md)
 
+[![PyPI](https://img.shields.io/pypi/v/tokyo-train-board)](https://pypi.org/project/tokyo-train-board/)
+[![Python](https://img.shields.io/pypi/pyversions/tokyo-train-board)](https://pypi.org/project/tokyo-train-board/)
+[![CI](https://github.com/JaeggerJose/tokyo-train-board/actions/workflows/ci.yml/badge.svg)](https://github.com/JaeggerJose/tokyo-train-board/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A terminal simulator of the **split-flap (Solari board) departure signs** at JR / Tokyo Metro stations.
+
+```bash
+pip install tokyo-train-board && jrboard
+```
 
 Every refresh first scrambles like an old mechanical station/airport flap board, then locks character-by-character into the real upcoming departures. 20 lines, data-driven, with optional live ODPT data and a single-line marquee mode you can drop into a Claude Code statusline.
 

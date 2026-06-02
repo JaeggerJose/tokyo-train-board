@@ -2,7 +2,16 @@
 
 [English](README.en.md) · **繁體中文** · [日本語](README.ja.md)
 
+[![PyPI](https://img.shields.io/pypi/v/tokyo-train-board)](https://pypi.org/project/tokyo-train-board/)
+[![Python](https://img.shields.io/pypi/pyversions/tokyo-train-board)](https://pypi.org/project/tokyo-train-board/)
+[![CI](https://github.com/JaeggerJose/tokyo-train-board/actions/workflows/ci.yml/badge.svg)](https://github.com/JaeggerJose/tokyo-train-board/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 終端機裡的 JR／東京地鐵 **翻牌式（split-flap / Solari board）時刻表站牌**模擬器。
+
+```bash
+pip install tokyo-train-board && jrboard
+```
 
 每次刷新會先像老火車站、航站樓的機械翻牌那樣亂數翻滾，再逐格鎖定成真實的到站資訊。
 20 條路線、資料驅動、可接 ODPT 即時資料，並提供可嵌入 Claude Code 狀態列的單行跑馬燈模式。

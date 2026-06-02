@@ -2,7 +2,16 @@
 
 [English](README.en.md) · [繁體中文](README.md) · **日本語**
 
+[![PyPI](https://img.shields.io/pypi/v/tokyo-train-board)](https://pypi.org/project/tokyo-train-board/)
+[![Python](https://img.shields.io/pypi/pyversions/tokyo-train-board)](https://pypi.org/project/tokyo-train-board/)
+[![CI](https://github.com/JaeggerJose/tokyo-train-board/actions/workflows/ci.yml/badge.svg)](https://github.com/JaeggerJose/tokyo-train-board/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 JR・東京メトロの駅にある**反転フラップ式（ソラリ式）案内表示**をターミナルで再現するシミュレーターです。
+
+```bash
+pip install tokyo-train-board && jrboard
+```
 
 更新のたびに、まず昔ながらの駅・空港のフラップ板のようにランダムに回転し、その後一文字ずつ実際の次の発車情報へと確定します。20 路線対応、データ駆動設計、ODPT のリアルタイムデータにも接続でき、Claude Code のステータスラインに組み込める一行マーキー表示も備えています。
 
