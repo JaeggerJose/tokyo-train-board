@@ -285,3 +285,29 @@ def test_token_gauge_threshold_boundaries() -> None:
 
 def test_token_gauge_color_false_is_plain() -> None:
     assert "\033[" not in token_gauge(95.0, 95.0, 95.0, color=False)
+
+
+# --- responsive max_width: drop ctx -> 7d, keep 5h (session) longest -------- #
+def test_token_gauge_max_width_zero_is_unbounded() -> None:
+    assert token_gauge(42.0, 18.0, 30.0, color=False, max_width=0) == "5h 42% · 7d 18% · ctx 30%"
+
+
+def test_token_gauge_max_width_drops_ctx_first() -> None:
+    # Full is 25 cols; 16 fits "5h 42% · 7d 18%" (15) but not ctx.
+    assert token_gauge(42.0, 18.0, 30.0, color=False, max_width=16) == "5h 42% · 7d 18%"
+
+
+def test_token_gauge_max_width_keeps_session_last() -> None:
+    # Only room for the session segment.
+    assert token_gauge(42.0, 18.0, 30.0, color=False, max_width=8) == "5h 42%"
+
+
+def test_token_gauge_max_width_too_small_is_empty() -> None:
+    assert token_gauge(42.0, 18.0, 30.0, color=False, max_width=3) == ""
+
+
+def test_token_gauge_max_width_never_exceeds_budget() -> None:
+    for w in range(0, 30):
+        seg = token_gauge(99.0, 99.0, 99.0, color=False, max_width=w)
+        if w > 0:
+            assert len(seg) <= w

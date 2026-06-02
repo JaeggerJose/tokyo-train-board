@@ -235,6 +235,8 @@ Two inherent statusline constraints (both handled by design):
 
 `--scroll-all` makes the whole line scroll (including the station name).
 
+**Responsive width (RWD)**: the content reflows to the `--columns` (or the theme's `JR_COLUMNS`) budget and **never overflows**: a wide line shows the full marquee + `5h · 7d · ctx` gauges; as it narrows the gauge degrades in order (drop `ctx`, then `7d`, keep `5h`), and below a threshold the gauge is dropped entirely, leaving just the train. Set `JR_COLUMNS` to your terminal width (a statusLine can't detect the real width, so this number is the budget).
+
 ### Use the csl theme (recommended — a live scrolling marquee)
 
 If you use the [`csl`](https://) statusline theme manager, this project ships a ready-made theme at `integrations/csl/jr-board.sh` (+ manifest). It overrides `render()` to call the marquee above and relies on `settings.json`'s `refreshInterval: 1` for **real scrolling (~1 column/second)**:

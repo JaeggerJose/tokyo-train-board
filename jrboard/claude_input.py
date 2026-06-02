@@ -241,6 +241,7 @@ def token_gauge(
     weekly_pct: Optional[float],
     ctx_pct: Optional[float] = None,
     color: bool = True,
+    max_width: int = 0,
 ) -> str:
     """Build a compact token-budget gauge for the statusline.
 
@@ -249,12 +250,31 @@ def token_gauge(
     SESSION (five-hour) limit and ``7d`` is the WEEKLY (seven-day) limit. Each
     segment is colour-graded: green ``<70``, yellow ``70-89``, red ``>=90``.
     Returns ``""`` when every percentage is ``None``. Never raises.
+
+    Responsive: when ``max_width > 0`` the gauge is shrunk to fit that many
+    (plain) columns by dropping the LOWEST-priority segments first — ``ctx``
+    goes, then ``7d``, keeping the most important ``5h`` (session) last. Returns
+    ``""`` if not even ``5h`` fits. ``max_width <= 0`` means no limit.
     """
-    segments: list[str] = []
+    # Highest priority last-to-drop: session (5h) > weekly (7d) > context (ctx).
+    candidates: list[tuple[str, float]] = []
     if session_pct is not None:
-        segments.append(_segment("5h", session_pct, color))
+        candidates.append(("5h", session_pct))
     if weekly_pct is not None:
-        segments.append(_segment("7d", weekly_pct, color))
+        candidates.append(("7d", weekly_pct))
     if ctx_pct is not None:
-        segments.append(_segment("ctx", ctx_pct, color))
-    return _SEG_SEP.join(segments)
+        candidates.append(("ctx", ctx_pct))
+    if not candidates:
+        return ""
+
+    def _plain_width(selected: list[tuple[str, float]]) -> int:
+        # All glyphs here are narrow (ASCII + middle dot), so len == columns.
+        return len(_SEG_SEP.join(f"{lbl} {int(round(p))}%" for lbl, p in selected))
+
+    selected = candidates
+    if max_width and max_width > 0:
+        while selected and _plain_width(selected) > max_width:
+            selected = selected[:-1]  # drop the lowest-priority segment
+        if not selected:
+            return ""
+    return _SEG_SEP.join(_segment(lbl, p, color) for lbl, p in selected)

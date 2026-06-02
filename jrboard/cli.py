@@ -55,6 +55,12 @@ from . import flap, render
 from .config import Config
 from .model import Line, Station, available_lines, find_station, load_line
 from .sources import Departure, get_departures
+from .width import get_visual_width
+
+# Responsive (RWD) statusline budgets, in visual columns.
+_STATUS_TRAIN_MIN = 24       # keep at least this much for the train marquee
+_STATUS_MIN_FOR_TOKENS = 30  # below this width, drop the token gauge entirely
+_MINITABLE_LABEL_RESERVE = 16  # space the minitable header keeps for badge+station
 
 # Sensible flagship defaults per line so ``--line X`` alone is useful.
 _DEFAULT_STATION: dict[str, str] = {
@@ -496,27 +502,47 @@ def _run_statusline(
     color: bool = True,
     feed_ics: Optional[str] = None,
     minitable: bool = False,
-    token_seg: str = "",
+    token_pcts: Optional[tuple] = None,
 ) -> int:
     # Imported lazily so a missing statusline module never breaks board mode.
+    from .claude_input import token_gauge
     from .statusline import minitable_text, statusline_text
 
     now = datetime.now()
     departures, _label = _departures_for(line, station, now, 3, feed_ics)
     # An explicit --columns wins; otherwise fall back to TTY auto-detection.
     columns = columns if columns and columns > 0 else _terminal_columns()
+
+    sess, wk, ctx = (token_pcts or (None, None, None))
+    have_tok = token_pcts is not None and any(p is not None for p in token_pcts)
+    bounded = bool(columns and columns > 0)
+
     if minitable:
+        # Fit the gauge into the header's spare width (drops ctx -> 7d -> 5h).
+        budget = max(0, columns - _MINITABLE_LABEL_RESERVE) if bounded else 0
+        tok = token_gauge(sess, wk, ctx, color=color, max_width=budget) if have_tok else ""
         text = minitable_text(
             line, station, departures, now,
-            columns=columns, color=color, token_seg=token_seg,
+            columns=columns, color=color, token_seg=tok,
         )
     else:
+        # RWD marquee: reserve the train, give the gauge the remaining width and
+        # let it shrink (ctx -> 7d -> 5h); drop it entirely when too narrow.
+        tok = ""
+        if have_tok:
+            if not bounded:
+                tok = token_gauge(sess, wk, ctx, color=color)  # unbounded
+            elif columns >= _STATUS_MIN_FOR_TOKENS:
+                spare = max(0, columns - _STATUS_TRAIN_MIN)
+                tok = token_gauge(sess, wk, ctx, color=color, max_width=spare)
+        tok_w = get_visual_width(tok) if tok else 0
+        body_cols = columns - tok_w - 1 if (bounded and tok) else columns
         text = statusline_text(
             line, station, departures, now,
-            columns=columns, pin_label=pin_label, color=color,
+            columns=body_cols, pin_label=pin_label, color=color,
         )
-        if token_seg:
-            text = f"{text}  {token_seg}"
+        if tok:
+            text = f"{text} {tok}"
     # No trailing newline (one line for statusline, several for minitable).
     sys.stdout.write(text)
     sys.stdout.flush()
@@ -746,15 +772,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                   file=sys.stderr)
             return 2
 
-        token_seg = ""
+        token_pcts = None
         if args.tokens:
-            from .claude_input import token_gauge
-
-            token_seg = token_gauge(
+            token_pcts = (
                 getattr(status, "session_pct", None),
                 getattr(status, "weekly_pct", None),
                 getattr(status, "ctx_pct", None),
-                color=not args.no_color,
             )
 
         return _run_statusline(
@@ -764,7 +787,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             color=not args.no_color,
             feed_ics=getattr(args, "feed_ics", None),
             minitable=(args.mode == "minitable"),
-            token_seg=token_seg,
+            token_pcts=token_pcts,
         )
 
     try:

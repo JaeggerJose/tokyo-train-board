@@ -231,6 +231,8 @@ python3 main.py --line yamanote --station shinjuku   # 站牌右下角會顯示 
 
 `--scroll-all` 可改成整行一起捲動（連站名一起跑）。
 
+**自適應寬度（RWD）**：內容會依 `--columns`（或主題的 `JR_COLUMNS`）的寬度預算重排，且**永不超出**：寬畫面顯示完整跑馬燈 + `5h · 7d · ctx` 額度；變窄時 token 依序遞減（先丟 `ctx`、再 `7d`、只留 `5h`），更窄則完全不顯示 token、只留電車。把 `JR_COLUMNS` 設成你的終端寬度即可（statusLine 量不到實際寬度，所以用這個數字當預算）。
+
 ### 用 csl 主題（推薦，會動的跑馬燈）
 
 若你用 [`csl`](https://) 狀態列主題管理器，本專案附了一個現成主題 `integrations/csl/jr-board.sh`（＋ manifest）。它覆寫 `render()` 呼叫上面的跑馬燈，並靠 `settings.json` 的 `refreshInterval: 1` 達成**每秒前進一格的真實捲動**：
