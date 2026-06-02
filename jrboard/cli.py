@@ -391,7 +391,10 @@ def _run_board(args: argparse.Namespace, line: Line, station: Station) -> int:
     feed_ics = getattr(args, "feed_ics", None)
     rotate_min = getattr(args, "rotate", None)
     rotate_secs = rotate_min * 60 if rotate_min and rotate_min > 0 else None
-    next_rotate = time.monotonic() + rotate_secs if rotate_secs else None
+    # Rotate immediately on the first frame so --city takes effect at once
+    # (otherwise the initial board would show the global default for one whole
+    # interval before the first jump).
+    next_rotate = time.monotonic() if rotate_secs else None
     hide_cursor = sys.stdout.isatty()
 
     if hide_cursor:
