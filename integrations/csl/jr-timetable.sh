@@ -24,9 +24,12 @@
 #   JR_COLUMNS    table width (try 32–60).
 #   JR_SCROLL_ALL =1 scroll the header line incl. station name (default: off).
 #   JR_TOKENS     =1 (default) append 5h/7d/ctx gauges to the header.
+#   JR_PYTHON     python that has tokyo-train-board installed (default python3).
+#   JR_HOME       optional repo checkout path; empty => use pip package.
 THEME_DESC="JR / Tokyo Metro multi-line mini-table + Claude token gauges (per-session)"
 
-JR_HOME="${JR_HOME:-/Users/minghsuan/Downloads/JR-timetable}"
+JR_PYTHON="${JR_PYTHON:-python3}"   # python with tokyo-train-board installed
+JR_HOME="${JR_HOME:-}"              # optional repo checkout; empty => use pip package
 
 # --- config -----------------------------------------------------------------
 JR_CITY="${JR_CITY:-}"              # e.g. Tokyo / Osaka / Kyoto. Empty = all.
@@ -51,8 +54,15 @@ render() {
   local session_flag=""
   [ "$JR_BY_SESSION" = "1" ] && session_flag="--by-session"
 
+  local runner
+  if [ -n "$JR_HOME" ] && [ -f "$JR_HOME/main.py" ]; then
+    runner=("$JR_PYTHON" "$JR_HOME/main.py")
+  else
+    runner=("$JR_PYTHON" -m jrboard)
+  fi
+
   local out
-  out=$(printf '%s' "$_input" | python3 "$JR_HOME/main.py" \
+  out=$(printf '%s' "$_input" | "${runner[@]}" \
           --mode minitable --claude-stdin $tokens_flag $session_flag \
           ${JR_CITY:+--city "$JR_CITY"} \
           ${JR_ROTATE:+--rotate "$JR_ROTATE"} \
@@ -62,7 +72,7 @@ render() {
 
   # Never let a failed render blank the status line: fall back to a static hint.
   if [ -z "$out" ]; then
-    out="[JR] ${JR_LINE:-auto} ${JR_STATION} ▸ (board unavailable — check ${JR_HOME})"
+    out="[JR] ${JR_LINE:-auto} ▸ (board unavailable — pip install tokyo-train-board)"
   fi
   printf '%s' "$out"
 }

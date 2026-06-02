@@ -217,13 +217,32 @@ The multi-line board is **not** suited to a statusline (it's 16 lines). Use the 
 [JY] 17 新宿 ▸ 15:45 品川・渋谷方面  15:45 上野・池袋方面  15:50 …
 ```
 
+### One-command install (recommended — no csl, no JSON editing)
+
+```bash
+pip install tokyo-train-board       # or: pipx install tokyo-train-board
+jrboard install-statusline          # writes the statusLine into ~/.claude/settings.json (backed up, other keys kept)
+```
+
+> `install-statusline` builds the command as `<your-python> -m jrboard`, so it works **even when `jrboard` isn't on PATH** (`pip install --user` drops it in `~/.local/bin`). Customise with `--columns 90`, `--line oedo`, `--city Tokyo`, `--mode minitable`. Remove with `jrboard --uninstall-statusline`.
+
+**Modern Debian/Ubuntu (PEP 668 blocks `pip install`)** — use a venv (no sudo):
+```bash
+python3 -m venv ~/.jrboard && ~/.jrboard/bin/pip install tokyo-train-board
+~/.jrboard/bin/python -m jrboard install-statusline   # the command auto-points at this venv's python
+```
+(If even `python3 -m venv` is missing on Debian: `sudo apt install python3-venv`, or use `pipx`.)
+
+### Manual setup (or to customise the command)
+
 In `~/.claude/settings.json`:
 
 ```json
 {
   "statusLine": {
     "type": "command",
-    "command": "python3 /path/to/tokyo-train-board/main.py --mode statusline --line yamanote --station shinjuku --columns 80"
+    "command": "python3 -m jrboard --mode statusline --claude-stdin --tokens --by-session --columns 80",
+    "refreshInterval": 1
   }
 }
 ```

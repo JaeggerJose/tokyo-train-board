@@ -210,8 +210,26 @@ python3 main.py --line yamanote --station shinjuku   # 站牌右下角會顯示 
 多行站牌**不適合**狀態列（會佔 16 行），請用單行 `statusline` 模式。它會把站名釘在最左、班次像燈條捲過去：
 
 ```text
-[JY] 17 新宿 ▸ 15:45 品川・渋谷方面  15:45 上野・池袋方面  15:50 …
+5h 20%·7d 27%·ctx 50% [JY] 17 新宿 ▸ 15:45 品川・渋谷方面  15:45 上野・池袋方面 …
 ```
+
+### 一鍵安裝（推薦，免 csl／免改 JSON）
+
+```bash
+pip install tokyo-train-board       # 或 pipx install tokyo-train-board
+jrboard install-statusline          # 把 statusLine 寫進 ~/.claude/settings.json（自動備份、保留其他設定）
+```
+
+> `install-statusline` 用 `<你的python> -m jrboard` 產生指令，所以**即使 `jrboard` 不在 PATH 也能跑**（`pip install --user` 會把它放到不在 PATH 的 `~/.local/bin`）。可加 `--columns 90`、`--line oedo`、`--city Tokyo`、`--mode minitable` 客製。移除：`jrboard --uninstall-statusline`。
+
+**現代 Debian/Ubuntu（PEP 668 擋 `pip install`）** 用 venv（免 sudo）：
+```bash
+python3 -m venv ~/.jrboard && ~/.jrboard/bin/pip install tokyo-train-board
+~/.jrboard/bin/python -m jrboard install-statusline     # 指令會自動指向這個 venv 的 python
+```
+（Debian 若連 `python3 -m venv` 都缺，需 `sudo apt install python3-venv`，或 `pipx`。）
+
+### 手動設定（或自訂指令）
 
 在 `~/.claude/settings.json`：
 
@@ -219,7 +237,8 @@ python3 main.py --line yamanote --station shinjuku   # 站牌右下角會顯示 
 {
   "statusLine": {
     "type": "command",
-    "command": "python3 /Users/minghsuan/Downloads/JR-timetable/main.py --mode statusline --line yamanote --station shinjuku --columns 80"
+    "command": "python3 -m jrboard --mode statusline --claude-stdin --tokens --by-session --columns 80",
+    "refreshInterval": 1
   }
 }
 ```

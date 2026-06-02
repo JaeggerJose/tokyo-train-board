@@ -23,9 +23,14 @@
 #   JR_STATION    station name_en / id / number (used with JR_LINE).
 #   JR_COLUMNS    marquee width; narrower => more scrolling (try 50–90).
 #   JR_SCROLL_ALL =1 scroll the whole line incl. station name (default: pinned).
+#   JR_PYTHON     python that has tokyo-train-board installed (default python3;
+#                 use a venv/pipx path if you installed there).
+#   JR_HOME       optional path to a repo checkout; when unset the pip-installed
+#                 package (python -m jrboard) is used — no clone needed.
 THEME_DESC="JR / Tokyo Metro split-flap marquee + Claude token gauges (per-session)"
 
-JR_HOME="${JR_HOME:-/Users/minghsuan/Downloads/JR-timetable}"
+JR_PYTHON="${JR_PYTHON:-python3}"   # python with tokyo-train-board installed
+JR_HOME="${JR_HOME:-}"              # optional repo checkout; empty => use pip package
 
 # --- config -----------------------------------------------------------------
 JR_CITY="${JR_CITY:-}"              # e.g. Tokyo / Osaka / Kyoto. Empty = all.
@@ -50,8 +55,16 @@ render() {
   local session_flag=""
   [ "$JR_BY_SESSION" = "1" ] && session_flag="--by-session"
 
+  # Prefer the pip-installed package; fall back to a repo checkout if JR_HOME set.
+  local runner
+  if [ -n "$JR_HOME" ] && [ -f "$JR_HOME/main.py" ]; then
+    runner=("$JR_PYTHON" "$JR_HOME/main.py")
+  else
+    runner=("$JR_PYTHON" -m jrboard)
+  fi
+
   local line
-  line=$(printf '%s' "$_input" | python3 "$JR_HOME/main.py" \
+  line=$(printf '%s' "$_input" | "${runner[@]}" \
            --mode statusline --claude-stdin $tokens_flag $session_flag \
            ${JR_CITY:+--city "$JR_CITY"} \
            ${JR_ROTATE:+--rotate "$JR_ROTATE"} \
@@ -61,7 +74,7 @@ render() {
 
   # Never let a failed render blank the status line: fall back to a static hint.
   if [ -z "$line" ]; then
-    line="[JR] ${JR_LINE:-auto} ${JR_STATION} ▸ (board unavailable — check ${JR_HOME})"
+    line="[JR] ${JR_LINE:-auto} ▸ (board unavailable — pip install tokyo-train-board)"
   fi
   printf '%s' "$line"
 }
