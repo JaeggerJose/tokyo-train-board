@@ -1,0 +1,12 @@
+{
+  "name": "jr-timetable",
+  "version": "1.0.0",
+  "description": "JR / Tokyo Metro multi-line mini-table — header (line + station + Claude 5h/7d/ctx token gauges) then the next 2–3 departures. Per-session line selection: different sessions show different lines.",
+  "author": "minghsuan",
+  "license": "MIT",
+  "render": { "mode": "none", "cells_h": 0 },
+  "requires": {
+    "bin": ["python3"],
+    "paths": ["/Users/minghsuan/Downloads/JR-timetable/main.py"]
+  }
+}

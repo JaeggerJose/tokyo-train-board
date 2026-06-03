@@ -36,7 +36,8 @@ live = ["requests"]
 jrboard = "jrboard.cli:main"
 
 [tool.setuptools]
-packages = ["jrboard"]
+packages = ["jrboard", "jrboard.csl"]
 
 [tool.setuptools.package-data]
 jrboard = ["data/*.json"]
+"jrboard.csl" = ["*.sh", "*.json"]

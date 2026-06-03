@@ -1,0 +1,12 @@
+{
+  "name": "jr-board",
+  "version": "1.1.0",
+  "description": "JR / Tokyo Metro split-flap marquee with Claude token gauges (5h/7d/ctx) + per-session line selection — different sessions show different lines.",
+  "author": "minghsuan",
+  "license": "MIT",
+  "render": { "mode": "none", "cells_h": 0 },
+  "requires": {
+    "bin": ["python3"],
+    "paths": ["/Users/minghsuan/Downloads/JR-timetable/main.py"]
+  }
+}

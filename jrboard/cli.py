@@ -315,6 +315,19 @@ def _build_parser(config: Config) -> argparse.ArgumentParser:
         action="store_true",
         help="Remove jrboard's statusLine entry from settings.json and exit.",
     )
+    parser.add_argument(
+        "--install-csl-theme",
+        dest="install_csl_theme",
+        nargs="?",
+        const="jr-board",
+        default=None,
+        metavar="NAME",
+        help=(
+            "Copy a bundled csl theme (default 'jr-board'; also 'jr-timetable') "
+            "into ~/.config/csl/themes and exit -- no clone, no manual cp. Then "
+            "run 'csl set <NAME>' to activate."
+        ),
+    )
     return parser
 
 
@@ -771,6 +784,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         return _list_lines(args.city)
 
     # One-shot setup helpers: wire/unwire the Claude Code statusLine, then exit.
+    if getattr(args, "install_csl_theme", None) is not None:
+        from .install import install_csl_theme
+
+        ok, msg = install_csl_theme(args.install_csl_theme)
+        print(f"jrboard: {msg}", file=sys.stdout if ok else sys.stderr)
+        return 0 if ok else 1
     if getattr(args, "uninstall_statusline", False):
         from .install import uninstall_statusline
 
@@ -782,12 +801,22 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
         cols = args.columns if args.columns and args.columns > 0 else 80
         pinned = args.line if args.line != cfg.line else None
+        # Clone install (run as `python3 .../main.py`): emit a script-path command
+        # since the package is not importable via `-m jrboard`. Console-script /
+        # `-m` invocations keep the PATH-independent `-m jrboard` form.
+        invoked = sys.argv[0] or ""
+        script = (
+            os.path.abspath(invoked)
+            if invoked.endswith("main.py") and os.path.isfile(invoked)
+            else None
+        )
         command = statusline_command(
             columns=cols,
             minitable=(args.mode == "minitable"),
             line=pinned,
             station=(args.station if pinned else None),
             city=args.city,
+            script=script,
         )
         ok, msg = install_statusline(command)
         stream = sys.stdout if ok else sys.stderr

@@ -44,6 +44,20 @@ def test_command_quotes_spaced_python_path() -> None:
     assert "'/opt/my python/bin/python3'" in cmd  # shlex-quoted
 
 
+def test_command_script_mode_for_clone_install() -> None:
+    # Clone install: package is not importable via -m, so emit the main.py path.
+    cmd = statusline_command(python_exe="python3", script="/home/u/jr/main.py")
+    assert "-m jrboard" not in cmd
+    assert "python3 /home/u/jr/main.py" in cmd
+    assert "--mode statusline" in cmd
+    assert "--claude-stdin" in cmd
+
+
+def test_command_script_mode_quotes_spaced_path() -> None:
+    cmd = statusline_command(python_exe="python3", script="/opt/jr board/main.py")
+    assert "'/opt/jr board/main.py'" in cmd  # shlex-quoted
+
+
 def test_install_creates_and_merges(tmp_path) -> None:
     path = tmp_path / "settings.json"
     path.write_text(json.dumps({"model": "opus", "language": "en"}), encoding="utf-8")

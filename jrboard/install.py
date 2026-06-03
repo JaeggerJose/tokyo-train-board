@@ -15,6 +15,7 @@ import json
 import os
 import shlex
 import sys
+from importlib import resources
 from typing import Optional
 
 __all__ = [
@@ -22,6 +23,8 @@ __all__ = [
     "statusline_command",
     "install_statusline",
     "uninstall_statusline",
+    "available_csl_themes",
+    "install_csl_theme",
 ]
 
 
@@ -42,16 +45,23 @@ def statusline_command(
     line: Optional[str] = None,
     station: Optional[str] = None,
     city: Optional[str] = None,
+    script: Optional[str] = None,
 ) -> str:
     """Build the shell command Claude Code should run for the statusLine.
 
-    Uses ``<python> -m jrboard`` so it is independent of ``PATH``. ``--by-session``
-    is included only when no explicit ``line`` is pinned (an explicit line wins).
-    Pure: returns a string, touches nothing.
+    By default uses ``<python> -m jrboard`` so it is independent of ``PATH``
+    (works after ``pip install --user``). When ``script`` is given (a path to a
+    ``main.py`` from a git-clone install, where the package is NOT importable via
+    ``-m``), uses ``<python> <script>`` instead -- ``main.py`` injects its own
+    directory onto ``sys.path`` so it runs with no pip and no PATH. ``--by-session``
+    is included only when no explicit ``line`` is pinned. Pure: returns a string.
     """
     exe = python_exe or sys.executable or "python3"
-    parts = [
+    runner = [shlex.quote(exe), shlex.quote(script)] if script else [
         shlex.quote(exe), "-m", "jrboard",
+    ]
+    parts = [
+        *runner,
         "--mode", "minitable" if minitable else "statusline",
         "--claude-stdin",
     ]
@@ -112,6 +122,60 @@ def install_statusline(
         return False, f"could not write {path}: {exc}"
     note = " (previous settings backed up to settings.json.jrboard.bak)" if had_existing else ""
     return True, f"statusLine installed in {path}{note}"
+
+
+def default_csl_themes_dir() -> str:
+    """User-tier csl themes dir (honours ``CSL_USER_DIR``; default ~/.config/csl/themes)."""
+    override = os.environ.get("CSL_USER_DIR")
+    if override:
+        return override
+    return os.path.join(os.path.expanduser("~"), ".config", "csl", "themes")
+
+
+def available_csl_themes() -> list[str]:
+    """Names of csl themes bundled as package data (those having both .sh + .json)."""
+    root = resources.files("jrboard.csl")
+    names: set[str] = set()
+    for entry in root.iterdir():
+        name = entry.name
+        if name.endswith(".sh") and root.joinpath(f"{name[:-3]}.json").is_file():
+            names.add(name[:-3])
+    return sorted(names)
+
+
+def install_csl_theme(
+    theme: str = "jr-board", dest_dir: Optional[str] = None
+) -> tuple[bool, str]:
+    """Copy a bundled csl theme (``<theme>.sh`` + ``<theme>.json``) into ``dest_dir``.
+
+    ``dest_dir`` defaults to the user csl tier (``~/.config/csl/themes`` or
+    ``CSL_USER_DIR``). ``theme`` must be one of :func:`available_csl_themes` --
+    this both validates the name and blocks path traversal. Returns
+    ``(ok, message)``; never raises.
+    """
+    valid = available_csl_themes()
+    if theme not in valid:
+        return False, (
+            f"unknown csl theme {theme!r}; available: {', '.join(valid) or '(none)'}"
+        )
+
+    dest = dest_dir or default_csl_themes_dir()
+    root = resources.files("jrboard.csl")
+    try:
+        os.makedirs(dest, exist_ok=True)
+        written = []
+        for ext in (".sh", ".json"):
+            data = root.joinpath(f"{theme}{ext}").read_bytes()
+            target = os.path.join(dest, f"{theme}{ext}")
+            with open(target, "wb") as fh:
+                fh.write(data)
+            written.append(os.path.basename(target))
+    except OSError as exc:
+        return False, f"could not install theme into {dest}: {exc}"
+    return True, (
+        f"installed csl theme {theme!r} ({', '.join(written)}) into {dest} -- "
+        f"activate with: csl set {theme}"
+    )
 
 
 def uninstall_statusline(settings_path: Optional[str] = None) -> tuple[bool, str]:
