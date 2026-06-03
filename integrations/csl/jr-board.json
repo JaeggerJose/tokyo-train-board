@@ -7,6 +7,6 @@
   "render": { "mode": "none", "cells_h": 0 },
   "requires": {
     "bin": ["python3"],
-    "paths": ["/Users/minghsuan/Downloads/JR-timetable/main.py"]
+    "paths": []
   }
 }

@@ -59,20 +59,48 @@ def test_default_dest_honours_csl_user_dir(tmp_path, monkeypatch) -> None:
     assert (tmp_path / "custom" / "jr-timetable.sh").exists()
 
 
-# --- drift guard: package copy must equal the repo integrations copy -------- #
+# --- drift guard: every integrations theme must be bundled byte-identically -- #
 
 _REPO_ROOT = Path(__file__).resolve().parent.parent
+_INTEGRATIONS = _REPO_ROOT / "integrations" / "csl"
+_PACKAGE = _REPO_ROOT / "jrboard" / "csl"
+
+# Discovered dynamically so a NEW theme dropped into integrations/csl is covered
+# automatically (this is what jr-status slipped through before).
+_INTEGRATION_THEME_FILES = sorted(
+    p.name for p in _INTEGRATIONS.glob("*.sh")
+) + sorted(p.name for p in _INTEGRATIONS.glob("*.json"))
 
 
-@pytest.mark.parametrize(
-    "name", ["jr-board.sh", "jr-board.json", "jr-timetable.sh", "jr-timetable.json"]
-)
+@pytest.mark.parametrize("name", _INTEGRATION_THEME_FILES)
 def test_package_theme_matches_integrations_copy(name: str) -> None:
     """jrboard/csl/<f> and integrations/csl/<f> must be byte-identical.
 
-    Prevents the stale-theme drift bug (the installed ~/.config copy diverging
-    from the canonical portable source) from ever recurring at the repo level.
+    Prevents the stale/missing-theme drift bug (a theme in integrations/csl that
+    is not bundled, or a bundled copy diverging from the canonical source) from
+    ever recurring. Parametrized over whatever themes exist in integrations/csl.
     """
-    pkg = (_REPO_ROOT / "jrboard" / "csl" / name).read_bytes()
-    repo = (_REPO_ROOT / "integrations" / "csl" / name).read_bytes()
-    assert pkg == repo, f"{name} drifted between jrboard/csl and integrations/csl"
+    bundled = _PACKAGE / name
+    assert bundled.exists(), (
+        f"{name} exists in integrations/csl but is NOT bundled in jrboard/csl "
+        f"(so 'jrboard install-csl-theme' cannot ship it)"
+    )
+    assert bundled.read_bytes() == (_INTEGRATIONS / name).read_bytes(), (
+        f"{name} drifted between jrboard/csl and integrations/csl"
+    )
+
+
+def test_no_bundled_theme_hardcodes_an_absolute_home() -> None:
+    """Bundled themes must stay portable -- no author-specific absolute paths."""
+    for path in list(_PACKAGE.glob("*.sh")) + list(_PACKAGE.glob("*.json")):
+        text = path.read_text(encoding="utf-8")
+        assert "/Users/" not in text and "/home/" not in text, (
+            f"{path.name} hardcodes an absolute home path -- not portable"
+        )
+
+
+def test_every_bundled_theme_is_installable(tmp_path) -> None:
+    """install_csl_theme must succeed for every theme available()."""
+    for theme in available_csl_themes():
+        ok, msg = install_csl_theme(theme, dest_dir=str(tmp_path / theme))
+        assert ok, msg
