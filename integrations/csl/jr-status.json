@@ -1,0 +1,12 @@
+{
+  "name": "jr-status",
+  "version": "1.0.0",
+  "description": "Composed multi-row statusline: model + context bar + 5h/7d token gauges on row 1, JR / Tokyo Metro split-flap board on row 2. Uses csl's component composer (CSL_ROWS) — requires the component engine; rearrange components freely.",
+  "author": "minghsuan",
+  "license": "MIT",
+  "render": { "mode": "none", "cells_h": 0 },
+  "requires": {
+    "bin": ["python3"],
+    "paths": ["/Users/minghsuan/Downloads/JR-timetable/main.py"]
+  }
+}
