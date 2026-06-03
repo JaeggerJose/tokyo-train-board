@@ -213,7 +213,21 @@ python3 main.py --line yamanote --station shinjuku   # 站牌右下角會顯示 
 5h 20%·7d 27%·ctx 50% [JY] 17 新宿 ▸ 15:45 品川・渋谷方面  15:45 上野・池袋方面 …
 ```
 
-### 一鍵安裝（推薦，免 csl／免改 JSON）
+### 一鍵安裝（最推薦，任何有 python3 的機器都能跑）
+
+本專案**零執行期依賴**，所以根本不需要 pip。下面這行會自動偵測管道（`pip --user` → `pipx` → **git clone 直跑必勝回退**），再把 statusLine 寫進 `~/.claude/settings.json`：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/JaeggerJose/tokyo-train-board/main/install.sh | bash
+# 客製：加旗標（會轉給 install-statusline）
+curl -fsSL .../install.sh | bash -s -- --columns 90 --line oedo --city Tokyo --csl
+```
+
+旗標：`--csl`（順便裝 csl 主題）、`--offline`（強制 clone、可改原始碼）、`--no-statusline`（只裝工具、不碰 settings.json）。
+
+> 為什麼用 bootstrap：在 minimal Debian/Ubuntu 24.04 上，`pip`／`venv`／`pipx` **預設都沒裝**，且 PEP 668 鎖死系統 pip——三條 pip 路徑都得先 `sudo apt`。clone 回退靠 stdlib 直接跑 `main.py`，**免 pip、免 venv、免 sudo**，這才是真正萬用的路。
+
+### 一鍵安裝（pip 已可用時）
 
 ```bash
 pip install tokyo-train-board       # 或 pipx install tokyo-train-board
@@ -222,12 +236,12 @@ jrboard install-statusline          # 把 statusLine 寫進 ~/.claude/settings.j
 
 > `install-statusline` 用 `<你的python> -m jrboard` 產生指令，所以**即使 `jrboard` 不在 PATH 也能跑**（`pip install --user` 會把它放到不在 PATH 的 `~/.local/bin`）。可加 `--columns 90`、`--line oedo`、`--city Tokyo`、`--mode minitable` 客製。移除：`jrboard --uninstall-statusline`。
 
-**現代 Debian/Ubuntu（PEP 668 擋 `pip install`）** 用 venv（免 sudo）：
+**現代 Debian/Ubuntu（PEP 668 擋 `pip install`）**：minimal 安裝**需先 `sudo apt install python3-venv`**（否則 `python3 -m venv` 會因缺 ensurepip 而失敗），再：
 ```bash
 python3 -m venv ~/.jrboard && ~/.jrboard/bin/pip install tokyo-train-board
 ~/.jrboard/bin/python -m jrboard install-statusline     # 指令會自動指向這個 venv 的 python
 ```
-（Debian 若連 `python3 -m venv` 都缺，需 `sudo apt install python3-venv`，或 `pipx`。）
+> 不想動 `sudo` 就用上面的一鍵 bootstrap（clone 回退完全免 sudo）。
 
 ### 手動設定（或自訂指令）
 
@@ -254,15 +268,16 @@ python3 -m venv ~/.jrboard && ~/.jrboard/bin/pip install tokyo-train-board
 
 ### 用 csl 主題（推薦，會動的跑馬燈）
 
-若你用 [`csl`](https://) 狀態列主題管理器，本專案附了一個現成主題 `integrations/csl/jr-board.sh`（＋ manifest）。它覆寫 `render()` 呼叫上面的跑馬燈，並靠 `settings.json` 的 `refreshInterval: 1` 達成**每秒前進一格的真實捲動**：
+若你用 [`csl`](https://) 狀態列主題管理器，本專案附了一個現成主題（覆寫 `render()` 呼叫上面的跑馬燈，並靠 `settings.json` 的 `refreshInterval: 1` 達成**每秒前進一格的真實捲動**）。主題隨套件打包，**免手動 cp、免 clone**：
 
 ```bash
-# 安裝主題到 user-tier 後啟用
-cp integrations/csl/jr-board.* ~/.config/csl/themes/
-csl preview jr-board     # 先試跑一次
-csl set jr-board         # 啟用（自動改寫 settings.json 並備份）
-csl set bastille-day     # 隨時切回原本的主題
+jrboard install-csl-theme            # 複製 jr-board 主題進 ~/.config/csl/themes（也可 jrboard install-csl-theme jr-timetable）
+csl preview jr-board                 # 先試跑一次
+csl set jr-board                     # 啟用（自動改寫 settings.json 並備份）
+csl set bastille-day                 # 隨時切回原本的主題
 ```
+
+> clone 安裝（沒 pip）時，改用 `python3 <clone>/main.py --install-csl-theme`，效果相同。
 
 在 `jr-board.sh` 頂部可調 `JR_LINE` / `JR_STATION` / `JR_COLUMNS`（越窄越會捲）/ `JR_SCROLL_ALL`。
 

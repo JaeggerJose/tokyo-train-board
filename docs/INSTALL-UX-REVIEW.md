@@ -100,6 +100,22 @@ curl -fsSL https://raw.githubusercontent.com/JaeggerJose/tokyo-train-board/main/
 
 ---
 
+---
+
+## 5. 實作狀態（2026-06-03）
+
+| 項目 | 狀態 | 證據 |
+|------|------|------|
+| **P0** 一鍵 `install.sh`（pip→pipx→clone 必勝回退 + script-mode statusLine + PATH 提示） | ✅ 已做 | `bash -n` 過；兩條 dry-run 指令序列正確；`--offline` 從本地 repo 真實 clone → launcher 零 pip 渲染出福都心線 |
+| **P1** `jrboard install-csl-theme [NAME]`（主題打包進 `jrboard/csl/`，免 cp 免 clone） | ✅ 已做 | CLI 實測寫出 .sh/.json；未知主題/路徑穿越被拒；wheel 內含 `jrboard/csl/*.sh,*.json` |
+| script-mode statusLine（clone 安裝時發 `main.py` 路徑而非 `-m jrboard`） | ✅ 已做 | `python3 ./main.py --install-statusline` 寫出的 command 為 main.py 絕對路徑 |
+| drift-guard 測試（`jrboard/csl` 與 `integrations/csl` 逐位元組相同） | ✅ 已做 | 4 個 parametrized 測試 |
+| **P2** 文件對齊（README 首選 bootstrap、修正 venv「免 sudo」敘述、csl 改用子指令） | ✅ 已做 | `README.md` 安裝段 |
+| **P3** 本地 stale theme 重新同步 | ✅ 已做 | `~/.config/csl/themes/jr-board.sh` 硬編碼路徑 1→0；`csl preview` 正常渲染 |
+| 全測試套件 | ✅ 229 passed | `pytest -q` |
+
+> 尚未做：把 `install.sh` 推上 GitHub `main`（bootstrap 的 raw URL 才會生效）；發新版到 PyPI（讓 `pip install` 帶到 `install-csl-theme`）。這兩步要 commit + push + 發版。
+
 ## 附：可選的進階打包
 - **zipapp 單檔**：因零依賴，可 `python3 -m zipapp jrboard -o jrboard.pyz`，使用者 `curl -o ~/.local/bin/jrboard …pyz && chmod +x` 即得單檔可執行檔。
 - **csl theme registry**：若 csl 支援遠端 theme 來源，做成 `csl install jr-board` 從 registry 拉，最接近 `apt install` 的體感。
