@@ -126,6 +126,20 @@ def _station_label(line: Any, station: Any) -> str:
     return " ".join(p for p in parts if p)
 
 
+def _overlay_badge(dep: Any) -> str:
+    """Plain ``⚠``/``[+N分]`` badge for a delayed/alerted departure ("" if none)."""
+    badge = ""
+    if _safe_attr(dep, "alert_text").strip():
+        badge += "⚠"
+    try:
+        delay = getattr(dep, "delay_min", None)
+    except Exception:
+        delay = None
+    if isinstance(delay, int) and delay > 0:
+        badge += f"[+{delay}分]"
+    return f"{badge} " if badge else ""
+
+
 def _format_departure(
     dep: Any, now: Any = None, countdown: bool = False
 ) -> Optional[str]:
@@ -135,9 +149,10 @@ def _format_departure(
         return None
     time = departure_display(dep, now, countdown) if countdown else raw_time
     dest = _safe_attr(dep, "dest_jp").strip()
+    badge = _overlay_badge(dep)
     if dest:
-        return f"{time} {dest}"
-    return time
+        return f"{time} {badge}{dest}"
+    return f"{time} {badge}".strip() if badge else time
 
 
 def _compose_parts(
@@ -360,7 +375,7 @@ def _minitable_rows(
                 continue
             time = departure_display(dep, now, countdown) if countdown \
                 else _safe_attr(dep, "time").strip()
-            dest = _safe_attr(dep, "dest_jp").strip()
+            dest = f"{_overlay_badge(dep)}{_safe_attr(dep, 'dest_jp').strip()}"
             rows.append((time, dest))
     return rows
 

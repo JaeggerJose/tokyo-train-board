@@ -24,8 +24,29 @@ RESET = "\033[0m"
 BOLD = "\033[1m"
 DIM = "\033[2m"
 ORANGE = "\033[38;5;208m"
+RED = "\033[38;5;167m"
 GREEN_BG = "\033[48;5;28m\033[38;5;231m"  # white-on-green nav bar fallback
 GREEN_FG = "\033[38;5;34m"
+
+
+def _dest_with_badges(dep: Departure) -> str:
+    """Destination cell with optional ``⚠`` and ``[+N分]`` live-overlay badges."""
+    prefix = ""
+    if getattr(dep, "alert_text", None):
+        prefix += f"{RED}⚠{RESET} "
+    delay = getattr(dep, "delay_min", None)
+    if isinstance(delay, int) and delay > 0:
+        prefix += f"{RED}[+{delay}分]{RESET} "
+    return f"{prefix}{dep.dest_jp}"
+
+
+def _first_cause(departures: Sequence[Departure]) -> str:
+    """First non-empty ``alert_text`` across ``departures`` (the disruption cause)."""
+    for dep in departures:
+        text = getattr(dep, "alert_text", None)
+        if isinstance(text, str) and text.strip():
+            return text.strip()
+    return ""
 
 # Minimum internal width we are willing to render at; smaller frames look
 # broken because the navigation bar and timetable columns collapse.
@@ -242,15 +263,22 @@ def render_timetable(
         for dep in departures:
             time_cell = f"{ORANGE}{departure_display(dep, now, countdown)}{RESET}"
             kind_cell = f"{line.ansi_fg}{dep.kind_jp}{RESET}"
+            dest_cell = _dest_with_badges(dep)
             row = (
                 f" {_w.safe_pad(time_cell, time_w)} | "
                 f"{_w.safe_pad(kind_cell, kind_w)} | "
-                f"{_w.safe_pad(dep.dest_jp, dest_w)} | "
+                f"{_w.safe_pad(dest_cell, dest_w)} | "
                 f"{_w.safe_pad(dep.track, track_w)} "
             )
             lines.append(_row(row, iw))
 
     lines.append(_frame_div(iw))
+
+    # Disruption cause footer (first alert with text), shown above the src line.
+    cause = _first_cause(departures)
+    if cause:
+        lines.append(_row(_truncate(f"{RED}⚠ {cause}{RESET}", iw), iw))
+        lines.append(_frame_div(iw))
 
     footer_left = f"{DIM}{line.name_en}{RESET}"
     footer_right = f"{DIM}src: {source_label}{RESET}"

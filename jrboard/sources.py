@@ -14,7 +14,7 @@ import os
 import sys
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Iterable, Protocol
+from typing import Iterable, Optional, Protocol
 
 from jrboard.model import Direction, Line, Station
 
@@ -52,13 +52,21 @@ _TRAIN_TYPE_JP: dict[str, str] = {
 
 @dataclass(frozen=True)
 class Departure:
-    """One departure: time HH:MM, 種別, 行先/方面, 番線, direction id."""
+    """One departure: time HH:MM, 種別, 行先/方面, 番線, direction id.
+
+    ``delay_min`` / ``alert_text`` are the optional live-service overlay: a
+    positive delay (minutes) renders a ``[+N分]`` badge, and any ``alert_text``
+    (e.g. a disruption cause) flags the row with ``⚠``. Both default to absent
+    so every existing construction stays valid.
+    """
 
     time: str
     kind_jp: str
     dest_jp: str
     track: str
     direction: str
+    delay_min: Optional[int] = None
+    alert_text: Optional[str] = None
 
 
 class TimetableSource(Protocol):

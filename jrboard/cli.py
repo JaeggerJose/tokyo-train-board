@@ -262,6 +262,28 @@ def _build_parser(config: Config) -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument(
+        "--alerts",
+        dest="alerts",
+        default=None,
+        metavar="FILE",
+        help=(
+            "Overlay a local service-alerts JSON file (any cron/scraper can "
+            "write it; no ODPT key needed): badges matching departures with "
+            "[+N分]/⚠ and footers the cause. Works in board/statusline/minitable."
+        ),
+    )
+    parser.add_argument(
+        "--cache-dir",
+        dest="cache_dir",
+        default=None,
+        metavar="DIR",
+        help=(
+            "Cache live (ODPT) departures here as JSONL and replay the freshest "
+            "snapshot (<30 min) when the live source returns nothing -- so the "
+            "board never goes blank on flaky connectivity. Shows 'src: CACHE'."
+        ),
+    )
+    parser.add_argument(
         "--show-rate-limits",
         dest="show_rate_limits",
         action="store_true",
@@ -466,6 +488,8 @@ def _departures_for(
     now: datetime,
     limit: int,
     feed_ics: Optional[str],
+    alerts_path: Optional[str] = None,
+    cache_dir: Optional[str] = None,
 ) -> tuple[list[Departure], str]:
     """Return ``(departures, label)`` from the agenda feed or the timetable.
 
@@ -473,12 +497,41 @@ def _departures_for(
     ``AGENDA``); ``feeds.departures_from_ics`` never raises and returns ``[]``
     on a missing/unreadable/empty file. Otherwise the normal timetable source
     is used, preserving its ``ODPT``/``STATIC`` provenance label.
+
+    ``cache_dir`` adds an offline JSONL cache: live (ODPT) snapshots are written
+    and, when the source returns nothing, the freshest snapshot (<30 min) is
+    replayed with a ``CACHE (N分前)`` label. ``alerts_path`` overlays a local
+    service-alerts file onto the result (``[+N分]``/``⚠`` badges + cause).
     """
     if feed_ics:
         from .feeds import departures_from_ics
 
-        return departures_from_ics(feed_ics, now, limit), "AGENDA"
-    return get_departures(line, station, now, limit)
+        departures, label = departures_from_ics(feed_ics, now, limit), "AGENDA"
+    else:
+        departures, label = get_departures(line, station, now, limit)
+
+    station_key = (
+        getattr(station, "name_en", "") or getattr(station, "id", "")
+    ).lower()
+    if cache_dir:
+        from .cache import read_latest, write_snapshot
+
+        epoch = time.time()
+        if departures and label == "ODPT":
+            write_snapshot(cache_dir, line.key, station_key, departures, epoch)
+        elif not departures:
+            replay = read_latest(cache_dir, line.key, station_key, epoch, 30 * 60)
+            if replay is not None:
+                departures, age_min = replay
+                label = f"CACHE ({age_min}分前)"
+
+    if alerts_path:
+        from .alerts import apply_alerts, load_alerts
+
+        departures = apply_alerts(
+            departures, load_alerts(alerts_path), line.key, station_key
+        )
+    return departures, label
 
 
 def _random_target(
@@ -535,7 +588,9 @@ def _run_board(args: argparse.Namespace, line: Line, station: Station) -> int:
 
             now = datetime.now()
             departures, label = _departures_for(
-                line, station, now, 6, feed_ics
+                line, station, now, 6, feed_ics,
+                alerts_path=getattr(args, "alerts", None),
+                cache_dir=getattr(args, "cache_dir", None),
             )
             board = _render_resolved_board(
                 line, station, departures, width, label,
@@ -572,13 +627,18 @@ def _run_statusline(
     countdown: bool = False,
     show_rate_limits: bool = False,
     rate_pcts: Optional[tuple] = None,
+    alerts_path: Optional[str] = None,
+    cache_dir: Optional[str] = None,
 ) -> int:
     # Imported lazily so a missing statusline module never breaks board mode.
     from .claude_input import rate_limit_alert, token_gauge
     from .statusline import minitable_text, statusline_text
 
     now = datetime.now()
-    departures, _label = _departures_for(line, station, now, 3, feed_ics)
+    departures, _label = _departures_for(
+        line, station, now, 3, feed_ics,
+        alerts_path=alerts_path, cache_dir=cache_dir,
+    )
     # An explicit --columns wins; otherwise fall back to TTY auto-detection.
     columns = columns if columns and columns > 0 else _terminal_columns()
 
@@ -718,7 +778,9 @@ def _run_timeline(
 
     now = datetime.now()
     departures, _label = _departures_for(
-        line, station, now, 6, getattr(args, "feed_ics", None)
+        line, station, now, 6, getattr(args, "feed_ics", None),
+        alerts_path=getattr(args, "alerts", None),
+        cache_dir=getattr(args, "cache_dir", None),
     )
     _print_lines(render_timeline(line, station, departures, now, width=args.width))
     return 0
@@ -940,6 +1002,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             countdown=getattr(args, "countdown", False),
             show_rate_limits=getattr(args, "show_rate_limits", False),
             rate_pcts=rate_pcts,
+            alerts_path=getattr(args, "alerts", None),
+            cache_dir=getattr(args, "cache_dir", None),
         )
 
     try:
