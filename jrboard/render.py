@@ -15,6 +15,7 @@ from __future__ import annotations
 from typing import Sequence
 
 from . import width as _w
+from .countdown import departure_display
 from .model import Line, Station, neighbors
 from .sources import Departure
 
@@ -197,18 +198,22 @@ def render_timetable(
     departures: Sequence[Departure],
     width: int = 60,
     source_label: str = "STATIC",
+    countdown: bool = False,
+    now=None,
 ) -> list[str]:
     """Render the departures timetable as a list of ANSI text lines.
 
     Columns: time (時刻) / kind (種別) / destination (行先・方面) / track (番線).
     Column widths flex with the configured board width; the destination column
     absorbs the remaining space. A discreet source label (ODPT/STATIC) is shown
-    in the footer.
+    in the footer. When ``countdown`` is set the time column shows ``あとN分``
+    (recomputed from ``now``) and widens to fit it.
     """
     iw = _clamp_width(width) - 2
 
     # Fixed-ish columns; destination flexes. Separators: " | " (x3) + edges.
-    time_w = 6
+    # The countdown label (あとNNN分 / まもなく) needs more room than HH:MM.
+    time_w = 9 if countdown else 6
     kind_w = 10
     track_w = 4
     sep = 3  # width of " | "
@@ -235,7 +240,7 @@ def render_timetable(
         lines.append(_row(_w.safe_pad(empty, iw, "center"), iw))
     else:
         for dep in departures:
-            time_cell = f"{ORANGE}{dep.time}{RESET}"
+            time_cell = f"{ORANGE}{departure_display(dep, now, countdown)}{RESET}"
             kind_cell = f"{line.ansi_fg}{dep.kind_jp}{RESET}"
             row = (
                 f" {_w.safe_pad(time_cell, time_w)} | "
@@ -264,8 +269,11 @@ def render_board(
     departures: Sequence[Departure],
     width: int = 60,
     source_label: str = "STATIC",
+    countdown: bool = False,
+    now=None,
 ) -> list[str]:
     """Combine the station sign and the timetable into one board."""
     sign = render_station_sign(line, station, width)
-    table = render_timetable(line, departures, width, source_label)
+    table = render_timetable(line, departures, width, source_label,
+                             countdown=countdown, now=now)
     return sign + table

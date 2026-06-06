@@ -243,6 +243,34 @@ def _build_parser(config: Config) -> argparse.ArgumentParser:
             "STDIN blob. Implies reading STDIN; pair with --claude-stdin."
         ),
     )
+    parser.add_argument(
+        "--countdown",
+        action="store_true",
+        help=(
+            "Show live 'あと N 分' (minutes-to-departure) instead of HH:MM, "
+            "recomputed from the clock each render. Makes the board/statusline "
+            "visibly change every second. Works in board/statusline/minitable."
+        ),
+    )
+    parser.add_argument(
+        "--timeline",
+        action="store_true",
+        help=(
+            "Render the 24h service timeline for --line/--station: a first→last "
+            "train bar with a 'now' pointer, the next train, and a ⚠ last-train "
+            "alert when service is closing. Prints once and exits."
+        ),
+    )
+    parser.add_argument(
+        "--show-rate-limits",
+        dest="show_rate_limits",
+        action="store_true",
+        help=(
+            "Statusline/minitable: when the Claude 5h/7d token budget is nearly "
+            "exhausted (>=90%), lead with a red '⚠速度制限 5h 92%' alert. Reads "
+            "the STDIN blob (implies --claude-stdin). Off by default."
+        ),
+    )
 
     # --- Additive feature flags ------------------------------------------- #
     parser.add_argument(
@@ -407,8 +435,13 @@ def _render_resolved_board(
     departures: Sequence[Departure],
     width: int,
     source_label: str,
+    countdown: bool = False,
+    now: Optional[datetime] = None,
 ) -> list[str]:
-    return render.render_board(line, station, departures, width, source_label)
+    return render.render_board(
+        line, station, departures, width, source_label,
+        countdown=countdown, now=now,
+    )
 
 
 def _animate_board(
@@ -505,7 +538,8 @@ def _run_board(args: argparse.Namespace, line: Line, station: Station) -> int:
                 line, station, now, 6, feed_ics
             )
             board = _render_resolved_board(
-                line, station, departures, width, label
+                line, station, departures, width, label,
+                countdown=getattr(args, "countdown", False), now=now,
             )
 
             sys.stdout.write(_CLEAR_SCREEN)
@@ -535,9 +569,12 @@ def _run_statusline(
     feed_ics: Optional[str] = None,
     minitable: bool = False,
     token_pcts: Optional[tuple] = None,
+    countdown: bool = False,
+    show_rate_limits: bool = False,
+    rate_pcts: Optional[tuple] = None,
 ) -> int:
     # Imported lazily so a missing statusline module never breaks board mode.
-    from .claude_input import token_gauge
+    from .claude_input import rate_limit_alert, token_gauge
     from .statusline import minitable_text, statusline_text
 
     now = datetime.now()
@@ -555,7 +592,7 @@ def _run_statusline(
         tok = token_gauge(sess, wk, ctx, color=color, max_width=budget) if have_tok else ""
         text = minitable_text(
             line, station, departures, now,
-            columns=columns, color=color, token_seg=tok,
+            columns=columns, color=color, token_seg=tok, countdown=countdown,
         )
     else:
         # RWD marquee: reserve the train, give the gauge the remaining width and
@@ -572,6 +609,7 @@ def _run_statusline(
         text = statusline_text(
             line, station, departures, now,
             columns=body_cols, pin_label=pin_label, color=color,
+            countdown=countdown,
         )
         if tok:
             # Tokens go on the LEFT: the statusLine has no pane width, and
@@ -579,6 +617,14 @@ def _run_statusline(
             # leading with the gauge keeps 5h/7d/ctx visible even in a narrow
             # split — the (less critical) scrolling departures get clipped first.
             text = f"{tok} {text}"
+
+    # Rate-limit alert leads the line (painted independently, outside the
+    # marquee body so slicing stays correct), or a leading row in minitable.
+    if show_rate_limits and rate_pcts:
+        alert = rate_limit_alert(rate_pcts[0], rate_pcts[1], color=color)
+        if alert:
+            text = f"{alert}\n{text}" if minitable else f"{alert} {text}"
+
     # No trailing newline (one line for statusline, several for minitable).
     sys.stdout.write(text)
     sys.stdout.flush()
@@ -662,6 +708,20 @@ def _run_pomodoro(args: argparse.Namespace, line: Line) -> int:
         if hide_cursor:
             sys.stdout.write(_SHOW_CURSOR)
             sys.stdout.flush()
+
+
+def _run_timeline(
+    args: argparse.Namespace, line: Line, station: Station
+) -> int:
+    """Render the 24h service timeline for ``line``/``station`` once."""
+    from .timeline import render_timeline
+
+    now = datetime.now()
+    departures, _label = _departures_for(
+        line, station, now, 6, getattr(args, "feed_ics", None)
+    )
+    _print_lines(render_timeline(line, station, departures, now, width=args.width))
+    return 0
 
 
 def _run_commute(args: argparse.Namespace, cfg: Config) -> int:
@@ -843,7 +903,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     # and the token gauge. Reading STDIN is enabled by --claude-stdin or
     # implied by --tokens (which needs the blob to populate the gauge).
     if args.mode in ("statusline", "minitable"):
-        want_stdin = args.claude_stdin or args.tokens or args.by_session
+        want_stdin = (
+            args.claude_stdin or args.tokens or args.by_session
+            or getattr(args, "show_rate_limits", False)
+        )
         status = _read_claude_stdin(want_stdin)
 
         line, station, err = _select_statusline_target(args, cfg, status)
@@ -859,6 +922,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 getattr(status, "weekly_pct", None),
                 getattr(status, "ctx_pct", None),
             )
+        rate_pcts = None
+        if getattr(args, "show_rate_limits", False):
+            rate_pcts = (
+                getattr(status, "session_pct", None),
+                getattr(status, "weekly_pct", None),
+            )
 
         return _run_statusline(
             line, station,
@@ -868,6 +937,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             feed_ics=getattr(args, "feed_ics", None),
             minitable=(args.mode == "minitable"),
             token_pcts=token_pcts,
+            countdown=getattr(args, "countdown", False),
+            show_rate_limits=getattr(args, "show_rate_limits", False),
+            rate_pcts=rate_pcts,
         )
 
     try:
@@ -892,6 +964,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     except (ValueError, TypeError) as exc:
         print(f"jrboard: {exc}", file=sys.stderr)
         return 2
+
+    if getattr(args, "timeline", False):
+        return _run_timeline(args, line, station)
 
     return _run_board(args, line, station)
 

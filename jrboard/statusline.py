@@ -40,6 +40,8 @@ except Exception:  # pragma: no cover - fallback only used in isolation.
         return total
 
 
+from .countdown import departure_display
+
 __all__ = ["statusline_text", "minitable_text"]
 
 # ANSI reset; colours themselves come from the line's own palette at runtime.
@@ -124,18 +126,24 @@ def _station_label(line: Any, station: Any) -> str:
     return " ".join(p for p in parts if p)
 
 
-def _format_departure(dep: Any) -> Optional[str]:
-    """Format one departure as ``HH:MM 方面`` or ``None`` when unusable."""
-    time = _safe_attr(dep, "time").strip()
-    if not time:
+def _format_departure(
+    dep: Any, now: Any = None, countdown: bool = False
+) -> Optional[str]:
+    """Format one departure as ``HH:MM 方面`` (or ``あとN分 方面``) or ``None``."""
+    raw_time = _safe_attr(dep, "time").strip()
+    if not raw_time:
         return None
+    time = departure_display(dep, now, countdown) if countdown else raw_time
     dest = _safe_attr(dep, "dest_jp").strip()
     if dest:
         return f"{time} {dest}"
     return time
 
 
-def _compose_parts(line: Any, station: Any, departures: Any) -> tuple[str, str, str]:
+def _compose_parts(
+    line: Any, station: Any, departures: Any, now: Any = None,
+    countdown: bool = False,
+) -> tuple[str, str, str]:
     """Return ``(badge, label_rest, body)`` as PLAIN text (no colour).
 
     - ``badge`` is the line code block, e.g. ``[E]`` (gets the line's bg colour).
@@ -158,7 +166,7 @@ def _compose_parts(line: Any, station: Any, departures: Any) -> tuple[str, str, 
         for dep in departures:
             if len(entries) >= _MAX_DEPARTURES:
                 break
-            formatted = _format_departure(dep)
+            formatted = _format_departure(dep, now, countdown)
             if formatted:
                 entries.append(formatted)
 
@@ -267,6 +275,7 @@ def statusline_text(
     columns: int = 0,
     pin_label: bool = True,
     color: bool = True,
+    countdown: bool = False,
 ) -> str:
     """Render the one-line statusline string.
 
@@ -294,7 +303,9 @@ def statusline_text(
         on internal error it degrades to a minimal label rather than raising.
     """
     try:
-        badge, rest, body = _compose_parts(line, station, departures)
+        badge, rest, body = _compose_parts(
+            line, station, departures, now, countdown
+        )
         label = f"{badge}{rest}"          # plain, for width maths + slicing
         content = f"{label}{body}"
     except Exception as exc:  # never let the statusline crash the host shell
@@ -334,7 +345,9 @@ _MINITABLE_MIN_ROWS = 2
 _MINITABLE_MAX_ROWS = 3
 
 
-def _minitable_rows(departures: Any) -> list[tuple[str, str]]:
+def _minitable_rows(
+    departures: Any, now: Any = None, countdown: bool = False
+) -> list[tuple[str, str]]:
     """Return up to ``_MINITABLE_MAX_ROWS`` ``(time, dest)`` plain pairs."""
     rows: list[tuple[str, str]] = []
     if isinstance(departures, Iterable) and not isinstance(
@@ -343,9 +356,10 @@ def _minitable_rows(departures: Any) -> list[tuple[str, str]]:
         for dep in departures:
             if len(rows) >= _MINITABLE_MAX_ROWS:
                 break
-            time = _safe_attr(dep, "time").strip()
-            if not time:
+            if not _safe_attr(dep, "time").strip():
                 continue
+            time = departure_display(dep, now, countdown) if countdown \
+                else _safe_attr(dep, "time").strip()
             dest = _safe_attr(dep, "dest_jp").strip()
             rows.append((time, dest))
     return rows
@@ -368,6 +382,7 @@ def minitable_text(
     columns: int = 0,
     color: bool = True,
     token_seg: str = "",
+    countdown: bool = False,
 ) -> str:
     """Render a compact MULTI-LINE statusline table.
 
@@ -394,7 +409,6 @@ def minitable_text(
         A newline-joined string with NO trailing newline. Pure; never raises
         (degrades to a minimal single line on internal error).
     """
-    del now  # not used: the minitable does not scroll
     try:
         badge = _line_badge(line)
         number = _safe_attr(station, "number").strip()
@@ -403,7 +417,7 @@ def minitable_text(
             or _safe_attr(station, "name_en").strip()
             or _safe_attr(station, "id").strip()
         )
-        rows = _minitable_rows(departures)
+        rows = _minitable_rows(departures, now, countdown)
     except Exception as exc:  # never crash the host shell
         print(f"jrboard.statusline: minitable compose failed: {exc!r}",
               file=sys.stderr)

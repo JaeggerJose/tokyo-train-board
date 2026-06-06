@@ -164,7 +164,13 @@ class StaticSource:
                 )
             )
 
-        candidates.sort(key=lambda dep: (_hhmm_to_minutes(dep.time) or 0))
+        # Sort by minutes-from-now (wrap-aware) so post-midnight departures rank
+        # AFTER tonight's late trains -- a plain mod-24 key would float 00:08 to
+        # the front and make "next train" read hours away in the evening.
+        candidates.sort(
+            key=lambda dep: ((_hhmm_to_minutes(dep.time) or 0) - now_min)
+            % (24 * 60)
+        )
         return candidates[:limit]
 
     @classmethod

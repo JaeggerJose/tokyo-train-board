@@ -31,6 +31,7 @@ __all__ = [
     "pick_by_rotation",
     "scope_keys_by_city",
     "token_gauge",
+    "rate_limit_alert",
 ]
 
 # ANSI reset; thresholds drive the green/yellow/red colouring of the gauge.
@@ -143,6 +144,30 @@ def parse_claude_status(raw: str) -> ClaudeStatus:
             _dig(data, "rate_limits", "seven_day", "used_percentage")
         ),
     )
+
+
+def rate_limit_alert(
+    session_pct: Optional[float],
+    weekly_pct: Optional[float],
+    threshold: float = _CRIT_PCT,
+    color: bool = True,
+) -> Optional[str]:
+    """A red "速度制限" alert banner when a token budget is nearly exhausted.
+
+    Returns ``"⚠速度制限 5h 92%"`` (the worst breaching gauge) when the 5h
+    (session) or 7d (weekly) usage is at/above ``threshold``; otherwise ``None``.
+    Honest by construction — it only ever shows real percentages, never a
+    fabricated ETA. Painted red unless ``color`` is ``False``. Never raises.
+    """
+    worst: Optional[tuple[str, float]] = None
+    for label, pct in (("5h", session_pct), ("7d", weekly_pct)):
+        if pct is not None and pct >= threshold:
+            if worst is None or pct > worst[1]:
+                worst = (label, pct)
+    if worst is None:
+        return None
+    body = f"⚠速度制限 {worst[0]} {int(round(worst[1]))}%"
+    return f"{_RED}{body}{_RESET}" if color else body
 
 
 def _stable_hash(text: str) -> int:
