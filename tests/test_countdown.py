@@ -29,6 +29,12 @@ def test_countdown_minutes_imminent_is_zero():
     assert countdown_minutes("15:45", _now(15, 44, 20)) == 0
 
 
+def test_countdown_minutes_same_minute_past_is_zero_not_wrapped():
+    # Regression: dep at 15:45:00 seen at 15:45:30 is "まもなく" (0), NOT ~1439.
+    # (minute-granular departure time vs now-with-seconds must not wrap to +24h)
+    assert countdown_minutes("15:45", _now(15, 45, 30)) == 0
+
+
 def test_countdown_minutes_wraps_past_midnight():
     # 00:18 last train seen at 23:41 -> 37 min, not negative
     assert countdown_minutes("00:18", _now(23, 41)) == 37
