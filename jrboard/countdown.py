@@ -59,6 +59,12 @@ def countdown_minutes(dep_time: Any, now: Any) -> Optional[int]:
         return None
     delta = dep_sec - now_sec
     if delta < 0:
+        # Departure times are minute-granular (HH:MM), but `now` carries seconds.
+        # A departure in the CURRENT minute reads as up to 59 s "past" — that's
+        # imminent (まもなく / 0), not a train ~24 h away. Only a departure a full
+        # minute or more behind is genuinely tomorrow's (wrap past midnight).
+        if delta > -60:
+            return 0
         delta += _SEC_PER_DAY
     return delta // 60
 

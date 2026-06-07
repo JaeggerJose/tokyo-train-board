@@ -312,7 +312,7 @@ jrboard --line chuo --station tokyo --cache-dir ~/.jrboard/cache
 pip install "tokyo-train-board[gtfs]"
 export GTFS_RT_URL="https://<operator>/gtfs-rt"   # 開關；presence 即啟用
 export GTFS_RT_ROUTE_ID="odpt.Railway:JR-East.ChuoRapid"   # 選用：feed route_id 與線路對不上時覆寫
-jrboard --line chuo_rapid --station tokyo
+jrboard --line chuo --station tokyo
 ```
 > 來源鏈：`GTFS-RT → ODPT → CACHE → STATIC`，誤點/警報以 overlay 方式蓋上（不偽造班次）。可接的 feed 來源見 [`docs/LIVE-DATA-APIS.md`](docs/LIVE-DATA-APIS.md)。
 
