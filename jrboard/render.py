@@ -15,6 +15,7 @@ from __future__ import annotations
 from typing import Sequence
 
 from . import width as _w
+from .countdown import departure_display
 from .model import Line, Station, neighbors
 from .sources import Departure
 
@@ -23,8 +24,29 @@ RESET = "\033[0m"
 BOLD = "\033[1m"
 DIM = "\033[2m"
 ORANGE = "\033[38;5;208m"
+RED = "\033[38;5;167m"
 GREEN_BG = "\033[48;5;28m\033[38;5;231m"  # white-on-green nav bar fallback
 GREEN_FG = "\033[38;5;34m"
+
+
+def _dest_with_badges(dep: Departure) -> str:
+    """Destination cell with optional ``⚠`` and ``[+N分]`` live-overlay badges."""
+    prefix = ""
+    if getattr(dep, "alert_text", None):
+        prefix += f"{RED}⚠{RESET} "
+    delay = getattr(dep, "delay_min", None)
+    if isinstance(delay, int) and delay > 0:
+        prefix += f"{RED}[+{delay}分]{RESET} "
+    return f"{prefix}{dep.dest_jp}"
+
+
+def _first_cause(departures: Sequence[Departure]) -> str:
+    """First non-empty ``alert_text`` across ``departures`` (the disruption cause)."""
+    for dep in departures:
+        text = getattr(dep, "alert_text", None)
+        if isinstance(text, str) and text.strip():
+            return text.strip()
+    return ""
 
 # Minimum internal width we are willing to render at; smaller frames look
 # broken because the navigation bar and timetable columns collapse.
@@ -197,18 +219,22 @@ def render_timetable(
     departures: Sequence[Departure],
     width: int = 60,
     source_label: str = "STATIC",
+    countdown: bool = False,
+    now=None,
 ) -> list[str]:
     """Render the departures timetable as a list of ANSI text lines.
 
     Columns: time (時刻) / kind (種別) / destination (行先・方面) / track (番線).
     Column widths flex with the configured board width; the destination column
     absorbs the remaining space. A discreet source label (ODPT/STATIC) is shown
-    in the footer.
+    in the footer. When ``countdown`` is set the time column shows ``あとN分``
+    (recomputed from ``now``) and widens to fit it.
     """
     iw = _clamp_width(width) - 2
 
     # Fixed-ish columns; destination flexes. Separators: " | " (x3) + edges.
-    time_w = 6
+    # The countdown label (あとNNN分 / まもなく) needs more room than HH:MM.
+    time_w = 9 if countdown else 6
     kind_w = 10
     track_w = 4
     sep = 3  # width of " | "
@@ -235,17 +261,24 @@ def render_timetable(
         lines.append(_row(_w.safe_pad(empty, iw, "center"), iw))
     else:
         for dep in departures:
-            time_cell = f"{ORANGE}{dep.time}{RESET}"
+            time_cell = f"{ORANGE}{departure_display(dep, now, countdown)}{RESET}"
             kind_cell = f"{line.ansi_fg}{dep.kind_jp}{RESET}"
+            dest_cell = _dest_with_badges(dep)
             row = (
                 f" {_w.safe_pad(time_cell, time_w)} | "
                 f"{_w.safe_pad(kind_cell, kind_w)} | "
-                f"{_w.safe_pad(dep.dest_jp, dest_w)} | "
+                f"{_w.safe_pad(dest_cell, dest_w)} | "
                 f"{_w.safe_pad(dep.track, track_w)} "
             )
             lines.append(_row(row, iw))
 
     lines.append(_frame_div(iw))
+
+    # Disruption cause footer (first alert with text), shown above the src line.
+    cause = _first_cause(departures)
+    if cause:
+        lines.append(_row(_truncate(f"{RED}⚠ {cause}{RESET}", iw), iw))
+        lines.append(_frame_div(iw))
 
     footer_left = f"{DIM}{line.name_en}{RESET}"
     footer_right = f"{DIM}src: {source_label}{RESET}"
@@ -264,8 +297,11 @@ def render_board(
     departures: Sequence[Departure],
     width: int = 60,
     source_label: str = "STATIC",
+    countdown: bool = False,
+    now=None,
 ) -> list[str]:
     """Combine the station sign and the timetable into one board."""
     sign = render_station_sign(line, station, width)
-    table = render_timetable(line, departures, width, source_label)
+    table = render_timetable(line, departures, width, source_label,
+                             countdown=countdown, now=now)
     return sign + table

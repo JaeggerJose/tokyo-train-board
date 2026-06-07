@@ -20,7 +20,9 @@ THEME_DESC="Composed multi-row: session/token gauges + JR board (component frame
 
 CSL_ROWS=( "model ctx tokens" "jrboard" )
 CSL_SEP=" · "                       # within-row separator
-CSL_COLUMNS="${CSL_COLUMNS:-90}"    # width budget passed to board components
+# Narrower than the board content so the marquee actually scrolls (a wider
+# budget makes the board fit => nothing to scroll). Try 48–60.
+CSL_COLUMNS="${CSL_COLUMNS:-50}"    # width budget passed to board components
 
 # JR board component opt-ins (see lib/components.sh):
 JR_BY_SESSION="${JR_BY_SESSION:-1}" # different Claude sessions => different lines

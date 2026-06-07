@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tokyo-train-board"
-version = "0.2.0"
+version = "0.3.0"
 description = "Terminal split-flap (Solari) departure board for JR / Tokyo Metro / Toei lines."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -31,6 +31,9 @@ Issues = "https://github.com/JaeggerJose/tokyo-train-board/issues"
 
 [project.optional-dependencies]
 live = ["requests"]
+# GTFS-Realtime overlay (delays + alerts). gtfs-realtime-bindings pulls protobuf
+# transitively. Imported lazily inside jrboard.gtfs_rt so the core stays zero-dep.
+gtfs = ["requests", "gtfs-realtime-bindings>=1.0"]
 
 [project.scripts]
 jrboard = "jrboard.cli:main"

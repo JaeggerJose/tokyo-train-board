@@ -14,7 +14,7 @@ import os
 import sys
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Iterable, Protocol
+from typing import Iterable, Optional, Protocol
 
 from jrboard.model import Direction, Line, Station
 
@@ -52,13 +52,21 @@ _TRAIN_TYPE_JP: dict[str, str] = {
 
 @dataclass(frozen=True)
 class Departure:
-    """One departure: time HH:MM, 種別, 行先/方面, 番線, direction id."""
+    """One departure: time HH:MM, 種別, 行先/方面, 番線, direction id.
+
+    ``delay_min`` / ``alert_text`` are the optional live-service overlay: a
+    positive delay (minutes) renders a ``[+N分]`` badge, and any ``alert_text``
+    (e.g. a disruption cause) flags the row with ``⚠``. Both default to absent
+    so every existing construction stays valid.
+    """
 
     time: str
     kind_jp: str
     dest_jp: str
     track: str
     direction: str
+    delay_min: Optional[int] = None
+    alert_text: Optional[str] = None
 
 
 class TimetableSource(Protocol):
@@ -164,7 +172,13 @@ class StaticSource:
                 )
             )
 
-        candidates.sort(key=lambda dep: (_hhmm_to_minutes(dep.time) or 0))
+        # Sort by minutes-from-now (wrap-aware) so post-midnight departures rank
+        # AFTER tonight's late trains -- a plain mod-24 key would float 00:08 to
+        # the front and make "next train" read hours away in the evening.
+        candidates.sort(
+            key=lambda dep: ((_hhmm_to_minutes(dep.time) or 0) - now_min)
+            % (24 * 60)
+        )
         return candidates[:limit]
 
     @classmethod
@@ -396,19 +410,43 @@ def get_departures(
     now: datetime,
     limit: int = 6,
 ) -> tuple[list[Departure], str]:
-    """Return ``(departures, label)`` where label is ``"ODPT"`` or ``"STATIC"``.
+    """Return ``(departures, label)`` -- ``"GTFS-RT"`` / ``"ODPT"`` / ``"STATIC"``.
 
-    Tries :class:`ODPTSource` only when ``ODPT_KEY`` is present; on any
-    failure it logs to ``stderr`` and falls back to :class:`StaticSource`.
+    Base timetable: :class:`ODPTSource` when ``ODPT_KEY`` is present (logging to
+    ``stderr`` and falling back to :class:`StaticSource` on failure), else static.
+    Then, when ``GTFS_RT_URL`` is set, :class:`~jrboard.gtfs_rt.GtfsRtSource`
+    overlays live delays/alerts; if it stamps at least one row the label becomes
+    ``"GTFS-RT"``. Any overlay failure logs to ``stderr`` and keeps the base.
     """
     if os.environ.get("ODPT_KEY"):
         try:
-            departures = ODPTSource().departures(line, station, now, limit)
-            return departures, "ODPT"
+            base = (ODPTSource().departures(line, station, now, limit), "ODPT")
         except Exception as exc:
             print(
                 f"[jrboard] ODPT source failed, using static data: {exc}",
                 file=sys.stderr,
             )
+            base = (StaticSource().departures(line, station, now, limit), "STATIC")
+    else:
+        base = (StaticSource().departures(line, station, now, limit), "STATIC")
 
-    return StaticSource().departures(line, station, now, limit), "STATIC"
+    if os.environ.get("GTFS_RT_URL"):
+        departures, _label = base
+        try:
+            overlaid = GtfsRtSource().overlay(line, station, now, departures)
+            if any(d.delay_min or d.alert_text for d in overlaid):
+                return overlaid, "GTFS-RT"
+        except Exception as exc:
+            print(
+                f"[jrboard] GTFS-RT overlay failed, keeping base: {exc}",
+                file=sys.stderr,
+            )
+
+    return base
+
+
+# Imported at module bottom (not top) to break the gtfs_rt<->sources import
+# cycle: gtfs_rt needs Departure/_HTTP_TIMEOUT_S from here, and this only needs
+# GtfsRtSource as a name. gtfs_rt's top level pulls no heavy deps (protobuf and
+# requests are lazy-imported inside methods), so the core stays zero-dependency.
+from .gtfs_rt import GtfsRtSource  # noqa: E402
