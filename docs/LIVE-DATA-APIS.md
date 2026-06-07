@@ -30,7 +30,7 @@
 
 jrboard 已有 `sources.py` 的 `TimetableSource` protocol + `Departure.delay_min/alert_text` 接縫，所以新來源只要實作 `departures()` 並填那兩個欄位即可。建議分層（與本次做的 cache + alerts overlay 疊起來）：
 
-1. **realtime tier — GTFS-RT**：新增 `GtfsRtSource`，抓業者的 GTFS-RT `TripUpdate`/`Alert`，填 `delay_min`/`alert_text`。GTFS-RT 是 protobuf，會引入 `protobuf` 依賴 → 放進 `extras_require` 的 `[live]`（或抓已轉 JSON 的鏡像端點避免依賴）。
+1. **realtime tier — GTFS-RT** ✅ **已實作**（`jrboard/gtfs_rt.py`）：`GtfsRtSource.overlay()` 抓業者的 GTFS-RT `TripUpdate`/`Alert`，以 **overlay** 方式（比照 `alerts.py`，不偽造班次）填 `delay_min`/`alert_text`，route-level 比對（`line.odpt_railway` 或 `GTFS_RT_ROUTE_ID` 覆寫）。用官方 `gtfs-realtime-bindings`(protobuf) 放 `[gtfs]` extra、lazy import，**核心維持零依賴**。開關：`GTFS_RT_URL`。離線可測（合成 `FeedMessage` fixture，`pytest.importorskip` 守門）。
 2. **static 擴充 — ekidata.jp / HeartRails**：寫一個**離線產生器腳本**（`scripts/`），把全日本路線/車站抓下來轉成 jrboard 的 `data/*.json`。一次性、不進執行期依賴，完美契合「加線=丟 JSON」的零依賴本質。
 3. **聚合備援 — Transitland**：覆蓋業者沒自釋的線；純 REST/JSON，最好接，當 ODPT/GTFS-RT 的 fallback tier（接在現有 source chain 後面，用 `src:` 徽章標示）。
 

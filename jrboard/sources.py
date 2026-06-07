@@ -410,19 +410,43 @@ def get_departures(
     now: datetime,
     limit: int = 6,
 ) -> tuple[list[Departure], str]:
-    """Return ``(departures, label)`` where label is ``"ODPT"`` or ``"STATIC"``.
+    """Return ``(departures, label)`` -- ``"GTFS-RT"`` / ``"ODPT"`` / ``"STATIC"``.
 
-    Tries :class:`ODPTSource` only when ``ODPT_KEY`` is present; on any
-    failure it logs to ``stderr`` and falls back to :class:`StaticSource`.
+    Base timetable: :class:`ODPTSource` when ``ODPT_KEY`` is present (logging to
+    ``stderr`` and falling back to :class:`StaticSource` on failure), else static.
+    Then, when ``GTFS_RT_URL`` is set, :class:`~jrboard.gtfs_rt.GtfsRtSource`
+    overlays live delays/alerts; if it stamps at least one row the label becomes
+    ``"GTFS-RT"``. Any overlay failure logs to ``stderr`` and keeps the base.
     """
     if os.environ.get("ODPT_KEY"):
         try:
-            departures = ODPTSource().departures(line, station, now, limit)
-            return departures, "ODPT"
+            base = (ODPTSource().departures(line, station, now, limit), "ODPT")
         except Exception as exc:
             print(
                 f"[jrboard] ODPT source failed, using static data: {exc}",
                 file=sys.stderr,
             )
+            base = (StaticSource().departures(line, station, now, limit), "STATIC")
+    else:
+        base = (StaticSource().departures(line, station, now, limit), "STATIC")
 
-    return StaticSource().departures(line, station, now, limit), "STATIC"
+    if os.environ.get("GTFS_RT_URL"):
+        departures, _label = base
+        try:
+            overlaid = GtfsRtSource().overlay(line, station, now, departures)
+            if any(d.delay_min or d.alert_text for d in overlaid):
+                return overlaid, "GTFS-RT"
+        except Exception as exc:
+            print(
+                f"[jrboard] GTFS-RT overlay failed, keeping base: {exc}",
+                file=sys.stderr,
+            )
+
+    return base
+
+
+# Imported at module bottom (not top) to break the gtfs_rt<->sources import
+# cycle: gtfs_rt needs Departure/_HTTP_TIMEOUT_S from here, and this only needs
+# GtfsRtSource as a name. gtfs_rt's top level pulls no heavy deps (protobuf and
+# requests are lazy-imported inside methods), so the core stays zero-dependency.
+from .gtfs_rt import GtfsRtSource  # noqa: E402

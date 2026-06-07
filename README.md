@@ -307,6 +307,15 @@ jrboard --line chuo --station tokyo --cache-dir ~/.jrboard/cache
 ```
 > `line`/`station`/`times` 都是選用過濾條件：缺 `line`/`station` 表示不限；缺/空 `times` 表示整條線所有班次。
 
+**GTFS-Realtime（真實即時誤點/警報）**：裝 `[gtfs]` extra 後，設 `GTFS_RT_URL` 指向業者的 GTFS-RT feed，jrboard 會把 `TripUpdate` 的誤點與 `Alert` 蓋到對應路線的班次上（`src: GTFS-RT`）。核心仍零依賴——protobuf 只在 `[gtfs]` extra、且 lazy import。
+```bash
+pip install "tokyo-train-board[gtfs]"
+export GTFS_RT_URL="https://<operator>/gtfs-rt"   # 開關；presence 即啟用
+export GTFS_RT_ROUTE_ID="odpt.Railway:JR-East.ChuoRapid"   # 選用：feed route_id 與線路對不上時覆寫
+jrboard --line chuo_rapid --station tokyo
+```
+> 來源鏈：`GTFS-RT → ODPT → CACHE → STATIC`，誤點/警報以 overlay 方式蓋上（不偽造班次）。可接的 feed 來源見 [`docs/LIVE-DATA-APIS.md`](docs/LIVE-DATA-APIS.md)。
+
 ### Claude 感知旗標：token 量表、依 session 變化、巡迴、多行 minitable
 
 statusLine 指令會在 STDIN 收到一份 Claude Code 的 JSON（含 `session_id`、`rate_limits`、`context_window` 等，欄位都可能缺）。加上 `--claude-stdin` 即可讀取它（不接管道也安全，會自動略過）。
