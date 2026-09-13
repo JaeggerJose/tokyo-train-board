@@ -1,0 +1,338 @@
+{
+  "key": "yokohama-blue",
+  "name_jp": "横浜市営地下鉄ブルーライン",
+  "name_en": "Yokohama Municipal Subway Blue Line",
+  "city": "Yokohama",
+  "symbol": "B",
+  "color": {
+    "name": "ブルーライン / blue",
+    "hex": "#005BA5",
+    "ansi_fg": "\u001b[38;2;0;91;165m",
+    "ansi_bg": "\u001b[48;2;0;91;165m\u001b[38;2;255;255;255m"
+  },
+  "operator": "YokohamaMunicipal",
+  "odpt_railway": "odpt.Railway:YokohamaMunicipal.Blue",
+  "loop": false,
+  "stations": [
+    {
+      "id": "B01",
+      "number": "01",
+      "name_jp": "湘南台",
+      "kana": "しょうなんだい",
+      "name_en": "Shonandai",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Shonandai"
+    },
+    {
+      "id": "B02",
+      "number": "02",
+      "name_jp": "下飯田",
+      "kana": "しもいいだ",
+      "name_en": "Shimoiida",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Shimoiida"
+    },
+    {
+      "id": "B03",
+      "number": "03",
+      "name_jp": "立場",
+      "kana": "たてば",
+      "name_en": "Tateba",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Tateba"
+    },
+    {
+      "id": "B04",
+      "number": "04",
+      "name_jp": "中田",
+      "kana": "なかだ",
+      "name_en": "Nakada",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Nakada"
+    },
+    {
+      "id": "B05",
+      "number": "05",
+      "name_jp": "踊場",
+      "kana": "おどりば",
+      "name_en": "Odoriba",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Odoriba"
+    },
+    {
+      "id": "B06",
+      "number": "06",
+      "name_jp": "戸塚",
+      "kana": "とつか",
+      "name_en": "Totsuka",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Totsuka"
+    },
+    {
+      "id": "B07",
+      "number": "07",
+      "name_jp": "舞岡",
+      "kana": "まいおか",
+      "name_en": "Maioka",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Maioka"
+    },
+    {
+      "id": "B08",
+      "number": "08",
+      "name_jp": "下永谷",
+      "kana": "しもながや",
+      "name_en": "Shimonagaya",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Shimonagaya"
+    },
+    {
+      "id": "B09",
+      "number": "09",
+      "name_jp": "上永谷",
+      "kana": "かみながや",
+      "name_en": "Kaminagaya",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Kaminagaya"
+    },
+    {
+      "id": "B10",
+      "number": "10",
+      "name_jp": "港南中央",
+      "kana": "こうなんちゅうおう",
+      "name_en": "Konan-chuo",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.KonanChuo"
+    },
+    {
+      "id": "B11",
+      "number": "11",
+      "name_jp": "上大岡",
+      "kana": "かみおおおか",
+      "name_en": "Kamiooka",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Kamiooka"
+    },
+    {
+      "id": "B12",
+      "number": "12",
+      "name_jp": "弘明寺",
+      "kana": "ぐみょうじ",
+      "name_en": "Gumyoji",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Gumyoji"
+    },
+    {
+      "id": "B13",
+      "number": "13",
+      "name_jp": "蒔田",
+      "kana": "まいた",
+      "name_en": "Maita",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Maita"
+    },
+    {
+      "id": "B14",
+      "number": "14",
+      "name_jp": "吉野町",
+      "kana": "よしのちょう",
+      "name_en": "Yoshinocho",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Yoshinocho"
+    },
+    {
+      "id": "B15",
+      "number": "15",
+      "name_jp": "阪東橋",
+      "kana": "ばんどうばし",
+      "name_en": "Bandobashi",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Bandobashi"
+    },
+    {
+      "id": "B16",
+      "number": "16",
+      "name_jp": "伊勢佐木長者町",
+      "kana": "いせざきちょうじゃまち",
+      "name_en": "Isezaki-chojamachi",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.IsezakiChojamachi"
+    },
+    {
+      "id": "B17",
+      "number": "17",
+      "name_jp": "関内",
+      "kana": "かんない",
+      "name_en": "Kannai",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Kannai"
+    },
+    {
+      "id": "B18",
+      "number": "18",
+      "name_jp": "桜木町",
+      "kana": "さくらぎちょう",
+      "name_en": "Sakuragicho",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Sakuragicho"
+    },
+    {
+      "id": "B19",
+      "number": "19",
+      "name_jp": "高島町",
+      "kana": "たかしまちょう",
+      "name_en": "Takashimacho",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Takashimacho"
+    },
+    {
+      "id": "B20",
+      "number": "20",
+      "name_jp": "横浜",
+      "kana": "よこはま",
+      "name_en": "Yokohama",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Yokohama"
+    },
+    {
+      "id": "B21",
+      "number": "21",
+      "name_jp": "三ツ沢下町",
+      "kana": "みつざわしもちょう",
+      "name_en": "Mitsuzawa-shimocho",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.MitsuzawaShimocho"
+    },
+    {
+      "id": "B22",
+      "number": "22",
+      "name_jp": "三ツ沢上町",
+      "kana": "みつざわかみちょう",
+      "name_en": "Mitsuzawa-kamicho",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.MitsuzawaKamicho"
+    },
+    {
+      "id": "B23",
+      "number": "23",
+      "name_jp": "片倉町",
+      "kana": "かたくらちょう",
+      "name_en": "Katakuracho",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Katakuracho"
+    },
+    {
+      "id": "B24",
+      "number": "24",
+      "name_jp": "岸根公園",
+      "kana": "きしねこうえん",
+      "name_en": "Kishine-koen",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.KishineKoen"
+    },
+    {
+      "id": "B25",
+      "number": "25",
+      "name_jp": "新横浜",
+      "kana": "しんよこはま",
+      "name_en": "Shin-Yokohama",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.ShinYokohama"
+    },
+    {
+      "id": "B26",
+      "number": "26",
+      "name_jp": "北新横浜",
+      "kana": "きたしんよこはま",
+      "name_en": "Kita-Shin-Yokohama",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.KitaShinYokohama"
+    },
+    {
+      "id": "B27",
+      "number": "27",
+      "name_jp": "新羽",
+      "kana": "にっぱ",
+      "name_en": "Nippa",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Nippa"
+    },
+    {
+      "id": "B28",
+      "number": "28",
+      "name_jp": "仲町台",
+      "kana": "なかまちだい",
+      "name_en": "Nakamachidai",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Nakamachidai"
+    },
+    {
+      "id": "B29",
+      "number": "29",
+      "name_jp": "センター南",
+      "kana": "せんたーみなみ",
+      "name_en": "Center-minami",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.CenterMinami"
+    },
+    {
+      "id": "B30",
+      "number": "30",
+      "name_jp": "センター北",
+      "kana": "せんたーきた",
+      "name_en": "Center-kita",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.CenterKita"
+    },
+    {
+      "id": "B31",
+      "number": "31",
+      "name_jp": "中川",
+      "kana": "なかがわ",
+      "name_en": "Nakagawa",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Nakagawa"
+    },
+    {
+      "id": "B32",
+      "number": "32",
+      "name_jp": "あざみ野",
+      "kana": "あざみの",
+      "name_en": "Azamino",
+      "odpt_station": "odpt.Station:YokohamaMunicipal.Blue.Azamino"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:20",
+    "last_train": "00:11",
+    "headway_min": {
+      "weekday": {
+        "5": 15,
+        "6": 8,
+        "7": 7,
+        "8": 7,
+        "9": 7,
+        "10": 10,
+        "11": 10,
+        "12": 10,
+        "13": 10,
+        "14": 10,
+        "15": 9,
+        "16": 8,
+        "17": 8,
+        "18": 8,
+        "19": 8,
+        "20": 9,
+        "21": 10,
+        "22": 12,
+        "23": 15,
+        "0": 30
+      },
+      "holiday": {
+        "5": 15,
+        "6": 10,
+        "7": 9,
+        "8": 9,
+        "9": 9,
+        "10": 10,
+        "11": 10,
+        "12": 10,
+        "13": 10,
+        "14": 10,
+        "15": 10,
+        "16": 10,
+        "17": 10,
+        "18": 10,
+        "19": 10,
+        "20": 10,
+        "21": 12,
+        "22": 12,
+        "23": 15,
+        "0": 30
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "あざみ野方面",
+        "via_jp": "あざみ野方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "湘南台方面",
+        "via_jp": "湘南台方面",
+        "track": "2"
+      }
+    ]
+  }
+}

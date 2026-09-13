@@ -1,0 +1,276 @@
+{
+  "key": "shinkansen-hokuriku",
+  "name_jp": "北陸新幹線",
+  "name_en": "Hokuriku Shinkansen",
+  "city": "Shinkansen",
+  "symbol": "HOK",
+  "color": {
+    "name": "緑 / green (JR西日本区間 #0072BC)",
+    "hex": "#008000",
+    "ansi_fg": "\u001b[38;2;0;128;0m",
+    "ansi_bg": "\u001b[48;2;0;128;0m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-East/JR-West",
+  "odpt_railway": "",
+  "loop": false,
+  "stations": [
+    {
+      "id": "HOK01",
+      "number": "",
+      "name_jp": "東京",
+      "kana": "とうきょう",
+      "name_en": "Tokyo",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK02",
+      "number": "",
+      "name_jp": "上野",
+      "kana": "うえの",
+      "name_en": "Ueno",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK03",
+      "number": "",
+      "name_jp": "大宮",
+      "kana": "おおみや",
+      "name_en": "Omiya",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK04",
+      "number": "",
+      "name_jp": "熊谷",
+      "kana": "くまがや",
+      "name_en": "Kumagaya",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK05",
+      "number": "",
+      "name_jp": "本庄早稲田",
+      "kana": "ほんじょうわせだ",
+      "name_en": "Honjo-Waseda",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK06",
+      "number": "",
+      "name_jp": "高崎",
+      "kana": "たかさき",
+      "name_en": "Takasaki",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK07",
+      "number": "",
+      "name_jp": "安中榛名",
+      "kana": "あんなかはるな",
+      "name_en": "Annaka-Haruna",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK08",
+      "number": "",
+      "name_jp": "軽井沢",
+      "kana": "かるいざわ",
+      "name_en": "Karuizawa",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK09",
+      "number": "",
+      "name_jp": "佐久平",
+      "kana": "さくだいら",
+      "name_en": "Sakudaira",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK10",
+      "number": "",
+      "name_jp": "上田",
+      "kana": "うえだ",
+      "name_en": "Ueda",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK11",
+      "number": "",
+      "name_jp": "長野",
+      "kana": "ながの",
+      "name_en": "Nagano",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK12",
+      "number": "",
+      "name_jp": "飯山",
+      "kana": "いいやま",
+      "name_en": "Iiyama",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK13",
+      "number": "",
+      "name_jp": "上越妙高",
+      "kana": "じょうえつみょうこう",
+      "name_en": "Joetsumyoko",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK14",
+      "number": "",
+      "name_jp": "糸魚川",
+      "kana": "いといがわ",
+      "name_en": "Itoigawa",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK15",
+      "number": "",
+      "name_jp": "黒部宇奈月温泉",
+      "kana": "くろべうなづきおんせん",
+      "name_en": "Kurobe-Unazukionsen",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK16",
+      "number": "",
+      "name_jp": "富山",
+      "kana": "とやま",
+      "name_en": "Toyama",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK17",
+      "number": "",
+      "name_jp": "新高岡",
+      "kana": "しんたかおか",
+      "name_en": "Shin-Takaoka",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK18",
+      "number": "",
+      "name_jp": "金沢",
+      "kana": "かなざわ",
+      "name_en": "Kanazawa",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK19",
+      "number": "",
+      "name_jp": "小松",
+      "kana": "こまつ",
+      "name_en": "Komatsu",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK20",
+      "number": "",
+      "name_jp": "加賀温泉",
+      "kana": "かがおんせん",
+      "name_en": "Kagaonsen",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK21",
+      "number": "",
+      "name_jp": "芦原温泉",
+      "kana": "あわらおんせん",
+      "name_en": "Awaraonsen",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK22",
+      "number": "",
+      "name_jp": "福井",
+      "kana": "ふくい",
+      "name_en": "Fukui",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK23",
+      "number": "",
+      "name_jp": "越前たけふ",
+      "kana": "えちぜんたけふ",
+      "name_en": "Echizen-Takefu",
+      "odpt_station": ""
+    },
+    {
+      "id": "HOK24",
+      "number": "",
+      "name_jp": "敦賀",
+      "kana": "つるが",
+      "name_en": "Tsuruga",
+      "odpt_station": ""
+    }
+  ],
+  "timetable": {
+    "first_train": "06:16",
+    "last_train": "22:08",
+    "headway_min": {
+      "weekday": {
+        "5": 0,
+        "6": 15,
+        "7": 15,
+        "8": 15,
+        "9": 12,
+        "10": 20,
+        "11": 30,
+        "12": 30,
+        "13": 20,
+        "14": 20,
+        "15": 15,
+        "16": 15,
+        "17": 20,
+        "18": 20,
+        "19": 20,
+        "20": 20,
+        "21": 30,
+        "22": 60,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 0,
+        "6": 20,
+        "7": 20,
+        "8": 15,
+        "9": 12,
+        "10": 20,
+        "11": 30,
+        "12": 30,
+        "13": 20,
+        "14": 20,
+        "15": 15,
+        "16": 20,
+        "17": 20,
+        "18": 20,
+        "19": 20,
+        "20": 20,
+        "21": 30,
+        "22": 60,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "敦賀方面",
+        "via_jp": "長野・金沢・敦賀方面",
+        "track": "20"
+      },
+      {
+        "id": "b",
+        "name_jp": "東京方面",
+        "via_jp": "大宮・上野・東京方面",
+        "track": "21"
+      }
+    ]
+  }
+}

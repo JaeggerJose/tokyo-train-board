@@ -39,10 +39,15 @@ OFFICIAL: dict[str, tuple[str, str]] = {
     "mita":           ("#0079C2", "ブルー / blue"),
     "shinjuku":       ("#B0BF1E", "リーフ / leaf-green"),
     "oedo":           ("#B6007A", "マゼンタ / magenta"),
+    "yurikamome":     ("#0067C0", "ゆりかもめ / blue"),
+    "tokyu-toyoko":   ("#DA0442", "東横線 / red"),
+    "keio":           ("#DD0077", "京王線 / magenta"),
+    "keiyo":          ("#C9252F", "赤14号 / wine red"),
     # --- Osaka ---
     "osaka-midosuji":  ("#E5171F", "御堂筋線 / red"),
     "osaka-tanimachi": ("#522886", "谷町線 / purple"),
     "osaka-loop":      ("#FF3300", "大阪環状線 / red"),
+    "osaka-chuo":      ("#019A66", "中央線 / spectrum green"),
     # --- Kyoto ---
     "kyoto-karasuma":  ("#009A41", "烏丸線 / green"),
     "kyoto-tozai":     ("#C9171E", "東西線 / vermilion"),
@@ -55,6 +60,23 @@ OFFICIAL: dict[str, tuple[str, str]] = {
     "sapporo-toho":    ("#0099CE", "東豊線 / sky blue"),
     # --- Otaru ---
     "otaru-hakodate":  ("#8FC31F", "函館本線 / yellow-green"),
+    # --- Yokohama ---
+    "yokohama-blue":      ("#005BA5", "ブルーライン / blue"),
+    # --- Nagoya ---
+    "nagoya-higashiyama": ("#FAB123", "東山線 / yellow"),
+    # --- Fukuoka ---
+    "fukuoka-kuko":       ("#EE5511", "空港線 / orange"),
+    # --- Shinkansen (JA Wikipedia 路線色) ---
+    "shinkansen-tokaido":     ("#0072BA", "東海道新幹線 / blue"),
+    "shinkansen-sanyo":       ("#0072BA", "山陽新幹線 / blue"),
+    "shinkansen-kyushu":      ("#FF0000", "九州新幹線 / red"),
+    "shinkansen-nishikyushu": ("#FF0000", "西九州新幹線 / red"),
+    "shinkansen-hokkaido":    ("#2CB431", "北海道新幹線 / green"),
+    "shinkansen-tohoku":      ("#008000", "緑 / green"),
+    "shinkansen-joetsu":      ("#008000", "緑 / green"),
+    "shinkansen-hokuriku":    ("#008000", "緑 / green (JR西日本区間 #0072BC)"),
+    "shinkansen-yamagata":    ("#EE7B28", "オレンジ / orange"),
+    "shinkansen-akita":       ("#ED4399", "ピンク / pink"),
 }
 
 # Contrasting foregrounds for the badge background block.

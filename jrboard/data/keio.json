@@ -1,0 +1,340 @@
+{
+  "key": "keio",
+  "name_jp": "京王線",
+  "name_en": "Keio Line",
+  "city": "Tokyo",
+  "symbol": "KO",
+  "color": {
+    "name": "京王線 / magenta",
+    "hex": "#DD0077",
+    "ansi_fg": "\u001b[38;2;221;0;119m",
+    "ansi_bg": "\u001b[48;2;221;0;119m\u001b[38;2;255;255;255m"
+  },
+  "operator": "Keio",
+  "odpt_railway": "odpt.Railway:Keio.Keio",
+  "loop": false,
+  "stations": [
+    {
+      "id": "KO01",
+      "number": "01",
+      "name_jp": "新宿",
+      "kana": "しんじゅく",
+      "name_en": "Shinjuku",
+      "odpt_station": "odpt.Station:Keio.Keio.Shinjuku"
+    },
+    {
+      "id": "KO04",
+      "number": "04",
+      "name_jp": "笹塚",
+      "kana": "ささづか",
+      "name_en": "Sasazuka",
+      "odpt_station": "odpt.Station:Keio.Keio.Sasazuka"
+    },
+    {
+      "id": "KO05",
+      "number": "05",
+      "name_jp": "代田橋",
+      "kana": "だいたばし",
+      "name_en": "Daitabashi",
+      "odpt_station": "odpt.Station:Keio.Keio.Daitabashi"
+    },
+    {
+      "id": "KO06",
+      "number": "06",
+      "name_jp": "明大前",
+      "kana": "めいだいまえ",
+      "name_en": "Meidaimae",
+      "odpt_station": "odpt.Station:Keio.Keio.Meidaimae"
+    },
+    {
+      "id": "KO07",
+      "number": "07",
+      "name_jp": "下高井戸",
+      "kana": "しもたかいど",
+      "name_en": "Shimo-takaido",
+      "odpt_station": "odpt.Station:Keio.Keio.ShimoTakaido"
+    },
+    {
+      "id": "KO08",
+      "number": "08",
+      "name_jp": "桜上水",
+      "kana": "さくらじょうすい",
+      "name_en": "Sakurajosui",
+      "odpt_station": "odpt.Station:Keio.Keio.Sakurajosui"
+    },
+    {
+      "id": "KO09",
+      "number": "09",
+      "name_jp": "上北沢",
+      "kana": "かみきたざわ",
+      "name_en": "Kami-kitazawa",
+      "odpt_station": "odpt.Station:Keio.Keio.KamiKitazawa"
+    },
+    {
+      "id": "KO10",
+      "number": "10",
+      "name_jp": "八幡山",
+      "kana": "はちまんやま",
+      "name_en": "Hachiman-yama",
+      "odpt_station": "odpt.Station:Keio.Keio.HachimanYama"
+    },
+    {
+      "id": "KO11",
+      "number": "11",
+      "name_jp": "芦花公園",
+      "kana": "ろかこうえん",
+      "name_en": "Roka-koen",
+      "odpt_station": "odpt.Station:Keio.Keio.RokaKoen"
+    },
+    {
+      "id": "KO12",
+      "number": "12",
+      "name_jp": "千歳烏山",
+      "kana": "ちとせからすやま",
+      "name_en": "Chitose-karasuyama",
+      "odpt_station": "odpt.Station:Keio.Keio.ChitoseKarasuyama"
+    },
+    {
+      "id": "KO13",
+      "number": "13",
+      "name_jp": "仙川",
+      "kana": "せんがわ",
+      "name_en": "Sengawa",
+      "odpt_station": "odpt.Station:Keio.Keio.Sengawa"
+    },
+    {
+      "id": "KO14",
+      "number": "14",
+      "name_jp": "つつじヶ丘",
+      "kana": "つつじがおか",
+      "name_en": "Tsutsujigaoka",
+      "odpt_station": "odpt.Station:Keio.Keio.Tsutsujigaoka"
+    },
+    {
+      "id": "KO15",
+      "number": "15",
+      "name_jp": "柴崎",
+      "kana": "しばさき",
+      "name_en": "Shibasaki",
+      "odpt_station": "odpt.Station:Keio.Keio.Shibasaki"
+    },
+    {
+      "id": "KO16",
+      "number": "16",
+      "name_jp": "国領",
+      "kana": "こくりょう",
+      "name_en": "Kokuryo",
+      "odpt_station": "odpt.Station:Keio.Keio.Kokuryo"
+    },
+    {
+      "id": "KO17",
+      "number": "17",
+      "name_jp": "布田",
+      "kana": "ふだ",
+      "name_en": "Fuda",
+      "odpt_station": "odpt.Station:Keio.Keio.Fuda"
+    },
+    {
+      "id": "KO18",
+      "number": "18",
+      "name_jp": "調布",
+      "kana": "ちょうふ",
+      "name_en": "Chofu",
+      "odpt_station": "odpt.Station:Keio.Keio.Chofu"
+    },
+    {
+      "id": "KO19",
+      "number": "19",
+      "name_jp": "西調布",
+      "kana": "にしちょうふ",
+      "name_en": "Nishi-chofu",
+      "odpt_station": "odpt.Station:Keio.Keio.NishiChofu"
+    },
+    {
+      "id": "KO20",
+      "number": "20",
+      "name_jp": "飛田給",
+      "kana": "とびたきゅう",
+      "name_en": "Tobitakyu",
+      "odpt_station": "odpt.Station:Keio.Keio.Tobitakyu"
+    },
+    {
+      "id": "KO21",
+      "number": "21",
+      "name_jp": "武蔵野台",
+      "kana": "むさしのだい",
+      "name_en": "Musashinodai",
+      "odpt_station": "odpt.Station:Keio.Keio.Musashinodai"
+    },
+    {
+      "id": "KO22",
+      "number": "22",
+      "name_jp": "多磨霊園",
+      "kana": "たまれいえん",
+      "name_en": "Tama-reien",
+      "odpt_station": "odpt.Station:Keio.Keio.TamaReien"
+    },
+    {
+      "id": "KO23",
+      "number": "23",
+      "name_jp": "東府中",
+      "kana": "ひがしふちゅう",
+      "name_en": "Higashi-fuchu",
+      "odpt_station": "odpt.Station:Keio.Keio.HigashiFuchu"
+    },
+    {
+      "id": "KO24",
+      "number": "24",
+      "name_jp": "府中",
+      "kana": "ふちゅう",
+      "name_en": "Fuchu",
+      "odpt_station": "odpt.Station:Keio.Keio.Fuchu"
+    },
+    {
+      "id": "KO25",
+      "number": "25",
+      "name_jp": "分倍河原",
+      "kana": "ぶばいがわら",
+      "name_en": "Bubaigawara",
+      "odpt_station": "odpt.Station:Keio.Keio.Bubaigawara"
+    },
+    {
+      "id": "KO26",
+      "number": "26",
+      "name_jp": "中河原",
+      "kana": "なかがわら",
+      "name_en": "Nakagawara",
+      "odpt_station": "odpt.Station:Keio.Keio.Nakagawara"
+    },
+    {
+      "id": "KO27",
+      "number": "27",
+      "name_jp": "聖蹟桜ヶ丘",
+      "kana": "せいせきさくらがおか",
+      "name_en": "Seiseki-sakuragaoka",
+      "odpt_station": "odpt.Station:Keio.Keio.SeisekiSakuragaoka"
+    },
+    {
+      "id": "KO28",
+      "number": "28",
+      "name_jp": "百草園",
+      "kana": "もぐさえん",
+      "name_en": "Mogusaen",
+      "odpt_station": "odpt.Station:Keio.Keio.Mogusaen"
+    },
+    {
+      "id": "KO29",
+      "number": "29",
+      "name_jp": "高幡不動",
+      "kana": "たかはたふどう",
+      "name_en": "Takahatafudo",
+      "odpt_station": "odpt.Station:Keio.Keio.Takahatafudo"
+    },
+    {
+      "id": "KO30",
+      "number": "30",
+      "name_jp": "南平",
+      "kana": "みなみだいら",
+      "name_en": "Minamidaira",
+      "odpt_station": "odpt.Station:Keio.Keio.Minamidaira"
+    },
+    {
+      "id": "KO31",
+      "number": "31",
+      "name_jp": "平山城址公園",
+      "kana": "ひらやまじょうしこうえん",
+      "name_en": "Hirayamajoshi-koen",
+      "odpt_station": "odpt.Station:Keio.Keio.HirayamajoshiKoen"
+    },
+    {
+      "id": "KO32",
+      "number": "32",
+      "name_jp": "長沼",
+      "kana": "ながぬま",
+      "name_en": "Naganuma",
+      "odpt_station": "odpt.Station:Keio.Keio.Naganuma"
+    },
+    {
+      "id": "KO33",
+      "number": "33",
+      "name_jp": "北野",
+      "kana": "きたの",
+      "name_en": "Kitano",
+      "odpt_station": "odpt.Station:Keio.Keio.Kitano"
+    },
+    {
+      "id": "KO34",
+      "number": "34",
+      "name_jp": "京王八王子",
+      "kana": "けいおうはちおうじ",
+      "name_en": "Keio-hachioji",
+      "odpt_station": "odpt.Station:Keio.Keio.KeioHachioji"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:29",
+    "last_train": "00:18",
+    "headway_min": {
+      "weekday": {
+        "5": 15,
+        "6": 4,
+        "7": 3,
+        "8": 3,
+        "9": 3,
+        "10": 4,
+        "11": 4,
+        "12": 4,
+        "13": 4,
+        "14": 4,
+        "15": 4,
+        "16": 4,
+        "17": 3,
+        "18": 3,
+        "19": 3,
+        "20": 3,
+        "21": 4,
+        "22": 4,
+        "23": 5,
+        "0": 12,
+        "1": 0
+      },
+      "holiday": {
+        "5": 15,
+        "6": 5,
+        "7": 4,
+        "8": 4,
+        "9": 4,
+        "10": 4,
+        "11": 4,
+        "12": 4,
+        "13": 4,
+        "14": 4,
+        "15": 4,
+        "16": 5,
+        "17": 5,
+        "18": 4,
+        "19": 4,
+        "20": 4,
+        "21": 4,
+        "22": 4,
+        "23": 5,
+        "0": 12,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "京王八王子方面",
+        "via_jp": "調布・府中方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "新宿方面",
+        "via_jp": "明大前・笹塚方面",
+        "track": "2"
+      }
+    ]
+  }
+}

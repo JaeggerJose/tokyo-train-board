@@ -14,7 +14,7 @@ pip install tokyo-train-board && jrboard
 ```
 
 每次刷新會先像老火車站、航站樓的機械翻牌那樣亂數翻滾，再逐格鎖定成真實的到站資訊。
-20 條路線、資料驅動、可接 ODPT 即時資料，並提供可嵌入 Claude Code 狀態列的單行跑馬燈模式。
+50 條路線（含全部新幹線）、資料驅動、可接 ODPT 即時資料，並提供可嵌入 Claude Code 狀態列的單行跑馬燈模式。
 
 ![demo](demo.gif)
 
@@ -44,7 +44,7 @@ pip install tokyo-train-board && jrboard
 ## ✨ 功能
 
 - **真實資料**：可接 [ODPT](https://www.odpt.org/)（公共交通開放資料平台）即時時刻表；未設定金鑰時自動回退到內建的真實靜態時刻表。站牌右下角誠實標示資料來源 `src: ODPT` / `src: STATIC`。
-- **20 條路線可切換**，全部資料驅動（見下方路線表）。
+- **50 條路線可切換**，全部資料驅動（見下方路線表）。
 - **翻牌動畫**：經典 split-flap / Solari board 效果，速度可調。
 - **單行跑馬燈模式**：站名釘住、班次捲動，可嵌入 Claude Code 狀態列。
 - **CJK 對齊**：以 `east_asian_width` 處理日文全形字佔 2 格的問題，每行精準對齊到固定視覺寬度。
@@ -57,7 +57,7 @@ pip install tokyo-train-board && jrboard
 # （選用）只有要接 ODPT 即時資料時才需要
 pip install requests
 
-# 列出全部 20 條路線與站點
+# 列出全部 50 條路線與站點
 python3 main.py --list
 
 # 全站牌 + 翻牌動畫（預設山手線新宿，每 10 秒刷新；Ctrl-C 結束）
@@ -141,7 +141,7 @@ jrboard --tui
 
 ---
 
-## 🚇 路線一覽（20 條）
+## 🚇 路線一覽（50 條）
 
 | 代碼 | `--line` key | 路線 | 站數 | 範例站 |
 |:----:|------|------|:----:|------|
@@ -165,10 +165,14 @@ jrboard --tui
 | I | `mita` | 都営三田線 | 27 | `meguro` |
 | S | `shinjuku` | 都営新宿線 | 21 | `shinjuku` |
 | E | `oedo` | 都営大江戸線 | 39 | `tochomae` |
+| U | `yurikamome` | ゆりかもめ | 16 | `toyosu` |
+| TY | `tokyu-toyoko` | 東急東横線 | 21 | `jiyugaoka` |
+| KO | `keio` | 京王線 | 32 | `chofu` |
+| JE | `keiyo` | JR 京葉線 | 18 | `maihama` |
 
 > `--line shinjuku` 指的是**都營新宿線**（地鐵）；JR 線各有獨立 key（`chuo`/`sobu`/…）。
 
-### 🌏 其他城市（京都／大阪／札幌／小樽）
+### 🌏 其他城市（京都／大阪／札幌／小樽／橫濱／名古屋／福岡）
 
 用 `--city` 篩選城市：`python3 main.py --list --city Osaka`；`--rotate --city Osaka` 只在大阪境內隨機巡迴。
 
@@ -177,6 +181,7 @@ jrboard --tui
 | `osaka-loop` | 大阪 | JR 大阪環狀線（環狀）| 19 |
 | `osaka-midosuji` | 大阪 | 御堂筋線 | 20 |
 | `osaka-tanimachi` | 大阪 | 谷町線 | 26 |
+| `osaka-chuo` | 大阪 | 中央線 | 15 |
 | `kyoto-karasuma` | 京都 | 地下鐵烏丸線 | 15 |
 | `kyoto-tozai` | 京都 | 地下鐵東西線 | 17 |
 | `kyoto-randen` | 京都 | 嵐電 嵐山本線（路面電車）| 13 |
@@ -186,6 +191,26 @@ jrboard --tui
 | `sapporo-tozai` | 札幌 | 東西線 | 19 |
 | `sapporo-toho` | 札幌 | 東豊線 | 14 |
 | `otaru-hakodate` | 小樽 | JR 函館本線（小樽—札幌）| 15 |
+| `yokohama-blue` | 橫濱 | 市營地下鐵藍線 | 32 |
+| `nagoya-higashiyama` | 名古屋 | 地下鐵東山線 | 22 |
+| `fukuoka-kuko` | 福岡 | 地下鐵空港線 | 13 |
+
+### 🚄 新幹線（10 條，`--city Shinkansen`）
+
+新幹線沒有站號，代碼是 jrboard 自訂的三字母縮寫；山形／秋田新幹線含東京側主要停靠站。未接即時資料時，時刻依班距推算，站間時間固定以每站 1 分鐘估算，和實際行車時間有落差。
+
+| 代碼 | key | 路線 | 區間 | 站數 |
+|:----:|------|------|------|:----:|
+| TKD | `shinkansen-tokaido` | 東海道新幹線 | 東京—新大阪 | 17 |
+| SYO | `shinkansen-sanyo` | 山陽新幹線 | 新大阪—博多 | 19 |
+| KYU | `shinkansen-kyushu` | 九州新幹線 | 博多—鹿児島中央 | 12 |
+| NKY | `shinkansen-nishikyushu` | 西九州新幹線 | 武雄温泉—長崎 | 5 |
+| HKD | `shinkansen-hokkaido` | 北海道新幹線 | 新青森—新函館北斗 | 4 |
+| TOH | `shinkansen-tohoku` | 東北新幹線 | 東京—新青森 | 23 |
+| JOE | `shinkansen-joetsu` | 上越新幹線 | 東京—新潟 | 12 |
+| HOK | `shinkansen-hokuriku` | 北陸新幹線 | 東京—敦賀 | 24 |
+| YMG | `shinkansen-yamagata` | 山形新幹線（つばさ） | 東京—新庄 | 16 |
+| AKT | `shinkansen-akita` | 秋田新幹線（こまち） | 東京—秋田 | 10 |
 
 ---
 

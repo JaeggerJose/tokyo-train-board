@@ -1,0 +1,212 @@
+{
+  "key": "yurikamome",
+  "name_jp": "ゆりかもめ",
+  "name_en": "Yurikamome",
+  "city": "Tokyo",
+  "symbol": "U",
+  "color": {
+    "name": "ゆりかもめ / blue",
+    "hex": "#0067C0",
+    "ansi_fg": "\u001b[38;2;0;103;192m",
+    "ansi_bg": "\u001b[48;2;0;103;192m\u001b[38;2;255;255;255m"
+  },
+  "operator": "Yurikamome",
+  "odpt_railway": "odpt.Railway:Yurikamome.Yurikamome",
+  "loop": false,
+  "stations": [
+    {
+      "id": "U01",
+      "number": "01",
+      "name_jp": "新橋",
+      "kana": "しんばし",
+      "name_en": "Shimbashi",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.Shimbashi"
+    },
+    {
+      "id": "U02",
+      "number": "02",
+      "name_jp": "汐留",
+      "kana": "しおどめ",
+      "name_en": "Shiodome",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.Shiodome"
+    },
+    {
+      "id": "U03",
+      "number": "03",
+      "name_jp": "竹芝",
+      "kana": "たけしば",
+      "name_en": "Takeshiba",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.Takeshiba"
+    },
+    {
+      "id": "U04",
+      "number": "04",
+      "name_jp": "日の出",
+      "kana": "ひので",
+      "name_en": "Hinode",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.Hinode"
+    },
+    {
+      "id": "U05",
+      "number": "05",
+      "name_jp": "芝浦ふ頭",
+      "kana": "しばうらふとう",
+      "name_en": "Shibaura-futo",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.ShibauraFuto"
+    },
+    {
+      "id": "U06",
+      "number": "06",
+      "name_jp": "お台場海浜公園",
+      "kana": "おだいばかいひんこうえん",
+      "name_en": "Odaiba-kaihinkoen",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.OdaibaKaihinkoen"
+    },
+    {
+      "id": "U07",
+      "number": "07",
+      "name_jp": "台場",
+      "kana": "だいば",
+      "name_en": "Daiba",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.Daiba"
+    },
+    {
+      "id": "U08",
+      "number": "08",
+      "name_jp": "東京国際クルーズターミナル",
+      "kana": "とうきょうこくさいくるーずたーみなる",
+      "name_en": "Tokyo International Cruise Terminal",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.TokyoInternationalCruiseTerminal"
+    },
+    {
+      "id": "U09",
+      "number": "09",
+      "name_jp": "テレコムセンター",
+      "kana": "てれこむせんたー",
+      "name_en": "Telecom Center",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.TelecomCenter"
+    },
+    {
+      "id": "U10",
+      "number": "10",
+      "name_jp": "青海",
+      "kana": "あおみ",
+      "name_en": "Aomi",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.Aomi"
+    },
+    {
+      "id": "U11",
+      "number": "11",
+      "name_jp": "東京ビッグサイト",
+      "kana": "とうきょうびっぐさいと",
+      "name_en": "Tokyo Big Sight",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.TokyoBigSight"
+    },
+    {
+      "id": "U12",
+      "number": "12",
+      "name_jp": "有明",
+      "kana": "ありあけ",
+      "name_en": "Ariake",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.Ariake"
+    },
+    {
+      "id": "U13",
+      "number": "13",
+      "name_jp": "有明テニスの森",
+      "kana": "ありあけてにすのもり",
+      "name_en": "Ariake-Tennis-no-mori",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.AriakeTennisNoMori"
+    },
+    {
+      "id": "U14",
+      "number": "14",
+      "name_jp": "市場前",
+      "kana": "しじょうまえ",
+      "name_en": "Shijo-mae",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.ShijoMae"
+    },
+    {
+      "id": "U15",
+      "number": "15",
+      "name_jp": "新豊洲",
+      "kana": "しんとよす",
+      "name_en": "Shin-toyosu",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.ShinToyosu"
+    },
+    {
+      "id": "U16",
+      "number": "16",
+      "name_jp": "豊洲",
+      "kana": "とよす",
+      "name_en": "Toyosu",
+      "odpt_station": "odpt.Station:Yurikamome.Yurikamome.Toyosu"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:45",
+    "last_train": "00:30",
+    "headway_min": {
+      "weekday": {
+        "5": 30,
+        "6": 8,
+        "7": 4,
+        "8": 3,
+        "9": 4,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 4,
+        "17": 4,
+        "18": 4,
+        "19": 4,
+        "20": 5,
+        "21": 5,
+        "22": 7,
+        "23": 9,
+        "0": 15,
+        "1": 0
+      },
+      "holiday": {
+        "5": 30,
+        "6": 8,
+        "7": 7,
+        "8": 5,
+        "9": 5,
+        "10": 4,
+        "11": 4,
+        "12": 4,
+        "13": 4,
+        "14": 4,
+        "15": 4,
+        "16": 4,
+        "17": 4,
+        "18": 4,
+        "19": 5,
+        "20": 5,
+        "21": 5,
+        "22": 7,
+        "23": 9,
+        "0": 15,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "豊洲方面",
+        "via_jp": "お台場・有明方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "新橋方面",
+        "via_jp": "台場・汐留方面",
+        "track": "2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "key": "osaka-chuo",
+  "name_jp": "中央線",
+  "name_en": "Chuo Line",
+  "city": "Osaka",
+  "symbol": "C",
+  "color": {
+    "name": "中央線 / spectrum green",
+    "hex": "#019A66",
+    "ansi_fg": "\u001b[38;2;1;154;102m",
+    "ansi_bg": "\u001b[48;2;1;154;102m\u001b[38;2;255;255;255m"
+  },
+  "operator": "OsakaMetro",
+  "odpt_railway": "odpt.Railway:OsakaMetro.Chuo",
+  "loop": false,
+  "stations": [
+    {
+      "id": "C09",
+      "number": "09",
+      "name_jp": "夢洲",
+      "kana": "ゆめしま",
+      "name_en": "Yumeshima",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Yumeshima"
+    },
+    {
+      "id": "C10",
+      "number": "10",
+      "name_jp": "コスモスクエア",
+      "kana": "こすもすくえあ",
+      "name_en": "Cosmosquare",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Cosmosquare"
+    },
+    {
+      "id": "C11",
+      "number": "11",
+      "name_jp": "大阪港",
+      "kana": "おおさかこう",
+      "name_en": "Osakako",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Osakako"
+    },
+    {
+      "id": "C12",
+      "number": "12",
+      "name_jp": "朝潮橋",
+      "kana": "あさしおばし",
+      "name_en": "Asashiobashi",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Asashiobashi"
+    },
+    {
+      "id": "C13",
+      "number": "13",
+      "name_jp": "弁天町",
+      "kana": "べんてんちょう",
+      "name_en": "Bentencho",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Bentencho"
+    },
+    {
+      "id": "C14",
+      "number": "14",
+      "name_jp": "九条",
+      "kana": "くじょう",
+      "name_en": "Kujo",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Kujo"
+    },
+    {
+      "id": "C15",
+      "number": "15",
+      "name_jp": "阿波座",
+      "kana": "あわざ",
+      "name_en": "Awaza",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Awaza"
+    },
+    {
+      "id": "C16",
+      "number": "16",
+      "name_jp": "本町",
+      "kana": "ほんまち",
+      "name_en": "Hommachi",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Hommachi"
+    },
+    {
+      "id": "C17",
+      "number": "17",
+      "name_jp": "堺筋本町",
+      "kana": "さかいすじほんまち",
+      "name_en": "Sakaisuji-Hommachi",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.SakaisujiHommachi"
+    },
+    {
+      "id": "C18",
+      "number": "18",
+      "name_jp": "谷町四丁目",
+      "kana": "たにまちよんちょうめ",
+      "name_en": "Tanimachi 4-chome",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Tanimachi4chome"
+    },
+    {
+      "id": "C19",
+      "number": "19",
+      "name_jp": "森ノ宮",
+      "kana": "もりのみや",
+      "name_en": "Morinomiya",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Morinomiya"
+    },
+    {
+      "id": "C20",
+      "number": "20",
+      "name_jp": "緑橋",
+      "kana": "みどりばし",
+      "name_en": "Midoribashi",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Midoribashi"
+    },
+    {
+      "id": "C21",
+      "number": "21",
+      "name_jp": "深江橋",
+      "kana": "ふかえばし",
+      "name_en": "Fukaebashi",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Fukaebashi"
+    },
+    {
+      "id": "C22",
+      "number": "22",
+      "name_jp": "高井田",
+      "kana": "たかいだ",
+      "name_en": "Takaida",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Takaida"
+    },
+    {
+      "id": "C23",
+      "number": "23",
+      "name_jp": "長田",
+      "kana": "ながた",
+      "name_en": "Nagata",
+      "odpt_station": "odpt.Station:OsakaMetro.Chuo.Nagata"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:02",
+    "last_train": "00:13",
+    "headway_min": {
+      "weekday": {
+        "5": 10,
+        "6": 10,
+        "7": 9,
+        "8": 5,
+        "9": 8,
+        "10": 15,
+        "11": 15,
+        "12": 15,
+        "13": 15,
+        "14": 15,
+        "15": 15,
+        "16": 10,
+        "17": 10,
+        "18": 10,
+        "19": 10,
+        "20": 12,
+        "21": 20,
+        "22": 20,
+        "23": 20,
+        "0": 30,
+        "1": 0
+      },
+      "holiday": {
+        "5": 10,
+        "6": 12,
+        "7": 15,
+        "8": 9,
+        "9": 12,
+        "10": 15,
+        "11": 15,
+        "12": 15,
+        "13": 15,
+        "14": 15,
+        "15": 15,
+        "16": 12,
+        "17": 15,
+        "18": 10,
+        "19": 15,
+        "20": 15,
+        "21": 12,
+        "22": 15,
+        "23": 20,
+        "0": 30,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "長田方面",
+        "via_jp": "森ノ宮・長田方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "夢洲方面",
+        "via_jp": "弁天町・コスモスクエア方面",
+        "track": "2"
+      }
+    ]
+  }
+}

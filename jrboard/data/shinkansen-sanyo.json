@@ -1,0 +1,236 @@
+{
+  "key": "shinkansen-sanyo",
+  "name_jp": "山陽新幹線",
+  "name_en": "Sanyo Shinkansen",
+  "city": "Shinkansen",
+  "symbol": "SYO",
+  "color": {
+    "name": "山陽新幹線 / blue",
+    "hex": "#0072BA",
+    "ansi_fg": "\u001b[38;2;0;114;186m",
+    "ansi_bg": "\u001b[48;2;0;114;186m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-West",
+  "odpt_railway": "",
+  "loop": false,
+  "stations": [
+    {
+      "id": "SYO01",
+      "number": "",
+      "name_jp": "新大阪",
+      "kana": "しんおおさか",
+      "name_en": "Shin-Osaka",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO02",
+      "number": "",
+      "name_jp": "新神戸",
+      "kana": "しんこうべ",
+      "name_en": "Shin-Kobe",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO03",
+      "number": "",
+      "name_jp": "西明石",
+      "kana": "にしあかし",
+      "name_en": "Nishi-Akashi",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO04",
+      "number": "",
+      "name_jp": "姫路",
+      "kana": "ひめじ",
+      "name_en": "Himeji",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO05",
+      "number": "",
+      "name_jp": "相生",
+      "kana": "あいおい",
+      "name_en": "Aioi",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO06",
+      "number": "",
+      "name_jp": "岡山",
+      "kana": "おかやま",
+      "name_en": "Okayama",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO07",
+      "number": "",
+      "name_jp": "新倉敷",
+      "kana": "しんくらしき",
+      "name_en": "Shin-Kurashiki",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO08",
+      "number": "",
+      "name_jp": "福山",
+      "kana": "ふくやま",
+      "name_en": "Fukuyama",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO09",
+      "number": "",
+      "name_jp": "新尾道",
+      "kana": "しんおのみち",
+      "name_en": "Shin-Onomichi",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO10",
+      "number": "",
+      "name_jp": "三原",
+      "kana": "みはら",
+      "name_en": "Mihara",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO11",
+      "number": "",
+      "name_jp": "東広島",
+      "kana": "ひがしひろしま",
+      "name_en": "Higashihiroshima",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO12",
+      "number": "",
+      "name_jp": "広島",
+      "kana": "ひろしま",
+      "name_en": "Hiroshima",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO13",
+      "number": "",
+      "name_jp": "新岩国",
+      "kana": "しんいわくに",
+      "name_en": "Shin-Iwakuni",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO14",
+      "number": "",
+      "name_jp": "徳山",
+      "kana": "とくやま",
+      "name_en": "Tokuyama",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO15",
+      "number": "",
+      "name_jp": "新山口",
+      "kana": "しんやまぐち",
+      "name_en": "Shin-Yamaguchi",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO16",
+      "number": "",
+      "name_jp": "厚狭",
+      "kana": "あさ",
+      "name_en": "Asa",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO17",
+      "number": "",
+      "name_jp": "新下関",
+      "kana": "しんしものせき",
+      "name_en": "Shin-Shimonoseki",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO18",
+      "number": "",
+      "name_jp": "小倉",
+      "kana": "こくら",
+      "name_en": "Kokura",
+      "odpt_station": ""
+    },
+    {
+      "id": "SYO19",
+      "number": "",
+      "name_jp": "博多",
+      "kana": "はかた",
+      "name_en": "Hakata",
+      "odpt_station": ""
+    }
+  ],
+  "timetable": {
+    "first_train": "06:00",
+    "last_train": "23:20",
+    "headway_min": {
+      "weekday": {
+        "5": 0,
+        "6": 12,
+        "7": 10,
+        "8": 5,
+        "9": 5,
+        "10": 5,
+        "11": 5,
+        "12": 6,
+        "13": 6,
+        "14": 7,
+        "15": 6,
+        "16": 7,
+        "17": 5,
+        "18": 5,
+        "19": 6,
+        "20": 9,
+        "21": 9,
+        "22": 12,
+        "23": 30,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 0,
+        "6": 12,
+        "7": 10,
+        "8": 5,
+        "9": 5,
+        "10": 5,
+        "11": 5,
+        "12": 6,
+        "13": 6,
+        "14": 7,
+        "15": 6,
+        "16": 7,
+        "17": 5,
+        "18": 5,
+        "19": 6,
+        "20": 9,
+        "21": 9,
+        "22": 12,
+        "23": 30,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "博多方面",
+        "via_jp": "博多方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "新大阪方面",
+        "via_jp": "新大阪方面",
+        "track": "2"
+      }
+    ]
+  }
+}

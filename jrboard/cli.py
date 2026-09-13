@@ -178,7 +178,7 @@ def _build_parser(config: Config) -> argparse.ArgumentParser:
         "--city",
         default=None,
         help=(
-            "Filter to a city (e.g. Tokyo, Osaka, Kyoto, Sapporo, Otaru): "
+            "Filter to a city (e.g. Tokyo, Osaka, Kyoto, Yokohama, Nagoya, Fukuoka, Shinkansen): "
             "scopes --list and the --rotate random tour."
         ),
     )
@@ -300,7 +300,7 @@ def _build_parser(config: Config) -> argparse.ArgumentParser:
         action="store_true",
         help=(
             "Statusline/minitable: when the Claude 5h/7d token budget is nearly "
-            "exhausted (>=90%), lead with a red '⚠速度制限 5h 92%' alert. Reads "
+            "exhausted (>=90%%), lead with a red '⚠速度制限 5h 92%%' alert. Reads "
             "the STDIN blob (implies --claude-stdin). Off by default."
         ),
     )

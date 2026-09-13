@@ -1,0 +1,186 @@
+{
+  "key": "fukuoka-kuko",
+  "name_jp": "福岡市地下鉄空港線",
+  "name_en": "Fukuoka City Subway Airport Line",
+  "city": "Fukuoka",
+  "symbol": "K",
+  "color": {
+    "name": "空港線 / orange",
+    "hex": "#EE5511",
+    "ansi_fg": "\u001b[38;2;238;85;17m",
+    "ansi_bg": "\u001b[48;2;238;85;17m\u001b[38;2;255;255;255m"
+  },
+  "operator": "Fukuoka",
+  "odpt_railway": "odpt.Railway:Fukuoka.Kuko",
+  "loop": false,
+  "stations": [
+    {
+      "id": "K01",
+      "number": "01",
+      "name_jp": "姪浜",
+      "kana": "めいのはま",
+      "name_en": "Meinohama",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.Meinohama"
+    },
+    {
+      "id": "K02",
+      "number": "02",
+      "name_jp": "室見",
+      "kana": "むろみ",
+      "name_en": "Muromi",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.Muromi"
+    },
+    {
+      "id": "K03",
+      "number": "03",
+      "name_jp": "藤崎",
+      "kana": "ふじさき",
+      "name_en": "Fujisaki",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.Fujisaki"
+    },
+    {
+      "id": "K04",
+      "number": "04",
+      "name_jp": "西新",
+      "kana": "にしじん",
+      "name_en": "Nishijin",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.Nishijin"
+    },
+    {
+      "id": "K05",
+      "number": "05",
+      "name_jp": "唐人町",
+      "kana": "とうじんまち",
+      "name_en": "Tojinmachi",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.Tojinmachi"
+    },
+    {
+      "id": "K06",
+      "number": "06",
+      "name_jp": "大濠公園",
+      "kana": "おおほりこうえん",
+      "name_en": "Ohorikoen",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.Ohorikoen"
+    },
+    {
+      "id": "K07",
+      "number": "07",
+      "name_jp": "赤坂",
+      "kana": "あかさか",
+      "name_en": "Akasaka",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.Akasaka"
+    },
+    {
+      "id": "K08",
+      "number": "08",
+      "name_jp": "天神",
+      "kana": "てんじん",
+      "name_en": "Tenjin",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.Tenjin"
+    },
+    {
+      "id": "K09",
+      "number": "09",
+      "name_jp": "中洲川端",
+      "kana": "なかすかわばた",
+      "name_en": "Nakasu-kawabata",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.NakasuKawabata"
+    },
+    {
+      "id": "K10",
+      "number": "10",
+      "name_jp": "祇園",
+      "kana": "ぎおん",
+      "name_en": "Gion",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.Gion"
+    },
+    {
+      "id": "K11",
+      "number": "11",
+      "name_jp": "博多",
+      "kana": "はかた",
+      "name_en": "Hakata",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.Hakata"
+    },
+    {
+      "id": "K12",
+      "number": "12",
+      "name_jp": "東比恵",
+      "kana": "ひがしひえ",
+      "name_en": "Higashi-hie",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.HigashiHie"
+    },
+    {
+      "id": "K13",
+      "number": "13",
+      "name_jp": "福岡空港",
+      "kana": "ふくおかくうこう",
+      "name_en": "Fukuoka-kuko",
+      "odpt_station": "odpt.Station:Fukuoka.Kuko.FukuokaKuko"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:30",
+    "last_train": "23:46",
+    "headway_min": {
+      "weekday": {
+        "5": 12,
+        "6": 7,
+        "7": 5,
+        "8": 5,
+        "9": 6,
+        "10": 5,
+        "11": 7,
+        "12": 8,
+        "13": 8,
+        "14": 8,
+        "15": 6,
+        "16": 5,
+        "17": 5,
+        "18": 5,
+        "19": 6,
+        "20": 5,
+        "21": 6,
+        "22": 7,
+        "23": 9,
+        "0": 0
+      },
+      "holiday": {
+        "5": 15,
+        "6": 9,
+        "7": 8,
+        "8": 7,
+        "9": 7,
+        "10": 7,
+        "11": 8,
+        "12": 8,
+        "13": 8,
+        "14": 8,
+        "15": 8,
+        "16": 8,
+        "17": 8,
+        "18": 8,
+        "19": 8,
+        "20": 8,
+        "21": 9,
+        "22": 10,
+        "23": 12,
+        "0": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "福岡空港方面",
+        "via_jp": "福岡空港方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "姪浜方面",
+        "via_jp": "姪浜方面",
+        "track": "2"
+      }
+    ]
+  }
+}

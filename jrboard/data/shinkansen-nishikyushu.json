@@ -1,0 +1,124 @@
+{
+  "key": "shinkansen-nishikyushu",
+  "name_jp": "西九州新幹線",
+  "name_en": "Nishi-Kyushu Shinkansen",
+  "city": "Shinkansen",
+  "symbol": "NKY",
+  "color": {
+    "name": "西九州新幹線 / red",
+    "hex": "#FF0000",
+    "ansi_fg": "\u001b[38;2;255;0;0m",
+    "ansi_bg": "\u001b[48;2;255;0;0m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-Kyushu",
+  "odpt_railway": "",
+  "loop": false,
+  "stations": [
+    {
+      "id": "NKY01",
+      "number": "",
+      "name_jp": "武雄温泉",
+      "kana": "たけおおんせん",
+      "name_en": "Takeo-Onsen",
+      "odpt_station": ""
+    },
+    {
+      "id": "NKY02",
+      "number": "",
+      "name_jp": "嬉野温泉",
+      "kana": "うれしのおんせん",
+      "name_en": "Ureshino-Onsen",
+      "odpt_station": ""
+    },
+    {
+      "id": "NKY03",
+      "number": "",
+      "name_jp": "新大村",
+      "kana": "しんおおむら",
+      "name_en": "Shin-Omura",
+      "odpt_station": ""
+    },
+    {
+      "id": "NKY04",
+      "number": "",
+      "name_jp": "諫早",
+      "kana": "いさはや",
+      "name_en": "Isahaya",
+      "odpt_station": ""
+    },
+    {
+      "id": "NKY05",
+      "number": "",
+      "name_jp": "長崎",
+      "kana": "ながさき",
+      "name_en": "Nagasaki",
+      "odpt_station": ""
+    }
+  ],
+  "timetable": {
+    "first_train": "07:03",
+    "last_train": "23:17",
+    "headway_min": {
+      "weekday": {
+        "5": 0,
+        "6": 0,
+        "7": 30,
+        "8": 60,
+        "9": 60,
+        "10": 30,
+        "11": 30,
+        "12": 30,
+        "13": 30,
+        "14": 60,
+        "15": 30,
+        "16": 60,
+        "17": 60,
+        "18": 30,
+        "19": 30,
+        "20": 30,
+        "21": 60,
+        "22": 60,
+        "23": 60,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 0,
+        "6": 0,
+        "7": 30,
+        "8": 60,
+        "9": 60,
+        "10": 30,
+        "11": 30,
+        "12": 30,
+        "13": 30,
+        "14": 60,
+        "15": 30,
+        "16": 60,
+        "17": 60,
+        "18": 30,
+        "19": 30,
+        "20": 30,
+        "21": 60,
+        "22": 60,
+        "23": 60,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "長崎方面",
+        "via_jp": "長崎方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "武雄温泉方面",
+        "via_jp": "武雄温泉方面",
+        "track": "2"
+      }
+    ]
+  }
+}

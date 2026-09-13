@@ -13,7 +13,7 @@ A terminal simulator of the **split-flap (Solari board) departure signs** at JR 
 pip install tokyo-train-board && jrboard
 ```
 
-Every refresh first scrambles like an old mechanical station/airport flap board, then locks character-by-character into the real upcoming departures. 20 lines, data-driven, with optional live ODPT data and a single-line marquee mode you can drop into a Claude Code statusline.
+Every refresh first scrambles like an old mechanical station/airport flap board, then locks character-by-character into the real upcoming departures. 50 lines (every Shinkansen included), data-driven, with optional live ODPT data and a single-line marquee mode you can drop into a Claude Code statusline.
 
 ![demo](demo.gif)
 
@@ -56,7 +56,7 @@ Every refresh first scrambles like an old mechanical station/airport flap board,
 # (optional) only needed to fetch live ODPT data
 pip install requests
 
-# list all 20 lines and their stations
+# list all 50 lines and their stations
 python3 main.py --list
 
 # full board + flap animation (defaults to Yamanote / Shinjuku, refresh every 10s; Ctrl-C to quit)
@@ -145,7 +145,7 @@ jrboard --tui
 
 ---
 
-## 🚇 Line roster (20)
+## 🚇 Line roster (50)
 
 | Code | `--line` key | Line | Stations | Example station |
 |:----:|------|------|:----:|------|
@@ -169,10 +169,14 @@ jrboard --tui
 | I | `mita` | Toei Mita | 27 | `meguro` |
 | S | `shinjuku` | Toei Shinjuku | 21 | `shinjuku` |
 | E | `oedo` | Toei Oedo | 39 | `tochomae` |
+| U | `yurikamome` | Yurikamome | 16 | `toyosu` |
+| TY | `tokyu-toyoko` | Tokyu Toyoko | 21 | `jiyugaoka` |
+| KO | `keio` | Keio Line | 32 | `chofu` |
+| JE | `keiyo` | JR Keiyo | 18 | `maihama` |
 
 > `--line shinjuku` is the **Toei Shinjuku subway line**; the JR lines have their own keys (`chuo`/`sobu`/…).
 
-### 🌏 Other cities (Kyoto / Osaka / Sapporo / Otaru)
+### 🌏 Other cities (Kyoto / Osaka / Sapporo / Otaru / Yokohama / Nagoya / Fukuoka)
 
 Filter by city with `--city`: `python3 main.py --list --city Osaka`; `--rotate --city Osaka` tours only Osaka.
 
@@ -181,6 +185,7 @@ Filter by city with `--city`: `python3 main.py --list --city Osaka`; `--rotate -
 | `osaka-loop` | Osaka | JR Osaka Loop Line (loop) | 19 |
 | `osaka-midosuji` | Osaka | Midosuji Line | 20 |
 | `osaka-tanimachi` | Osaka | Tanimachi Line | 26 |
+| `osaka-chuo` | Osaka | Chuo Line | 15 |
 | `kyoto-karasuma` | Kyoto | Subway Karasuma Line | 15 |
 | `kyoto-tozai` | Kyoto | Subway Tozai Line | 17 |
 | `kyoto-randen` | Kyoto | Randen Arashiyama tram | 13 |
@@ -190,6 +195,26 @@ Filter by city with `--city`: `python3 main.py --list --city Osaka`; `--rotate -
 | `sapporo-tozai` | Sapporo | Tozai Line | 19 |
 | `sapporo-toho` | Sapporo | Toho Line | 14 |
 | `otaru-hakodate` | Otaru | JR Hakodate Main Line (Otaru–Sapporo) | 15 |
+| `yokohama-blue` | Yokohama | Municipal Subway Blue Line | 32 |
+| `nagoya-higashiyama` | Nagoya | Subway Higashiyama Line | 22 |
+| `fukuoka-kuko` | Fukuoka | Subway Kuko (Airport) Line | 13 |
+
+### 🚄 Shinkansen (10 lines, `--city Shinkansen`)
+
+Shinkansen stations have no numbering, so the codes are jrboard's own three-letter abbreviations; the Yamagata/Akita lists include the main Tokyo-side stops. Without live data, times are generated from headways and assume ~1 minute between stations, so they do not match real travel times.
+
+| Code | key | Line | Section | Stations |
+|:----:|------|------|------|:----:|
+| TKD | `shinkansen-tokaido` | Tokaido | 東京—新大阪 | 17 |
+| SYO | `shinkansen-sanyo` | San'yo | 新大阪—博多 | 19 |
+| KYU | `shinkansen-kyushu` | Kyushu | 博多—鹿児島中央 | 12 |
+| NKY | `shinkansen-nishikyushu` | Nishi-Kyushu | 武雄温泉—長崎 | 5 |
+| HKD | `shinkansen-hokkaido` | Hokkaido | 新青森—新函館北斗 | 4 |
+| TOH | `shinkansen-tohoku` | Tohoku | 東京—新青森 | 23 |
+| JOE | `shinkansen-joetsu` | Joetsu | 東京—新潟 | 12 |
+| HOK | `shinkansen-hokuriku` | Hokuriku | 東京—敦賀 | 24 |
+| YMG | `shinkansen-yamagata` | Yamagata (Tsubasa) | 東京—新庄 | 16 |
+| AKT | `shinkansen-akita` | Akita (Komachi) | 東京—秋田 | 10 |
 
 ---
 

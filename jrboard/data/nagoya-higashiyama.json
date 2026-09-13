@@ -1,0 +1,258 @@
+{
+  "key": "nagoya-higashiyama",
+  "name_jp": "名古屋市営地下鉄東山線",
+  "name_en": "Nagoya Municipal Subway Higashiyama Line",
+  "city": "Nagoya",
+  "symbol": "H",
+  "color": {
+    "name": "東山線 / yellow",
+    "hex": "#FAB123",
+    "ansi_fg": "\u001b[38;2;250;177;35m",
+    "ansi_bg": "\u001b[48;2;250;177;35m\u001b[38;2;26;26;26m"
+  },
+  "operator": "Nagoya",
+  "odpt_railway": "odpt.Railway:Nagoya.Higashiyama",
+  "loop": false,
+  "stations": [
+    {
+      "id": "H01",
+      "number": "01",
+      "name_jp": "高畑",
+      "kana": "たかばた",
+      "name_en": "Takabata",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Takabata"
+    },
+    {
+      "id": "H02",
+      "number": "02",
+      "name_jp": "八田",
+      "kana": "はった",
+      "name_en": "Hatta",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Hatta"
+    },
+    {
+      "id": "H03",
+      "number": "03",
+      "name_jp": "岩塚",
+      "kana": "いわつか",
+      "name_en": "Iwatsuka",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Iwatsuka"
+    },
+    {
+      "id": "H04",
+      "number": "04",
+      "name_jp": "中村公園",
+      "kana": "なかむらこうえん",
+      "name_en": "Nakamura-koen",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.NakamuraKoen"
+    },
+    {
+      "id": "H05",
+      "number": "05",
+      "name_jp": "中村日赤",
+      "kana": "なかむらにっせき",
+      "name_en": "Nakamura-nisseki",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.NakamuraNisseki"
+    },
+    {
+      "id": "H06",
+      "number": "06",
+      "name_jp": "本陣",
+      "kana": "ほんじん",
+      "name_en": "Honjin",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Honjin"
+    },
+    {
+      "id": "H07",
+      "number": "07",
+      "name_jp": "亀島",
+      "kana": "かめじま",
+      "name_en": "Kamejima",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Kamejima"
+    },
+    {
+      "id": "H08",
+      "number": "08",
+      "name_jp": "名古屋",
+      "kana": "なごや",
+      "name_en": "Nagoya",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Nagoya"
+    },
+    {
+      "id": "H09",
+      "number": "09",
+      "name_jp": "伏見",
+      "kana": "ふしみ",
+      "name_en": "Fushimi",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Fushimi"
+    },
+    {
+      "id": "H10",
+      "number": "10",
+      "name_jp": "栄",
+      "kana": "さかえ",
+      "name_en": "Sakae",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Sakae"
+    },
+    {
+      "id": "H11",
+      "number": "11",
+      "name_jp": "新栄町",
+      "kana": "しんさかえまち",
+      "name_en": "Shinsakae-machi",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.ShinsakaeMachi"
+    },
+    {
+      "id": "H12",
+      "number": "12",
+      "name_jp": "千種",
+      "kana": "ちくさ",
+      "name_en": "Chikusa",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Chikusa"
+    },
+    {
+      "id": "H13",
+      "number": "13",
+      "name_jp": "今池",
+      "kana": "いまいけ",
+      "name_en": "Imaike",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Imaike"
+    },
+    {
+      "id": "H14",
+      "number": "14",
+      "name_jp": "池下",
+      "kana": "いけした",
+      "name_en": "Ikeshita",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Ikeshita"
+    },
+    {
+      "id": "H15",
+      "number": "15",
+      "name_jp": "覚王山",
+      "kana": "かくおうざん",
+      "name_en": "Kakuozan",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Kakuozan"
+    },
+    {
+      "id": "H16",
+      "number": "16",
+      "name_jp": "本山",
+      "kana": "もとやま",
+      "name_en": "Motoyama",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Motoyama"
+    },
+    {
+      "id": "H17",
+      "number": "17",
+      "name_jp": "東山公園",
+      "kana": "ひがしやまこうえん",
+      "name_en": "Higashiyama-koen",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.HigashiyamaKoen"
+    },
+    {
+      "id": "H18",
+      "number": "18",
+      "name_jp": "星ヶ丘",
+      "kana": "ほしがおか",
+      "name_en": "Hoshigaoka",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Hoshigaoka"
+    },
+    {
+      "id": "H19",
+      "number": "19",
+      "name_jp": "一社",
+      "kana": "いっしゃ",
+      "name_en": "Issha",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Issha"
+    },
+    {
+      "id": "H20",
+      "number": "20",
+      "name_jp": "上社",
+      "kana": "かみやしろ",
+      "name_en": "Kamiyashiro",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Kamiyashiro"
+    },
+    {
+      "id": "H21",
+      "number": "21",
+      "name_jp": "本郷",
+      "kana": "ほんごう",
+      "name_en": "Hongo",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Hongo"
+    },
+    {
+      "id": "H22",
+      "number": "22",
+      "name_jp": "藤が丘",
+      "kana": "ふじがおか",
+      "name_en": "Fujigaoka",
+      "odpt_station": "odpt.Station:Nagoya.Higashiyama.Fujigaoka"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:34",
+    "last_train": "23:45",
+    "headway_min": {
+      "weekday": {
+        "5": 20,
+        "6": 9,
+        "7": 5,
+        "8": 4,
+        "9": 4,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 4,
+        "16": 4,
+        "17": 4,
+        "18": 4,
+        "19": 5,
+        "20": 7,
+        "21": 9,
+        "22": 9,
+        "23": 12,
+        "0": 0
+      },
+      "holiday": {
+        "5": 20,
+        "6": 10,
+        "7": 8,
+        "8": 6,
+        "9": 6,
+        "10": 6,
+        "11": 6,
+        "12": 6,
+        "13": 6,
+        "14": 6,
+        "15": 6,
+        "16": 6,
+        "17": 6,
+        "18": 6,
+        "19": 8,
+        "20": 9,
+        "21": 10,
+        "22": 10,
+        "23": 12,
+        "0": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "藤が丘方面",
+        "via_jp": "藤が丘方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "高畑方面",
+        "via_jp": "高畑方面",
+        "track": "2"
+      }
+    ]
+  }
+}

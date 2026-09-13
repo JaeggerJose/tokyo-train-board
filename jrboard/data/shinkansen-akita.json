@@ -1,0 +1,164 @@
+{
+  "key": "shinkansen-akita",
+  "name_jp": "秋田新幹線",
+  "name_en": "Akita Shinkansen (Komachi)",
+  "city": "Shinkansen",
+  "symbol": "AKT",
+  "color": {
+    "name": "ピンク / pink",
+    "hex": "#ED4399",
+    "ansi_fg": "\u001b[38;2;237;67;153m",
+    "ansi_bg": "\u001b[48;2;237;67;153m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-East",
+  "odpt_railway": "",
+  "loop": false,
+  "stations": [
+    {
+      "id": "AKT01",
+      "number": "",
+      "name_jp": "東京",
+      "kana": "とうきょう",
+      "name_en": "Tokyo",
+      "odpt_station": ""
+    },
+    {
+      "id": "AKT02",
+      "number": "",
+      "name_jp": "上野",
+      "kana": "うえの",
+      "name_en": "Ueno",
+      "odpt_station": ""
+    },
+    {
+      "id": "AKT03",
+      "number": "",
+      "name_jp": "大宮",
+      "kana": "おおみや",
+      "name_en": "Omiya",
+      "odpt_station": ""
+    },
+    {
+      "id": "AKT04",
+      "number": "",
+      "name_jp": "仙台",
+      "kana": "せんだい",
+      "name_en": "Sendai",
+      "odpt_station": ""
+    },
+    {
+      "id": "AKT05",
+      "number": "",
+      "name_jp": "盛岡",
+      "kana": "もりおか",
+      "name_en": "Morioka",
+      "odpt_station": ""
+    },
+    {
+      "id": "AKT06",
+      "number": "",
+      "name_jp": "雫石",
+      "kana": "しずくいし",
+      "name_en": "Shizukuishi",
+      "odpt_station": ""
+    },
+    {
+      "id": "AKT07",
+      "number": "",
+      "name_jp": "田沢湖",
+      "kana": "たざわこ",
+      "name_en": "Tazawako",
+      "odpt_station": ""
+    },
+    {
+      "id": "AKT08",
+      "number": "",
+      "name_jp": "角館",
+      "kana": "かくのだて",
+      "name_en": "Kakunodate",
+      "odpt_station": ""
+    },
+    {
+      "id": "AKT09",
+      "number": "",
+      "name_jp": "大曲",
+      "kana": "おおまがり",
+      "name_en": "Omagari",
+      "odpt_station": ""
+    },
+    {
+      "id": "AKT10",
+      "number": "",
+      "name_jp": "秋田",
+      "kana": "あきた",
+      "name_en": "Akita",
+      "odpt_station": ""
+    }
+  ],
+  "timetable": {
+    "first_train": "06:32",
+    "last_train": "20:16",
+    "headway_min": {
+      "weekday": {
+        "5": 0,
+        "6": 30,
+        "7": 60,
+        "8": 60,
+        "9": 60,
+        "10": 30,
+        "11": 30,
+        "12": 30,
+        "13": 30,
+        "14": 30,
+        "15": 30,
+        "16": 30,
+        "17": 30,
+        "18": 60,
+        "19": 60,
+        "20": 60,
+        "21": 0,
+        "22": 0,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 0,
+        "6": 60,
+        "7": 60,
+        "8": 60,
+        "9": 60,
+        "10": 60,
+        "11": 60,
+        "12": 60,
+        "13": 60,
+        "14": 60,
+        "15": 60,
+        "16": 30,
+        "17": 30,
+        "18": 60,
+        "19": 60,
+        "20": 60,
+        "21": 0,
+        "22": 0,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "秋田方面",
+        "via_jp": "盛岡・大曲・秋田方面",
+        "track": "20"
+      },
+      {
+        "id": "b",
+        "name_jp": "東京方面",
+        "via_jp": "大宮・上野・東京方面",
+        "track": "21"
+      }
+    ]
+  }
+}

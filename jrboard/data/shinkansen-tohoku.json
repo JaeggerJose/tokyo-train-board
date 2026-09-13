@@ -1,0 +1,268 @@
+{
+  "key": "shinkansen-tohoku",
+  "name_jp": "東北新幹線",
+  "name_en": "Tohoku Shinkansen",
+  "city": "Shinkansen",
+  "symbol": "TOH",
+  "color": {
+    "name": "緑 / green",
+    "hex": "#008000",
+    "ansi_fg": "\u001b[38;2;0;128;0m",
+    "ansi_bg": "\u001b[48;2;0;128;0m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-East",
+  "odpt_railway": "",
+  "loop": false,
+  "stations": [
+    {
+      "id": "TOH01",
+      "number": "",
+      "name_jp": "東京",
+      "kana": "とうきょう",
+      "name_en": "Tokyo",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH02",
+      "number": "",
+      "name_jp": "上野",
+      "kana": "うえの",
+      "name_en": "Ueno",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH03",
+      "number": "",
+      "name_jp": "大宮",
+      "kana": "おおみや",
+      "name_en": "Omiya",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH04",
+      "number": "",
+      "name_jp": "小山",
+      "kana": "おやま",
+      "name_en": "Oyama",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH05",
+      "number": "",
+      "name_jp": "宇都宮",
+      "kana": "うつのみや",
+      "name_en": "Utsunomiya",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH06",
+      "number": "",
+      "name_jp": "那須塩原",
+      "kana": "なすしおばら",
+      "name_en": "Nasushiobara",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH07",
+      "number": "",
+      "name_jp": "新白河",
+      "kana": "しんしらかわ",
+      "name_en": "Shin-Shirakawa",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH08",
+      "number": "",
+      "name_jp": "郡山",
+      "kana": "こおりやま",
+      "name_en": "Koriyama",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH09",
+      "number": "",
+      "name_jp": "福島",
+      "kana": "ふくしま",
+      "name_en": "Fukushima",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH10",
+      "number": "",
+      "name_jp": "白石蔵王",
+      "kana": "しろいしざおう",
+      "name_en": "Shiroishi-Zao",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH11",
+      "number": "",
+      "name_jp": "仙台",
+      "kana": "せんだい",
+      "name_en": "Sendai",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH12",
+      "number": "",
+      "name_jp": "古川",
+      "kana": "ふるかわ",
+      "name_en": "Furukawa",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH13",
+      "number": "",
+      "name_jp": "くりこま高原",
+      "kana": "くりこまこうげん",
+      "name_en": "Kurikoma-Kogen",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH14",
+      "number": "",
+      "name_jp": "一ノ関",
+      "kana": "いちのせき",
+      "name_en": "Ichinoseki",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH15",
+      "number": "",
+      "name_jp": "水沢江刺",
+      "kana": "みずさわえさし",
+      "name_en": "Mizusawa-Esashi",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH16",
+      "number": "",
+      "name_jp": "北上",
+      "kana": "きたかみ",
+      "name_en": "Kitakami",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH17",
+      "number": "",
+      "name_jp": "新花巻",
+      "kana": "しんはなまき",
+      "name_en": "Shin-Hanamaki",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH18",
+      "number": "",
+      "name_jp": "盛岡",
+      "kana": "もりおか",
+      "name_en": "Morioka",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH19",
+      "number": "",
+      "name_jp": "いわて沼宮内",
+      "kana": "いわてぬまくない",
+      "name_en": "Iwate-Numakunai",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH20",
+      "number": "",
+      "name_jp": "二戸",
+      "kana": "にのへ",
+      "name_en": "Ninohe",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH21",
+      "number": "",
+      "name_jp": "八戸",
+      "kana": "はちのへ",
+      "name_en": "Hachinohe",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH22",
+      "number": "",
+      "name_jp": "七戸十和田",
+      "kana": "しちのへとわだ",
+      "name_en": "Shichinohe-Towada",
+      "odpt_station": ""
+    },
+    {
+      "id": "TOH23",
+      "number": "",
+      "name_jp": "新青森",
+      "kana": "しんあおもり",
+      "name_en": "Shin-Aomori",
+      "odpt_station": ""
+    }
+  ],
+  "timetable": {
+    "first_train": "06:00",
+    "last_train": "22:24",
+    "headway_min": {
+      "weekday": {
+        "5": 0,
+        "6": 9,
+        "7": 8,
+        "8": 12,
+        "9": 12,
+        "10": 10,
+        "11": 12,
+        "12": 12,
+        "13": 12,
+        "14": 12,
+        "15": 12,
+        "16": 9,
+        "17": 9,
+        "18": 9,
+        "19": 10,
+        "20": 10,
+        "21": 15,
+        "22": 30,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 0,
+        "6": 15,
+        "7": 10,
+        "8": 12,
+        "9": 12,
+        "10": 10,
+        "11": 12,
+        "12": 12,
+        "13": 12,
+        "14": 12,
+        "15": 12,
+        "16": 9,
+        "17": 9,
+        "18": 9,
+        "19": 10,
+        "20": 10,
+        "21": 15,
+        "22": 30,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "新青森方面",
+        "via_jp": "仙台・盛岡・新青森方面",
+        "track": "20"
+      },
+      {
+        "id": "b",
+        "name_jp": "東京方面",
+        "via_jp": "大宮・上野・東京方面",
+        "track": "21"
+      }
+    ]
+  }
+}
