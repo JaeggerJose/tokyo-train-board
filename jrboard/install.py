@@ -46,6 +46,7 @@ def statusline_command(
     station: Optional[str] = None,
     city: Optional[str] = None,
     script: Optional[str] = None,
+    by_project: bool = True,
 ) -> str:
     """Build the shell command Claude Code should run for the statusLine.
 
@@ -53,8 +54,9 @@ def statusline_command(
     (works after ``pip install --user``). When ``script`` is given (a path to a
     ``main.py`` from a git-clone install, where the package is NOT importable via
     ``-m``), uses ``<python> <script>`` instead -- ``main.py`` injects its own
-    directory onto ``sys.path`` so it runs with no pip and no PATH. ``--by-session``
-    is included only when no explicit ``line`` is pinned. Pure: returns a string.
+    directory onto ``sys.path`` so it runs with no pip and no PATH. Auto line
+    selection (``--by-project``, else ``--by-session``) is included only when no
+    explicit ``line`` is pinned. Pure: returns a string.
     """
     exe = python_exe or sys.executable or "python3"
     runner = [shlex.quote(exe), shlex.quote(script)] if script else [
@@ -67,7 +69,9 @@ def statusline_command(
     ]
     if tokens:
         parts.append("--tokens")
-    if by_session and not line:
+    if by_project and not line:
+        parts.append("--by-project")
+    elif by_session and not line:
         parts.append("--by-session")
     if city:
         parts += ["--city", shlex.quote(city)]

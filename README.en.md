@@ -278,8 +278,9 @@ The statusLine command receives a Claude Code JSON blob on STDIN (with `session_
   - `5h` = the **session (five-hour) limit** (`rate_limits.five_hour.used_percentage`);
   - `7d` = the **weekly (seven-day) limit** (`rate_limits.seven_day.used_percentage`);
   - `ctx` = context-window fill. Each segment is colour-graded: green <70, yellow 70–89, red ≥90. A missing percentage omits that segment.
+- **`--by-project`** — pick the line deterministically from the Claude project directory (`workspace.project_dir`, falling back to `cwd`) via a stable hash: **every session in a project shows the same line, and each new project gets its own.** Needs `--claude-stdin`; scope with `--city`; wins over `--by-session`. Note: adding lines changes the pool, so some projects may be reassigned.
 - **`--by-session`** — pick the line deterministically from `session_id` via a stable hash: **the same session always maps to the same line; different sessions map to different lines.** Needs `--claude-stdin`; scope with `--city`. Falls back to `--rotate`, then the configured default, when no session id is present.
-- **`--rotate [MIN]`** (statusline / minitable) — time-bucketed rotation through the (`--city`-scoped) line pool, advancing every `MIN` minutes (no value = 0.5 min = 30s). Renders in the same bucket stay on one line; crossing a bucket boundary switches. `--by-session` wins over `--rotate`.
+- **`--rotate [MIN]`** (statusline / minitable) — time-bucketed rotation through the (`--city`-scoped) line pool, advancing every `MIN` minutes (no value = 0.5 min = 30s). Renders in the same bucket stay on one line; crossing a bucket boundary switches. `--by-project` / `--by-session` win over `--rotate`.
 - **`--mode minitable`** — a multi-line mini-board: line 1 is the station identity + token gauge, followed by 2–3 departure rows (`HH:MM dest`), the way a real platform board stacks upcoming trains.
 
 ```bash
@@ -289,10 +290,11 @@ cat cc.json | python3 main.py --mode statusline --claude-stdin --tokens --by-ses
 cat cc.json | python3 main.py --mode minitable --claude-stdin --tokens --rotate --city Kyoto --columns 60
 ```
 
-### How to vary the statusline per session
+### How to vary the statusline per project / session
 
-1. **`JR_BY_SESSION=1` (the default in the `jr-board` / `jr-timetable` themes)**: auto-varies by `session_id`, so different Claude sessions show different lines. Set `0` to disable.
-2. **A per-project `.claude/settings.json` override**: drop a project-specific `statusLine.command` in a repo (e.g. pin `--line oedo --station tochomae`, or use a different `--city`) so that project gets its own statusline.
+1. **`JR_BY_PROJECT=1` (the default in the `jr-board` / `jr-timetable` / `jr-status` themes)**: each Claude project keeps one fixed line; switching projects switches lines. Set `0` to disable.
+2. **`JR_BY_SESSION=1`**: vary by `session_id` instead, so different Claude sessions show different lines (also set `JR_BY_PROJECT=0`, since by-project wins).
+3. **A per-project `.claude/settings.json` override**: drop a project-specific `statusLine.command` in a repo (e.g. pin `--line oedo --station tochomae`, or use a different `--city`) so that project gets its own statusline.
 
 ### The two csl themes: `jr-board` vs `jr-timetable`
 
@@ -301,7 +303,7 @@ cat cc.json | python3 main.py --mode minitable --claude-stdin --tokens --rotate 
 | `jr-board` | `statusline` | a **single-line** horizontal marquee (station pinned, departures scroll) with the token gauge on the right |
 | `jr-timetable` | `minitable` | a **multi-line** mini-board: a header row (station + token gauge) plus the next 2–3 trains |
 
-Both default to `JR_BY_SESSION=1` and `JR_TOKENS=1`; tune `JR_CITY` / `JR_ROTATE` / `JR_LINE` / `JR_STATION` / `JR_COLUMNS` at the top of each `.sh`.
+Both default to `JR_BY_PROJECT=1` and `JR_TOKENS=1`; tune `JR_CITY` / `JR_ROTATE` / `JR_LINE` / `JR_STATION` / `JR_COLUMNS` at the top of each `.sh`.
 
 ```bash
 cp integrations/csl/jr-timetable.* ~/.config/csl/themes/

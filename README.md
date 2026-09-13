@@ -324,8 +324,9 @@ statusLine 指令會在 STDIN 收到一份 Claude Code 的 JSON（含 `session_i
   - `5h` = **本 session 的五小時用量**（`rate_limits.five_hour.used_percentage`）；
   - `7d` = **每週七天用量**（`rate_limits.seven_day.used_percentage`）；
   - `ctx` = 上下文視窗用量。各段依門檻上色：<70 綠、70–89 黃、≥90 紅。缺值就省略該段。
+- **`--by-project`** — 從 Claude 專案目錄（`workspace.project_dir`，缺值時用 `cwd`）以穩定雜湊決定路線：**同一個專案的所有 session 永遠是同一條線，每進入一個新專案就分到自己的線**。需搭 `--claude-stdin`，可用 `--city` 縮小範圍，優先於 `--by-session`。注意：新增路線會改變路線池，部分專案的對應線可能跟著換。
 - **`--by-session`** — 從 `session_id` 以穩定雜湊決定路線：**同一個 session 永遠對到同一條線，不同 session 對到不同線**。需搭 `--claude-stdin`，可用 `--city` 縮小範圍。沒有 session id 時退回 `--rotate`，再退回設定檔預設。
-- **`--rotate [MIN]`**（statusline / minitable）— 依時間分桶在（受 `--city` 限定的）路線池裡輪播，每 `MIN` 分鐘換一條（不給值＝0.5 分＝30 秒）。同一分桶內的渲染保持同一條線，跨桶就換線。`--by-session` 優先於 `--rotate`。
+- **`--rotate [MIN]`**（statusline / minitable）— 依時間分桶在（受 `--city` 限定的）路線池裡輪播，每 `MIN` 分鐘換一條（不給值＝0.5 分＝30 秒）。同一分桶內的渲染保持同一條線，跨桶就換線。`--by-project` / `--by-session` 優先於 `--rotate`。
 - **`--mode minitable`** — 多行小型站牌：第一行是站名 + token 量表，接著 2–3 行班次（`HH:MM 方面`），像月台燈號板那樣堆疊。
 
 ```bash
@@ -335,10 +336,11 @@ cat cc.json | python3 main.py --mode statusline --claude-stdin --tokens --by-ses
 cat cc.json | python3 main.py --mode minitable --claude-stdin --tokens --rotate --city Kyoto --columns 60
 ```
 
-### 如何讓每個 session 顯示不同的狀態列
+### 如何讓每個專案 / session 顯示不同的狀態列
 
-1. **`JR_BY_SESSION=1`（jr-board / jr-timetable 主題的預設）**：自動依 `session_id` 變化，不同 Claude session 顯示不同路線。設 `0` 可關閉。
-2. **per-project `.claude/settings.json` 覆寫**：在某個專案裡放一份專屬的 `statusLine.command`（例如 `--line oedo --station tochomae` 固定一條線，或設不同的 `--city`），該專案就有專屬的狀態列。
+1. **`JR_BY_PROJECT=1`（jr-board / jr-timetable / jr-status 主題的預設）**：每個 Claude 專案固定一條線，換專案就換線。設 `0` 可關閉。
+2. **`JR_BY_SESSION=1`**：改成依 `session_id` 變化，不同 Claude session 顯示不同路線（需同時設 `JR_BY_PROJECT=0`，否則依專案優先）。
+3. **per-project `.claude/settings.json` 覆寫**：在某個專案裡放一份專屬的 `statusLine.command`（例如 `--line oedo --station tochomae` 固定一條線，或設不同的 `--city`），該專案就有專屬的狀態列。
 
 ### 兩個 csl 主題：`jr-board` vs `jr-timetable`
 
@@ -347,7 +349,7 @@ cat cc.json | python3 main.py --mode minitable --claude-stdin --tokens --rotate 
 | `jr-board` | `statusline` | **單行**橫向捲動跑馬燈（站名釘左、班次捲動），尾端接 token 量表 |
 | `jr-timetable` | `minitable` | **多行**小站牌：標題列（站名 + token 量表）＋ 接下來 2–3 班 |
 
-兩者預設 `JR_BY_SESSION=1` 且 `JR_TOKENS=1`，可在各自的 `.sh` 頂部用 `JR_CITY` / `JR_ROTATE` / `JR_LINE` / `JR_STATION` / `JR_COLUMNS` 調整。
+兩者預設 `JR_BY_PROJECT=1` 且 `JR_TOKENS=1`，可在各自的 `.sh` 頂部用 `JR_CITY` / `JR_ROTATE` / `JR_LINE` / `JR_STATION` / `JR_COLUMNS` 調整。
 
 ```bash
 cp integrations/csl/jr-timetable.* ~/.config/csl/themes/

@@ -20,15 +20,23 @@ def test_command_uses_module_form_not_path() -> None:
     assert "--columns 80" in cmd
 
 
-def test_command_by_session_default_when_no_line() -> None:
+def test_command_by_project_default_when_no_line() -> None:
     cmd = statusline_command(python_exe="python3")
-    assert "--by-session" in cmd
+    assert "--by-project" in cmd
+    assert "--by-session" not in cmd
     assert "--tokens" in cmd
 
 
-def test_command_explicit_line_drops_by_session() -> None:
+def test_command_by_session_opt_in() -> None:
+    cmd = statusline_command(python_exe="python3", by_project=False, by_session=True)
+    assert "--by-session" in cmd
+    assert "--by-project" not in cmd
+
+
+def test_command_explicit_line_drops_auto_selection() -> None:
     cmd = statusline_command(python_exe="python3", line="oedo", station="tochomae")
-    assert "--by-session" not in cmd      # an explicit line wins
+    assert "--by-project" not in cmd      # an explicit line wins
+    assert "--by-session" not in cmd
     assert "--line oedo" in cmd
     assert "--station tochomae" in cmd
 
