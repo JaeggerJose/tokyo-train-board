@@ -52,12 +52,12 @@ def test_model_label_dropped_when_too_narrow() -> None:
 
 def test_statusline_tokens_shows_model_first() -> None:
     out = _run("--mode", "statusline", "--tokens")
-    assert out.startswith("Opus 5 5h 42%")
+    assert out.startswith("Opus 5 ███░░░░░░░ 30% 5h 42%")
 
 
 def test_minitable_tokens_shows_model_in_header() -> None:
     head = _run("--mode", "minitable", "--tokens").split("\n")[0]
-    assert "Opus 5 5h 42%" in head
+    assert "Opus 5 ███░░░░░░░ 30% 5h 42%" in head
 
 
 def test_statusline_model_only_when_no_rate_limits() -> None:

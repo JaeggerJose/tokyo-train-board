@@ -706,34 +706,34 @@ def _lead_segment(
     color: bool,
     max_width: int,
 ) -> str:
-    """``<model> <5h/7d/ctx gauge>`` fitted to ``max_width`` (``0`` = no limit).
+    """``<model> <ctx bar> <5h/7d gauge>`` fitted to ``max_width`` (``0`` = no limit).
 
-    Width priority when narrow: 5h > 7d > model > ctx. The model name first
-    displaces the ``ctx`` segment; if it still does not fit next to the full
-    5h/7d pair it is dropped instead. ``""`` when neither is known.
+    Tries progressively smaller layouts and keeps the first that fits: model +
+    context bar + 5h/7d, then model + gauge with a compact ``ctx NN%``, then
+    model + 5h/7d, then the gauge alone (which drops ctx -> 7d -> 5h). Width
+    priority when narrow is therefore 5h > 7d > model > ctx. ``""`` when
+    nothing is known.
     """
-    from .claude_input import model_label, token_gauge
+    from .claude_input import context_bar, model_label, token_gauge
 
-    have_tok = token_pcts is not None and any(p is not None for p in token_pcts)
-    sess, wk, ctx = token_pcts if have_tok else (None, None, None)
-    tok = token_gauge(sess, wk, ctx, color=color, max_width=max_width) if have_tok else ""
-    mdl = model_label(model, color=color)
-    if max_width <= 0 or not mdl:
-        return " ".join(part for part in (mdl, tok) if part)
+    sess, wk, ctx = token_pcts if token_pcts is not None else (None, None, None)
 
-    room = max_width - get_visual_width(mdl) - (1 if have_tok else 0)
-    if room < 0:
-        return tok
-    if not have_tok:
-        return mdl
-    full = token_gauge(sess, wk, ctx, color=False)
-    if get_visual_width(full) <= room:
-        return f"{mdl} {tok}"
-    # Trade ctx for the model, but only if 5h/7d both survive intact.
-    no_ctx = token_gauge(sess, wk, None, color=False)
-    if no_ctx and room > 0 and get_visual_width(no_ctx) <= room:
-        return f"{mdl} {token_gauge(sess, wk, None, color=color)}"
-    return tok
+    def layouts(paint: bool) -> list[str]:
+        mdl = model_label(model, color=paint)
+        candidates = (
+            (mdl, context_bar(ctx, color=paint), token_gauge(sess, wk, None, color=paint)),
+            (mdl, token_gauge(sess, wk, ctx, color=paint)),
+            (mdl, token_gauge(sess, wk, None, color=paint)),
+        )
+        return [" ".join(part for part in parts if part) for parts in candidates]
+
+    painted = layouts(color)
+    if max_width <= 0:
+        return painted[0]
+    for plain, out in zip(layouts(False), painted):
+        if plain and get_visual_width(plain) <= max_width:
+            return out
+    return token_gauge(sess, wk, ctx, color=color, max_width=max_width)
 
 
 def _terminal_columns() -> int:

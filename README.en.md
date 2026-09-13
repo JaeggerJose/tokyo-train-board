@@ -299,7 +299,7 @@ Tune `JR_LINE` / `JR_STATION` / `JR_COLUMNS` (narrower = more scrolling) / `JR_S
 
 The statusLine command receives a Claude Code JSON blob on STDIN (with `session_id`, `rate_limits`, `context_window`, etc. — any field may be missing). Add `--claude-stdin` to read it (safe to pass without a pipe — it is simply ignored).
 
-- **`--tokens`** — append a compact token-budget gauge: `5h 42% · 7d 18% · ctx 30%`.
+- **`--tokens`** — lead the line with the model, a context-window bar and the token gauge: `Opus 5 ██░░░░░░░░ 27% 5h 42%·7d 18%`. When narrow, the bar shrinks to `ctx 27%`, then ctx, the model and 7d are dropped in that order.
   - `5h` = the **session (five-hour) limit** (`rate_limits.five_hour.used_percentage`);
   - `7d` = the **weekly (seven-day) limit** (`rate_limits.seven_day.used_percentage`);
   - `ctx` = context-window fill. Each segment is colour-graded: green <70, yellow 70–89, red ≥90. A missing percentage omits that segment.
