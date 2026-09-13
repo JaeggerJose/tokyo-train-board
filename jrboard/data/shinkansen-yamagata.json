@@ -1,0 +1,212 @@
+{
+  "key": "shinkansen-yamagata",
+  "name_jp": "山形新幹線",
+  "name_en": "Yamagata Shinkansen (Tsubasa)",
+  "city": "Shinkansen",
+  "symbol": "YMG",
+  "color": {
+    "name": "オレンジ / orange",
+    "hex": "#EE7B28",
+    "ansi_fg": "\u001b[38;2;238;123;40m",
+    "ansi_bg": "\u001b[48;2;238;123;40m\u001b[38;2;26;26;26m"
+  },
+  "operator": "JR-East",
+  "odpt_railway": "",
+  "loop": false,
+  "stations": [
+    {
+      "id": "YMG01",
+      "number": "",
+      "name_jp": "東京",
+      "kana": "とうきょう",
+      "name_en": "Tokyo",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG02",
+      "number": "",
+      "name_jp": "上野",
+      "kana": "うえの",
+      "name_en": "Ueno",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG03",
+      "number": "",
+      "name_jp": "大宮",
+      "kana": "おおみや",
+      "name_en": "Omiya",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG04",
+      "number": "",
+      "name_jp": "宇都宮",
+      "kana": "うつのみや",
+      "name_en": "Utsunomiya",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG05",
+      "number": "",
+      "name_jp": "郡山",
+      "kana": "こおりやま",
+      "name_en": "Koriyama",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG06",
+      "number": "",
+      "name_jp": "福島",
+      "kana": "ふくしま",
+      "name_en": "Fukushima",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG07",
+      "number": "",
+      "name_jp": "米沢",
+      "kana": "よねざわ",
+      "name_en": "Yonezawa",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG08",
+      "number": "",
+      "name_jp": "高畠",
+      "kana": "たかはた",
+      "name_en": "Takahata",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG09",
+      "number": "",
+      "name_jp": "赤湯",
+      "kana": "あかゆ",
+      "name_en": "Akayu",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG10",
+      "number": "",
+      "name_jp": "かみのやま温泉",
+      "kana": "かみのやまおんせん",
+      "name_en": "Kaminoyama-Onsen",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG11",
+      "number": "",
+      "name_jp": "山形",
+      "kana": "やまがた",
+      "name_en": "Yamagata",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG12",
+      "number": "",
+      "name_jp": "天童",
+      "kana": "てんどう",
+      "name_en": "Tendo",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG13",
+      "number": "",
+      "name_jp": "さくらんぼ東根",
+      "kana": "さくらんぼひがしね",
+      "name_en": "Sakurambo-Higashine",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG14",
+      "number": "",
+      "name_jp": "村山",
+      "kana": "むらやま",
+      "name_en": "Murayama",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG15",
+      "number": "",
+      "name_jp": "大石田",
+      "kana": "おおいしだ",
+      "name_en": "Oishida",
+      "odpt_station": ""
+    },
+    {
+      "id": "YMG16",
+      "number": "",
+      "name_jp": "新庄",
+      "kana": "しんじょう",
+      "name_en": "Shinjo",
+      "odpt_station": ""
+    }
+  ],
+  "timetable": {
+    "first_train": "06:12",
+    "last_train": "20:44",
+    "headway_min": {
+      "weekday": {
+        "5": 0,
+        "6": 30,
+        "7": 60,
+        "8": 30,
+        "9": 20,
+        "10": 30,
+        "11": 30,
+        "12": 60,
+        "13": 30,
+        "14": 30,
+        "15": 30,
+        "16": 30,
+        "17": 30,
+        "18": 60,
+        "19": 30,
+        "20": 60,
+        "21": 0,
+        "22": 0,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 0,
+        "6": 60,
+        "7": 60,
+        "8": 60,
+        "9": 30,
+        "10": 60,
+        "11": 60,
+        "12": 60,
+        "13": 60,
+        "14": 60,
+        "15": 60,
+        "16": 30,
+        "17": 30,
+        "18": 60,
+        "19": 30,
+        "20": 60,
+        "21": 0,
+        "22": 0,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "新庄方面",
+        "via_jp": "福島・山形・新庄方面",
+        "track": "20"
+      },
+      {
+        "id": "b",
+        "name_jp": "東京方面",
+        "via_jp": "大宮・上野・東京方面",
+        "track": "21"
+      }
+    ]
+  }
+}

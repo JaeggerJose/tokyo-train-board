@@ -1,0 +1,180 @@
+{
+  "key": "shinkansen-kyushu",
+  "name_jp": "九州新幹線",
+  "name_en": "Kyushu Shinkansen",
+  "city": "Shinkansen",
+  "symbol": "KYU",
+  "color": {
+    "name": "九州新幹線 / red",
+    "hex": "#FF0000",
+    "ansi_fg": "\u001b[38;2;255;0;0m",
+    "ansi_bg": "\u001b[48;2;255;0;0m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-Kyushu",
+  "odpt_railway": "",
+  "loop": false,
+  "stations": [
+    {
+      "id": "KYU01",
+      "number": "",
+      "name_jp": "博多",
+      "kana": "はかた",
+      "name_en": "Hakata",
+      "odpt_station": ""
+    },
+    {
+      "id": "KYU02",
+      "number": "",
+      "name_jp": "新鳥栖",
+      "kana": "しんとす",
+      "name_en": "Shin-Tosu",
+      "odpt_station": ""
+    },
+    {
+      "id": "KYU03",
+      "number": "",
+      "name_jp": "久留米",
+      "kana": "くるめ",
+      "name_en": "Kurume",
+      "odpt_station": ""
+    },
+    {
+      "id": "KYU04",
+      "number": "",
+      "name_jp": "筑後船小屋",
+      "kana": "ちくごふなごや",
+      "name_en": "Chikugo-Funagoya",
+      "odpt_station": ""
+    },
+    {
+      "id": "KYU05",
+      "number": "",
+      "name_jp": "新大牟田",
+      "kana": "しんおおむた",
+      "name_en": "Shin-Omuta",
+      "odpt_station": ""
+    },
+    {
+      "id": "KYU06",
+      "number": "",
+      "name_jp": "新玉名",
+      "kana": "しんたまな",
+      "name_en": "Shin-Tamana",
+      "odpt_station": ""
+    },
+    {
+      "id": "KYU07",
+      "number": "",
+      "name_jp": "熊本",
+      "kana": "くまもと",
+      "name_en": "Kumamoto",
+      "odpt_station": ""
+    },
+    {
+      "id": "KYU08",
+      "number": "",
+      "name_jp": "新八代",
+      "kana": "しんやつしろ",
+      "name_en": "Shin-Yatsushiro",
+      "odpt_station": ""
+    },
+    {
+      "id": "KYU09",
+      "number": "",
+      "name_jp": "新水俣",
+      "kana": "しんみなまた",
+      "name_en": "Shin-Minamata",
+      "odpt_station": ""
+    },
+    {
+      "id": "KYU10",
+      "number": "",
+      "name_jp": "出水",
+      "kana": "いずみ",
+      "name_en": "Izumi",
+      "odpt_station": ""
+    },
+    {
+      "id": "KYU11",
+      "number": "",
+      "name_jp": "川内",
+      "kana": "せんだい",
+      "name_en": "Sendai",
+      "odpt_station": ""
+    },
+    {
+      "id": "KYU12",
+      "number": "",
+      "name_jp": "鹿児島中央",
+      "kana": "かごしまちゅうおう",
+      "name_en": "Kagoshima-Chuo",
+      "odpt_station": ""
+    }
+  ],
+  "timetable": {
+    "first_train": "06:10",
+    "last_train": "23:15",
+    "headway_min": {
+      "weekday": {
+        "5": 0,
+        "6": 30,
+        "7": 30,
+        "8": 15,
+        "9": 15,
+        "10": 15,
+        "11": 30,
+        "12": 20,
+        "13": 20,
+        "14": 20,
+        "15": 15,
+        "16": 15,
+        "17": 15,
+        "18": 15,
+        "19": 15,
+        "20": 15,
+        "21": 20,
+        "22": 20,
+        "23": 30,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 0,
+        "6": 30,
+        "7": 30,
+        "8": 15,
+        "9": 15,
+        "10": 15,
+        "11": 30,
+        "12": 20,
+        "13": 20,
+        "14": 20,
+        "15": 15,
+        "16": 15,
+        "17": 15,
+        "18": 15,
+        "19": 15,
+        "20": 15,
+        "21": 20,
+        "22": 20,
+        "23": 30,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "鹿児島中央方面",
+        "via_jp": "鹿児島中央方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "博多方面",
+        "via_jp": "博多方面",
+        "track": "2"
+      }
+    ]
+  }
+}

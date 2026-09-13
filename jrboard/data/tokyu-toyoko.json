@@ -1,0 +1,252 @@
+{
+  "key": "tokyu-toyoko",
+  "name_jp": "東急東横線",
+  "name_en": "Tokyu Toyoko Line",
+  "city": "Tokyo",
+  "symbol": "TY",
+  "color": {
+    "name": "東横線 / red",
+    "hex": "#DA0442",
+    "ansi_fg": "\u001b[38;2;218;4;66m",
+    "ansi_bg": "\u001b[48;2;218;4;66m\u001b[38;2;255;255;255m"
+  },
+  "operator": "Tokyu",
+  "odpt_railway": "odpt.Railway:Tokyu.Toyoko",
+  "loop": false,
+  "stations": [
+    {
+      "id": "TY01",
+      "number": "01",
+      "name_jp": "渋谷",
+      "kana": "しぶや",
+      "name_en": "Shibuya",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Shibuya"
+    },
+    {
+      "id": "TY02",
+      "number": "02",
+      "name_jp": "代官山",
+      "kana": "だいかんやま",
+      "name_en": "Daikan-yama",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.DaikanYama"
+    },
+    {
+      "id": "TY03",
+      "number": "03",
+      "name_jp": "中目黒",
+      "kana": "なかめぐろ",
+      "name_en": "Naka-meguro",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.NakaMeguro"
+    },
+    {
+      "id": "TY04",
+      "number": "04",
+      "name_jp": "祐天寺",
+      "kana": "ゆうてんじ",
+      "name_en": "Yutenji",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Yutenji"
+    },
+    {
+      "id": "TY05",
+      "number": "05",
+      "name_jp": "学芸大学",
+      "kana": "がくげいだいがく",
+      "name_en": "Gakugei-daigaku",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.GakugeiDaigaku"
+    },
+    {
+      "id": "TY06",
+      "number": "06",
+      "name_jp": "都立大学",
+      "kana": "とりつだいがく",
+      "name_en": "Toritsu-daigaku",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.ToritsuDaigaku"
+    },
+    {
+      "id": "TY07",
+      "number": "07",
+      "name_jp": "自由が丘",
+      "kana": "じゆうがおか",
+      "name_en": "Jiyugaoka",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Jiyugaoka"
+    },
+    {
+      "id": "TY08",
+      "number": "08",
+      "name_jp": "田園調布",
+      "kana": "でんえんちょうふ",
+      "name_en": "Den-en-chofu",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.DenEnChofu"
+    },
+    {
+      "id": "TY09",
+      "number": "09",
+      "name_jp": "多摩川",
+      "kana": "たまがわ",
+      "name_en": "Tamagawa",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Tamagawa"
+    },
+    {
+      "id": "TY10",
+      "number": "10",
+      "name_jp": "新丸子",
+      "kana": "しんまるこ",
+      "name_en": "Shin-maruko",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.ShinMaruko"
+    },
+    {
+      "id": "TY11",
+      "number": "11",
+      "name_jp": "武蔵小杉",
+      "kana": "むさしこすぎ",
+      "name_en": "Musashi-Kosugi",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.MusashiKosugi"
+    },
+    {
+      "id": "TY12",
+      "number": "12",
+      "name_jp": "元住吉",
+      "kana": "もとすみよし",
+      "name_en": "Motosumiyoshi",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Motosumiyoshi"
+    },
+    {
+      "id": "TY13",
+      "number": "13",
+      "name_jp": "日吉",
+      "kana": "ひよし",
+      "name_en": "Hiyoshi",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Hiyoshi"
+    },
+    {
+      "id": "TY14",
+      "number": "14",
+      "name_jp": "綱島",
+      "kana": "つなしま",
+      "name_en": "Tsunashima",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Tsunashima"
+    },
+    {
+      "id": "TY15",
+      "number": "15",
+      "name_jp": "大倉山",
+      "kana": "おおくらやま",
+      "name_en": "Okurayama",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Okurayama"
+    },
+    {
+      "id": "TY16",
+      "number": "16",
+      "name_jp": "菊名",
+      "kana": "きくな",
+      "name_en": "Kikuna",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Kikuna"
+    },
+    {
+      "id": "TY17",
+      "number": "17",
+      "name_jp": "妙蓮寺",
+      "kana": "みょうれんじ",
+      "name_en": "Myorenji",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Myorenji"
+    },
+    {
+      "id": "TY18",
+      "number": "18",
+      "name_jp": "白楽",
+      "kana": "はくらく",
+      "name_en": "Hakuraku",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Hakuraku"
+    },
+    {
+      "id": "TY19",
+      "number": "19",
+      "name_jp": "東白楽",
+      "kana": "ひがしはくらく",
+      "name_en": "Higashi-hakuraku",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.HigashiHakuraku"
+    },
+    {
+      "id": "TY20",
+      "number": "20",
+      "name_jp": "反町",
+      "kana": "たんまち",
+      "name_en": "Tammachi",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Tammachi"
+    },
+    {
+      "id": "TY21",
+      "number": "21",
+      "name_jp": "横浜",
+      "kana": "よこはま",
+      "name_en": "Yokohama",
+      "odpt_station": "odpt.Station:Tokyu.Toyoko.Yokohama"
+    }
+  ],
+  "timetable": {
+    "first_train": "05:00",
+    "last_train": "00:21",
+    "headway_min": {
+      "weekday": {
+        "5": 15,
+        "6": 7,
+        "7": 4,
+        "8": 3,
+        "9": 4,
+        "10": 5,
+        "11": 4,
+        "12": 4,
+        "13": 4,
+        "14": 4,
+        "15": 4,
+        "16": 5,
+        "17": 4,
+        "18": 4,
+        "19": 4,
+        "20": 4,
+        "21": 4,
+        "22": 6,
+        "23": 8,
+        "0": 20,
+        "1": 0
+      },
+      "holiday": {
+        "5": 15,
+        "6": 6,
+        "7": 5,
+        "8": 4,
+        "9": 5,
+        "10": 4,
+        "11": 4,
+        "12": 5,
+        "13": 4,
+        "14": 4,
+        "15": 4,
+        "16": 4,
+        "17": 5,
+        "18": 4,
+        "19": 5,
+        "20": 5,
+        "21": 6,
+        "22": 7,
+        "23": 9,
+        "0": 20,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "横浜方面",
+        "via_jp": "自由が丘・武蔵小杉方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "渋谷方面",
+        "via_jp": "中目黒・渋谷方面",
+        "track": "2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "key": "keiyo",
+  "name_jp": "京葉線",
+  "name_en": "Keiyo Line",
+  "city": "Tokyo",
+  "symbol": "JE",
+  "color": {
+    "name": "赤14号 / wine red",
+    "hex": "#C9252F",
+    "ansi_fg": "\u001b[38;2;201;37;47m",
+    "ansi_bg": "\u001b[48;2;201;37;47m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-East",
+  "odpt_railway": "odpt.Railway:JR-East.Keiyo",
+  "loop": false,
+  "stations": [
+    {
+      "id": "JE01",
+      "number": "01",
+      "name_jp": "東京",
+      "kana": "とうきょう",
+      "name_en": "Tokyo",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Tokyo"
+    },
+    {
+      "id": "JE02",
+      "number": "02",
+      "name_jp": "八丁堀",
+      "kana": "はっちょうぼり",
+      "name_en": "Hatchobori",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Hatchobori"
+    },
+    {
+      "id": "JE03",
+      "number": "03",
+      "name_jp": "越中島",
+      "kana": "えっちゅうじま",
+      "name_en": "Etchujima",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Etchujima"
+    },
+    {
+      "id": "JE04",
+      "number": "04",
+      "name_jp": "潮見",
+      "kana": "しおみ",
+      "name_en": "Shiomi",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Shiomi"
+    },
+    {
+      "id": "JE05",
+      "number": "05",
+      "name_jp": "新木場",
+      "kana": "しんきば",
+      "name_en": "Shin-kiba",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.ShinKiba"
+    },
+    {
+      "id": "JE06",
+      "number": "06",
+      "name_jp": "葛西臨海公園",
+      "kana": "かさいりんかいこうえん",
+      "name_en": "Kasai-Rinkai Park",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Kasairinkaikoen"
+    },
+    {
+      "id": "JE07",
+      "number": "07",
+      "name_jp": "舞浜",
+      "kana": "まいはま",
+      "name_en": "Maihama",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Maihama"
+    },
+    {
+      "id": "JE08",
+      "number": "08",
+      "name_jp": "新浦安",
+      "kana": "しんうらやす",
+      "name_en": "Shin-Urayasu",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.ShinUrayasu"
+    },
+    {
+      "id": "JE09",
+      "number": "09",
+      "name_jp": "市川塩浜",
+      "kana": "いちかわしおはま",
+      "name_en": "Ichikawashiohama",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Ichikawashiohama"
+    },
+    {
+      "id": "JE10",
+      "number": "10",
+      "name_jp": "二俣新町",
+      "kana": "ふたまたしんまち",
+      "name_en": "Futamatashimmachi",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Futamatashimmachi"
+    },
+    {
+      "id": "JE11",
+      "number": "11",
+      "name_jp": "南船橋",
+      "kana": "みなみふなばし",
+      "name_en": "Minami-Funabashi",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.MinamiFunabashi"
+    },
+    {
+      "id": "JE12",
+      "number": "12",
+      "name_jp": "新習志野",
+      "kana": "しんならしの",
+      "name_en": "Shin-Narashino",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.ShinNarashino"
+    },
+    {
+      "id": "JE13",
+      "number": "13",
+      "name_jp": "幕張豊砂",
+      "kana": "まくはりとよすな",
+      "name_en": "Makuharitoyosuna",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Makuharitoyosuna"
+    },
+    {
+      "id": "JE14",
+      "number": "14",
+      "name_jp": "海浜幕張",
+      "kana": "かいひんまくはり",
+      "name_en": "Kaihimmakuhari",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Kaihimmakuhari"
+    },
+    {
+      "id": "JE15",
+      "number": "15",
+      "name_jp": "検見川浜",
+      "kana": "けみがわはま",
+      "name_en": "Kemigawahama",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Kemigawahama"
+    },
+    {
+      "id": "JE16",
+      "number": "16",
+      "name_jp": "稲毛海岸",
+      "kana": "いなげかいがん",
+      "name_en": "Inagekaigan",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Inagekaigan"
+    },
+    {
+      "id": "JE17",
+      "number": "17",
+      "name_jp": "千葉みなと",
+      "kana": "ちばみなと",
+      "name_en": "Chibaminato",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Chibaminato"
+    },
+    {
+      "id": "JE-SOGA",
+      "number": "",
+      "name_jp": "蘇我",
+      "kana": "そが",
+      "name_en": "Soga",
+      "odpt_station": "odpt.Station:JR-East.Keiyo.Soga"
+    }
+  ],
+  "timetable": {
+    "first_train": "04:55",
+    "last_train": "00:24",
+    "headway_min": {
+      "weekday": {
+        "4": 60,
+        "5": 20,
+        "6": 8,
+        "7": 5,
+        "8": 3,
+        "9": 5,
+        "10": 6,
+        "11": 7,
+        "12": 7,
+        "13": 7,
+        "14": 6,
+        "15": 7,
+        "16": 5,
+        "17": 5,
+        "18": 4,
+        "19": 4,
+        "20": 5,
+        "21": 5,
+        "22": 5,
+        "23": 12,
+        "0": 30,
+        "1": 0
+      },
+      "holiday": {
+        "4": 60,
+        "5": 20,
+        "6": 8,
+        "7": 5,
+        "8": 5,
+        "9": 5,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 6,
+        "18": 5,
+        "19": 5,
+        "20": 6,
+        "21": 6,
+        "22": 6,
+        "23": 12,
+        "0": 30,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "蘇我方面",
+        "via_jp": "舞浜・海浜幕張方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "東京方面",
+        "via_jp": "新木場・八丁堀方面",
+        "track": "2"
+      }
+    ]
+  }
+}

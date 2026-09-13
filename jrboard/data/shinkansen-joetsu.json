@@ -1,0 +1,180 @@
+{
+  "key": "shinkansen-joetsu",
+  "name_jp": "上越新幹線",
+  "name_en": "Joetsu Shinkansen",
+  "city": "Shinkansen",
+  "symbol": "JOE",
+  "color": {
+    "name": "緑 / green",
+    "hex": "#008000",
+    "ansi_fg": "\u001b[38;2;0;128;0m",
+    "ansi_bg": "\u001b[48;2;0;128;0m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-East",
+  "odpt_railway": "",
+  "loop": false,
+  "stations": [
+    {
+      "id": "JOE01",
+      "number": "",
+      "name_jp": "東京",
+      "kana": "とうきょう",
+      "name_en": "Tokyo",
+      "odpt_station": ""
+    },
+    {
+      "id": "JOE02",
+      "number": "",
+      "name_jp": "上野",
+      "kana": "うえの",
+      "name_en": "Ueno",
+      "odpt_station": ""
+    },
+    {
+      "id": "JOE03",
+      "number": "",
+      "name_jp": "大宮",
+      "kana": "おおみや",
+      "name_en": "Omiya",
+      "odpt_station": ""
+    },
+    {
+      "id": "JOE04",
+      "number": "",
+      "name_jp": "熊谷",
+      "kana": "くまがや",
+      "name_en": "Kumagaya",
+      "odpt_station": ""
+    },
+    {
+      "id": "JOE05",
+      "number": "",
+      "name_jp": "本庄早稲田",
+      "kana": "ほんじょうわせだ",
+      "name_en": "Honjo-Waseda",
+      "odpt_station": ""
+    },
+    {
+      "id": "JOE06",
+      "number": "",
+      "name_jp": "高崎",
+      "kana": "たかさき",
+      "name_en": "Takasaki",
+      "odpt_station": ""
+    },
+    {
+      "id": "JOE07",
+      "number": "",
+      "name_jp": "上毛高原",
+      "kana": "じょうもうこうげん",
+      "name_en": "Jomo-Kogen",
+      "odpt_station": ""
+    },
+    {
+      "id": "JOE08",
+      "number": "",
+      "name_jp": "越後湯沢",
+      "kana": "えちごゆざわ",
+      "name_en": "Echigo-Yuzawa",
+      "odpt_station": ""
+    },
+    {
+      "id": "JOE09",
+      "number": "",
+      "name_jp": "浦佐",
+      "kana": "うらさ",
+      "name_en": "Urasa",
+      "odpt_station": ""
+    },
+    {
+      "id": "JOE10",
+      "number": "",
+      "name_jp": "長岡",
+      "kana": "ながおか",
+      "name_en": "Nagaoka",
+      "odpt_station": ""
+    },
+    {
+      "id": "JOE11",
+      "number": "",
+      "name_jp": "燕三条",
+      "kana": "つばめさんじょう",
+      "name_en": "Tsubame-Sanjo",
+      "odpt_station": ""
+    },
+    {
+      "id": "JOE12",
+      "number": "",
+      "name_jp": "新潟",
+      "kana": "にいがた",
+      "name_en": "Niigata",
+      "odpt_station": ""
+    }
+  ],
+  "timetable": {
+    "first_train": "06:08",
+    "last_train": "22:40",
+    "headway_min": {
+      "weekday": {
+        "5": 0,
+        "6": 30,
+        "7": 20,
+        "8": 15,
+        "9": 20,
+        "10": 20,
+        "11": 20,
+        "12": 30,
+        "13": 30,
+        "14": 30,
+        "15": 30,
+        "16": 30,
+        "17": 15,
+        "18": 15,
+        "19": 20,
+        "20": 20,
+        "21": 30,
+        "22": 30,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 0,
+        "6": 30,
+        "7": 30,
+        "8": 20,
+        "9": 30,
+        "10": 30,
+        "11": 60,
+        "12": 60,
+        "13": 60,
+        "14": 60,
+        "15": 30,
+        "16": 30,
+        "17": 15,
+        "18": 20,
+        "19": 20,
+        "20": 20,
+        "21": 30,
+        "22": 30,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "新潟方面",
+        "via_jp": "高崎・越後湯沢・新潟方面",
+        "track": "20"
+      },
+      {
+        "id": "b",
+        "name_jp": "東京方面",
+        "via_jp": "大宮・上野・東京方面",
+        "track": "21"
+      }
+    ]
+  }
+}

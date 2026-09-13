@@ -1,0 +1,220 @@
+{
+  "key": "shinkansen-tokaido",
+  "name_jp": "東海道新幹線",
+  "name_en": "Tokaido Shinkansen",
+  "city": "Shinkansen",
+  "symbol": "TKD",
+  "color": {
+    "name": "東海道新幹線 / blue",
+    "hex": "#0072BA",
+    "ansi_fg": "\u001b[38;2;0;114;186m",
+    "ansi_bg": "\u001b[48;2;0;114;186m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-Central",
+  "odpt_railway": "",
+  "loop": false,
+  "stations": [
+    {
+      "id": "TKD01",
+      "number": "",
+      "name_jp": "東京",
+      "kana": "とうきょう",
+      "name_en": "Tokyo",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD02",
+      "number": "",
+      "name_jp": "品川",
+      "kana": "しながわ",
+      "name_en": "Shinagawa",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD03",
+      "number": "",
+      "name_jp": "新横浜",
+      "kana": "しんよこはま",
+      "name_en": "Shin-Yokohama",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD04",
+      "number": "",
+      "name_jp": "小田原",
+      "kana": "おだわら",
+      "name_en": "Odawara",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD05",
+      "number": "",
+      "name_jp": "熱海",
+      "kana": "あたみ",
+      "name_en": "Atami",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD06",
+      "number": "",
+      "name_jp": "三島",
+      "kana": "みしま",
+      "name_en": "Mishima",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD07",
+      "number": "",
+      "name_jp": "新富士",
+      "kana": "しんふじ",
+      "name_en": "Shin-Fuji",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD08",
+      "number": "",
+      "name_jp": "静岡",
+      "kana": "しずおか",
+      "name_en": "Shizuoka",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD09",
+      "number": "",
+      "name_jp": "掛川",
+      "kana": "かけがわ",
+      "name_en": "Kakegawa",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD10",
+      "number": "",
+      "name_jp": "浜松",
+      "kana": "はままつ",
+      "name_en": "Hamamatsu",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD11",
+      "number": "",
+      "name_jp": "豊橋",
+      "kana": "とよはし",
+      "name_en": "Toyohashi",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD12",
+      "number": "",
+      "name_jp": "三河安城",
+      "kana": "みかわあんじょう",
+      "name_en": "Mikawa-Anjo",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD13",
+      "number": "",
+      "name_jp": "名古屋",
+      "kana": "なごや",
+      "name_en": "Nagoya",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD14",
+      "number": "",
+      "name_jp": "岐阜羽島",
+      "kana": "ぎふはしま",
+      "name_en": "Gifu-Hashima",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD15",
+      "number": "",
+      "name_jp": "米原",
+      "kana": "まいばら",
+      "name_en": "Maibara",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD16",
+      "number": "",
+      "name_jp": "京都",
+      "kana": "きょうと",
+      "name_en": "Kyoto",
+      "odpt_station": ""
+    },
+    {
+      "id": "TKD17",
+      "number": "",
+      "name_jp": "新大阪",
+      "kana": "しんおおさか",
+      "name_en": "Shin-Osaka",
+      "odpt_station": ""
+    }
+  ],
+  "timetable": {
+    "first_train": "06:00",
+    "last_train": "22:48",
+    "headway_min": {
+      "weekday": {
+        "5": 0,
+        "6": 4,
+        "7": 4,
+        "8": 4,
+        "9": 4,
+        "10": 4,
+        "11": 4,
+        "12": 4,
+        "13": 4,
+        "14": 4,
+        "15": 4,
+        "16": 4,
+        "17": 4,
+        "18": 4,
+        "19": 4,
+        "20": 4,
+        "21": 7,
+        "22": 15,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 0,
+        "6": 4,
+        "7": 4,
+        "8": 4,
+        "9": 4,
+        "10": 4,
+        "11": 4,
+        "12": 4,
+        "13": 4,
+        "14": 4,
+        "15": 4,
+        "16": 4,
+        "17": 4,
+        "18": 4,
+        "19": 4,
+        "20": 4,
+        "21": 7,
+        "22": 15,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "新大阪方面",
+        "via_jp": "新大阪方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "東京方面",
+        "via_jp": "東京方面",
+        "track": "2"
+      }
+    ]
+  }
+}

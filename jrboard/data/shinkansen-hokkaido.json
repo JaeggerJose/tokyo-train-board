@@ -1,0 +1,116 @@
+{
+  "key": "shinkansen-hokkaido",
+  "name_jp": "北海道新幹線",
+  "name_en": "Hokkaido Shinkansen",
+  "city": "Shinkansen",
+  "symbol": "HKD",
+  "color": {
+    "name": "北海道新幹線 / green",
+    "hex": "#2CB431",
+    "ansi_fg": "\u001b[38;2;44;180;49m",
+    "ansi_bg": "\u001b[48;2;44;180;49m\u001b[38;2;255;255;255m"
+  },
+  "operator": "JR-Hokkaido",
+  "odpt_railway": "",
+  "loop": false,
+  "stations": [
+    {
+      "id": "HKD01",
+      "number": "",
+      "name_jp": "新青森",
+      "kana": "しんあおもり",
+      "name_en": "Shin-Aomori",
+      "odpt_station": ""
+    },
+    {
+      "id": "HKD02",
+      "number": "",
+      "name_jp": "奥津軽いまべつ",
+      "kana": "おくつがるいまべつ",
+      "name_en": "Okutsugaru-Imabetsu",
+      "odpt_station": ""
+    },
+    {
+      "id": "HKD03",
+      "number": "",
+      "name_jp": "木古内",
+      "kana": "きこない",
+      "name_en": "Kikonai",
+      "odpt_station": ""
+    },
+    {
+      "id": "HKD04",
+      "number": "",
+      "name_jp": "新函館北斗",
+      "kana": "しんはこだてほくと",
+      "name_en": "Shin-Hakodate-Hokuto",
+      "odpt_station": ""
+    }
+  ],
+  "timetable": {
+    "first_train": "06:33",
+    "last_train": "22:32",
+    "headway_min": {
+      "weekday": {
+        "5": 0,
+        "6": 60,
+        "7": 60,
+        "8": 0,
+        "9": 30,
+        "10": 60,
+        "11": 30,
+        "12": 60,
+        "13": 60,
+        "14": 0,
+        "15": 60,
+        "16": 60,
+        "17": 60,
+        "18": 60,
+        "19": 0,
+        "20": 60,
+        "21": 0,
+        "22": 60,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      },
+      "holiday": {
+        "5": 0,
+        "6": 60,
+        "7": 60,
+        "8": 0,
+        "9": 30,
+        "10": 60,
+        "11": 30,
+        "12": 60,
+        "13": 60,
+        "14": 0,
+        "15": 60,
+        "16": 60,
+        "17": 60,
+        "18": 60,
+        "19": 0,
+        "20": 60,
+        "21": 0,
+        "22": 60,
+        "23": 0,
+        "0": 0,
+        "1": 0
+      }
+    },
+    "directions": [
+      {
+        "id": "a",
+        "name_jp": "新函館北斗方面",
+        "via_jp": "新函館北斗方面",
+        "track": "1"
+      },
+      {
+        "id": "b",
+        "name_jp": "新青森方面",
+        "via_jp": "新青森方面",
+        "track": "2"
+      }
+    ]
+  }
+}
