@@ -345,7 +345,7 @@ jrboard --line chuo --station tokyo
 
 statusLine 指令會在 STDIN 收到一份 Claude Code 的 JSON（含 `session_id`、`rate_limits`、`context_window` 等，欄位都可能缺）。加上 `--claude-stdin` 即可讀取它（不接管道也安全，會自動略過）。
 
-- **`--tokens`** — 在結尾附上精簡的 token 量表：`5h 42% · 7d 18% · ctx 30%`。
+- **`--tokens`** — 在最前面顯示 model、context 使用率進度條與 token 量表：`Opus 5 ██░░░░░░░░ 27% 5h 42%·7d 18%`。寬度不足時進度條先縮成 `ctx 27%`，再不足就依序省略 ctx、model、7d。
   - `5h` = **本 session 的五小時用量**（`rate_limits.five_hour.used_percentage`）；
   - `7d` = **每週七天用量**（`rate_limits.seven_day.used_percentage`）；
   - `ctx` = 上下文視窗用量。各段依門檻上色：<70 綠、70–89 黃、≥90 紅。缺值就省略該段。

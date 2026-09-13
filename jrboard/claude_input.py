@@ -33,6 +33,7 @@ __all__ = [
     "scope_keys_by_city",
     "token_gauge",
     "model_label",
+    "context_bar",
     "rate_limit_alert",
 ]
 
@@ -300,6 +301,27 @@ def model_label(
     if max_width and max_width > 0 and len(name) > max_width:
         return ""
     return f"{_MODEL}{name}{_RESET}" if color else name
+
+
+# Cells in the context bar; one cell per full 10% (matches csl's comp_ctx).
+_BAR_CELLS = 10
+
+
+def context_bar(pct: Optional[float], color: bool = True) -> str:
+    """A csl-style context-window bar, e.g. ``██░░░░░░░░ 27%``.
+
+    Ten cells, one filled per full 10% of the rounded percentage; only the bar
+    is colour-graded (green ``<70``, yellow ``70-89``, red ``>=90``), the
+    number stays plain, as in csl's ``comp_ctx``. ``""`` when unknown. Never
+    raises.
+    """
+    if isinstance(pct, bool) or not isinstance(pct, (int, float)):
+        return ""
+    value = max(0, min(100, int(round(pct))))
+    filled = value // 10
+    bar = "█" * filled + "░" * (_BAR_CELLS - filled)
+    painted = f"{_grade_color(value)}{bar}{_RESET}" if color else bar
+    return f"{painted} {value}%"
 
 
 def token_gauge(

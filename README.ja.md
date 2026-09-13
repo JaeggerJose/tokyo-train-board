@@ -298,7 +298,7 @@ csl set bastille-day     # いつでも元のテーマに戻せる
 
 statusLine コマンドは STDIN で Claude Code の JSON（`session_id`、`rate_limits`、`context_window` など。各フィールドは欠落しうる）を受け取ります。`--claude-stdin` を付けるとそれを読み取ります（パイプが無くても安全に無視されます）。
 
-- **`--tokens`** — 末尾にコンパクトなトークン量ゲージを付加：`5h 42% · 7d 18% · ctx 30%`。
+- **`--tokens`** — 先頭にモデル名・コンテキスト使用率バー・トークン量ゲージを表示：`Opus 5 ██░░░░░░░░ 27% 5h 42%·7d 18%`。幅が足りない場合、バーはまず `ctx 27%` に縮み、さらに ctx・モデル名・7d の順に省略。
   - `5h` = **セッション（5 時間）上限**（`rate_limits.five_hour.used_percentage`）；
   - `7d` = **週次（7 日）上限**（`rate_limits.seven_day.used_percentage`）；
   - `ctx` = コンテキストウィンドウの使用率。各セグメントは閾値で色分け：<70 緑、70–89 黄、≥90 赤。値が無ければそのセグメントは省略。

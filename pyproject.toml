@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tokyo-train-board"
-version = "0.3.1"
+version = "0.4.0"
 description = "Terminal split-flap (Solari) departure board for JR / Tokyo Metro / Toei lines."
 readme = "README.md"
 requires-python = ">=3.11"

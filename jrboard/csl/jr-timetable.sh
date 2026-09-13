@@ -41,7 +41,7 @@ JR_BY_SESSION="${JR_BY_SESSION:-0}" # 1 = line per session (by-project wins)
 JR_ROTATE="${JR_ROTATE:-}"          # minutes per rotation; empty = off
 JR_LINE="${JR_LINE:-}"              # pin a line (overrides by-project/session/rotate)
 JR_STATION="${JR_STATION:-}"        # station on the pinned line
-JR_COLUMNS="${JR_COLUMNS:-40}"      # table width
+JR_COLUMNS="${JR_COLUMNS:-52}"      # table width (>=52 fits the ctx bar)
 JR_SCROLL_ALL="${JR_SCROLL_ALL:-0}" # 1 = scroll the header line too
 JR_TOKENS="${JR_TOKENS:-1}"         # 1 = append 5h/7d/ctx gauges (default)
 # ----------------------------------------------------------------------------
