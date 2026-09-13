@@ -31,6 +31,7 @@ __all__ = [
     "pick_by_rotation",
     "scope_keys_by_city",
     "token_gauge",
+    "model_label",
     "rate_limit_alert",
 ]
 
@@ -39,6 +40,7 @@ _RESET = "\033[0m"
 _GREEN = "\033[38;5;71m"
 _YELLOW = "\033[38;5;179m"
 _RED = "\033[38;5;167m"
+_MODEL = "\033[36m"  # cyan, matching csl's default T_MODEL
 
 # Colour-grading thresholds (percent used): <70 green, 70-89 yellow, >=90 red.
 _WARN_PCT = 70.0
@@ -259,6 +261,24 @@ def _segment(label: str, pct: float, color: bool) -> str:
     if not color:
         return body
     return f"{_grade_color(pct)}{body}{_RESET}"
+
+
+def model_label(
+    model: Optional[str], color: bool = True, max_width: int = 0
+) -> str:
+    """The Claude model display name (e.g. ``Opus 5``) for the statusline.
+
+    Returns ``""`` when ``model`` is empty or, with ``max_width > 0``, when the
+    name does not fit in that many columns. Cyan unless ``color`` is ``False``.
+    Never raises.
+    """
+    if not isinstance(model, str) or not model.strip():
+        return ""
+    name = model.strip()
+    # Display names are ASCII in practice, so len == columns.
+    if max_width and max_width > 0 and len(name) > max_width:
+        return ""
+    return f"{_MODEL}{name}{_RESET}" if color else name
 
 
 def token_gauge(

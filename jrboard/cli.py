@@ -629,9 +629,10 @@ def _run_statusline(
     rate_pcts: Optional[tuple] = None,
     alerts_path: Optional[str] = None,
     cache_dir: Optional[str] = None,
+    model: Optional[str] = None,
 ) -> int:
     # Imported lazily so a missing statusline module never breaks board mode.
-    from .claude_input import rate_limit_alert, token_gauge
+    from .claude_input import rate_limit_alert
     from .statusline import minitable_text, statusline_text
 
     now = datetime.now()
@@ -642,14 +643,12 @@ def _run_statusline(
     # An explicit --columns wins; otherwise fall back to TTY auto-detection.
     columns = columns if columns and columns > 0 else _terminal_columns()
 
-    sess, wk, ctx = (token_pcts or (None, None, None))
-    have_tok = token_pcts is not None and any(p is not None for p in token_pcts)
     bounded = bool(columns and columns > 0)
 
     if minitable:
         # Fit the gauge into the header's spare width (drops ctx -> 7d -> 5h).
         budget = max(0, columns - _MINITABLE_LABEL_RESERVE) if bounded else 0
-        tok = token_gauge(sess, wk, ctx, color=color, max_width=budget) if have_tok else ""
+        tok = _lead_segment(model, token_pcts, color, budget)
         text = minitable_text(
             line, station, departures, now,
             columns=columns, color=color, token_seg=tok, countdown=countdown,
@@ -658,12 +657,11 @@ def _run_statusline(
         # RWD marquee: reserve the train, give the gauge the remaining width and
         # let it shrink (ctx -> 7d -> 5h); drop it entirely when too narrow.
         tok = ""
-        if have_tok:
-            if not bounded:
-                tok = token_gauge(sess, wk, ctx, color=color)  # unbounded
-            elif columns >= _STATUS_MIN_FOR_TOKENS:
-                spare = max(0, columns - _STATUS_TRAIN_MIN)
-                tok = token_gauge(sess, wk, ctx, color=color, max_width=spare)
+        if not bounded:
+            tok = _lead_segment(model, token_pcts, color, 0)  # unbounded
+        elif columns >= _STATUS_MIN_FOR_TOKENS:
+            spare = max(0, columns - _STATUS_TRAIN_MIN)
+            tok = _lead_segment(model, token_pcts, color, spare)
         tok_w = get_visual_width(tok) if tok else 0
         body_cols = columns - tok_w - 1 if (bounded and tok) else columns
         text = statusline_text(
@@ -689,6 +687,42 @@ def _run_statusline(
     sys.stdout.write(text)
     sys.stdout.flush()
     return 0
+
+
+def _lead_segment(
+    model: Optional[str],
+    token_pcts: Optional[tuple],
+    color: bool,
+    max_width: int,
+) -> str:
+    """``<model> <5h/7d/ctx gauge>`` fitted to ``max_width`` (``0`` = no limit).
+
+    Width priority when narrow: 5h > 7d > model > ctx. The model name first
+    displaces the ``ctx`` segment; if it still does not fit next to the full
+    5h/7d pair it is dropped instead. ``""`` when neither is known.
+    """
+    from .claude_input import model_label, token_gauge
+
+    have_tok = token_pcts is not None and any(p is not None for p in token_pcts)
+    sess, wk, ctx = token_pcts if have_tok else (None, None, None)
+    tok = token_gauge(sess, wk, ctx, color=color, max_width=max_width) if have_tok else ""
+    mdl = model_label(model, color=color)
+    if max_width <= 0 or not mdl:
+        return " ".join(part for part in (mdl, tok) if part)
+
+    room = max_width - get_visual_width(mdl) - (1 if have_tok else 0)
+    if room < 0:
+        return tok
+    if not have_tok:
+        return mdl
+    full = token_gauge(sess, wk, ctx, color=False)
+    if get_visual_width(full) <= room:
+        return f"{mdl} {tok}"
+    # Trade ctx for the model, but only if 5h/7d both survive intact.
+    no_ctx = token_gauge(sess, wk, None, color=False)
+    if no_ctx and room > 0 and get_visual_width(no_ctx) <= room:
+        return f"{mdl} {token_gauge(sess, wk, None, color=color)}"
+    return tok
 
 
 def _terminal_columns() -> int:
@@ -978,6 +1012,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             return 2
 
         token_pcts = None
+        model = getattr(status, "model", None) if args.tokens else None
         if args.tokens:
             token_pcts = (
                 getattr(status, "session_pct", None),
@@ -1004,6 +1039,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             rate_pcts=rate_pcts,
             alerts_path=getattr(args, "alerts", None),
             cache_dir=getattr(args, "cache_dir", None),
+            model=model,
         )
 
     try:
