@@ -28,6 +28,7 @@ __all__ = [
     "ClaudeStatus",
     "parse_claude_status",
     "pick_by_session",
+    "pick_by_project",
     "pick_by_rotation",
     "scope_keys_by_city",
     "token_gauge",
@@ -60,6 +61,7 @@ class ClaudeStatus:
 
     session_id: Optional[str] = None
     cwd: Optional[str] = None
+    project_dir: Optional[str] = None
     model: Optional[str] = None
     ctx_pct: Optional[float] = None
     session_pct: Optional[float] = None
@@ -133,10 +135,13 @@ def parse_claude_status(raw: str) -> ClaudeStatus:
     cwd = _as_str(_dig(data, "workspace", "current_dir"))
     if cwd is None:
         cwd = _as_str(data.get("cwd"))
+    # The project root (where Claude was launched) stays fixed while cwd moves.
+    project_dir = _as_str(_dig(data, "workspace", "project_dir")) or cwd
 
     return ClaudeStatus(
         session_id=_as_str(data.get("session_id")),
         cwd=cwd,
+        project_dir=project_dir,
         model=_as_str(_dig(data, "model", "display_name")),
         ctx_pct=_as_pct(_dig(data, "context_window", "used_percentage")),
         session_pct=_as_pct(
@@ -196,6 +201,22 @@ def pick_by_session(keys: list[str], session_id: str) -> str:
         # No usable session id: deterministic but arbitrary first choice.
         return keys[0]
     return keys[_stable_hash(session_id) % len(keys)]
+
+
+def pick_by_project(keys: list[str], project_dir: str) -> str:
+    """Deterministically pick one of ``keys`` for a Claude project directory.
+
+    Every session in the same project maps to the same key, so a project keeps
+    "its" line, while a new project lands on its own hash-chosen line. Trailing
+    slashes are ignored. Raises ``ValueError`` when ``keys`` is empty. Note the
+    mapping depends on the pool, so adding lines can reassign projects.
+    """
+    if not keys:
+        raise ValueError("pick_by_project: keys must be non-empty")
+    if not isinstance(project_dir, str) or not project_dir.strip():
+        return keys[0]
+    normalized = project_dir.strip().rstrip("/") or "/"
+    return keys[_stable_hash(normalized) % len(keys)]
 
 
 def pick_by_rotation(

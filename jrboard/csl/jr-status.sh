@@ -7,7 +7,7 @@
 # component engine; on stock csl it falls back to the classic line.
 #
 #   Row 1: session/token components — model + context bar + 5h/7d gauges
-#   Row 2: the JR / Tokyo Metro split-flap board (per-session line)
+#   Row 2: the JR / Tokyo Metro split-flap board (per-project line)
 #
 # Rearrange freely — each CSL_ROWS element is one OUTPUT LINE; within a line,
 # space-separated component names render left-to-right. Available components:
@@ -25,6 +25,7 @@ CSL_SEP=" · "                       # within-row separator
 CSL_COLUMNS="${CSL_COLUMNS:-50}"    # width budget passed to board components
 
 # JR board component opt-ins (see lib/components.sh):
-JR_BY_SESSION="${JR_BY_SESSION:-1}" # different Claude sessions => different lines
+JR_BY_PROJECT="${JR_BY_PROJECT:-1}" # each Claude project => its own fixed line
+JR_BY_SESSION="${JR_BY_SESSION:-}"  # set 1 for per-session lines (by-project wins)
 # JR_CITY="Tokyo"                    # scope the auto-picked line to a city
 # JR_LINE=oedo ; JR_STATION=tochomae # or pin a specific line/station

@@ -235,6 +235,17 @@ def _build_parser(config: Config) -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument(
+        "--by-project",
+        dest="by_project",
+        action="store_true",
+        help=(
+            "Statusline/minitable: pick the line deterministically from the "
+            "Claude project directory (needs --claude-stdin). Every session in "
+            "a project shows the same line; a new project gets its own. Wins "
+            "over --by-session; scoped by --city."
+        ),
+    )
+    parser.add_argument(
         "--tokens",
         action="store_true",
         help=(
@@ -864,12 +875,13 @@ def _select_statusline_target(
 ) -> "tuple[Optional[Line], Optional[Station], Optional[str]]":
     """Resolve the (line, station) for statusline/minitable rendering.
 
-    Precedence: explicit --line/--station > --by-session > --rotate >
-    config/default. --city scopes the by-session/rotate pool. Returns the
+    Precedence: explicit --line/--station > --by-project > --by-session >
+    --rotate > config/default. --city scopes the auto-selection pool. Returns the
     resolved ``(line, station, error)`` where ``error`` is a user message and
     the line/station are ``None`` on failure.
     """
     from .claude_input import (
+        pick_by_project,
         pick_by_rotation,
         pick_by_session,
         scope_keys_by_city,
@@ -880,24 +892,28 @@ def _select_statusline_target(
     manual = (args.line != cfg.line) or bool(args.station)
 
     session_id = getattr(status, "session_id", None) if status else None
+    project_dir = getattr(status, "project_dir", None) if status else None
     rotate_min = getattr(args, "rotate", None)
     by_session = getattr(args, "by_session", False)
+    by_project = getattr(args, "by_project", False)
 
     # Period for time-bucketed rotation: --rotate value (minutes) * 60, or 30s
     # (0.5 min) when --rotate is given with no value.
     period = int(rotate_min * 60) if (rotate_min and rotate_min > 0) else 30
 
     auto_key: Optional[str] = None
-    if not manual and (by_session or rotate_min is not None):
+    if not manual and (by_project or by_session or rotate_min is not None):
         pool = scope_keys_by_city(available_lines(), getattr(args, "city", None))
         if pool:
-            if by_session and session_id:
+            if by_project and project_dir:
+                auto_key = pick_by_project(pool, project_dir)
+            elif by_session and session_id:
                 auto_key = pick_by_session(pool, session_id)
             elif rotate_min is not None:
                 auto_key = pick_by_rotation(pool, time.time(), period)
             else:
-                # --by-session requested but no session id available and no
-                # --rotate fallback: deterministic first of the scoped pool.
+                # --by-project/--by-session requested but no id available and
+                # no --rotate fallback: deterministic first of the scoped pool.
                 auto_key = pool[0]
 
     if auto_key is not None:
@@ -1001,6 +1017,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if args.mode in ("statusline", "minitable"):
         want_stdin = (
             args.claude_stdin or args.tokens or args.by_session
+            or args.by_project
             or getattr(args, "show_rate_limits", False)
         )
         status = _read_claude_stdin(want_stdin)
