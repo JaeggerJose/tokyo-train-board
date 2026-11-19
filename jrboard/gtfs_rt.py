@@ -30,7 +30,7 @@ __all__ = ["GtfsRtSource", "decode_feed"]
 
 # Local copy of the HTTP timeout: importing it from sources at module top would
 # create a sources<->gtfs_rt import cycle (sources imports GtfsRtSource at its
-# bottom). Kept in sync with sources._HTTP_TIMEOUT_S by intent.
+# bottom). Kept in sync with odpt_fetch.TIMEOUT_S by intent.
 _HTTP_TIMEOUT_S = 8
 _ALERT_MAXLEN = 60
 

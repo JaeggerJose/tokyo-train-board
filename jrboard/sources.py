@@ -1,11 +1,11 @@
 """Departure data sources for jrboard (repository pattern).
 
 Two interchangeable timetable sources sit behind the ``TimetableSource``
-protocol: ``ODPTSource`` (live ODPT v4 ``StationTimetable``) and
-``StaticSource`` (offline generator from ``Line.headway_min``).
-``get_departures`` prefers ODPT when ``ODPT_KEY`` is set and falls back to
-the static source (logging to ``stderr``) on any failure. ``requests`` is
-imported lazily so the module is import-safe without it.
+protocol: ``ODPTSource`` (published ODPT v4 ``StationTimetable``) and
+``StaticSource`` (offline estimate from ``Line.headway_min``).
+``get_departures`` uses ODPT when ``ODPT_KEY`` is set, or for Toei stations
+when the user opted in (see :mod:`jrboard.odpt_fetch`), and falls back to the
+static source (logging to ``stderr``) on any failure.
 """
 
 from __future__ import annotations
@@ -16,6 +16,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Iterable, Optional, Protocol
 
+from jrboard import odpt_fetch
 from jrboard.model import Line, Station
 
 __all__ = [
@@ -26,10 +27,6 @@ __all__ = [
     "get_departures",
 ]
 
-# ODPT v4 facts (confirmed).
-ODPT_STATION_TIMETABLE = "https://api.odpt.org/api/v4/odpt:StationTimetable"
-ODPT_CONSUMER_KEY_PARAM = "acl:consumerKey"
-_HTTP_TIMEOUT_S = 8
 _DAY_MIN = 24 * 60
 
 # Default train kind (種別) when none is supplied by the source.
@@ -228,28 +225,20 @@ class StaticSource:
 
 
 class ODPTSource:
-    """Fetches departures from ODPT v4 ``StationTimetable`` using ``ODPT_KEY``.
+    """Departures from ODPT v4 ``StationTimetable`` (the published schedule).
 
-    Raises on any failure (missing key, HTTP/network error, empty or
+    Toei comes from the keyless public endpoint; other operators need
+    ``ODPT_KEY``. Raises on any failure (missing key, network error, empty or
     unparseable payload) so ``get_departures`` can fall back to static data.
     """
 
     def departures(
         self, line: Line, station: Station, now: datetime, limit: int
     ) -> list[Departure]:
-        key = os.environ.get("ODPT_KEY")
-        if not key:
-            raise RuntimeError("ODPT_KEY is not set in the environment.")
+        if not station.odpt_station:
+            raise RuntimeError(f"{station.name_jp} has no ODPT station id.")
 
-        try:
-            import requests  # deferred so the module imports without it
-        except ImportError as exc:  # pragma: no cover - environment dependent
-            raise RuntimeError("requests is required for ODPTSource.") from exc
-
-        params = {
-            ODPT_CONSUMER_KEY_PARAM: key,
-            "odpt:station": station.odpt_station,
-        }
+        params = {"odpt:station": station.odpt_station}
         if line.odpt_railway:
             params["odpt:railway"] = line.odpt_railway
         params["odpt:calendar"] = (
@@ -257,39 +246,23 @@ class ODPTSource:
             if _is_holiday(now)
             else "odpt.Calendar:Weekday"
         )
-
-        try:
-            resp = requests.get(
-                ODPT_STATION_TIMETABLE,
-                params=params,
-                timeout=_HTTP_TIMEOUT_S,
-            )
-        except Exception as exc:  # network errors, DNS, TLS, etc.
-            raise RuntimeError(f"ODPT request failed: {exc}") from exc
-
-        if resp.status_code != 200:
-            raise RuntimeError(
-                f"ODPT returned HTTP {resp.status_code}: "
-                f"{resp.text[:120]!r}"
-            )
-
-        try:
-            payload = resp.json()
-        except ValueError as exc:
-            raise RuntimeError("ODPT returned non-JSON payload.") from exc
-
-        if not isinstance(payload, list) or not payload:
-            raise RuntimeError("ODPT returned an empty timetable.")
+        payload = odpt_fetch.fetch_timetable(params, os.environ.get("ODPT_KEY"))
 
         entries = self._collect_entries(payload)
         if not entries:
             raise RuntimeError("ODPT timetable contained no departures.")
 
-        departures = self._to_departures(line, entries, now)
+        departures = self._to_departures(line, entries)
         if not departures:
-            raise RuntimeError("No upcoming ODPT departures after now.")
+            raise RuntimeError("ODPT timetable contained no departure times.")
 
-        departures.sort(key=lambda dep: (_hhmm_to_minutes(dep.time) or 0))
+        # Minutes from now, wrapping at midnight: at 23:50 the 00:05 train is
+        # 15 minutes away, not gone. After the last train this rolls over to
+        # the first one, like StaticSource.
+        now_min = _minutes_since_midnight(now)
+        departures.sort(
+            key=lambda dep: ((_hhmm_to_minutes(dep.time) or 0) - now_min) % _DAY_MIN
+        )
         return departures[: max(limit, 0)]
 
     @staticmethod
@@ -310,14 +283,13 @@ class ODPTSource:
         return entries
 
     def _to_departures(
-        self, line: Line, entries: Iterable[dict], now: datetime
+        self, line: Line, entries: Iterable[dict]
     ) -> list[Departure]:
-        now_min = _minutes_since_midnight(now)
         out: list[Departure] = []
         for obj in entries:
             dep_time = obj.get("odpt:departureTime")
             slot = _hhmm_to_minutes(dep_time) if isinstance(dep_time, str) else None
-            if slot is None or slot < now_min:
+            if slot is None:  # arrival-only rows at a terminus
                 continue
             out.append(
                 Departure(
@@ -395,13 +367,17 @@ def get_departures(
 ) -> tuple[list[Departure], str]:
     """Return ``(departures, label)`` -- ``"GTFS-RT"`` / ``"ODPT"`` / ``"STATIC"``.
 
-    Base timetable: :class:`ODPTSource` when ``ODPT_KEY`` is present (logging to
-    ``stderr`` and falling back to :class:`StaticSource` on failure), else static.
+    Base timetable: :class:`ODPTSource` when ``ODPT_KEY`` is present, or for a
+    Toei station once the user opted in (``JRBOARD_LIVE`` / ``[live] enabled``);
+    on failure it logs to ``stderr`` and falls back to :class:`StaticSource`.
     Then, when ``GTFS_RT_URL`` is set, :class:`~jrboard.gtfs_rt.GtfsRtSource`
     overlays live delays/alerts; if it stamps at least one row the label becomes
     ``"GTFS-RT"``. Any overlay failure logs to ``stderr`` and keeps the base.
     """
-    if os.environ.get("ODPT_KEY"):
+    use_odpt = bool(os.environ.get("ODPT_KEY")) or (
+        odpt_fetch.is_public(station.odpt_station) and odpt_fetch.live_enabled()
+    )
+    if use_odpt:
         try:
             base = (ODPTSource().departures(line, station, now, limit), "ODPT")
         except Exception as exc:
@@ -429,7 +405,7 @@ def get_departures(
 
 
 # Imported at module bottom (not top) to break the gtfs_rt<->sources import
-# cycle: gtfs_rt needs Departure/_HTTP_TIMEOUT_S from here, and this only needs
+# cycle: gtfs_rt needs Departure from here, and this only needs
 # GtfsRtSource as a name. gtfs_rt's top level pulls no heavy deps (protobuf and
 # requests are lazy-imported inside methods), so the core stays zero-dependency.
 from .gtfs_rt import GtfsRtSource  # noqa: E402

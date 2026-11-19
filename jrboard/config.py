@@ -50,6 +50,7 @@ class Config:
     home: tuple[str, str] | None = None
     work: tuple[str, str] | None = None
     leave_buffer_min: int = 5
+    live: bool = False
 
 
 def _log(message: str) -> None:
@@ -167,7 +168,7 @@ def _read_toml(path: str) -> dict:
 def load_config() -> Config:
     """Load configuration from disk, returning defaults on any problem.
 
-    Reads the ``[board]`` and ``[commute]`` tables. Every individual key is
+    Reads the ``[board]``, ``[commute]`` and ``[live]`` tables. Every individual key is
     coerced to the expected type and falls back to its default if missing or
     malformed. This function never raises.
     """
@@ -182,6 +183,9 @@ def load_config() -> Config:
     commute = data.get("commute")
     if not isinstance(commute, dict):
         commute = {}
+    live = data.get("live")
+    if not isinstance(live, dict):
+        live = {}
 
     return Config(
         line=_coerce_str(board.get("line"), defaults.line),
@@ -197,6 +201,7 @@ def load_config() -> Config:
         leave_buffer_min=_coerce_int(
             commute.get("leave_buffer_min"), defaults.leave_buffer_min
         ),
+        live=_coerce_bool(live.get("enabled"), defaults.live),
     )
 
 
