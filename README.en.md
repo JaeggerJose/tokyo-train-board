@@ -232,6 +232,19 @@ On any failure (no key, HTTP error, empty response) it falls back to the static 
 
 > 🔐 Never hardcode or commit the key — use an environment variable (`.env` is gitignored).
 
+### Toei lines without a key (optional)
+
+Timetables for the four Toei lines (Asakusa, Mita, Shinjuku, Oedo) are on ODPT's public endpoint and **need no key**. jrboard stays offline unless you opt in:
+
+```bash
+export JRBOARD_LIVE=1          # or put [live] enabled = true in config.toml
+jrboard --line shinjuku --station shinjuku   # the board shows src: ODPT
+```
+
+- Each station is fetched at most once a day and cached in `~/.cache/jrboard/odpt/` (respects `XDG_CACHE_HOME`). After a failed fetch it waits 10 minutes before retrying, so the statusline never hangs when you are offline.
+- `JRBOARD_LIVE=0` overrides the config file and forces offline mode. Other operators still need `ODPT_KEY`.
+- Data: 東京都交通局・公共交通オープンデータ協議会 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
+
 ---
 
 ## 📟 Embed in the Claude Code statusline
