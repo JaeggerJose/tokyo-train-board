@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tokyo-train-board"
-version = "0.4.0"
+dynamic = ["version"]
 description = "Terminal split-flap (Solari) departure board for JR / Tokyo Metro / Toei lines."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -40,6 +40,10 @@ jrboard = "jrboard.cli:main"
 
 [tool.setuptools]
 packages = ["jrboard", "jrboard.csl"]
+
+[tool.setuptools.dynamic]
+# Single source of truth: bump jrboard/__init__.py, never this file.
+version = { attr = "jrboard.__version__" }
 
 [tool.setuptools.package-data]
 jrboard = ["data/*.json"]

@@ -1,6 +1,6 @@
 # 安裝體驗審查：csl + JR-timetable theme
 
-> 實測日期：2026-06-02 · 測試機：`mike@10.6.0.4`（Ubuntu 24.04、Python 3.12.3、minimal）
+> 實測日期：2026-06-02 · 測試機：乾淨的 Ubuntu 24.04 主機（Python 3.12.3、minimal）
 > 方法：在乾淨的 Ubuntu 24.04 上模擬「全新使用者」走完文件流程，記錄每個摩擦點。所有結論都有實測輸出佐證（非破壞性，temp 目錄、裝完即清）。
 
 ---
@@ -28,7 +28,7 @@
 
 ---
 
-## 2. 在 mike@10.6.0.4 的實測結果
+## 2. 在乾淨 Ubuntu 主機上的實測結果
 
 ### 環境探測
 | 依賴 | 狀態 | 影響 |
@@ -95,7 +95,7 @@ curl -fsSL https://raw.githubusercontent.com/JaeggerJose/tokyo-train-board/main/
 - 對完全鎖死的機器，提供 `pip install --user --break-system-packages` 作為明列的逃生口。
 
 ### 🔧 P3 — 順手修掉的本地 bug
-本機 `~/.config/csl/themes/jr-board.sh` 是**舊版（硬編碼 `/Users/minghsuan/Downloads/JR-timetable`）**，與 repo 內 portable 版不同步。
+本機 `~/.config/csl/themes/jr-board.sh` 是**舊版（硬編碼 本機絕對路徑）**，與 repo 內 portable 版不同步。
 修：`cp integrations/csl/jr-board.* ~/.config/csl/themes/`（驗證過 repo 版才是 portable 的）。
 
 ---

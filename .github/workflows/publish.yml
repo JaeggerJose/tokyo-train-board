@@ -1,8 +1,8 @@
 name: Publish to PyPI
 
 # Publishes to PyPI via Trusted Publishing (OIDC) — no API token stored.
-# Trigger: create a GitHub Release (tag like v0.1.1). Bump the version in
-# pyproject.toml first; PyPI version numbers cannot be reused.
+# Trigger: create a GitHub Release (tag like v0.1.1). Bump __version__ in
+# jrboard/__init__.py first (pyproject reads it); PyPI version numbers cannot be reused.
 on:
   release:
     types: [published]

@@ -12,3 +12,6 @@ IDEAS.md
 *.egg-info/
 build/
 dist/
+# local multi-agent workflow scripts (machine-specific absolute paths)
+.jrboard_*.js
+.csl_components.js
