@@ -16,7 +16,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Iterable, Optional, Protocol
 
-from jrboard.model import Direction, Line, Station
+from jrboard.model import Line, Station
 
 __all__ = [
     "Departure",
@@ -30,6 +30,7 @@ __all__ = [
 ODPT_STATION_TIMETABLE = "https://api.odpt.org/api/v4/odpt:StationTimetable"
 ODPT_CONSUMER_KEY_PARAM = "acl:consumerKey"
 _HTTP_TIMEOUT_S = 8
+_DAY_MIN = 24 * 60
 
 # Default train kind (種別) when none is supplied by the source.
 DEFAULT_KIND_JP = "各駅停車"
@@ -134,16 +135,14 @@ def _station_phase(line: Line, station: Station) -> int:
 
 
 class StaticSource:
-    """Builds a believable departure list from ``Line.headway_min``.
+    """Estimates departures from ``Line.headway_min`` (no real timetable).
 
-    Lays down headway-spaced departures per direction from ``now`` forward,
-    merges both directions, sorts by time, and truncates to ``limit``.
+    Trains run only between ``first_train`` and ``last_train``; an hour whose
+    headway is ``0`` or missing has no trains. Slots sit on the clock grid of
+    each hour's headway, so the times stay put between refreshes. After the
+    last train the list rolls over to the next first train instead of going
+    blank.
     """
-
-    # Look-ahead window in minutes; wide enough for sparse late-night headways.
-    _HORIZON_MIN = 5 * 60
-    _GUARD_ITERATIONS = 512
-    _DEFAULT_GAP = 5
 
     def departures(
         self, line: Line, station: Station, now: datetime, limit: int
@@ -152,34 +151,40 @@ class StaticSource:
             return []
 
         directions = tuple(line.directions or ())
-        if not directions:
+        first = _hhmm_to_minutes(line.first_train)
+        last = _hhmm_to_minutes(line.last_train)
+        if not directions or first is None or last is None:
             return []
 
         table = self._schedule_table(line, _is_holiday(now))
-        now_min = _minutes_since_midnight(now)
-        horizon_min = now_min + self._HORIZON_MIN
-
-        # Per-station phase so adjacent stations show different times. A train
-        # reaches station i ``phase`` minutes after the line origin, so the
-        # arrivals visible at station i are the origin grid shifted by +phase.
+        # Per-station phase so adjacent stations show different times: a train
+        # reaches station i ``phase`` minutes after the line origin.
         phase = _station_phase(line, station)
+        service_day = self._service_day(table, first, last, phase)
 
-        candidates: list[Departure] = []
-        for direction in directions:
-            candidates.extend(
-                self._direction_departures(
-                    table, direction, now_min, horizon_min, phase
-                )
-            )
+        # Lay yesterday's, today's and tomorrow's service days on one axis and
+        # keep the next 24 h, so a post-midnight 00:20 ranks after 23:50.
+        now_min = _minutes_since_midnight(now)
+        upcoming = sorted(
+            slot + day_offset
+            for day_offset in (-_DAY_MIN, 0, _DAY_MIN)
+            for slot in service_day
+            if now_min <= slot + day_offset < now_min + _DAY_MIN
+        )[:limit]
 
-        # Sort by minutes-from-now (wrap-aware) so post-midnight departures rank
-        # AFTER tonight's late trains -- a plain mod-24 key would float 00:08 to
-        # the front and make "next train" read hours away in the evening.
-        candidates.sort(
-            key=lambda dep: ((_hhmm_to_minutes(dep.time) or 0) - now_min)
-            % (24 * 60)
-        )
-        return candidates[:limit]
+        candidates = [
+            (slot, Departure(
+                time=_format_hhmm(slot),
+                kind_jp=DEFAULT_KIND_JP,
+                dest_jp=direction.via_jp or direction.name_jp,
+                track=direction.track,
+                direction=direction.id,
+            ))
+            for direction in directions
+            for slot in upcoming
+        ]
+        candidates.sort(key=lambda pair: pair[0])  # stable: keeps direction order
+        return [departure for _, departure in candidates[:limit]]
 
     @classmethod
     def _schedule_table(cls, line: Line, is_holiday: bool) -> dict:
@@ -193,55 +198,33 @@ class StaticSource:
             return table
         return headway
 
-    def _direction_departures(
-        self,
-        table: dict,
-        direction: Direction,
-        now_min: int,
-        horizon_min: int,
-        phase_min: int = 0,
-    ) -> list[Departure]:
-        # Generate in the line-origin "reference" window [now-phase, horizon-phase]
-        # and display each slot shifted by +phase. This keeps displayed times in
-        # [now, horizon] (future-only) while differing per station.
-        out: list[Departure] = []
-        ref_now = now_min - phase_min
-        gap = self._gap_for_hour(table, (ref_now // 60) % 24)
-        cursor = self._first_slot(ref_now, gap)
+    @classmethod
+    def _service_day(
+        cls, table: dict, first: int, last: int, phase: int
+    ) -> list[int]:
+        """Displayed minutes of one service day's trains at this station.
 
-        for _ in range(self._GUARD_ITERATIONS):
-            display = cursor + phase_min
-            if display > horizon_min:
-                break
-            out.append(
-                Departure(
-                    time=_format_hhmm(display),
-                    kind_jp=DEFAULT_KIND_JP,
-                    dest_jp=direction.via_jp or direction.name_jp,
-                    track=direction.track,
-                    direction=direction.id,
-                )
-            )
-            gap = self._gap_for_hour(table, (cursor // 60) % 24)
-            cursor += gap
-        return out
+        Runs from ``first`` to ``last`` (past midnight when ``last < first``).
+        A minute is a slot when the line-origin time ``t - phase`` sits on its
+        hour's headway grid. The first and last trains always run.
+        """
+        end = last if last >= first else last + _DAY_MIN
+        slots = {first, end}
+        for clock in range(first, end + 1):
+            origin = clock - phase
+            gap = cls._gap_for_hour(table, (origin // 60) % 24)
+            if gap > 0 and (origin % _DAY_MIN) % gap == 0:
+                slots.add(clock)
+        return sorted(slots)
 
     @staticmethod
-    def _first_slot(now_min: int, gap: int) -> int:
-        """First headway-aligned slot at or after ``now_min``."""
-        if gap <= 0:
-            return now_min
-        remainder = now_min % gap
-        return now_min if remainder == 0 else now_min + (gap - remainder)
-
-    @classmethod
-    def _gap_for_hour(cls, table: dict, hour: int) -> int:
-        """Headway in minutes for ``hour``; falls back to a sane default."""
+    def _gap_for_hour(table: dict, hour: int) -> int:
+        """Headway in minutes for ``hour``; ``0`` means no trains that hour."""
         try:
             gap = int(table.get(str(hour)))
         except (TypeError, ValueError):
-            return cls._DEFAULT_GAP
-        return gap if gap > 0 else cls._DEFAULT_GAP
+            return 0
+        return max(gap, 0)
 
 
 class ODPTSource:
