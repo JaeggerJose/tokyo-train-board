@@ -19,7 +19,7 @@
       "name_jp": "西馬込",
       "kana": "にしまごめ",
       "name_en": "Nishi-magome",
-      "odpt_station": "odpt.Station:Toei.Asakusa.Nishimagome"
+      "odpt_station": "odpt.Station:Toei.Asakusa.NishiMagome"
     },
     {
       "id": "A02",
@@ -99,7 +99,7 @@
       "name_jp": "東銀座",
       "kana": "ひがしぎんざ",
       "name_en": "Higashi-ginza",
-      "odpt_station": "odpt.Station:Toei.Asakusa.Higashiginza"
+      "odpt_station": "odpt.Station:Toei.Asakusa.HigashiGinza"
     },
     {
       "id": "A12",
@@ -131,7 +131,7 @@
       "name_jp": "東日本橋",
       "kana": "ひがしにほんばし",
       "name_en": "Higashi-nihombashi",
-      "odpt_station": "odpt.Station:Toei.Asakusa.Higashinihombashi"
+      "odpt_station": "odpt.Station:Toei.Asakusa.HigashiNihombashi"
     },
     {
       "id": "A16",
@@ -163,7 +163,7 @@
       "name_jp": "本所吾妻橋",
       "kana": "ほんじょあづまばし",
       "name_en": "Honjo-azumabashi",
-      "odpt_station": "odpt.Station:Toei.Asakusa.Honjoazumabashi"
+      "odpt_station": "odpt.Station:Toei.Asakusa.HonjoAzumabashi"
     },
     {
       "id": "A20",
