@@ -1,8 +1,10 @@
 name: CI
 
 on:
+  # Feature branches are covered by pull_request; also running on their pushes
+  # duplicated every job.
   push:
-    branches: ["**"]
+    branches: [main]
   pull_request:
 
 jobs:
