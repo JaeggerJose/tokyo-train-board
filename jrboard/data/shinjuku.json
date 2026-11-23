@@ -27,7 +27,7 @@
       "name_jp": "新宿三丁目",
       "kana": "しんじゅくさんちょうめ",
       "name_en": "Shinjuku-sanchome",
-      "odpt_station": "odpt.Station:Toei.Shinjuku.Shinjukusanchome"
+      "odpt_station": "odpt.Station:Toei.Shinjuku.ShinjukuSanchome"
     },
     {
       "id": "S03",
@@ -83,7 +83,7 @@
       "name_jp": "馬喰横山",
       "kana": "ばくろよこやま",
       "name_en": "Bakuro-yokoyama",
-      "odpt_station": "odpt.Station:Toei.Shinjuku.Bakuroyokoyama"
+      "odpt_station": "odpt.Station:Toei.Shinjuku.BakuroYokoyama"
     },
     {
       "id": "S10",
@@ -123,7 +123,7 @@
       "name_jp": "西大島",
       "kana": "にしおおじま",
       "name_en": "Nishi-ojima",
-      "odpt_station": "odpt.Station:Toei.Shinjuku.Nishiojima"
+      "odpt_station": "odpt.Station:Toei.Shinjuku.NishiOjima"
     },
     {
       "id": "S15",
@@ -139,7 +139,7 @@
       "name_jp": "東大島",
       "kana": "ひがしおおじま",
       "name_en": "Higashi-ojima",
-      "odpt_station": "odpt.Station:Toei.Shinjuku.Higashiojima"
+      "odpt_station": "odpt.Station:Toei.Shinjuku.HigashiOjima"
     },
     {
       "id": "S17",
