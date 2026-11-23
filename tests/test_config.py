@@ -135,3 +135,21 @@ def test_save_favorites_creates_missing_dir() -> None:
     assert not os.path.isdir(os.path.dirname(favorites_path()))
     save_favorites([("ginza", "ginza")])
     assert load_favorites() == [("ginza", "ginza")]
+
+
+def test_live_is_off_by_default() -> None:
+    assert load_config().live is False
+
+
+@pytest.mark.parametrize(
+    "text, expected",
+    [
+        ("[live]\nenabled = true\n", True),
+        ("[live]\nenabled = false\n", False),
+        ("[live]\nenabled = \"yes please\"\n", False),  # malformed -> default
+        ("live = true\n", False),  # not a table -> default
+    ],
+)
+def test_live_reads_the_live_table(text: str, expected: bool) -> None:
+    _write_config(text)
+    assert load_config().live is expected

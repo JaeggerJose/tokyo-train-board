@@ -1,11 +1,11 @@
 """Departure data sources for jrboard (repository pattern).
 
 Two interchangeable timetable sources sit behind the ``TimetableSource``
-protocol: ``ODPTSource`` (live ODPT v4 ``StationTimetable``) and
-``StaticSource`` (offline generator from ``Line.headway_min``).
-``get_departures`` prefers ODPT when ``ODPT_KEY`` is set and falls back to
-the static source (logging to ``stderr``) on any failure. ``requests`` is
-imported lazily so the module is import-safe without it.
+protocol: ``ODPTSource`` (published ODPT v4 ``StationTimetable``) and
+``StaticSource`` (offline estimate from ``Line.headway_min``).
+``get_departures`` uses ODPT when ``ODPT_KEY`` is set, or for Toei stations
+when the user opted in (see :mod:`jrboard.odpt_fetch`), and falls back to the
+static source (logging to ``stderr``) on any failure.
 """
 
 from __future__ import annotations
@@ -16,7 +16,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Iterable, Optional, Protocol
 
-from jrboard.model import Direction, Line, Station
+from jrboard import odpt_fetch
+from jrboard.model import Line, Station
 
 __all__ = [
     "Departure",
@@ -26,10 +27,7 @@ __all__ = [
     "get_departures",
 ]
 
-# ODPT v4 facts (confirmed).
-ODPT_STATION_TIMETABLE = "https://api.odpt.org/api/v4/odpt:StationTimetable"
-ODPT_CONSUMER_KEY_PARAM = "acl:consumerKey"
-_HTTP_TIMEOUT_S = 8
+_DAY_MIN = 24 * 60
 
 # Default train kind (種別) when none is supplied by the source.
 DEFAULT_KIND_JP = "各駅停車"
@@ -134,16 +132,14 @@ def _station_phase(line: Line, station: Station) -> int:
 
 
 class StaticSource:
-    """Builds a believable departure list from ``Line.headway_min``.
+    """Estimates departures from ``Line.headway_min`` (no real timetable).
 
-    Lays down headway-spaced departures per direction from ``now`` forward,
-    merges both directions, sorts by time, and truncates to ``limit``.
+    Trains run only between ``first_train`` and ``last_train``; an hour whose
+    headway is ``0`` or missing has no trains. Slots sit on the clock grid of
+    each hour's headway, so the times stay put between refreshes. After the
+    last train the list rolls over to the next first train instead of going
+    blank.
     """
-
-    # Look-ahead window in minutes; wide enough for sparse late-night headways.
-    _HORIZON_MIN = 5 * 60
-    _GUARD_ITERATIONS = 512
-    _DEFAULT_GAP = 5
 
     def departures(
         self, line: Line, station: Station, now: datetime, limit: int
@@ -152,34 +148,40 @@ class StaticSource:
             return []
 
         directions = tuple(line.directions or ())
-        if not directions:
+        first = _hhmm_to_minutes(line.first_train)
+        last = _hhmm_to_minutes(line.last_train)
+        if not directions or first is None or last is None:
             return []
 
         table = self._schedule_table(line, _is_holiday(now))
-        now_min = _minutes_since_midnight(now)
-        horizon_min = now_min + self._HORIZON_MIN
-
-        # Per-station phase so adjacent stations show different times. A train
-        # reaches station i ``phase`` minutes after the line origin, so the
-        # arrivals visible at station i are the origin grid shifted by +phase.
+        # Per-station phase so adjacent stations show different times: a train
+        # reaches station i ``phase`` minutes after the line origin.
         phase = _station_phase(line, station)
+        service_day = self._service_day(table, first, last, phase)
 
-        candidates: list[Departure] = []
-        for direction in directions:
-            candidates.extend(
-                self._direction_departures(
-                    table, direction, now_min, horizon_min, phase
-                )
-            )
+        # Lay yesterday's, today's and tomorrow's service days on one axis and
+        # keep the next 24 h, so a post-midnight 00:20 ranks after 23:50.
+        now_min = _minutes_since_midnight(now)
+        upcoming = sorted(
+            slot + day_offset
+            for day_offset in (-_DAY_MIN, 0, _DAY_MIN)
+            for slot in service_day
+            if now_min <= slot + day_offset < now_min + _DAY_MIN
+        )[:limit]
 
-        # Sort by minutes-from-now (wrap-aware) so post-midnight departures rank
-        # AFTER tonight's late trains -- a plain mod-24 key would float 00:08 to
-        # the front and make "next train" read hours away in the evening.
-        candidates.sort(
-            key=lambda dep: ((_hhmm_to_minutes(dep.time) or 0) - now_min)
-            % (24 * 60)
-        )
-        return candidates[:limit]
+        candidates = [
+            (slot, Departure(
+                time=_format_hhmm(slot),
+                kind_jp=DEFAULT_KIND_JP,
+                dest_jp=direction.via_jp or direction.name_jp,
+                track=direction.track,
+                direction=direction.id,
+            ))
+            for direction in directions
+            for slot in upcoming
+        ]
+        candidates.sort(key=lambda pair: pair[0])  # stable: keeps direction order
+        return [departure for _, departure in candidates[:limit]]
 
     @classmethod
     def _schedule_table(cls, line: Line, is_holiday: bool) -> dict:
@@ -193,80 +195,50 @@ class StaticSource:
             return table
         return headway
 
-    def _direction_departures(
-        self,
-        table: dict,
-        direction: Direction,
-        now_min: int,
-        horizon_min: int,
-        phase_min: int = 0,
-    ) -> list[Departure]:
-        # Generate in the line-origin "reference" window [now-phase, horizon-phase]
-        # and display each slot shifted by +phase. This keeps displayed times in
-        # [now, horizon] (future-only) while differing per station.
-        out: list[Departure] = []
-        ref_now = now_min - phase_min
-        gap = self._gap_for_hour(table, (ref_now // 60) % 24)
-        cursor = self._first_slot(ref_now, gap)
+    @classmethod
+    def _service_day(
+        cls, table: dict, first: int, last: int, phase: int
+    ) -> list[int]:
+        """Displayed minutes of one service day's trains at this station.
 
-        for _ in range(self._GUARD_ITERATIONS):
-            display = cursor + phase_min
-            if display > horizon_min:
-                break
-            out.append(
-                Departure(
-                    time=_format_hhmm(display),
-                    kind_jp=DEFAULT_KIND_JP,
-                    dest_jp=direction.via_jp or direction.name_jp,
-                    track=direction.track,
-                    direction=direction.id,
-                )
-            )
-            gap = self._gap_for_hour(table, (cursor // 60) % 24)
-            cursor += gap
-        return out
+        Runs from ``first`` to ``last`` (past midnight when ``last < first``).
+        A minute is a slot when the line-origin time ``t - phase`` sits on its
+        hour's headway grid. The first and last trains always run.
+        """
+        end = last if last >= first else last + _DAY_MIN
+        slots = {first, end}
+        for clock in range(first, end + 1):
+            origin = clock - phase
+            gap = cls._gap_for_hour(table, (origin // 60) % 24)
+            if gap > 0 and (origin % _DAY_MIN) % gap == 0:
+                slots.add(clock)
+        return sorted(slots)
 
     @staticmethod
-    def _first_slot(now_min: int, gap: int) -> int:
-        """First headway-aligned slot at or after ``now_min``."""
-        if gap <= 0:
-            return now_min
-        remainder = now_min % gap
-        return now_min if remainder == 0 else now_min + (gap - remainder)
-
-    @classmethod
-    def _gap_for_hour(cls, table: dict, hour: int) -> int:
-        """Headway in minutes for ``hour``; falls back to a sane default."""
+    def _gap_for_hour(table: dict, hour: int) -> int:
+        """Headway in minutes for ``hour``; ``0`` means no trains that hour."""
         try:
             gap = int(table.get(str(hour)))
         except (TypeError, ValueError):
-            return cls._DEFAULT_GAP
-        return gap if gap > 0 else cls._DEFAULT_GAP
+            return 0
+        return max(gap, 0)
 
 
 class ODPTSource:
-    """Fetches departures from ODPT v4 ``StationTimetable`` using ``ODPT_KEY``.
+    """Departures from ODPT v4 ``StationTimetable`` (the published schedule).
 
-    Raises on any failure (missing key, HTTP/network error, empty or
+    Toei comes from the keyless public endpoint; other operators need
+    ``ODPT_KEY``. Raises on any failure (missing key, network error, empty or
     unparseable payload) so ``get_departures`` can fall back to static data.
     """
 
     def departures(
         self, line: Line, station: Station, now: datetime, limit: int
     ) -> list[Departure]:
-        key = os.environ.get("ODPT_KEY")
-        if not key:
-            raise RuntimeError("ODPT_KEY is not set in the environment.")
+        if not station.odpt_station:
+            raise RuntimeError(f"{station.name_jp} has no ODPT station id.")
 
-        try:
-            import requests  # deferred so the module imports without it
-        except ImportError as exc:  # pragma: no cover - environment dependent
-            raise RuntimeError("requests is required for ODPTSource.") from exc
-
-        params = {
-            ODPT_CONSUMER_KEY_PARAM: key,
-            "odpt:station": station.odpt_station,
-        }
+        params = {"odpt:station": station.odpt_station}
         if line.odpt_railway:
             params["odpt:railway"] = line.odpt_railway
         params["odpt:calendar"] = (
@@ -274,39 +246,23 @@ class ODPTSource:
             if _is_holiday(now)
             else "odpt.Calendar:Weekday"
         )
-
-        try:
-            resp = requests.get(
-                ODPT_STATION_TIMETABLE,
-                params=params,
-                timeout=_HTTP_TIMEOUT_S,
-            )
-        except Exception as exc:  # network errors, DNS, TLS, etc.
-            raise RuntimeError(f"ODPT request failed: {exc}") from exc
-
-        if resp.status_code != 200:
-            raise RuntimeError(
-                f"ODPT returned HTTP {resp.status_code}: "
-                f"{resp.text[:120]!r}"
-            )
-
-        try:
-            payload = resp.json()
-        except ValueError as exc:
-            raise RuntimeError("ODPT returned non-JSON payload.") from exc
-
-        if not isinstance(payload, list) or not payload:
-            raise RuntimeError("ODPT returned an empty timetable.")
+        payload = odpt_fetch.fetch_timetable(params, os.environ.get("ODPT_KEY"))
 
         entries = self._collect_entries(payload)
         if not entries:
             raise RuntimeError("ODPT timetable contained no departures.")
 
-        departures = self._to_departures(line, entries, now)
+        departures = self._to_departures(line, entries)
         if not departures:
-            raise RuntimeError("No upcoming ODPT departures after now.")
+            raise RuntimeError("ODPT timetable contained no departure times.")
 
-        departures.sort(key=lambda dep: (_hhmm_to_minutes(dep.time) or 0))
+        # Minutes from now, wrapping at midnight: at 23:50 the 00:05 train is
+        # 15 minutes away, not gone. After the last train this rolls over to
+        # the first one, like StaticSource.
+        now_min = _minutes_since_midnight(now)
+        departures.sort(
+            key=lambda dep: ((_hhmm_to_minutes(dep.time) or 0) - now_min) % _DAY_MIN
+        )
         return departures[: max(limit, 0)]
 
     @staticmethod
@@ -327,14 +283,13 @@ class ODPTSource:
         return entries
 
     def _to_departures(
-        self, line: Line, entries: Iterable[dict], now: datetime
+        self, line: Line, entries: Iterable[dict]
     ) -> list[Departure]:
-        now_min = _minutes_since_midnight(now)
         out: list[Departure] = []
         for obj in entries:
             dep_time = obj.get("odpt:departureTime")
             slot = _hhmm_to_minutes(dep_time) if isinstance(dep_time, str) else None
-            if slot is None or slot < now_min:
+            if slot is None:  # arrival-only rows at a terminus
                 continue
             out.append(
                 Departure(
@@ -412,13 +367,17 @@ def get_departures(
 ) -> tuple[list[Departure], str]:
     """Return ``(departures, label)`` -- ``"GTFS-RT"`` / ``"ODPT"`` / ``"STATIC"``.
 
-    Base timetable: :class:`ODPTSource` when ``ODPT_KEY`` is present (logging to
-    ``stderr`` and falling back to :class:`StaticSource` on failure), else static.
+    Base timetable: :class:`ODPTSource` when ``ODPT_KEY`` is present, or for a
+    Toei station once the user opted in (``JRBOARD_LIVE`` / ``[live] enabled``);
+    on failure it logs to ``stderr`` and falls back to :class:`StaticSource`.
     Then, when ``GTFS_RT_URL`` is set, :class:`~jrboard.gtfs_rt.GtfsRtSource`
     overlays live delays/alerts; if it stamps at least one row the label becomes
     ``"GTFS-RT"``. Any overlay failure logs to ``stderr`` and keeps the base.
     """
-    if os.environ.get("ODPT_KEY"):
+    use_odpt = bool(os.environ.get("ODPT_KEY")) or (
+        odpt_fetch.is_public(station.odpt_station) and odpt_fetch.live_enabled()
+    )
+    if use_odpt:
         try:
             base = (ODPTSource().departures(line, station, now, limit), "ODPT")
         except Exception as exc:
@@ -446,7 +405,7 @@ def get_departures(
 
 
 # Imported at module bottom (not top) to break the gtfs_rt<->sources import
-# cycle: gtfs_rt needs Departure/_HTTP_TIMEOUT_S from here, and this only needs
+# cycle: gtfs_rt needs Departure from here, and this only needs
 # GtfsRtSource as a name. gtfs_rt's top level pulls no heavy deps (protobuf and
 # requests are lazy-imported inside methods), so the core stays zero-dependency.
 from .gtfs_rt import GtfsRtSource  # noqa: E402

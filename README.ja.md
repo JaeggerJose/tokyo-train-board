@@ -231,6 +231,19 @@ python3 main.py --line yamanote --station shinjuku   # 案内板に src: ODPT �
 
 > 🔐 キーをソースに直書きしたりコミットしたりしないでください。環境変数を使います（`.env` は gitignore 済み）。
 
+### 都営線はキー不要（任意）
+
+都営 4 路線（浅草線・三田線・新宿線・大江戸線）の時刻表は ODPT の公開エンドポイントにあり、**キーは不要**です。既定ではオフラインのままなので、使う場合は有効にします：
+
+```bash
+export JRBOARD_LIVE=1          # または config.toml に [live] enabled = true
+jrboard --line shinjuku --station shinjuku   # 案内板に src: ODPT と表示
+```
+
+- 各駅の時刻表は 1 日 1 回まで取得し、`~/.cache/jrboard/odpt/` にキャッシュします（`XDG_CACHE_HOME` に従います）。取得に失敗すると 10 分間は再試行しないため、オフラインでもステータスラインが止まりません。
+- `JRBOARD_LIVE=0` は設定ファイルより優先され、オフラインに固定します。他の事業者は引き続き `ODPT_KEY` が必要です。
+- データ出典：東京都交通局・公共交通オープンデータ協議会（[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)）。
+
 ---
 
 ## 📟 Claude Code のステータスラインに組み込む

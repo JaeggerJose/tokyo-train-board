@@ -228,6 +228,19 @@ python3 main.py --line yamanote --station shinjuku   # 站牌右下角會顯示 
 
 > 🔐 金鑰請勿寫進程式或 commit，用環境變數即可（`.env` 已被 `.gitignore` 忽略）。
 
+### 都營線免金鑰（選用）
+
+都營 4 條線（淺草線、三田線、新宿線、大江戸線）的時刻表放在 ODPT 的公開端點，**不需要金鑰**。預設不連網，要自己開啟：
+
+```bash
+export JRBOARD_LIVE=1          # 或在 config.toml 寫 [live] enabled = true
+jrboard --line shinjuku --station shinjuku   # 站牌顯示 src: ODPT
+```
+
+- 每個站每天最多抓一次，快取在 `~/.cache/jrboard/odpt/`（尊重 `XDG_CACHE_HOME`）。抓取失敗後 10 分鐘內不重試，斷網時 statusline 不會卡住。
+- `JRBOARD_LIVE=0` 會蓋過設定檔，強制離線。其他業者仍需要 `ODPT_KEY`。
+- 資料來源：東京都交通局・公共交通オープンデータ協議会（[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)）。
+
 ---
 
 ## 📟 接進 Claude Code 狀態列（statusLine）
